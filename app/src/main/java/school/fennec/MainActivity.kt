@@ -134,33 +134,11 @@ fun MainSetupScreen(
             modifier = Modifier.padding(top = 32.dp, bottom = 16.dp)
         )
 
-        // 1. Wybór przedmiotu
-        Text(
-            text = "Wybierz przedmiot",
-            style = MaterialTheme.typography.titleLarge,
-            modifier = Modifier.padding(top = 16.dp, bottom = 8.dp)
-        )
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            listOf("Biologia", "Geografia", "Historia").forEach { subject ->
-                SelectionCard(
-                    title = subject,
-                    isSelected = selectedSubject == subject,
-                    onClick = { selectedSubject = subject },
-                    modifier = Modifier.weight(1f)
-                )
-            }
-        }
-
-        // 2. Wybór klasy
+        // 1. Wybór klasy
         Text(
             text = "Wybierz klasę",
             style = MaterialTheme.typography.titleLarge,
-            modifier = Modifier.padding(top = 24.dp, bottom = 8.dp)
+            modifier = Modifier.padding(top = 16.dp, bottom = 8.dp)
         )
         Row(
             modifier = Modifier
@@ -173,6 +151,28 @@ fun MainSetupScreen(
                     title = className,
                     isSelected = selectedClass == className,
                     onClick = { selectedClass = className },
+                    modifier = Modifier.weight(1f)
+                )
+            }
+        }
+
+        // 2. Wybór przedmiotu
+        Text(
+            text = "Wybierz przedmiot",
+            style = MaterialTheme.typography.titleLarge,
+            modifier = Modifier.padding(top = 24.dp, bottom = 8.dp)
+        )
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            listOf("Biologia", "Geografia", "Historia").forEach { subject ->
+                SelectionCard(
+                    title = subject,
+                    isSelected = selectedSubject == subject,
+                    onClick = { selectedSubject = subject },
                     modifier = Modifier.weight(1f)
                 )
             }
