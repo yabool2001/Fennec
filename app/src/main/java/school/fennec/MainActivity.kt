@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -27,10 +28,16 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.ArrowBack
+import androidx.compose.material.icons.automirrored.rounded.ArrowForward
+import androidx.compose.material.icons.rounded.History
+import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -213,14 +220,58 @@ fun MainSetupScreen(
         Button(
             onClick = onNextClicked,
             modifier = Modifier
-                .padding(top = 48.dp, bottom = 48.dp)
+                .padding(top = 48.dp)
                 .width(200.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color(0xFF4CAF50), 
                 contentColor = Color.White
             )
         ) {
-            Text(text = "Dalej >")
+            Text(text = "Dalej")
+            Spacer(modifier = Modifier.width(8.dp))
+            Icon(
+                imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
+                contentDescription = "Dalej"
+            )
+        }
+
+        // Przycisk Ulubione
+        Button(
+            onClick = { /* TODO: Przejście do Ulubionych */ },
+            modifier = Modifier
+                .padding(top = 16.dp)
+                .width(200.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+            )
+        ) {
+            Icon(
+                imageVector = Icons.Rounded.Star,
+                contentDescription = "Ulubione",
+                tint = Color(0xFFFFC107) // Ikona gwiazdki w kolorze złoto-żółtym (Amber)
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(text = "Ulubione")
+        }
+        
+        // Przycisk Poprzednia lekcja
+        Button(
+            onClick = { /* TODO: Przejście do poprzedniej lekcji */ },
+            modifier = Modifier
+                .padding(top = 16.dp, bottom = 48.dp)
+                .width(200.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                contentColor = MaterialTheme.colorScheme.onTertiaryContainer
+            )
+        ) {
+            Icon(
+                imageVector = Icons.Rounded.History,
+                contentDescription = "Poprzednia lekcja"
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(text = "Poprzednia lekcja")
         }
     }
 }
@@ -295,7 +346,12 @@ fun ChapterSelectionScreen(
                 .padding(top = 16.dp, bottom = 32.dp)
                 .width(200.dp)
         ) {
-            Text(text = "< Wróć")
+            Icon(
+                imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                contentDescription = "Wróć"
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(text = "Wróć")
         }
     }
 }
@@ -381,7 +437,12 @@ fun LearningOptionsScreen(
                 contentColor = Color.White
             )
         ) {
-            Text(text = "Zaczynamy >")
+            Text(text = "Zaczynamy")
+            Spacer(modifier = Modifier.width(8.dp))
+            Icon(
+                imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
+                contentDescription = "Zaczynamy"
+            )
         }
 
         Button(
@@ -390,7 +451,12 @@ fun LearningOptionsScreen(
                 .padding(top = 16.dp, bottom = 32.dp)
                 .width(200.dp)
         ) {
-            Text(text = "< Wróć")
+            Icon(
+                imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                contentDescription = "Wróć"
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(text = "Wróć")
         }
     }
 }
