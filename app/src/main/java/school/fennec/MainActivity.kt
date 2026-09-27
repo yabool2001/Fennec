@@ -73,7 +73,7 @@ class MainActivity : ComponentActivity() {
 }
 
 enum class AppState {
-    MAIN_SETUP, CHAPTERS, LEARNING_OPTIONS
+    MAIN_SETUP, CHAPTERS, LEARNING_OPTIONS, LABELLING_GAME
 }
 
 @Composable
@@ -85,6 +85,7 @@ fun FennecApp(modifier: Modifier = Modifier) {
         currentState = when (currentState) {
             AppState.CHAPTERS -> AppState.MAIN_SETUP
             AppState.LEARNING_OPTIONS -> AppState.CHAPTERS
+            AppState.LABELLING_GAME -> AppState.LEARNING_OPTIONS
             AppState.MAIN_SETUP -> AppState.MAIN_SETUP // Nigdy tu nie wejdzie
         }
     }
@@ -106,6 +107,14 @@ fun FennecApp(modifier: Modifier = Modifier) {
         AppState.LEARNING_OPTIONS -> {
             LearningOptionsScreen(
                 onBackClicked = { currentState = AppState.CHAPTERS },
+                onStartGameClicked = { currentState = AppState.LABELLING_GAME },
+                modifier = modifier
+            )
+        }
+        AppState.LABELLING_GAME -> {
+            LabellingGameScreen(
+                onBackToChapter = { currentState = AppState.CHAPTERS },
+                onEndLearning = { currentState = AppState.MAIN_SETUP },
                 modifier = modifier
             )
         }
@@ -359,6 +368,7 @@ fun ChapterSelectionScreen(
 @Composable
 fun LearningOptionsScreen(
     onBackClicked: () -> Unit,
+    onStartGameClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     var selectedLevel by remember { mutableStateOf("Fundamenty") }
@@ -428,7 +438,7 @@ fun LearningOptionsScreen(
         )
 
         Button(
-            onClick = { /* TODO: Rozpocznij wybraną naukę */ },
+            onClick = onStartGameClicked,
             modifier = Modifier
                 .padding(top = 48.dp)
                 .width(200.dp),
