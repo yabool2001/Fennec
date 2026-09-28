@@ -1,5 +1,6 @@
 package school.fennec
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
@@ -41,6 +42,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -48,12 +51,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import org.json.JSONArray
 import school.fennec.ui.theme.FennecTheme
 
 class MainActivity : ComponentActivity() {
@@ -70,6 +77,12 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+}
+
+object AppGlobalState {
+    var selectedClass: Int by mutableIntStateOf(6)
+    var selectedSubject: String by mutableStateOf("Biologia")
+    var selectedTextbook: Textbook? by mutableStateOf(null)
 }
 
 enum class AppState {
@@ -121,22 +134,151 @@ fun FennecApp(modifier: Modifier = Modifier) {
     }
 }
 
+data class Chapter(
+    val id: Int,
+    val title: String,
+    val resFilename: String?,
+    val imageResId: Int?
+)
+
+data class Textbook(
+    val publisher: String,
+    val title: String,
+    val classNum: Int,
+    val subject: String,
+    val coverResFilename: String,
+    val coverResId: Int?,
+    val chapters: List<Chapter>
+)
+
+fun loadTextbooks(context: Context, classNum: Int, subject: String): List<Textbook> {
+    val jsonString = try {
+        context.assets.open("podreczniki.json").bufferedReader().use { it.readText() }
+    } catch (e: Exception) {
+        return emptyList()
+    }
+
+    val jsonArray = JSONArray(jsonString)
+    val result = mutableListOf<Textbook>()
+
+    for (i in 0 until jsonArray.length()) {
+        val obj = jsonArray.optJSONObject(i) ?: continue
+        val itemKlasa = obj.optInt("klasa", -1)
+        val itemPrzedmiot = obj.optString("przedmiot", "")
+
+        if (itemKlasa == classNum && itemPrzedmiot.equals(subject, ignoreCase = true)) {
+            val coverFilename = obj.optString("okladka_res_filename", "")
+                .ifEmpty { obj.optString("okladka_res", "") }
+
+            val resId = if (coverFilename.isNotEmpty()) {
+                context.resources.getIdentifier(coverFilename, "drawable", context.packageName)
+            } else 0
+
+            val chaptersList = mutableListOf<Chapter>()
+            val chaptersArray = obj.optJSONArray("rozdzial") ?: obj.optJSONArray("rozdzialy")
+            if (chaptersArray != null) {
+                for (j in 0 until chaptersArray.length()) {
+                    val chObj = chaptersArray.optJSONObject(j) ?: continue
+                    val chId = chObj.optInt("id", j + 1)
+                    val chTitle = chObj.optString("tytul", "")
+                    val chResFilename = chObj.optString("res_filename", "")
+                        .ifEmpty { chObj.optString("grafika_res", "") }
+
+                    val chResId = if (chResFilename.isNotEmpty()) {
+                        context.resources.getIdentifier(chResFilename, "drawable", context.packageName)
+                    } else 0
+
+                    chaptersList.add(
+                        Chapter(
+                            id = chId,
+                            title = chTitle,
+                            resFilename = chResFilename.ifEmpty { null },
+                            imageResId = if (chResId != 0) chResId else null
+                        )
+                    )
+                }
+            }
+
+            result.add(
+                Textbook(
+                    publisher = obj.optString("wydawnictwo", ""),
+                    title = obj.optString("tytul", ""),
+                    classNum = itemKlasa,
+                    subject = itemPrzedmiot,
+                    coverResFilename = coverFilename,
+                    coverResId = if (resId != 0) resId else null,
+                    chapters = chaptersList
+                )
+            )
+        }
+    }
+
+    if (result.isEmpty()) {
+        for (i in 0 until jsonArray.length()) {
+            val obj = jsonArray.optJSONObject(i) ?: continue
+            val coverFilename = obj.optString("okladka_res_filename", "")
+                .ifEmpty { obj.optString("okladka_res", "") }
+            val resId = if (coverFilename.isNotEmpty()) {
+                context.resources.getIdentifier(coverFilename, "drawable", context.packageName)
+            } else 0
+
+            val chaptersList = mutableListOf<Chapter>()
+            val chaptersArray = obj.optJSONArray("rozdzial") ?: obj.optJSONArray("rozdzialy")
+            if (chaptersArray != null) {
+                for (j in 0 until chaptersArray.length()) {
+                    val chObj = chaptersArray.optJSONObject(j) ?: continue
+                    val chId = chObj.optInt("id", j + 1)
+                    val chTitle = chObj.optString("tytul", "")
+                    val chResFilename = chObj.optString("res_filename", "")
+                        .ifEmpty { chObj.optString("grafika_res", "") }
+
+                    val chResId = if (chResFilename.isNotEmpty()) {
+                        context.resources.getIdentifier(chResFilename, "drawable", context.packageName)
+                    } else 0
+
+                    chaptersList.add(
+                        Chapter(
+                            id = chId,
+                            title = chTitle,
+                            resFilename = chResFilename.ifEmpty { null },
+                            imageResId = if (chResId != 0) chResId else null
+                        )
+                    )
+                }
+            }
+
+            result.add(
+                Textbook(
+                    publisher = obj.optString("wydawnictwo", ""),
+                    title = obj.optString("tytul", ""),
+                    classNum = obj.optInt("klasa", 6),
+                    subject = obj.optString("przedmiot", ""),
+                    coverResFilename = coverFilename,
+                    coverResId = if (resId != 0) resId else null,
+                    chapters = chaptersList
+                )
+            )
+        }
+    }
+
+    return result
+}
+
 @Composable
 fun MainSetupScreen(
     onNextClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var selectedSubject by remember { mutableStateOf("Biologia") }
-    var selectedClass by remember { mutableStateOf("Klasa 6") }
-    // Domyślnie zaznaczamy pierwszy podręcznik, żeby uczeń wiedział jak to działa
-    var selectedTextbook by remember { mutableStateOf<Int?>(R.drawable.biologia_gwo_6) } 
+    val context = LocalContext.current
+    val textbooks = remember(AppGlobalState.selectedClass, AppGlobalState.selectedSubject) {
+        loadTextbooks(context, AppGlobalState.selectedClass, AppGlobalState.selectedSubject)
+    }
 
-    val textbookCovers = listOf(
-        R.drawable.biologia_gwo_6,
-        R.drawable.biologia_mac_6,
-        R.drawable.biologia_nowaera_6,
-        R.drawable.biologia_wsip_6
-    )
+    LaunchedEffect(textbooks) {
+        if (AppGlobalState.selectedTextbook !in textbooks) {
+            AppGlobalState.selectedTextbook = textbooks.firstOrNull()
+        }
+    }
 
     Column(
         modifier = modifier
@@ -162,11 +304,11 @@ fun MainSetupScreen(
                 .padding(horizontal = 16.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            listOf("Klasa 6", "Klasa 7", "Klasa 8").forEach { className ->
+            listOf(6 to "Klasa 6", 7 to "Klasa 7", 8 to "Klasa 8").forEach { (classNum, className) ->
                 SelectionCard(
                     title = className,
-                    isSelected = selectedClass == className,
-                    onClick = { selectedClass = className },
+                    isSelected = AppGlobalState.selectedClass == classNum,
+                    onClick = { AppGlobalState.selectedClass = classNum },
                     modifier = Modifier.weight(1f)
                 )
             }
@@ -187,8 +329,8 @@ fun MainSetupScreen(
             listOf("Biologia", "Geografia", "Historia").forEach { subject ->
                 SelectionCard(
                     title = subject,
-                    isSelected = selectedSubject == subject,
-                    onClick = { selectedSubject = subject },
+                    isSelected = AppGlobalState.selectedSubject == subject,
+                    onClick = { AppGlobalState.selectedSubject = subject },
                     modifier = Modifier.weight(1f)
                 )
             }
@@ -201,26 +343,45 @@ fun MainSetupScreen(
             modifier = Modifier.padding(top = 24.dp, bottom = 16.dp)
         )
         LazyRow(
-            contentPadding = PaddingValues(horizontal = 32.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp),
+            horizontalArrangement = Arrangement.spacedBy(20.dp),
+            verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.fillMaxWidth()
         ) {
-            items(textbookCovers) { coverResId ->
-                val isSelected = selectedTextbook == coverResId
+            items(textbooks) { textbook ->
+                val isSelected = AppGlobalState.selectedTextbook == textbook
                 Card(
                     modifier = Modifier
-                        .height(200.dp)
-                        .clickable { selectedTextbook = coverResId },
-                    elevation = CardDefaults.cardElevation(defaultElevation = if (isSelected) 8.dp else 2.dp),
+                        .height(if (isSelected) 215.dp else 185.dp)
+                        .scale(if (isSelected) 1.08f else 0.95f)
+                        .clickable { AppGlobalState.selectedTextbook = textbook },
+                    shape = RectangleShape,
+                    elevation = CardDefaults.cardElevation(defaultElevation = if (isSelected) 12.dp else 2.dp),
                     // Zaznaczony podręcznik otrzymuje wyraźną, kolorową ramkę!
                     border = if (isSelected) BorderStroke(4.dp, MaterialTheme.colorScheme.primary) else null
                 ) {
-                    Image(
-                        painter = painterResource(id = coverResId),
-                        contentDescription = "Okładka książki",
-                        modifier = Modifier.fillMaxHeight(),
-                        contentScale = ContentScale.FillHeight
-                    )
+                    if (textbook.coverResId != null) {
+                        Image(
+                            painter = painterResource(id = textbook.coverResId),
+                            contentDescription = textbook.title,
+                            modifier = Modifier.fillMaxHeight(),
+                            contentScale = ContentScale.FillHeight
+                        )
+                    } else {
+                        Box(
+                            modifier = Modifier
+                                .width(130.dp)
+                                .fillMaxHeight()
+                                .padding(16.dp),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = textbook.title,
+                                textAlign = TextAlign.Center,
+                                style = MaterialTheme.typography.bodyMedium
+                            )
+                        }
+                    }
                 }
             }
         }
@@ -285,21 +446,14 @@ fun MainSetupScreen(
     }
 }
 
-data class ChapterItem(val title: String, val imageResId: Int?)
-
 @Composable
 fun ChapterSelectionScreen(
     onChapterSelected: () -> Unit,
     onBackClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val chapters = listOf(
-        ChapterItem("Królestwo zwierząt", R.drawable.b_nowaera_6_1),
-        ChapterItem("Bezkręgowce: parzydełkowce, płazińce, nicienie, pierścienice", R.drawable.b_nowaera_6_2),
-        ChapterItem("Bezkręgowce: stawonogi i mięczaki", R.drawable.b_nowaera_6_3),
-        ChapterItem("Kręgowce zmiennocieplne: ryby, płazy i gady", R.drawable.b_nowaera_6_4),
-        ChapterItem("Kręgowce stałocieplne: ptaki i ssaki", R.drawable.b_nowaera_6_5)
-    )
+    val selectedTextbook = AppGlobalState.selectedTextbook
+    val chapters = selectedTextbook?.chapters ?: emptyList()
 
     Column(
         modifier = modifier.fillMaxSize(),
@@ -329,7 +483,7 @@ fun ChapterSelectionScreen(
                         if (chapter.imageResId != null) {
                             Image(
                                 painter = painterResource(id = chapter.imageResId),
-                                contentDescription = null,
+                                contentDescription = chapter.title,
                                 modifier = Modifier.fillMaxSize(),
                                 contentScale = ContentScale.Crop
                             )
@@ -341,7 +495,7 @@ fun ChapterSelectionScreen(
                             style = MaterialTheme.typography.titleMedium,
                             modifier = Modifier
                                 .align(Alignment.Center)
-                                .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.8f))
+                                .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.85f))
                                 .padding(8.dp)
                         )
                     }

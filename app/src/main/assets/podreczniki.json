@@ -11,6 +11,7 @@
       {
         "id": 1,
         "tytul": "I. Świat zwierząt",
+        "res_filename": "bio_ne_6_884_2_2019_1",
         "lekcja": [
           {
             "id": 1,
@@ -29,6 +30,7 @@
       {
         "id": 2,
         "tytul": "II. Od parzydełkowców do pierścienic",
+        "res_filename": "bio_ne_6_884_2_2019_2",
         "lekcja": [
           {
             "id": 1,
@@ -51,6 +53,7 @@
       {
         "id": 3,
         "tytul": "III. Stawonogi i mięczaki",
+        "res_filename": "bio_ne_6_884_2_2019_3",
         "lekcja": [
           {
             "id": 1,
@@ -77,6 +80,7 @@
       {
         "id": 4,
         "tytul": "IV. Kręgowce zmiennocieplne",
+        "res_filename": "bio_ne_6_884_2_2019_4",
         "lekcja": [
           {
             "id": 1,
@@ -107,6 +111,7 @@
       {
         "id": 5,
         "tytul": "V. Kręgowce stałocieplne",
+        "res_filename": "bio_ne_6_884_2_2019_5",
         "lekcja": [
           {
             "id": 1,

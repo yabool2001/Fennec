@@ -96,8 +96,8 @@ fun LabellingGameScreen(
             ) {
                 Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                        Text("Biologia", fontWeight = FontWeight.Bold)
-                        Text("Klasa: 6", fontWeight = FontWeight.Bold)
+                        Text(AppGlobalState.selectedSubject, fontWeight = FontWeight.Bold)
+                        Text("Klasa: ${AppGlobalState.selectedClass}", fontWeight = FontWeight.Bold)
                     }
                     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                         Text("Progres: 50%")
