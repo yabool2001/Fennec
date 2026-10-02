@@ -11,125 +11,27 @@
       {
         "id": 1,
         "tytul": "I. Świat zwierząt",
-        "res_filename": "bio_ne_6_884_2_2019_1",
-        "lekcja": [
-          {
-            "id": 1,
-            "tytul": "1. W królestwie zwierząt"
-          },
-          {
-            "id": 2,
-            "tytul": "2. Tkanki: nabłonkowa, mięśniowa i nerwowa"
-          },
-          {
-            "id": 3,
-            "tytul": "3. Tkanka łączna"
-          }
-        ]
+        "res_filename": "bio_ne_6_884_2_2019_1"
       },
       {
         "id": 2,
         "tytul": "II. Od parzydełkowców do pierścienic",
-        "res_filename": "bio_ne_6_884_2_2019_2",
-        "lekcja": [
-          {
-            "id": 1,
-            "tytul": "1. Parzydełkowce - najprostsze zwierzęta tkankowe"
-          },
-          {
-            "id": 2,
-            "tytul": "2. Płazińce - zwierzęta, które mają płaskie ciało"
-          },
-          {
-            "id": 3,
-            "tytul": "3. Nicienie - zwierzęta, które mają nitkowate ciało"
-          },
-          {
-            "id": 4,
-            "tytul": "3. Pierścienice - zwierzęta, które mają segmentowane ciało"
-          }
-        ]
+        "res_filename": "bio_ne_6_884_2_2019_2"
       },
       {
         "id": 3,
         "tytul": "III. Stawonogi i mięczaki",
-        "res_filename": "bio_ne_6_884_2_2019_3",
-        "lekcja": [
-          {
-            "id": 1,
-            "tytul": "1. Cechy stawonogów"
-          },
-          {
-            "id": 2,
-            "tytul": "2. Skorupiaki - stawonogi, które mają twardy pancerz"
-          },
-          {
-            "id": 3,
-            "tytul": "3. Owady - stawonogi zdolne do lotu"
-          },
-          {
-            "id": 4,
-            "tytul": "4. Pajęczaki - stawonogi, które mają cztery pary odnóży"
-          },
-          {
-            "id": 5,
-            "tytul": "5. Mięczaki - zwierzęta, które mają muszlę"
-          }
-        ]
+        "res_filename": "bio_ne_6_884_2_2019_3"
       },
       {
         "id": 4,
         "tytul": "IV. Kręgowce zmiennocieplne",
-        "res_filename": "bio_ne_6_884_2_2019_4",
-        "lekcja": [
-          {
-            "id": 1,
-            "tytul": "1. Ryby - kręgowce środowisk wodnych"
-          },
-          {
-            "id": 2,
-            "tytul": "2. Przegląd i znaczenie ryb"
-          },
-          {
-            "id": 3,
-            "tytul": "3. Płazy - kręgowce wodno-lądowe"
-          },
-          {
-            "id": 4,
-            "tytul": "4. Przegląd i znaczenie płazów"
-          },
-          {
-            "id": 5,
-            "tytul": "5. Gady - kręgowce, które opanowały ląd"
-          },
-          {
-            "id": 6,
-            "tytul": "6. Przegląd i znaczenie gadów"
-          }
-        ]
+        "res_filename": "bio_ne_6_884_2_2019_4"
       },
       {
         "id": 5,
         "tytul": "V. Kręgowce stałocieplne",
-        "res_filename": "bio_ne_6_884_2_2019_5",
-        "lekcja": [
-          {
-            "id": 1,
-            "tytul": "1. Ptaki - kręgowce zdolne do lotu"
-          },
-          {
-            "id": 2,
-            "tytul": "2. Przegląd i znaczenie ptaków"
-          },
-          {
-            "id": 3,
-            "tytul": "3. Ssaki - kręgowce, które karmią młode mlekiem"
-          },
-          {
-            "id": 4,
-            "tytul": "4. Przegląd i znaczenie ssaków"
-          }
-        ]
+        "res_filename": "bio_ne_6_884_2_2019_5"
       }
     ]
   },
@@ -142,365 +44,286 @@
     "rozdzial": [
       {
         "id": 1,
-        "tytul": "I. Królestwo zwierząt",
-        "lekcja": [
-          {
-            "id": 1,
-            "tytul": "1. Świat zwierząt"
-          },
-          {
-            "id": 2,
-            "tytul": "2. Tkanki zwierzęce: nabłonkowa i mięśniowa"
-          },
-          {
-            "id": 3,
-            "tytul": "3. Tkanki zwierzęce: łączna i nerwowa"
-          }
-        ]
+        "tytul": "I. Królestwo zwierząt"
       },
       {
         "id": 2,
-        "tytul": "II. Zwierzeta bezkręgowe: płazińce, nicienie, pierścienice",
-        "lekcja": [
-          {
-            "id": 1,
-            "tytul": "1. Czym charakteryzują się płazińce?"
-          },
-          {
-            "id": 2,
-            "tytul": "2. Jak wyglądają nicienie?"
-          },
-          {
-            "id": 3,
-            "tytul": "3. Gdzie pierścienice mają pierścienie?"
-          }
-        ]
+        "tytul": "II. Zwierzeta bezkręgowe: płazińce, nicienie, pierścienice"
       },
       {
         "id": 3,
-        "tytul": "III. Zwierzęta bezkręgowe: stawonogi i mięczaki",
-        "lekcja": [
-          {
-            "id": 1,
-            "tytul": "1. Jakie są cechy stawonogów?"
-          },
-          {
-            "id": 2,
-            "tytul": "2. Czym charakteryzują się skorupiaki?"
-          },
-          {
-            "id": 3,
-            "tytul": "3. Czym wyróżniają się pajęczaki?"
-          },
-          {
-            "id": 4,
-            "tytul": "4. Co wiemy o owadach?"
-          },
-          {
-            "id": 5,
-            "tytul": "5. Które zwierzęta to mięczaki?"
-          }
-        ]
+        "tytul": "III. Zwierzęta bezkręgowe: stawonogi i mięczaki"
       },
       {
         "id": 4,
-        "tytul": "IV. Zwierzęta kręgowe: ryby, płazy, gady",
-        "lekcja": [
-          {
-            "id": 1,
-            "tytul": "1. Jak rozpoznać kręgowca?"
-          },
-          {
-            "id": 2,
-            "tytul": "2. Czy ryba może żyć bez wody?"
-          },
-          {
-            "id": 3,
-            "tytul": "3. Dlaczego płazy to zwierzęta wodno-lądowe?"
-          },
-          {
-            "id": 4,
-            "tytul": "4. Dlaczego gady to zdobywcy lądu?"
-          }
-        ]
+        "tytul": "IV. Zwierzęta kręgowe: ryby, płazy, gady"
       },
       {
         "id": 5,
-        "tytul": "V. Zwierzęta kręgowe: ptaki i ssaki",
-        "lekcja": [
-          {
-            "id": 1,
-            "tytul": "1. Które cechy ptaków pozwalają im latać?"
-          },
-          {
-            "id": 2,
-            "tytul": "2. Jak rozmnażają się ptaki?"
-          },
-          {
-            "id": 3,
-            "tytul": "3. Które zwierzęta to ssaki?"
-          },
-          {
-            "id": 4,
-            "tytul": "4. Jak rozmnażają się ssaki?"
-          }
-        ]
+        "tytul": "V. Zwierzęta kręgowe: ptaki i ssaki"
       }
     ]
   },
   {
     "wydawnictwo": "WSiP",
     "tytul": "BIOLOGIA bez tajemnic",
-    "opis:": "",
     "klasa": 6,
     "przedmiot": "Biologia",
-    "nr_dopuszczenia": "",
     "okladka_res_filename": "bio_wsip_6_2025",
     "rozdzial": [
       {
         "id": 1,
-        "tytul": "I. Poznajemy świat zwierząt",
-        "lekcja": [
-          {
-            "id": 1,
-            "tytul": "1. Czym się charakteryzują zwierzęta?"
-          },
-          {
-            "id": 2,
-            "tytul": "2. Jak jest zbudowana tkanka nabłonkowa i jaką pełni funkcję?"
-          },
-          {
-            "id": 3,
-            "tytul": "3. Czym jest tkanka łączna?"
-          },
-          {
-            "id": 4,
-            "tytul": "4. Jakie są cechy i funkcje tkanki mięśniowej oraz tkanki nerwowej?"
-          }
-        ]
+        "tytul": "I. Poznajemy świat zwierząt"
       },
       {
         "id": 2,
-        "tytul": "II. Bezkręgowce, część 1",
-        "lekcja": [
-          {
-            "id": 1,
-            "tytul": "1. Jak są zbudowane płazińce i jaki prowadzą tryb życia?"
-          },
-          {
-            "id": 2,
-            "tytul": "2. Jakie cechy mają nicienie i gdzie można je spotkać?"
-          },
-          {
-            "id": 3,
-            "tytul": "3. Co łączy pierścienice i jakie mają znaczenie dla środowiska?"
-          }
-        ]
+        "tytul": "II. Bezkręgowce, część 1"
       },
       {
         "id": 3,
-        "tytul": "III. Bezkręgowce, część 2",
-        "lekcja": [
-          {
-            "id": 1,
-            "tytul": "1. Gdzie żyją i jak wyglądają stawonogi?"
-          },
-          {
-            "id": 2,
-            "tytul": "2. Jak stawonogi opanowały różne środowiska?"
-          },
-          {
-            "id": 3,
-            "tytul": "3. Jakie organizmy należą do stawonogów i jaką odgrywają rolę?"
-          },
-          {
-            "id": 4,
-            "tytul": "4. Czym się charakteryzują mięczaki?"
-          },
-          {
-            "id": 5,
-            "tytul": "5. Gdzie w naszym otoczeniu spotkamy bezkręgowce?"
-          }
-        ]
+        "tytul": "III. Bezkręgowce, część 2"
       },
       {
         "id": 4,
-        "tytul": "IV. Kręgowce, część 1",
-        "lekcja": [
-          {
-            "id": 1,
-            "tytul": "1. Co ułatwia rybie życie w wodzie?"
-          },
-          {
-            "id": 2,
-            "tytul": "2. Gdzie występują ryby i jakie mają znaczenie?"
-          },
-          {
-            "id": 3,
-            "tytul": "3. Dlaczego płazy to zwierzęta dwuśrodowiskowe?"
-          },
-          {
-            "id": 4,
-            "tytul": "4. Gdzie występują płazy i jakie mają znaczenie?"
-          },
-          {
-            "id": 5,
-            "tytul": "5. Jak gady przystosowały się do środowiska lądowego?"
-          },
-          {
-            "id": 6,
-            "tytul": "6. Gdzie występują gady i jakie mają znaczenie?"
-          }
-        ]
+        "tytul": "IV. Kręgowce, część 1"
       },
       {
         "id": 5,
-        "tytul": "V. Kręgowce, część 2",
-        "lekcja": [
-          {
-            "id": 1,
-            "tytul": "1. Jak ptaki przystosowały się do lotu?"
-          },
-          {
-            "id": 2,
-            "tytul": "2. Gdzie występują ptaki i jakie mają znaczenie?"
-          },
-          {
-            "id": 3,
-            "tytul": "3. Dlaczego ssaki mogą żyć niemal w każdym środowisku?"
-          },
-          {
-            "id": 4,
-            "tytul": "4. Gdzie występują ssaki i jakie mają znaczenie?"
-          },
-          {
-            "id": 5,
-            "tytul": "5. Gdzie w naszym otoczeniu spotkamy kręgowce?"
-          }
-        ]
+        "tytul": "V. Kręgowce, część 2"
       }
     ]
   },
   {
     "wydawnictwo": "mac",
     "tytul": "Biologia 6",
-    "opis:": "Podręcznik dla klasy szóstej szkoły podstawowej",
     "klasa": 6,
     "przedmiot": "Biologia",
-    "nr_dopuszczenia": "928/2/2019",
     "okladka_res_filename": "bio_mac_6_928_2_2019",
     "rozdzial": [
       {
         "id": 1,
-        "tytul": "1. Bezkręgowce. Od parzydełkowców do pierścienic",
-        "lekcja": [
-          {
-            "id": 1,
-            "tytul": "1.1 Królestwo: zwierzęta"
-          },
-          {
-            "id": 2,
-            "tytul": "1.2 Tkanki zwierzęce"
-          },
-          {
-            "id": 3,
-            "tytul": "1.3 Parzydełkowce"
-          },
-          {
-            "id": 4,
-            "tytul": "1.4 Płazińce i nicienie"
-          },
-          {
-            "id": 5,
-            "tytul": "1.5 Pierścienice"
-          }
-        ]
+        "tytul": "1. Bezkręgowce. Od parzydełkowców do pierścienic"
       },
       {
         "id": 2,
-        "tytul": "2. Bezkręgowce. Stawonogi i mięczaki",
-        "lekcja": [
-          {
-            "id": 1,
-            "tytul": "2.1 Charakterystyka stawonogów. Skorupiaki"
-          },
-          {
-            "id": 2,
-            "tytul": "2.2 Pajęczaki"
-          },
-          {
-            "id": 3,
-            "tytul": "2.3 Owady – charakterystyka"
-          },
-          {
-            "id": 4,
-            "tytul": "2.4 Owady w przyrodzie i życiu człowieka"
-          },
-          {
-            "id": 5,
-            "tytul": "2.5 Charakterystyka mięczaków. Ślimaki"
-          },
-          {
-            "id": 6,
-            "tytul": "2.6 Małże i głowonogi"
-          }
-        ]
+        "tytul": "2. Bezkręgowce. Stawonogi i mięczaki"
       },
       {
         "id": 3,
-        "tytul": "3. Kręgowce",
-        "lekcja": [
-          {
-            "id": 1,
-            "tytul": "3.1 Kręgowce – wprowadzenie"
-          },
-          {
-            "id": 2,
-            "tytul": "3.2 Ryby"
-          },
-          {
-            "id": 3,
-            "tytul": "3.3 Płazy"
-          },
-          {
-            "id": 4,
-            "tytul": "3.4 Gady"
-          },
-          {
-            "id": 5,
-            "tytul": "3.5 Ptaki"
-          },
-          {
-            "id": 6,
-            "tytul": "3.6 Ssaki"
-          }
-        ]
+        "tytul": "3. Kręgowce"
       },
       {
         "id": 4,
-        "tytul": "4. Zwierzęta wokół nas",
-        "lekcja": [
-          {
-            "id": 1,
-            "tytul": "4.1 Przystosowania zwierząt do środowiska"
-          },
-          {
-            "id": 2,
-            "tytul": "4.2 Bezkręgowce w mojej okolicy"
-          },
-          {
-            "id": 3,
-            "tytul": "4.3 Kręgowce w mojej okolicy"
-          },
-          {
-            "id": 4,
-            "tytul": "4.4 Ludzie i zwierzęta"
-          },
-          {
-            "id": 5,
-            "tytul": "4.5 Historia życia na Ziemi"
-          }
-        ]
+        "tytul": "4. Zwierzęta wokół nas"
+      }
+    ]
+  },
+  {
+    "wydawnictwo": "Nowa Era",
+    "tytul": "Planeta Nowa 6",
+    "klasa": 6,
+    "przedmiot": "Geografia",
+    "okladka_res_filename": "",
+    "rozdzial": [
+      {
+        "id": 1,
+        "tytul": "I. Współrzędne geograficzne"
+      },
+      {
+        "id": 2,
+        "tytul": "II. Ruchy Ziemi"
+      },
+      {
+        "id": 3,
+        "tytul": "III. Środowisko przyrodnicze Europy"
+      },
+      {
+        "id": 4,
+        "tytul": "IV. Gospodarka Europy"
+      }
+    ]
+  },
+  {
+    "wydawnictwo": "Nowa Era",
+    "tytul": "Wczoraj i dziś 6",
+    "klasa": 6,
+    "przedmiot": "Historia",
+    "okladka_res_filename": "",
+    "rozdzial": [
+      {
+        "id": 1,
+        "tytul": "I. Narodziny nowożytnego świata"
+      },
+      {
+        "id": 2,
+        "tytul": "II. Rzeczpospolita w XVI wieku"
+      },
+      {
+        "id": 3,
+        "tytul": "III. Rzeczpospolita w XVII wieku"
+      },
+      {
+        "id": 4,
+        "tytul": "IV. Upadek Rzeczypospolitej"
+      }
+    ]
+  },
+  {
+    "wydawnictwo": "Nowa Era",
+    "tytul": "Puls życia 7",
+    "klasa": 7,
+    "przedmiot": "Biologia",
+    "okladka_res_filename": "",
+    "rozdzial": [
+      {
+        "id": 1,
+        "tytul": "I. Organizm człowieka. Skóra"
+      },
+      {
+        "id": 2,
+        "tytul": "II. Aparat ruchu"
+      },
+      {
+        "id": 3,
+        "tytul": "III. Układ pokarmowy"
+      },
+      {
+        "id": 4,
+        "tytul": "IV. Układ krążenia"
+      },
+      {
+        "id": 5,
+        "tytul": "V. Układ oddechowy"
+      }
+    ]
+  },
+  {
+    "wydawnictwo": "GWO",
+    "tytul": "Biologia 7. Biologia z klasą",
+    "klasa": 7,
+    "przedmiot": "Biologia",
+    "okladka_res_filename": "",
+    "rozdzial": [
+      {
+        "id": 1,
+        "tytul": "I. Ciało człowieka jako całość"
+      },
+      {
+        "id": 2,
+        "tytul": "II. Ruch i ochrona ciała"
+      },
+      {
+        "id": 3,
+        "tytul": "III. Odżywianie i oddychanie"
+      }
+    ]
+  },
+  {
+    "wydawnictwo": "Nowa Era",
+    "tytul": "Planeta Nowa 7",
+    "klasa": 7,
+    "przedmiot": "Geografia",
+    "okladka_res_filename": "",
+    "rozdzial": [
+      {
+        "id": 1,
+        "tytul": "I. Geografia Polski"
+      },
+      {
+        "id": 2,
+        "tytul": "II. Rzeźba terenu i skały"
+      },
+      {
+        "id": 3,
+        "tytul": "III. Klimat i wody Polski"
+      }
+    ]
+  },
+  {
+    "wydawnictwo": "Nowa Era",
+    "tytul": "Wczoraj i dziś 7",
+    "klasa": 7,
+    "przedmiot": "Historia",
+    "okladka_res_filename": "",
+    "rozdzial": [
+      {
+        "id": 1,
+        "tytul": "I. Europa i świat w XVIII i XIX wieku"
+      },
+      {
+        "id": 2,
+        "tytul": "II. Polacy pod zaborami"
+      },
+      {
+        "id": 3,
+        "tytul": "III. I wojna światowa"
+      }
+    ]
+  },
+  {
+    "wydawnictwo": "Nowa Era",
+    "tytul": "Puls życia 8",
+    "klasa": 8,
+    "przedmiot": "Biologia",
+    "okladka_res_filename": "",
+    "rozdzial": [
+      {
+        "id": 1,
+        "tytul": "I. Genetyka"
+      },
+      {
+        "id": 2,
+        "tytul": "II. Ewolucja życia"
+      },
+      {
+        "id": 3,
+        "tytul": "III. Ekologia"
+      },
+      {
+        "id": 4,
+        "tytul": "IV. Ochrona środowiska"
+      }
+    ]
+  },
+  {
+    "wydawnictwo": "Nowa Era",
+    "tytul": "Planeta Nowa 8",
+    "klasa": 8,
+    "przedmiot": "Geografia",
+    "okladka_res_filename": "",
+    "rozdzial": [
+      {
+        "id": 1,
+        "tytul": "I. Azja"
+      },
+      {
+        "id": 2,
+        "tytul": "II. Ameryka Północna i Południowa"
+      },
+      {
+        "id": 3,
+        "tytul": "III. Afryka i Australia"
+      }
+    ]
+  },
+  {
+    "wydawnictwo": "Nowa Era",
+    "tytul": "Wczoraj i dziś 8",
+    "klasa": 8,
+    "przedmiot": "Historia",
+    "okladka_res_filename": "",
+    "rozdzial": [
+      {
+        "id": 1,
+        "tytul": "I. II wojna światowa"
+      },
+      {
+        "id": 2,
+        "tytul": "II. Świat po II wojnie światowej"
+      },
+      {
+        "id": 3,
+        "tytul": "III. Polska w czasach komunizmu"
       }
     ]
   }

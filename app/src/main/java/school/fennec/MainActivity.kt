@@ -213,54 +213,6 @@ fun loadTextbooks(context: Context, classNum: Int, subject: String): List<Textbo
         }
     }
 
-    if (result.isEmpty()) {
-        for (i in 0 until jsonArray.length()) {
-            val obj = jsonArray.optJSONObject(i) ?: continue
-            val coverFilename = obj.optString("okladka_res_filename", "")
-                .ifEmpty { obj.optString("okladka_res", "") }
-            val resId = if (coverFilename.isNotEmpty()) {
-                context.resources.getIdentifier(coverFilename, "drawable", context.packageName)
-            } else 0
-
-            val chaptersList = mutableListOf<Chapter>()
-            val chaptersArray = obj.optJSONArray("rozdzial") ?: obj.optJSONArray("rozdzialy")
-            if (chaptersArray != null) {
-                for (j in 0 until chaptersArray.length()) {
-                    val chObj = chaptersArray.optJSONObject(j) ?: continue
-                    val chId = chObj.optInt("id", j + 1)
-                    val chTitle = chObj.optString("tytul", "")
-                    val chResFilename = chObj.optString("res_filename", "")
-                        .ifEmpty { chObj.optString("grafika_res", "") }
-
-                    val chResId = if (chResFilename.isNotEmpty()) {
-                        context.resources.getIdentifier(chResFilename, "drawable", context.packageName)
-                    } else 0
-
-                    chaptersList.add(
-                        Chapter(
-                            id = chId,
-                            title = chTitle,
-                            resFilename = chResFilename.ifEmpty { null },
-                            imageResId = if (chResId != 0) chResId else null
-                        )
-                    )
-                }
-            }
-
-            result.add(
-                Textbook(
-                    publisher = obj.optString("wydawnictwo", ""),
-                    title = obj.optString("tytul", ""),
-                    classNum = obj.optInt("klasa", 6),
-                    subject = obj.optString("przedmiot", ""),
-                    coverResFilename = coverFilename,
-                    coverResId = if (resId != 0) resId else null,
-                    chapters = chaptersList
-                )
-            )
-        }
-    }
-
     return result
 }
 
