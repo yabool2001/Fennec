@@ -1,122 +1,40 @@
 [
   {
-    "id": 1,
-    "title": "Wspólne cechy zwierząt",
-    "task": "Uzupełnij stwierdzenia o wspólnych cechach zwierząt",
-    "answers": [
-      {
-        "id": 1,
-        "full_name": "są organizmami wielokomórkowymi",
-        "empty": "są organizmami ................",
-        "hint": "są organizmami wieloko.........",
-        "answer": ["wielokomórkowymi"]
-      },
-      {
-        "id": 2,
-        "full_name": "są zbudowane z komórek jądrowych, które nie mają ściany komórkowej i chloroplastów",
-        "empty": "są zbudowane z komórek ........., które nie mają ...... .......... i .............",
-        "hint": "są zbudowane z komórek jąd......, które nie mają ścia.. ko........ i chlo.........",
-        "answer": ["jądrowych","ściany komórkowej","chloroplastów"]
-      },
-      {
-        "id": 3,
-        "full_name": "są organizmami cudzożywnymi",
-        "empty": "są organizmami ................",
-        "hint": "są organizmami cudzo.......",
-        "answer": ["cudzożywnymi"]
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "title": "Poziomy organizacji ciała zwierząt",
-    "task": "Wymień poziomy organizacji ciała zwierząt",
-    "questions": [
-      {
-        "full_name": "tkanka nabłonkowa",
-        "empty": "tkanka ..........",
-        "hint": "nabłon....",
-        "answer": ["nabłonkowa"]
-      },
-      {
-        "full_name": "tkanka nerwowa",
-        "empty": "tkanka .......",
-        "hint": "tkanka ner....",
-        "answer": ["nerwowa"]
-      },
-      {
-        "full_name": "tkanka mięśniowa",
-        "empty": "tkanka .........",
-        "hint": "tkanka mię......",
-        "answer": ["mięśniowa"]
-      },
-      {
-        "full_name": "tkanka łączna",
-        "empty": "tkanka ......",
-        "hint": "tkanka łą....",
-        "answer": ["łączna"]
-      }
-    ]
-  },
-  {
-    "id": 3,
-    "title": "Podział tkanek zwierzęcych",
-    "task": "Wymień podział tkanek zwierzęcych",
-    "questions": [
-      {
-        "full_name": "tkanka nabłonkowa",
-        "empty": "tkanka ..........",
-        "hint": "nabłon....",
-        "answer": ["nabłonkowa"]
-      },
-      {
-        "full_name": "tkanka nerwowa",
-        "empty": "tkanka .......",
-        "hint": "tkanka ner....",
-        "answer": ["nerwowa"]
-      },
-      {
-        "full_name": "tkanka mięśniowa",
-        "empty": "tkanka .........",
-        "hint": "tkanka mię......",
-        "answer": ["mięśniowa"]
-      },
-      {
-        "full_name": "tkanka łączna",
-        "empty": "tkanka ......",
-        "hint": "tkanka łą....",
-        "answer": ["łączna"]
-      }
-    ]
-  },
-  {
-    "id": 1,
-    "title": "Budowa komórki nerwowej",
-    "task": "Wymień części neuronu",
+    "id": 9,
+    "title": "Budowa tkanki nerwowej",
+    "task": "Wymień elementy tkanki nerwowej",
     "questions": [
       {
         "full_name": "ciało komórki",
-        "empty": "..... komórki",
-        "hint": "cia.. komórki",
-        "answer": ["ciało"]
+        "empty": "..... .......",
+        "hint1": "cia.. kom....",
+        "hint2": "cia.. kom..ki",
+        "answer": "ciało komórki",
+        "picture_src": "bio_6_ne_r1_p_neuron_cialo"
       },
       {
         "full_name": "dendryty",
         "empty": "........",
-        "hint": "den.....",
-        "answer": ["dendryty"]
+        "hint1": "den.....",
+        "hint2": "den...ty",
+        "answer": "dendryty",
+        "picture_src": "bio_6_ne_r1_p_neuron_dendryty"
       },
       {
         "full_name": "akson",
-        "empty": ".....",
-        "hint": "ak...",
-        "answer": ["akson"]
+        "empty": "......",
+        "hint1": "ak...",
+        "hint2": "ak.on",
+        "answer": "akson",
+        "picture_src": "bio_6_ne_r1_p_neuron_akson"
       },
       {
         "full_name": "osłonka",
-        "empty": ".......",
-        "hint": "osłon..",
-        "answer": ["osłonka"]
+        "empty": "......",
+        "hint1": "osł....",
+        "hint2": "osł..ka",
+        "answer": "osłonka",
+        "picture_src": "bio_6_ne_r1_p_neuron_oslonka"
       }
     ]
   }

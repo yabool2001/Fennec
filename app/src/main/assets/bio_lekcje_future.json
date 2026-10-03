@@ -1,0 +1,217 @@
+[
+  {
+    "id": 1,
+    "title": "Wspólne cechy zwierząt",
+    "task": "Uzupełnij stwierdzenia o wspólnych cechach zwierząt",
+    "answers": [
+      {
+        "id": 1,
+        "full_name": "są organizmami wielokomórkowymi",
+        "empty": "są organizmami ................",
+        "hint1": "są organizmami wieloko.........",
+        "hint2": "są organizmami wieloko.....wymi",
+        "answer": "wielokomórkowymi"
+      },
+      {
+        "id": 2,
+        "full_name": "są zbudowane z komórek jądrowych, ",
+        "empty": "są zbudowane z komórek ........., ",
+        "hint1": "są zbudowane z komórek jąd......, ",
+        "hint2": "są zbudowane z komórek jąd..wych, ",
+        "answer": "jądrowych"
+      },
+      {
+        "id": 3,
+        "full_name": "które nie mają ściany komórkowej",
+        "empty": "które nie mają ...... ..........",
+        "hint1": "które nie mają ścia.. kom.......",
+        "hint2": "które nie mają ścia.. kom...owej",
+        "answer": "ściany komórkowej"
+      },
+      {
+        "id": 4,
+        "full_name": " i chloroplastów",
+        "empty": " i .............",
+        "hint1": " i chlo.........",
+        "hint2": " i chlo.....stów",
+        "answer": "chloroplastów"
+      },
+      {
+        "id": 5,
+        "full_name": "są organizmami cudzożywnymi",
+        "empty": "są organizmami ................",
+        "hint1": "są organizmami cudzo.......",
+        "hint2": "są organizmami cudzo...nymi",
+        "answer": "cudzożywnymi"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Poziomy organizacji ciała zwierząt",
+    "task": "Wymień poziomy organizacji ciała zwierząt",
+    "questions": [
+      {
+        "full_name": "komórka",
+        "empty": ".......",
+        "hint1": "ko.....",
+        "hint2": "ko...ka",
+        "answer": "komórka"
+      },
+      {
+        "full_name": "tkanka",
+        "empty": "......",
+        "hint1": "tkanka ner....",
+        "hint2": "tkanka ner..wa",
+        "answer": "nerwowa"
+      },
+      {
+        "full_name": "narząd",
+        "empty": "......",
+        "hint1": "na....",
+        "hint2": "na..ąd",
+        "answer": "narząd"
+      },
+      {
+        "full_name": "układ narządów",
+        "empty": "......",
+        "hint1": "ukł.. na......",
+        "hint2": "ukł.. na...dów",
+        "answer": "układ narządów"
+      },
+      {
+        "full_name": "organizm",
+        "empty": "......",
+        "hint1": "org.....",
+        "hint2": "org...zm",
+        "answer": "organizm"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Podziały zwierząt ze względu na budowę wewnętrzną",
+    "task": "Wymień podział zwierząt ze względu na budowę wewnętrzną",
+    "questions": [
+      {
+        "full_name": "kręgowe",
+        "empty": ".......",
+        "hint1": "krę....",
+        "hint2": "krę..we",
+        "answer": ["kręgowe"]
+      },
+      {
+        "full_name": "bezkręgowe",
+        "empty": "......",
+        "hint1": "bezk......",
+        "hint2": "bezk...owe",
+        "answer": ["bezkręgowe"]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Podział tkanek zwierzęcych",
+    "task": "Wymień podział tkanek zwierzęcych",
+    "questions": [
+      {
+        "full_name": "tkanka nabłonkowa",
+        "empty": "tkanka ..........",
+        "hint1": "nabłon....",
+        "hint2": "nabłon..wa",
+        "answer": ["nabłonkowa"]
+      },
+      {
+        "full_name": "tkanka",
+        "empty": "......",
+        "hint1": "tkanka ner....",
+        "hint2": "tkanka ner..wa",
+        "answer": ["nerwowa"]
+      },
+      {
+        "full_name": "tkanka mięśniowa",
+        "empty": "tkanka .........",
+        "hint1": "tkanka mię......",
+        "hint2": "tkanka mię...owa",
+        "answer": ["mięśniowa"]
+      },
+      {
+        "full_name": "tkanka łączna",
+        "empty": "tkanka ......",
+        "hint1": "tkanka łą....",
+        "hint2": "tkanka łą..na",
+        "answer": ["łączna"]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Rodzaje nabłonków",
+    "task": "Wymień rodzaje nabłonków",
+    "questions": [
+      {
+        "full_name": "Rodzaje nabłonków ze względu na liczbę warstw komórek: jednowarstwowy ",
+        "empty": "..... komórki",
+        "hint1": "jedno.........",
+        "hint2": "jedno.....wowy",
+        "answer": ["jednowarstwowy"]
+      },
+      {
+        "full_name": "i wielowarstwowy",
+        "empty": "..............",
+        "hint1": "jedno.........",
+        "hint2": "wielo.....wowy",
+        "answer": ["wielowarstwowy"]
+      },
+      {
+        "full_name": "Rodzaje nabłonków ze względu na kształt komórek: płaski, ",
+        "empty": "......",
+        "hint1": "pł....",
+        "hint2": "pł..ki",
+        "answer": ["płaski"]
+      },
+      {
+        "full_name": "sześcienny, ",
+        "empty": ".......",
+        "hint1": "sześ......",
+        "hint2": "sześ..enny",
+        "answer": ["sześcienny"]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Rodzaje tkanki mięśniowej",
+    "task": "Wymień rodzaje tkanki mięśniowej",
+    "questions": [
+      {
+        "full_name": "gładka, ",
+        "empty": "......",
+        "hint1": "gł....",
+        "hint2": "gł..ka",
+        "answer": ["gładka"]
+      },
+      {
+        "full_name": "poprzecznie prążkowana, która się dzieli na  szkieletowa i ",
+        "empty": "..............",
+        "hint1": "jedno.........",
+        "hint2": "wielo.....wowy",
+        "answer": ["wielowarstwowy"]
+      },
+      {
+        "full_name": "Rodzaje nabłonków ze względu na kształt komórek: płaski, ",
+        "empty": "......",
+        "hint1": "pł....",
+        "hint2": "pł..ki",
+        "answer": ["płaski"]
+      },
+      {
+        "full_name": "sześcienny, ",
+        "empty": ".......",
+        "hint1": "sześ......",
+        "hint2": "sześ..enny",
+        "answer": ["sześcienny"]
+      }
+    ]
+  }
+]
