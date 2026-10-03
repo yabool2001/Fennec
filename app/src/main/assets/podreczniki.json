@@ -11,7 +11,12 @@
       {
         "id": 1,
         "tytul": "I. Świat zwierząt",
-        "res_filename": "bio_ne_6_884_2_2019_1"
+        "res_filename": "bio_ne_6_884_2_2019_1",
+        "lekcje":
+        {
+          "databse": "bio_lekcje.json",
+          "id": [1,2,3,4,5,6,7,8,9,10,11]
+        }
       },
       {
         "id": 2,

@@ -478,7 +478,7 @@ fun LearningOptionsScreen(
     modifier: Modifier = Modifier
 ) {
     var selectedLevel by remember { mutableStateOf("Fundamenty") }
-    var selectedMode by remember { mutableStateOf("Puzzle") }
+    var selectedMode by remember { mutableStateOf("Nauka") }
 
     Column(
         modifier = modifier
@@ -523,25 +523,18 @@ fun LearningOptionsScreen(
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             SelectionCard(
-                title = "Puzzle",
-                isSelected = selectedMode == "Puzzle",
-                onClick = { selectedMode = "Puzzle" },
+                title = "Nauka",
+                isSelected = selectedMode == "Nauka",
+                onClick = { selectedMode = "Nauka" },
                 modifier = Modifier.weight(1f)
             )
             SelectionCard(
-                title = "Fiszki",
-                isSelected = selectedMode == "Fiszki",
-                onClick = { selectedMode = "Fiszki" },
+                title = "Test",
+                isSelected = selectedMode == "Test",
+                onClick = { selectedMode = "Test" },
                 modifier = Modifier.weight(1f)
             )
         }
-        
-        SelectionCard(
-            title = "Test",
-            isSelected = selectedMode == "Test",
-            onClick = { selectedMode = "Test" },
-            modifier = Modifier.fillMaxWidth()
-        )
 
         Button(
             onClick = onStartGameClicked,
