@@ -1,0 +1,32 @@
+{
+  "status": [
+    {
+      "value": 0,
+      "color": "#E0E0E0"
+    },
+    {
+      "value": 1,
+      "color": "#E57373"
+    },
+    {
+      "value": 2,
+      "color": "#FFB74D"
+    },
+    {
+      "value": 3,
+      "color": "#FFF176"
+    },
+    {
+      "value": 4,
+      "color": "#81C784"
+    },
+    {
+      "value": 5,
+      "color": "#4CAF50"
+    },
+    {
+      "value": 6,
+      "color": "#2E7D32"
+    }
+  ]
+}

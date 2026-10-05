@@ -1,5 +1,6 @@
 package school.fennec
 
+import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -33,6 +34,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.automirrored.rounded.ArrowForward
 import androidx.compose.material.icons.rounded.History
+import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -61,6 +63,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.json.JSONArray
+import java.io.File
 import school.fennec.ui.theme.FennecTheme
 
 class MainActivity : ComponentActivity() {
@@ -83,6 +86,9 @@ object AppGlobalState {
     var selectedClass: Int by mutableIntStateOf(6)
     var selectedSubject: String by mutableStateOf("Biologia")
     var selectedTextbook: Textbook? by mutableStateOf(null)
+    var selectedChapter: Chapter? by mutableStateOf(null)
+    var selectedLevel: String by mutableStateOf("Fundamenty")
+    var selectedMode: String by mutableStateOf("Nauka")
 }
 
 enum class AppState {
@@ -125,9 +131,12 @@ fun FennecApp(modifier: Modifier = Modifier) {
             )
         }
         AppState.LABELLING_GAME -> {
+            val context = LocalContext.current
             LabellingGameScreen(
                 onBackToChapter = { currentState = AppState.CHAPTERS },
-                onEndLearning = { currentState = AppState.MAIN_SETUP },
+                onEndLearning = {
+                    (context as? Activity)?.finish()
+                },
                 modifier = modifier
             )
         }
@@ -138,7 +147,11 @@ data class Chapter(
     val id: Int,
     val title: String,
     val resFilename: String?,
-    val imageResId: Int?
+    val imageResId: Int?,
+    val fundamentyDatabase: String = "bio_lekcje.json",
+    val fundamentyLessonIds: List<Int> = emptyList(),
+    val doskonalenieDatabase: String = "bio_lekcje.json",
+    val doskonalenieLessonIds: List<Int> = emptyList()
 )
 
 data class Textbook(
@@ -188,12 +201,45 @@ fun loadTextbooks(context: Context, classNum: Int, subject: String): List<Textbo
                         context.resources.getIdentifier(chResFilename, "drawable", context.packageName)
                     } else 0
 
+                    val fundamentyObj = chObj.optJSONObject("fundamenty")
+                    val doskonalenieObj = chObj.optJSONObject("doskonalenie")
+
+                    var fundDb = "bio_lekcje.json"
+                    val fundLessonIds = mutableListOf<Int>()
+                    if (fundamentyObj != null) {
+                        val db = fundamentyObj.optString("databse", "").ifEmpty { fundamentyObj.optString("database", "") }
+                        if (db.isNotEmpty()) fundDb = db
+                        val arr = fundamentyObj.optJSONArray("lekcje")
+                        if (arr != null) {
+                            for (k in 0 until arr.length()) {
+                                fundLessonIds.add(arr.optInt(k))
+                            }
+                        }
+                    }
+
+                    var doskDb = "bio_lekcje.json"
+                    val doskLessonIds = mutableListOf<Int>()
+                    if (doskonalenieObj != null) {
+                        val db = doskonalenieObj.optString("databse", "").ifEmpty { doskonalenieObj.optString("database", "") }
+                        if (db.isNotEmpty()) doskDb = db
+                        val arr = doskonalenieObj.optJSONArray("lekcje")
+                        if (arr != null) {
+                            for (k in 0 until arr.length()) {
+                                doskLessonIds.add(arr.optInt(k))
+                            }
+                        }
+                    }
+
                     chaptersList.add(
                         Chapter(
                             id = chId,
                             title = chTitle,
                             resFilename = chResFilename.ifEmpty { null },
-                            imageResId = if (chResId != 0) chResId else null
+                            imageResId = if (chResId != 0) chResId else null,
+                            fundamentyDatabase = fundDb,
+                            fundamentyLessonIds = fundLessonIds,
+                            doskonalenieDatabase = doskDb,
+                            doskonalenieLessonIds = doskLessonIds
                         )
                     )
                 }
@@ -428,7 +474,10 @@ fun ChapterSelectionScreen(
                 Card(
                     modifier = Modifier
                         .height(140.dp)
-                        .clickable { onChapterSelected() },
+                        .clickable { 
+                            AppGlobalState.selectedChapter = chapter
+                            onChapterSelected() 
+                        },
                     elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
                 ) {
                     Box(modifier = Modifier.fillMaxSize()) {
@@ -471,14 +520,41 @@ fun ChapterSelectionScreen(
     }
 }
 
+fun resetChapterProgress(context: Context, databaseFilename: String) {
+    val filename = if (databaseFilename.isNotEmpty()) databaseFilename else "bio_lekcje.json"
+    val file = File(context.filesDir, filename)
+
+    val assetsJsonString = try {
+        context.assets.open(filename).bufferedReader().use { it.readText() }
+    } catch (e: Exception) {
+        return
+    }
+
+    try {
+        val jsonArray = JSONArray(assetsJsonString)
+        for (i in 0 until jsonArray.length()) {
+            val lessonObj = jsonArray.optJSONObject(i) ?: continue
+            val qArray = lessonObj.optJSONArray("questions") ?: lessonObj.optJSONArray("answers")
+            if (qArray != null) {
+                for (j in 0 until qArray.length()) {
+                    val qObj = qArray.optJSONObject(j) ?: continue
+                    qObj.put("status", 0)
+                }
+            }
+        }
+        file.writeText(jsonArray.toString(2))
+    } catch (e: Exception) {
+        e.printStackTrace()
+    }
+}
+
 @Composable
 fun LearningOptionsScreen(
     onBackClicked: () -> Unit,
     onStartGameClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var selectedLevel by remember { mutableStateOf("Fundamenty") }
-    var selectedMode by remember { mutableStateOf("Nauka") }
+    val context = LocalContext.current
 
     Column(
         modifier = modifier
@@ -499,21 +575,21 @@ fun LearningOptionsScreen(
             SelectionCard(
                 title = "Fundamenty",
                 subtitle = "opanuj podstawy",
-                isSelected = selectedLevel == "Fundamenty",
-                onClick = { selectedLevel = "Fundamenty" },
+                isSelected = AppGlobalState.selectedLevel == "Fundamenty",
+                onClick = { AppGlobalState.selectedLevel = "Fundamenty" },
                 modifier = Modifier.weight(1f)
             )
             SelectionCard(
-                title = "Idę dalej",
+                title = "Doskonalenie",
                 subtitle = "rozwiń swoją wiedzę",
-                isSelected = selectedLevel == "Idę dalej",
-                onClick = { selectedLevel = "Idę dalej" },
+                isSelected = AppGlobalState.selectedLevel == "Doskonalenie",
+                onClick = { AppGlobalState.selectedLevel = "Doskonalenie" },
                 modifier = Modifier.weight(1f)
             )
         }
 
         Text(
-            text = "Wybierz formę nauki",
+            text = "i co robimy",
             style = MaterialTheme.typography.titleLarge,
             modifier = Modifier.padding(top = 32.dp, bottom = 16.dp)
         )
@@ -524,48 +600,82 @@ fun LearningOptionsScreen(
         ) {
             SelectionCard(
                 title = "Nauka",
-                isSelected = selectedMode == "Nauka",
-                onClick = { selectedMode = "Nauka" },
+                isSelected = AppGlobalState.selectedMode == "Nauka",
+                onClick = { AppGlobalState.selectedMode = "Nauka" },
                 modifier = Modifier.weight(1f)
             )
             SelectionCard(
                 title = "Test",
-                isSelected = selectedMode == "Test",
-                onClick = { selectedMode = "Test" },
+                isSelected = AppGlobalState.selectedMode == "Test",
+                onClick = { AppGlobalState.selectedMode = "Test" },
                 modifier = Modifier.weight(1f)
             )
         }
 
-        Button(
-            onClick = onStartGameClicked,
-            modifier = Modifier
-                .padding(top = 48.dp)
-                .width(200.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF4CAF50), // Odcień zieleni z Material Design
-                contentColor = Color.White
-            )
+        Spacer(modifier = Modifier.height(32.dp))
+
+        // Row with Wróć on left and Zaczynamy on right
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            Text(text = "Zaczynamy")
-            Spacer(modifier = Modifier.width(8.dp))
-            Icon(
-                imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
-                contentDescription = "Zaczynamy"
-            )
+            Button(
+                onClick = onBackClicked,
+                modifier = Modifier.weight(1f)
+            ) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                    contentDescription = "Wróć"
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(text = "Wróć")
+            }
+
+            Button(
+                onClick = onStartGameClicked,
+                modifier = Modifier.weight(1f),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF4CAF50),
+                    contentColor = Color.White
+                )
+            ) {
+                Text(text = "Zaczynamy")
+                Spacer(modifier = Modifier.width(8.dp))
+                Icon(
+                    imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
+                    contentDescription = "Zaczynamy"
+                )
+            }
         }
 
+        Spacer(modifier = Modifier.height(32.dp))
+
+        // Reset Progres Button
         Button(
-            onClick = onBackClicked,
+            onClick = {
+                val chapter = AppGlobalState.selectedChapter
+                val isFundamenty = AppGlobalState.selectedLevel.equals("Fundamenty", ignoreCase = true)
+                val dbFilename = if (isFundamenty) {
+                    chapter?.fundamentyDatabase ?: "bio_lekcje.json"
+                } else {
+                    chapter?.doskonalenieDatabase ?: "bio_lekcje.json"
+                }
+                resetChapterProgress(context, dbFilename)
+            },
             modifier = Modifier
-                .padding(top = 16.dp, bottom = 32.dp)
-                .width(200.dp)
+                .padding(bottom = 32.dp)
+                .fillMaxWidth(),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = MaterialTheme.colorScheme.errorContainer,
+                contentColor = MaterialTheme.colorScheme.onErrorContainer
+            )
         ) {
             Icon(
-                imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                contentDescription = "Wróć"
+                imageVector = Icons.Rounded.Refresh,
+                contentDescription = "Resetuj progres"
             )
             Spacer(modifier = Modifier.width(8.dp))
-            Text(text = "Wróć")
+            Text(text = "Resetuj progres")
         }
     }
 }
