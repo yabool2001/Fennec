@@ -2,27 +2,27 @@
   "status": [
     {
       "value": 0,
-      "color": "#E0E0E0"
+      "color": "transparent"
     },
     {
       "value": 1,
-      "color": "#E57373"
+      "color": "#152614"
     },
     {
       "value": 2,
-      "color": "#FFB74D"
+      "color": "#1E441E"
     },
     {
       "value": 3,
-      "color": "#FFF176"
+      "color": "#2A7221"
     },
     {
       "value": 4,
-      "color": "#81C784"
+      "color": "#ccff33"
     },
     {
       "value": 5,
-      "color": "#4CAF50"
+      "color": "#31CB00"
     },
     {
       "value": 6,

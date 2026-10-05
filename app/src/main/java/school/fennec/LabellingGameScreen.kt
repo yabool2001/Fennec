@@ -64,7 +64,7 @@ data class LessonData(
 
 fun loadStatusColors(context: Context): Map<Int, Color> {
     val defaultMap = mapOf(
-        0 to Color(0xFFE0E0E0),
+        0 to Color.Transparent,
         1 to Color(0xFFE57373),
         2 to Color(0xFFFFB74D),
         3 to Color(0xFFFFF176),
@@ -89,7 +89,15 @@ fun loadStatusColors(context: Context): Map<Int, Color> {
             val valNum = item.optInt("value", -1)
             val colorStr = item.optString("color", "")
             if (valNum != -1 && colorStr.isNotEmpty()) {
-                val parsedColor = Color(android.graphics.Color.parseColor(colorStr))
+                val parsedColor = if (colorStr.equals("transparent", ignoreCase = true)) {
+                    Color.Transparent
+                } else {
+                    try {
+                        Color(android.graphics.Color.parseColor(colorStr))
+                    } catch (e: Exception) {
+                        Color.Transparent
+                    }
+                }
                 map[valNum] = parsedColor
             }
         }
@@ -585,7 +593,7 @@ fun LabellingGameScreen(
                 val barColor = if (isGuessed || qStatus > 0) {
                     statusColors[qStatus] ?: Color(0xFF4CAF50)
                 } else {
-                    statusColors[0] ?: MaterialTheme.colorScheme.surfaceVariant
+                    statusColors[0] ?: Color.Transparent
                 }
 
                 Box(
@@ -594,6 +602,11 @@ fun LabellingGameScreen(
                         .height(8.dp)
                         .background(
                             color = barColor,
+                            shape = RoundedCornerShape(4.dp)
+                        )
+                        .border(
+                            width = 1.dp,
+                            color = if (qStatus == 0 && !isGuessed) MaterialTheme.colorScheme.outline.copy(alpha = 0.4f) else Color.Transparent,
                             shape = RoundedCornerShape(4.dp)
                         )
                 )
