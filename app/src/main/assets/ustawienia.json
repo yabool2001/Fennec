@@ -6,27 +6,15 @@
     },
     {
       "value": 1,
-      "color": "#152614"
+      "color": "#FFD60A"
     },
     {
       "value": 2,
-      "color": "#1E441E"
+      "color": "#00B4D8"
     },
     {
       "value": 3,
-      "color": "#2A7221"
-    },
-    {
-      "value": 4,
-      "color": "#ccff33"
-    },
-    {
-      "value": 5,
-      "color": "#31CB00"
-    },
-    {
-      "value": 6,
-      "color": "#2E7D32"
+      "color": "#4CAF50"
     }
   ]
 }

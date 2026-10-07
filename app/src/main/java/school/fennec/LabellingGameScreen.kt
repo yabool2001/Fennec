@@ -67,10 +67,7 @@ fun loadStatusColors(context: Context): Map<Int, Color> {
         0 to Color.Transparent,
         1 to Color(0xFFE57373),
         2 to Color(0xFFFFB74D),
-        3 to Color(0xFFFFF176),
-        4 to Color(0xFF81C784),
-        5 to Color(0xFF4CAF50),
-        6 to Color(0xFF2E7D32)
+        3 to Color(0xFF4CAF50)
     )
 
     val jsonString = try {
@@ -578,38 +575,82 @@ fun LabellingGameScreen(
             }
         }
 
-        // Segmented Progress Bar by question index and status color
+        // Segmented Progress Bar: 3 stacked vertical bars per question
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             val totalParts = questions.size
+            val color0 = statusColors[0] ?: Color.Transparent
+            val color1 = statusColors[1] ?: Color(0xFFE57373)
+            val color2 = statusColors[2] ?: Color(0xFFFFB74D)
+            val color3 = statusColors[3] ?: Color(0xFF4CAF50)
+            val outlineColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.35f)
+
             for (i in 0 until totalParts) {
                 val q = questions.getOrNull(i)
                 val qStatus = q?.status ?: 0
-                val isGuessed = q != null && guessedItems.contains(q.id)
 
-                val barColor = if (isGuessed || qStatus > 0) {
-                    statusColors[qStatus] ?: Color(0xFF4CAF50)
-                } else {
-                    statusColors[0] ?: Color.Transparent
+                val bottomColor = when {
+                    qStatus == 1 -> color1
+                    qStatus == 2 -> color2
+                    qStatus >= 3 -> color3
+                    else -> color0
                 }
 
-                Box(
-                    modifier = Modifier
-                        .weight(1f)
-                        .height(8.dp)
-                        .background(
-                            color = barColor,
-                            shape = RoundedCornerShape(4.dp)
-                        )
-                        .border(
-                            width = 1.dp,
-                            color = if (qStatus == 0 && !isGuessed) MaterialTheme.colorScheme.outline.copy(alpha = 0.4f) else Color.Transparent,
-                            shape = RoundedCornerShape(4.dp)
-                        )
-                )
+                val middleColor = when {
+                    qStatus >= 4 -> color3
+                    else -> color0
+                }
+
+                val topColor = when {
+                    qStatus >= 5 -> color3
+                    else -> color0
+                }
+
+                Column(
+                    modifier = Modifier.weight(1f),
+                    verticalArrangement = Arrangement.spacedBy(2.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    // Top Bar (Bar 3)
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(4.dp)
+                            .background(topColor, RoundedCornerShape(2.dp))
+                            .border(
+                                width = 1.dp,
+                                color = if (topColor == Color.Transparent) outlineColor else Color.Transparent,
+                                shape = RoundedCornerShape(2.dp)
+                            )
+                    )
+                    // Middle Bar (Bar 2)
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(4.dp)
+                            .background(middleColor, RoundedCornerShape(2.dp))
+                            .border(
+                                width = 1.dp,
+                                color = if (middleColor == Color.Transparent) outlineColor else Color.Transparent,
+                                shape = RoundedCornerShape(2.dp)
+                            )
+                    )
+                    // Bottom Bar (Bar 1)
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(4.dp)
+                            .background(bottomColor, RoundedCornerShape(2.dp))
+                            .border(
+                                width = 1.dp,
+                                color = if (bottomColor == Color.Transparent) outlineColor else Color.Transparent,
+                                shape = RoundedCornerShape(2.dp)
+                            )
+                    )
+                }
             }
         }
 
