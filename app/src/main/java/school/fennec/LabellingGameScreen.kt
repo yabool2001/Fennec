@@ -13,6 +13,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.NavigateBefore
+import androidx.compose.material.icons.automirrored.rounded.NavigateNext
+import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.Lightbulb
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.*
@@ -603,7 +606,8 @@ fun LabellingGameScreen(
                     val isLastGuessed = lastGuessedItem == question.id
 
                     val currentScale = if (isLastGuessed) scale else 1.0f
-                    val currentAlpha = if (isLastGuessed) pulseAlpha else if (isGuessed) 1.0f else question.pictureAlpha
+                    val baseAlpha = if (question.status >= 5) 1.0f else question.pictureAlpha
+                    val currentAlpha = if (isLastGuessed) pulseAlpha else if (isGuessed) 1.0f else baseAlpha
 
                     if (question.pictureResId != null) {
                         Image(
@@ -791,11 +795,12 @@ fun LabellingGameScreen(
                     lastGuessedItem = match.id
 
                     val oldStatus = match.status
-                    val newStatus = when (hintLevel) {
+                    val proposedStatus = when (hintLevel) {
                         2 -> 1
                         1 -> 2
                         else -> if (oldStatus < 3) 3 else (oldStatus + 1).coerceAtMost(5)
                     }
+                    val newStatus = maxOf(oldStatus, proposedStatus).coerceAtMost(5)
                     match.status = newStatus
 
                     if (currentLesson != null) {
@@ -843,7 +848,12 @@ fun LabellingGameScreen(
                         enabled = currentLessonIndex > 0,
                         modifier = Modifier.weight(1f)
                     ) {
-                        Text("Poprzednia lekcja", textAlign = TextAlign.Center)
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Rounded.NavigateBefore,
+                            contentDescription = "Poprzednia"
+                        )
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Text("Poprzednia", textAlign = TextAlign.Center)
                     }
                     Button(
                         onClick = {
@@ -859,7 +869,12 @@ fun LabellingGameScreen(
                         enabled = currentLessonIndex < allLessons.size - 1,
                         modifier = Modifier.weight(1f)
                     ) {
-                        Text("Następna lekcja", textAlign = TextAlign.Center)
+                        Text("Następna", textAlign = TextAlign.Center)
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Rounded.NavigateNext,
+                            contentDescription = "Następna"
+                        )
                     }
                 }
                 Row(
@@ -871,13 +886,20 @@ fun LabellingGameScreen(
                         modifier = Modifier.weight(1f),
                         colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)
                     ) {
-                        Text("Wróć do rozdziału", textAlign = TextAlign.Center)
+                        Text("<<", fontWeight = FontWeight.ExtraBold)
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Text("Rozdział", textAlign = TextAlign.Center)
                     }
                     Button(
                         onClick = onEndLearning, 
                         modifier = Modifier.weight(1f),
                         colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error)
                     ) {
+                        Icon(
+                            imageVector = Icons.Rounded.Close,
+                            contentDescription = "Koniec nauki"
+                        )
+                        Spacer(modifier = Modifier.width(4.dp))
                         Text("Koniec nauki", textAlign = TextAlign.Center)
                     }
                 }

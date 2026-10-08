@@ -187,7 +187,7 @@
         "id": 2,
         "text": "Rodzaje tkanki mięśniowej",
         "picture_src": "bio_6_ne_r1_p_muscle_tissue_cells",
-        "picture_alpha": 0.3,
+        "picture_alpha": 1,
         "label_px_x": 10.0,
         "label_px_y": 410.0
       }
