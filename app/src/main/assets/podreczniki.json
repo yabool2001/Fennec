@@ -14,13 +14,13 @@
         "res_filename": "bio_ne_6_884_2_2019_1",
         "fundamenty":
         {
-          "databse": "bio_lekcje.json",
-          "lekcje": [1,2,3],
+          "database": "bio_lekcje.json",
+          "lekcje": [1,2,3,4],
           "test": []
         },
         "doskonalenie":
         {
-          "databse": "bio_lekcje.json",
+          "database": "bio_lekcje.json",
           "lekcje": [],
           "test": []
         }

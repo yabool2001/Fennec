@@ -207,7 +207,7 @@ fun loadTextbooks(context: Context, classNum: Int, subject: String): List<Textbo
                     var fundDb = "bio_lekcje.json"
                     val fundLessonIds = mutableListOf<Int>()
                     if (fundamentyObj != null) {
-                        val db = fundamentyObj.optString("databse", "").ifEmpty { fundamentyObj.optString("database", "") }
+                        val db = fundamentyObj.optString("database", "").ifEmpty { fundamentyObj.optString("databse", "") }
                         if (db.isNotEmpty()) fundDb = db
                         val arr = fundamentyObj.optJSONArray("lekcje")
                         if (arr != null) {
@@ -220,7 +220,7 @@ fun loadTextbooks(context: Context, classNum: Int, subject: String): List<Textbo
                     var doskDb = "bio_lekcje.json"
                     val doskLessonIds = mutableListOf<Int>()
                     if (doskonalenieObj != null) {
-                        val db = doskonalenieObj.optString("databse", "").ifEmpty { doskonalenieObj.optString("database", "") }
+                        val db = doskonalenieObj.optString("database", "").ifEmpty { doskonalenieObj.optString("databse", "") }
                         if (db.isNotEmpty()) doskDb = db
                         val arr = doskonalenieObj.optJSONArray("lekcje")
                         if (arr != null) {
