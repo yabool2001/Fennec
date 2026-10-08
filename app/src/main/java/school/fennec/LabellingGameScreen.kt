@@ -52,6 +52,16 @@ data class QuestionData(
     val pictureResId: Int?
 )
 
+data class DescriptionData(
+    val id: Int,
+    val text: String,
+    val pictureSrc: String,
+    val pictureAlpha: Float,
+    val labelPxX: Float,
+    val labelPxY: Float,
+    val pictureResId: Int?
+)
+
 data class LessonData(
     val id: Int,
     val title: String,
@@ -59,7 +69,8 @@ data class LessonData(
     val workingAreaBackgroundColor: Color,
     val canvasWidth: Float,
     val canvasHeight: Float,
-    val questions: List<QuestionData>
+    val questions: List<QuestionData>,
+    val descriptions: List<DescriptionData> = emptyList()
 )
 
 fun loadStatusColors(context: Context): Map<Int, Color> {
@@ -230,6 +241,36 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
             }
         }
 
+        val descriptionsArray = obj.optJSONArray("description") ?: obj.optJSONArray("descriptions")
+        val descriptions = mutableListOf<DescriptionData>()
+        if (descriptionsArray != null) {
+            for (j in 0 until descriptionsArray.length()) {
+                val dObj = descriptionsArray.optJSONObject(j) ?: continue
+                val dId = dObj.optInt("id", j + 1)
+                val dText = dObj.optString("text", "")
+                val pictureSrc = dObj.optString("picture_src", "")
+                val pictureAlpha = dObj.optDouble("picture_alpha", 0.3).toFloat()
+                val labelPxX = dObj.optDouble("label_px_x", 0.0).toFloat()
+                val labelPxY = dObj.optDouble("label_px_y", 0.0).toFloat()
+
+                val pictureResId = if (pictureSrc.isNotEmpty()) {
+                    context.resources.getIdentifier(pictureSrc, "drawable", context.packageName)
+                } else 0
+
+                descriptions.add(
+                    DescriptionData(
+                        id = dId,
+                        text = dText,
+                        pictureSrc = pictureSrc,
+                        pictureAlpha = pictureAlpha,
+                        labelPxX = labelPxX,
+                        labelPxY = labelPxY,
+                        pictureResId = if (pictureResId != 0) pictureResId else null
+                    )
+                )
+            }
+        }
+
         lessons.add(
             LessonData(
                 id = id,
@@ -238,7 +279,8 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
                 workingAreaBackgroundColor = parsedColor,
                 canvasWidth = canvasWidth,
                 canvasHeight = canvasHeight,
-                questions = questions
+                questions = questions,
+                descriptions = descriptions
             )
         )
     }
@@ -521,6 +563,40 @@ fun LabellingGameScreen(
             BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
                 val containerWidth = maxWidth
                 val containerHeight = maxHeight
+
+                // Static / Decorative Description Layer
+                currentLesson?.descriptions?.forEach { desc ->
+                    if (desc.pictureResId != null) {
+                        Image(
+                            painter = painterResource(id = desc.pictureResId),
+                            contentDescription = desc.text.ifEmpty { null },
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .alpha(desc.pictureAlpha),
+                            contentScale = ContentScale.Fit
+                        )
+                    }
+
+                    if (desc.text.isNotEmpty()) {
+                        val labelOffsetX = containerWidth * (desc.labelPxX / canvasWidthRatio)
+                        val labelOffsetY = containerHeight * (desc.labelPxY / canvasHeightRatio)
+
+                        Box(
+                            modifier = Modifier
+                                .offset(labelOffsetX, labelOffsetY)
+                                .background(Color.White.copy(alpha = 0.85f), RoundedCornerShape(8.dp))
+                                .border(1.5.dp, Color.Black, RoundedCornerShape(8.dp))
+                                .padding(horizontal = 8.dp, vertical = 4.dp)
+                        ) {
+                            Text(
+                                text = desc.text,
+                                color = Color.Black,
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 13.sp
+                            )
+                        }
+                    }
+                }
 
                 questions.forEach { question ->
                     val isGuessed = guessedItems.contains(question.id)

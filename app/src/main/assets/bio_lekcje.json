@@ -146,7 +146,7 @@
         "hint1": "1. Zdolność do  kur...... ...",
         "hint2": "1. Zdolność do  kurcz.... s..",
         "answer": "wielokomórkowymi",
-        "accepted_answers": ["kurczenia się"],
+        "accepted_answers": ["kurczenia się", "kurczenia"],
         "status": 0,
         "label_px_x": 10.0,
         "label_px_y": 110.0
@@ -158,7 +158,7 @@
         "hint1": "2. Zdolność do  roz.........",
         "hint2": "2. Zdolność do  rozkur......",
         "answer": "jądrowych",
-        "accepted_answers": ["rozkurczania","rozkurczenia"],
+        "accepted_answers": ["rozkurczania","rozkurczenia","rozkurczania się","rozkurczenia się"],
         "status": 0,
         "label_px_x": 10.0,
         "label_px_y": 210.0
@@ -185,26 +185,11 @@
       },
       {
         "id": 2,
-        "text": "akson",
-        "empty": ".....",
-        "hint1": "ak...",
-        "hint2": "ak.on",
-        "answer": "akson",
-        "accepted_answers": ["akson"],
-        "status": 0,
-        "picture_src": "bio_6_ne_r1_p_neuron_akson",
+        "text": "Rodzaje tkanki mięśniowej",
+        "picture_src": "bio_6_ne_r1_p_muscle_tissue_cells",
         "picture_alpha": 0.3,
-        "label_px_x": 650.0,
-        "label_px_y": 130.0,"id": 2,
-        "full_name": "2. Tkanka mięśniowa ma zdolność do rozkurczania",
-        "empty": "2. Zdolność do  ............",
-        "hint1": "2. Zdolność do  roz.........",
-        "hint2": "2. Zdolność do  rozkur......",
-        "answer": "jądrowych",
-        "accepted_answers": ["rozkurczania","rozkurczenia"],
-        "status": 0,
         "label_px_x": 10.0,
-        "label_px_y": 110.0
+        "label_px_y": 410.0
       }
     ]
   },
