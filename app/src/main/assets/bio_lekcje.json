@@ -9,7 +9,7 @@
     "answers": [
       {
         "id": 1,
-        "full_name": "1. Zwierzęta są organizmami wielokomórkowymi",
+        "text": "1. Zwierzęta są organizmami wielokomórkowymi",
         "empty": "1. Zwierzęta są organizmami ................",
         "hint1": "1. Zwierzęta są organizmami wieloko.........",
         "hint2": "1. Zwierzęta są organizmami wieloko.....wymi",
@@ -21,7 +21,7 @@
       },
       {
         "id": 2,
-        "full_name": "2. Zwierzęta są zbudowane z komórek jądrowych",
+        "text": "2. Zwierzęta są zbudowane z komórek jądrowych",
         "empty": "2. Zwierzęta są zbudowane z komórek .........",
         "hint1": "2. Zwierzęta są zbudowane z komórek jąd......",
         "hint2": "2. Zwierzęta są zbudowane z komórek jąd..wych",
@@ -33,7 +33,7 @@
       },
       {
         "id": 3,
-        "full_name": "3. Komórki zwierzęce nie mają ściany komórkowej",
+        "text": "3. Komórki zwierzęce nie mają ściany komórkowej",
         "empty": "3. Komórki zwierzęce nie posiadają ...... ..........",
         "hint1": "3. Komórki zwierzęce nie posiadają ścia.. kom.......",
         "hint2": "3. Komórki zwierzęce nie posiadają ścia.. kom...owej",
@@ -45,7 +45,7 @@
       },
       {
         "id": 4,
-        "full_name": "4. Komórki zwierzęce nie mają chloroplastów",
+        "text": "4. Komórki zwierzęce nie mają chloroplastów",
         "empty": "4. Komórki zwierzęce nie posiadają .............",
         "hint1": "4. Komórki zwierzęce nie posiadają chlo.........",
         "hint2": "4. Komórki zwierzęce nie posiadają chlo.....stów",
@@ -57,7 +57,7 @@
       },
       {
         "id": 5,
-        "full_name": "5. Zwierzęta są organizmami cudzożywnymi",
+        "text": "5. Zwierzęta są organizmami cudzożywnymi",
         "empty": "5. Zwierzęta są organizmami ................",
         "hint1": "5. Zwierzęta są organizmami cudzo.......",
         "hint2": "5. Zwierzęta są organizmami cudzo...nymi",
@@ -79,7 +79,7 @@
     "answers": [
       {
         "id": 1,
-        "full_name": "ciało komórki",
+        "text": "ciało komórki",
         "empty": "..... .......",
         "hint1": "cia..",
         "hint2": "cia.. kom..ki",
@@ -93,7 +93,7 @@
       },
       {
         "id": 2,
-        "full_name": "dendryty",
+        "text": "dendryty",
         "empty": "........",
         "hint1": "den.....",
         "hint2": "den...ty",
@@ -107,7 +107,7 @@
       },
       {
         "id": 3,
-        "full_name": "akson",
+        "text": "akson",
         "empty": ".....",
         "hint1": "ak...",
         "hint2": "ak.on",
@@ -121,7 +121,7 @@
       },
       {
         "id": 4,
-        "full_name": "osłonka",
+        "text": "osłonka",
         "empty": ".......",
         "hint1": "osłon..",
         "hint2": "osł..ka",
@@ -145,7 +145,7 @@
     "answers": [
       {
         "id": 1,
-        "full_name": "1. Tkanka mięśniowa ma zdolność do kurczenia się",
+        "text": "1. Tkanka mięśniowa ma zdolność do kurczenia się",
         "empty": "1. Zdolność do  ......... ...",
         "hint1": "1. Zdolność do  kur...... ...",
         "hint2": "1. Zdolność do  kurcz.... s..",
@@ -157,7 +157,7 @@
       },
       {
         "id": 2,
-        "full_name": "2. Tkanka mięśniowa ma zdolność do rozkurczania",
+        "text": "2. Tkanka mięśniowa ma zdolność do rozkurczania",
         "empty": "2. Zdolność do  ............",
         "hint1": "2. Zdolność do  roz.........",
         "hint2": "2. Zdolność do  rozkur......",
@@ -169,7 +169,7 @@
       },
       {
         "id": 3,
-        "full_name": "Dzięki komórkom mięśniowym organizm może wykonywać ruchy",
+        "text": "Dzięki komórkom mięśniowym organizm może wykonywać ruchy",
         "empty": "Dzięki komórkom mięśniowym organizm może wykonywać .....",
         "hint1": "Dzięki komórkom mięśniowym organizm może wykonywać r....",
         "hint2": "Dzięki komórkom mięśniowym organizm może wykonywać ru...",
@@ -191,7 +191,7 @@
     "answers": [
       {
         "id": 1,
-        "full_name": "1. Zwierzęta kręgowe",
+        "text": "1. Zwierzęta kręgowe",
         "empty": "1. Zwierzęta .......",
         "hint1": "1. Zwierzęta krę....",
         "hint2": "1. Zwierzęta kręg...",
@@ -203,7 +203,7 @@
       },
       {
         "id": 2,
-        "full_name": "2. Zwierzęta bezkręgowe",
+        "text": "2. Zwierzęta bezkręgowe",
         "empty": "2. Zwierzęta ..........",
         "hint1": "2. Zwierzęta bezkrę....",
         "hint2": "2. Zwierzęta bezkręg...",
@@ -225,7 +225,7 @@
     "answers": [
       {
         "id": 1,
-        "full_name": "poprzecznie prążkowana",
+        "text": "poprzecznie prążkowana",
         "empty": "........... ..........",
         "hint1": "pop........ prą.......",
         "hint2": "poprze..nie prążk..ana",
@@ -237,7 +237,7 @@
       },
       {
         "id": 2,
-        "full_name": "gładka",
+        "text": "gładka",
         "empty": "......",
         "hint1": "gł....",
         "hint2": "gła.ka",
@@ -249,7 +249,7 @@
       },
       {
         "id": 3,
-        "full_name": "szkieletowa",
+        "text": "szkieletowa",
         "empty": "...........",
         "hint1": "szkie......",
         "hint2": "szkiel..owa",
@@ -261,7 +261,7 @@
       },
       {
         "id": 4,
-        "full_name": "serca",
+        "text": "serca",
         "empty": "...........",
         "hint1": "se...",
         "hint2": "ser.a",
@@ -272,14 +272,18 @@
         "label_px_y": 200.0
       }
     ],
-    "description": [
+    "descriptions": [
       {
         "id": 1,
         "text": "Rodzaje tkanki mięśniowej",
+        "text_underline": 0,
+        "label_background_color": "#CCCCCC",
         "picture_src": "bio_6_ne_r1_p_muscle_tissue_cells_1",
         "picture_alpha": 1,
         "label_px_x": 10.0,
-        "label_px_y": 10.0
+        "label_px_y": 10.0,
+        "label_widht": 650.0,
+        "border_width": 0
       }
     ]
   }

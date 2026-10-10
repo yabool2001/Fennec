@@ -32,6 +32,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
@@ -52,6 +53,10 @@ data class QuestionData(
     val pictureAlpha: Float,
     val labelPxX: Float,
     val labelPxY: Float,
+    val labelWidthPx: Float = 0f,
+    val borderWidth: Float = 1.5f,
+    val textUnderline: Int = 0,
+    val labelBackgroundColor: Color? = null,
     val pictureResId: Int?
 )
 
@@ -62,6 +67,10 @@ data class DescriptionData(
     val pictureAlpha: Float,
     val labelPxX: Float,
     val labelPxY: Float,
+    val labelWidthPx: Float = 0f,
+    val borderWidth: Float = 1.5f,
+    val textUnderline: Int = 0,
+    val labelBackgroundColor: Color? = null,
     val pictureResId: Int?
 )
 
@@ -194,7 +203,7 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
             for (j in 0 until questionsArray.length()) {
                 val qObj = questionsArray.optJSONObject(j) ?: continue
                 val qId = qObj.optInt("id", j + 1)
-                val fullName = qObj.optString("full_name", "")
+                val fullName = qObj.optString("text", "").ifEmpty { qObj.optString("full_name", "") }
                 val answer = qObj.optString("answer", fullName)
                 
                 val acceptedAnswersList = mutableListOf<String>()
@@ -219,6 +228,25 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
 
                 val labelPxX = qObj.optDouble("label_px_x", 0.0).toFloat()
                 val labelPxY = qObj.optDouble("label_px_y", 0.0).toFloat()
+                val labelWidthPx = qObj.optDouble("label_width", 0.0)
+                    .let { if (it == 0.0) qObj.optDouble("label_widht", 0.0) else it }
+                    .toFloat()
+
+                val borderWidthVal = if (qObj.has("border_width")) {
+                    qObj.optDouble("border_width", 1.5).toFloat()
+                } else 1.5f
+
+                val textUnderlineVal = qObj.optInt("text_underline", 0)
+
+                val labelBgHex = qObj.optString("label_background_color", "")
+                val labelBgColor = if (labelBgHex.isNotEmpty()) {
+                    val bgHex = if (labelBgHex.startsWith("0x") || labelBgHex.startsWith("0X")) {
+                        "#" + labelBgHex.substring(2)
+                    } else if (!labelBgHex.startsWith("#")) {
+                        "#$labelBgHex"
+                    } else labelBgHex
+                    try { Color(android.graphics.Color.parseColor(bgHex)) } catch (e: Exception) { null }
+                } else null
 
                 val pictureResId = if (pictureSrc.isNotEmpty()) {
                     context.resources.getIdentifier(pictureSrc, "drawable", context.packageName)
@@ -238,13 +266,17 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
                         pictureAlpha = pictureAlpha,
                         labelPxX = labelPxX,
                         labelPxY = labelPxY,
+                        labelWidthPx = labelWidthPx,
+                        borderWidth = borderWidthVal,
+                        textUnderline = textUnderlineVal,
+                        labelBackgroundColor = labelBgColor,
                         pictureResId = if (pictureResId != 0) pictureResId else null
                     )
                 )
             }
         }
 
-        val descriptionsArray = obj.optJSONArray("description") ?: obj.optJSONArray("descriptions")
+        val descriptionsArray = obj.optJSONArray("descriptions") ?: obj.optJSONArray("description")
         val descriptions = mutableListOf<DescriptionData>()
         if (descriptionsArray != null) {
             for (j in 0 until descriptionsArray.length()) {
@@ -255,6 +287,25 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
                 val pictureAlpha = dObj.optDouble("picture_alpha", 0.3).toFloat()
                 val labelPxX = dObj.optDouble("label_px_x", 0.0).toFloat()
                 val labelPxY = dObj.optDouble("label_px_y", 0.0).toFloat()
+                val labelWidthPx = dObj.optDouble("label_width", 0.0)
+                    .let { if (it == 0.0) dObj.optDouble("label_widht", 0.0) else it }
+                    .toFloat()
+
+                val borderWidthVal = if (dObj.has("border_width")) {
+                    dObj.optDouble("border_width", 1.5).toFloat()
+                } else 1.5f
+
+                val textUnderlineVal = dObj.optInt("text_underline", 0)
+
+                val dLabelBgHex = dObj.optString("label_background_color", "")
+                val dLabelBgColor = if (dLabelBgHex.isNotEmpty()) {
+                    val bgHex = if (dLabelBgHex.startsWith("0x") || dLabelBgHex.startsWith("0X")) {
+                        "#" + dLabelBgHex.substring(2)
+                    } else if (!dLabelBgHex.startsWith("#")) {
+                        "#$dLabelBgHex"
+                    } else dLabelBgHex
+                    try { Color(android.graphics.Color.parseColor(bgHex)) } catch (e: Exception) { null }
+                } else null
 
                 val pictureResId = if (pictureSrc.isNotEmpty()) {
                     context.resources.getIdentifier(pictureSrc, "drawable", context.packageName)
@@ -268,6 +319,10 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
                         pictureAlpha = pictureAlpha,
                         labelPxX = labelPxX,
                         labelPxY = labelPxY,
+                        labelWidthPx = labelWidthPx,
+                        borderWidth = borderWidthVal,
+                        textUnderline = textUnderlineVal,
+                        labelBackgroundColor = dLabelBgColor,
                         pictureResId = if (pictureResId != 0) pictureResId else null
                     )
                 )
@@ -600,19 +655,29 @@ fun LabellingGameScreen(
                     if (desc.text.isNotEmpty()) {
                         val labelOffsetX = containerWidth * (desc.labelPxX / canvasWidthRatio)
                         val labelOffsetY = containerHeight * (desc.labelPxY / canvasHeightRatio)
+                        val labelWidthDp = if (desc.labelWidthPx > 0f) containerWidth * (desc.labelWidthPx / canvasWidthRatio) else null
+                        val borderWidthDp = desc.borderWidth.dp
+
+                        val boxWidthMod = if (labelWidthDp != null) Modifier.width(labelWidthDp) else Modifier
+                        val borderMod = if (borderWidthDp > 0.dp) Modifier.border(borderWidthDp, Color.Black, RoundedCornerShape(8.dp)) else Modifier
+                        val boxBgColor = desc.labelBackgroundColor ?: Color.White.copy(alpha = 0.85f)
 
                         Box(
                             modifier = Modifier
                                 .offset(labelOffsetX, labelOffsetY)
-                                .background(Color.White.copy(alpha = 0.85f), RoundedCornerShape(8.dp))
-                                .border(1.5.dp, Color.Black, RoundedCornerShape(8.dp))
-                                .padding(horizontal = 8.dp, vertical = 4.dp)
+                                .then(boxWidthMod)
+                                .background(boxBgColor, RoundedCornerShape(8.dp))
+                                .then(borderMod)
+                                .padding(horizontal = 8.dp, vertical = 4.dp),
+                            contentAlignment = Alignment.Center
                         ) {
                             Text(
                                 text = desc.text,
                                 color = Color.Black,
                                 fontWeight = FontWeight.Bold,
-                                fontSize = 13.sp
+                                fontSize = 13.sp,
+                                textAlign = if (labelWidthDp != null) TextAlign.Center else TextAlign.Unspecified,
+                                textDecoration = if (desc.textUnderline == 1) TextDecoration.Underline else TextDecoration.None
                             )
                         }
                     }
@@ -641,6 +706,8 @@ fun LabellingGameScreen(
 
                     val labelOffsetX = containerWidth * (question.labelPxX / canvasWidthRatio)
                     val labelOffsetY = containerHeight * (question.labelPxY / canvasHeightRatio)
+                    val labelWidthDp = if (question.labelWidthPx > 0f) containerWidth * (question.labelWidthPx / canvasWidthRatio) else null
+                    val borderWidthDp = question.borderWidth.dp
 
                     val labelText = if (isGuessed) {
                         val textToDisplay = if (question.fullName.isNotEmpty()) question.fullName else question.answer
@@ -653,20 +720,29 @@ fun LabellingGameScreen(
                         }
                     }
 
+                    val boxWidthMod = if (labelWidthDp != null) Modifier.width(labelWidthDp) else Modifier
+                    val borderColor = if (isGuessed) Color(0xFF001F3F) else Color.Black
+                    val borderMod = if (borderWidthDp > 0.dp) Modifier.border(borderWidthDp, borderColor, RoundedCornerShape(8.dp)) else Modifier
+                    val boxBgColor = question.labelBackgroundColor ?: Color.White.copy(alpha = 0.85f)
+
                     Box(
                         modifier = Modifier
                             .offset(labelOffsetX, labelOffsetY)
                             .scale(currentScale)
                             .alpha(currentAlpha)
-                            .background(Color.White.copy(alpha = 0.85f), RoundedCornerShape(8.dp))
-                            .border(1.5.dp, if (isGuessed) Color(0xFF001F3F) else Color.Black, RoundedCornerShape(8.dp))
-                            .padding(horizontal = 8.dp, vertical = 4.dp)
+                            .then(boxWidthMod)
+                            .background(boxBgColor, RoundedCornerShape(8.dp))
+                            .then(borderMod)
+                            .padding(horizontal = 8.dp, vertical = 4.dp),
+                        contentAlignment = Alignment.Center
                     ) {
                         Text(
                             text = labelText,
                             color = if (isGuessed) Color(0xFF001F3F) else Color(0xFF000000),
                             fontWeight = FontWeight.ExtraBold,
-                            fontSize = 13.sp
+                            fontSize = 13.sp,
+                            textAlign = if (labelWidthDp != null) TextAlign.Center else TextAlign.Unspecified,
+                            textDecoration = if (question.textUnderline == 1) TextDecoration.Underline else TextDecoration.None
                         )
                     }
                 }
