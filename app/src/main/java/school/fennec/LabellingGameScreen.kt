@@ -576,7 +576,8 @@ fun LabellingGameScreen(
                             modifier = Modifier
                                 .fillMaxSize()
                                 .alpha(desc.pictureAlpha),
-                            contentScale = ContentScale.Fit
+                            alignment = Alignment.TopStart,
+                            contentScale = ContentScale.FillBounds
                         )
                     }
 
@@ -617,7 +618,8 @@ fun LabellingGameScreen(
                                 .fillMaxSize()
                                 .scale(currentScale)
                                 .alpha(currentAlpha),
-                            contentScale = ContentScale.Fit
+                            alignment = Alignment.TopStart,
+                            contentScale = ContentScale.FillBounds
                         )
                     }
 

@@ -11,6 +11,7 @@
       {
         "id": 1,
         "tytul": "I. Świat zwierząt",
+        "ulubiony": 1,
         "res_filename": "bio_ne_6_884_2_2019_1",
         "fundamenty":
         {
@@ -28,6 +29,7 @@
       {
         "id": 2,
         "tytul": "II. Od parzydełkowców do pierścienic",
+        "ulubiony": 0,
         "res_filename": "bio_ne_6_884_2_2019_2"
       },
       {
@@ -56,22 +58,27 @@
     "rozdzial": [
       {
         "id": 1,
+        "ulubiony": 0,
         "tytul": "I. Królestwo zwierząt"
       },
       {
         "id": 2,
+        "ulubiony": 0,
         "tytul": "II. Zwierzeta bezkręgowe: płazińce, nicienie, pierścienice"
       },
       {
         "id": 3,
+        "ulubiony": 0,
         "tytul": "III. Zwierzęta bezkręgowe: stawonogi i mięczaki"
       },
       {
         "id": 4,
+        "ulubiony": 0,
         "tytul": "IV. Zwierzęta kręgowe: ryby, płazy, gady"
       },
       {
         "id": 5,
+        "ulubiony": 0,
         "tytul": "V. Zwierzęta kręgowe: ptaki i ssaki"
       }
     ]
@@ -85,23 +92,28 @@
     "rozdzial": [
       {
         "id": 1,
-        "tytul": "I. Poznajemy świat zwierząt"
+        "tytul": "I. Poznajemy świat zwierząt",
+        "ulubiony": 0
       },
       {
         "id": 2,
-        "tytul": "II. Bezkręgowce, część 1"
+        "tytul": "II. Bezkręgowce, część 1",
+        "ulubiony": 0
       },
       {
         "id": 3,
-        "tytul": "III. Bezkręgowce, część 2"
+        "tytul": "III. Bezkręgowce, część 2",
+        "ulubiony": 0
       },
       {
         "id": 4,
-        "tytul": "IV. Kręgowce, część 1"
+        "tytul": "IV. Kręgowce, część 1",
+        "ulubiony": 0
       },
       {
         "id": 5,
-        "tytul": "V. Kręgowce, część 2"
+        "tytul": "V. Kręgowce, część 2",
+        "ulubiony": 0
       }
     ]
   },
@@ -114,19 +126,23 @@
     "rozdzial": [
       {
         "id": 1,
-        "tytul": "1. Bezkręgowce. Od parzydełkowców do pierścienic"
+        "tytul": "1. Bezkręgowce. Od parzydełkowców do pierścienic",
+        "ulubiony": 0
       },
       {
         "id": 2,
-        "tytul": "2. Bezkręgowce. Stawonogi i mięczaki"
+        "tytul": "2. Bezkręgowce. Stawonogi i mięczaki",
+        "ulubiony": 0
       },
       {
         "id": 3,
-        "tytul": "3. Kręgowce"
+        "tytul": "3. Kręgowce",
+        "ulubiony": 0
       },
       {
         "id": 4,
-        "tytul": "4. Zwierzęta wokół nas"
+        "tytul": "4. Zwierzęta wokół nas",
+        "ulubiony": 0
       }
     ]
   },
@@ -139,19 +155,23 @@
     "rozdzial": [
       {
         "id": 1,
-        "tytul": "I. Współrzędne geograficzne"
+        "tytul": "I. Współrzędne geograficzne",
+        "ulubiony": 0
       },
       {
         "id": 2,
-        "tytul": "II. Ruchy Ziemi"
+        "tytul": "II. Ruchy Ziemi",
+        "ulubiony": 0
       },
       {
         "id": 3,
-        "tytul": "III. Środowisko przyrodnicze Europy"
+        "tytul": "III. Środowisko przyrodnicze Europy",
+        "ulubiony": 0
       },
       {
         "id": 4,
-        "tytul": "IV. Gospodarka Europy"
+        "tytul": "IV. Gospodarka Europy",
+        "ulubiony": 0
       }
     ]
   },
@@ -164,19 +184,23 @@
     "rozdzial": [
       {
         "id": 1,
-        "tytul": "I. Narodziny nowożytnego świata"
+        "tytul": "I. Narodziny nowożytnego świata",
+        "ulubiony": 0
       },
       {
         "id": 2,
-        "tytul": "II. Rzeczpospolita w XVI wieku"
+        "tytul": "II. Rzeczpospolita w XVI wieku",
+        "ulubiony": 0
       },
       {
         "id": 3,
-        "tytul": "III. Rzeczpospolita w XVII wieku"
+        "tytul": "III. Rzeczpospolita w XVII wieku",
+        "ulubiony": 0
       },
       {
         "id": 4,
-        "tytul": "IV. Upadek Rzeczypospolitej"
+        "tytul": "IV. Upadek Rzeczypospolitej",
+        "ulubiony": 0
       }
     ]
   },
@@ -189,23 +213,28 @@
     "rozdzial": [
       {
         "id": 1,
-        "tytul": "I. Organizm człowieka. Skóra"
+        "tytul": "I. Organizm człowieka. Skóra",
+        "ulubiony": 0
       },
       {
         "id": 2,
-        "tytul": "II. Aparat ruchu"
+        "tytul": "II. Aparat ruchu",
+        "ulubiony": 0
       },
       {
         "id": 3,
-        "tytul": "III. Układ pokarmowy"
+        "tytul": "III. Układ pokarmowy",
+        "ulubiony": 0
       },
       {
         "id": 4,
-        "tytul": "IV. Układ krążenia"
+        "tytul": "IV. Układ krążenia",
+        "ulubiony": 0
       },
       {
         "id": 5,
-        "tytul": "V. Układ oddechowy"
+        "tytul": "V. Układ oddechowy",
+        "ulubiony": 0
       }
     ]
   },
@@ -218,15 +247,18 @@
     "rozdzial": [
       {
         "id": 1,
-        "tytul": "I. Ciało człowieka jako całość"
+        "tytul": "I. Ciało człowieka jako całość",
+        "ulubiony": 0
       },
       {
         "id": 2,
-        "tytul": "II. Ruch i ochrona ciała"
+        "tytul": "II. Ruch i ochrona ciała",
+        "ulubiony": 0
       },
       {
         "id": 3,
-        "tytul": "III. Odżywianie i oddychanie"
+        "tytul": "III. Odżywianie i oddychanie",
+        "ulubiony": 0
       }
     ]
   },
@@ -239,15 +271,18 @@
     "rozdzial": [
       {
         "id": 1,
-        "tytul": "I. Geografia Polski"
+        "tytul": "I. Geografia Polski",
+        "ulubiony": 0
       },
       {
         "id": 2,
-        "tytul": "II. Rzeźba terenu i skały"
+        "tytul": "II. Rzeźba terenu i skały",
+        "ulubiony": 0
       },
       {
         "id": 3,
-        "tytul": "III. Klimat i wody Polski"
+        "tytul": "III. Klimat i wody Polski",
+        "ulubiony": 0
       }
     ]
   },
@@ -260,15 +295,18 @@
     "rozdzial": [
       {
         "id": 1,
-        "tytul": "I. Europa i świat w XVIII i XIX wieku"
+        "tytul": "I. Europa i świat w XVIII i XIX wieku",
+        "ulubiony": 0
       },
       {
         "id": 2,
-        "tytul": "II. Polacy pod zaborami"
+        "tytul": "II. Polacy pod zaborami",
+        "ulubiony": 0
       },
       {
         "id": 3,
-        "tytul": "III. I wojna światowa"
+        "tytul": "III. I wojna światowa",
+        "ulubiony": 0
       }
     ]
   },
@@ -281,19 +319,23 @@
     "rozdzial": [
       {
         "id": 1,
-        "tytul": "I. Genetyka"
+        "tytul": "I. Genetyka",
+        "ulubiony": 0
       },
       {
         "id": 2,
-        "tytul": "II. Ewolucja życia"
+        "tytul": "II. Ewolucja życia",
+        "ulubiony": 0
       },
       {
         "id": 3,
-        "tytul": "III. Ekologia"
+        "tytul": "III. Ekologia",
+        "ulubiony": 0
       },
       {
         "id": 4,
-        "tytul": "IV. Ochrona środowiska"
+        "tytul": "IV. Ochrona środowiska",
+        "ulubiony": 0
       }
     ]
   },
@@ -306,15 +348,18 @@
     "rozdzial": [
       {
         "id": 1,
-        "tytul": "I. Azja"
+        "tytul": "I. Azja",
+        "ulubiony": 0
       },
       {
         "id": 2,
-        "tytul": "II. Ameryka Północna i Południowa"
+        "tytul": "II. Ameryka Północna i Południowa",
+        "ulubiony": 0
       },
       {
         "id": 3,
-        "tytul": "III. Afryka i Australia"
+        "tytul": "III. Afryka i Australia",
+        "ulubiony": 0
       }
     ]
   },
@@ -327,15 +372,18 @@
     "rozdzial": [
       {
         "id": 1,
-        "tytul": "I. II wojna światowa"
+        "tytul": "I. II wojna światowa",
+        "ulubiony": 0
       },
       {
         "id": 2,
-        "tytul": "II. Świat po II wojnie światowej"
+        "tytul": "II. Świat po II wojnie światowej",
+        "ulubiony": 0
       },
       {
         "id": 3,
-        "tytul": "III. Polska w czasach komunizmu"
+        "tytul": "III. Polska w czasach komunizmu",
+        "ulubiony": 0
       }
     ]
   }
