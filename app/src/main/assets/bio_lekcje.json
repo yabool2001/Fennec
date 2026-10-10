@@ -211,61 +211,67 @@
   },
   {
     "id": 5,
-    "title": "Rodzaje tanek mięśniowych",
+    "title": "Rodzaje tkanek mięśniowych",
     "task": "Uzupełnij stwierdzenia",
     "working_area_background_color": "#FFFFFF",
     "answers": [
       {
         "id": 1,
-        "full_name": "1. Tkanka mięśniowa ma zdolność do kurczenia się",
-        "empty": "1. Zdolność do  ......... ...",
-        "hint1": "1. Zdolność do  kur...... ...",
-        "hint2": "1. Zdolność do  kurcz.... s..",
-        "answer": "wielokomórkowymi",
-        "accepted_answers": ["kurczenia się", "kurczenia"],
+        "full_name": "poprzecznie prążkowana",
+        "empty": "........... ..........",
+        "hint1": "pop........ prą.......",
+        "hint2": "poprze..nie prążk..ana",
+        "answer": "poprzecznie prążkowana",
+        "accepted_answers": ["poprzecznie prążkowane", "poprzecznie-prążkowane","poprzecznie prążkowana", "poprzecznie-prążkowana"],
         "status": 0,
-        "label_px_x": 10.0,
-        "label_px_y": 110.0
+        "label_px_x": 2.0,
+        "label_px_y": 120.0
       },
       {
         "id": 2,
-        "full_name": "2. Tkanka mięśniowa ma zdolność do rozkurczania",
-        "empty": "2. Zdolność do  ............",
-        "hint1": "2. Zdolność do  roz.........",
-        "hint2": "2. Zdolność do  rozkur......",
-        "answer": "jądrowych",
-        "accepted_answers": ["rozkurczania","rozkurczenia","rozkurczania się","rozkurczenia się"],
+        "full_name": "gładka",
+        "empty": "......",
+        "hint1": "gł....",
+        "hint2": "gła.ka",
+        "answer": "gładka",
+        "accepted_answers": ["gładka","gładkie"],
         "status": 0,
-        "label_px_x": 10.0,
-        "label_px_y": 210.0
+        "label_px_x": 600.0,
+        "label_px_y": 120.0
       },
       {
         "id": 3,
-        "full_name": "Dzięki komórkom mięśniowym organizm może wykonywać ruchy",
-        "empty": "Dzięki komórkom mięśniowym organizm może wykonywać .....",
-        "hint1": "Dzięki komórkom mięśniowym organizm może wykonywać r....",
-        "hint2": "Dzięki komórkom mięśniowym organizm może wykonywać ru...",
-        "answer": "ruchy",
-        "accepted_answers": ["ruch","ruchy"],
+        "full_name": "szkieletowa",
+        "empty": "...........",
+        "hint1": "szkie......",
+        "hint2": "szkiel..owa",
+        "answer": "szkieletowa",
+        "accepted_answers": ["szkieletowa","szkieletowe"],
         "status": 0,
-        "label_px_x": 10.0,
-        "label_px_y": 310.0
+        "label_px_x": 2.0,
+        "label_px_y": 400.0
+      },
+      {
+        "id": 4,
+        "full_name": "serca",
+        "empty": "...........",
+        "hint1": "se...",
+        "hint2": "ser.a",
+        "answer": "serca",
+        "accepted_answers": ["serca","sercowa","sercowe"],
+        "status": 0,
+        "label_px_x": 300.0,
+        "label_px_y": 400.0
       }
     ],
     "description": [
       {
         "id": 1,
-        "text": "Wymień zdolności tkanki mięśniowej",
-        "label_px_x": 10.0,
-        "label_px_y": 10.0
-      },
-      {
-        "id": 2,
         "text": "Rodzaje tkanki mięśniowej",
-        "picture_src": "bio_6_ne_r1_p_muscle_tissue_cells",
+        "picture_src": "bio_6_ne_r1_p_muscle_tissue_cells_1",
         "picture_alpha": 1,
         "label_px_x": 10.0,
-        "label_px_y": 410.0
+        "label_px_y": 10.0
       }
     ]
   }
