@@ -4,6 +4,8 @@
     "title": "Wspólne cechy zwierząt",
     "task": "Uzupełnij stwierdzenia",
     "working_area_background_color": "#FFFFFF",
+    "canvas_width": 819.0,
+    "canvas_height": 596.0,
     "answers": [
       {
         "id": 1,
@@ -138,6 +140,8 @@
     "title": "Zdolności tkanki mięśniowej",
     "task": "Uzupełnij stwierdzenia",
     "working_area_background_color": "#FFFFFF",
+    "canvas_width": 819.0,
+    "canvas_height": 596.0,
     "answers": [
       {
         "id": 1,
@@ -182,6 +186,8 @@
     "title": "Podział zwierząt ze względu na występowanie i rodzaj szkieletu",
     "task": "Uzupełnij stwierdzenia",
     "working_area_background_color": "#FFFFFF",
+    "canvas_width": 819.0,
+    "canvas_height": 596.0,
     "answers": [
       {
         "id": 1,
@@ -214,6 +220,8 @@
     "title": "Rodzaje tkanek mięśniowych",
     "task": "Uzupełnij stwierdzenia",
     "working_area_background_color": "#FFFFFF",
+    "canvas_width": 819.0,
+    "canvas_height": 396.0,
     "answers": [
       {
         "id": 1,
