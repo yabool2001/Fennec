@@ -220,8 +220,8 @@
     "title": "Rodzaje tkanek mięśniowych",
     "task": "Uzupełnij stwierdzenia",
     "working_area_background_color": "#FFFFFF",
-    "canvas_width": 861.0,
-    "canvas_height": 320.0,
+    "canvas_width": 652.0,
+    "canvas_height": 420.0,
     "answers": [
       {
         "id": 1,
@@ -232,8 +232,8 @@
         "answer": "poprzecznie prążkowana",
         "accepted_answers": ["poprzecznie prążkowane", "poprzecznie-prążkowane","poprzecznie prążkowana", "poprzecznie-prążkowana"],
         "status": 0,
-        "label_px_x": 2.0,
-        "label_px_y": 120.0
+        "label_px_x": 20.0,
+        "label_px_y": 100.0
       },
       {
         "id": 2,
@@ -244,8 +244,8 @@
         "answer": "gładka",
         "accepted_answers": ["gładka","gładkie"],
         "status": 0,
-        "label_px_x": 600.0,
-        "label_px_y": 120.0
+        "label_px_x": 400.0,
+        "label_px_y": 100.0
       },
       {
         "id": 3,
@@ -256,8 +256,8 @@
         "answer": "szkieletowa",
         "accepted_answers": ["szkieletowa","szkieletowe"],
         "status": 0,
-        "label_px_x": 2.0,
-        "label_px_y": 400.0
+        "label_px_x": 20.0,
+        "label_px_y": 200.0
       },
       {
         "id": 4,
@@ -269,7 +269,7 @@
         "accepted_answers": ["serca","sercowa","sercowe"],
         "status": 0,
         "label_px_x": 300.0,
-        "label_px_y": 400.0
+        "label_px_y": 200.0
       }
     ],
     "description": [
