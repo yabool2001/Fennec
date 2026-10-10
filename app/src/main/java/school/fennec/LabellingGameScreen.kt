@@ -453,47 +453,63 @@ fun LabellingGameScreen(
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         if (!isImeVisible) {
-            // Block 1 Card
+            // Block 1 Card (Header info & Favorite Star & Progress)
             Card(
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerHigh),
                 shape = RoundedCornerShape(16.dp),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    // Wiersz 1: Przedmiot | Klasa
                     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                         Text(AppGlobalState.selectedSubject, fontWeight = FontWeight.Bold)
                         Text("Klasa: ${AppGlobalState.selectedClass}", fontWeight = FontWeight.Bold)
                     }
-                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                        Text("Progres: $chapterProgress%")
-                        Text("Rozdział: ${selectedChapter?.title ?: "Rozdział 1"}")
+                    // Wiersz 2: Nazwa lekcji
+                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Start) {
+                        Text("Lekcja: ${currentLesson?.title ?: ""}", fontWeight = FontWeight.SemiBold)
+                    }
+                    // Wiersz 3: Gwiazdka ulubionych | Progres
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        var isStarred by remember(selectedChapter?.id, selectedChapter?.isFavorite) {
+                            mutableStateOf(selectedChapter?.isFavorite == 1)
+                        }
+                        Icon(
+                            imageVector = Icons.Rounded.Star,
+                            contentDescription = "Ulubione",
+                            tint = if (isStarred) Color(0xFFFFC107) else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.2f),
+                            modifier = Modifier
+                                .size(28.dp)
+                                .clickable {
+                                    isStarred = !isStarred
+                                    val newFav = if (isStarred) 1 else 0
+                                    selectedChapter?.isFavorite = newFav
+                                    if (selectedChapter != null) {
+                                        saveChapterFavorite(
+                                            context = context,
+                                            textbookTitle = AppGlobalState.selectedTextbook?.title ?: "",
+                                            chapterId = selectedChapter.id,
+                                            isFavorite = newFav
+                                        )
+                                    }
+                                }
+                        )
+                        Text("Progres: $chapterProgress%", fontWeight = FontWeight.Medium)
                     }
                 }
             }
 
-            // Block 2 Card
+            // Block 2 Card (Tiles Bar)
             Card(
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerHigh),
                 shape = RoundedCornerShape(16.dp),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        var isStarred by remember { mutableStateOf(false) }
-                        Icon(
-                            imageVector = Icons.Rounded.Star,
-                            contentDescription = "Ulubione",
-                            tint = if (isStarred) Color(0xFFFFC107) else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.2f),
-                            modifier = Modifier
-                                .size(32.dp)
-                                .clickable { isStarred = !isStarred }
-                        )
-                        Text("Lekcja: ${currentLesson?.title ?: ""}", fontWeight = FontWeight.SemiBold)
-                    }
 
                     // Dynamic Lesson Tiles L01, L02...
                     FlowRow(

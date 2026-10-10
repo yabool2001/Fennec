@@ -22,7 +22,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -92,7 +95,7 @@ object AppGlobalState {
 }
 
 enum class AppState {
-    MAIN_SETUP, CHAPTERS, LEARNING_OPTIONS, LABELLING_GAME
+    MAIN_SETUP, CHAPTERS, LEARNING_OPTIONS, LABELLING_GAME, FAVORITES
 }
 
 @Composable
@@ -105,7 +108,8 @@ fun FennecApp(modifier: Modifier = Modifier) {
             AppState.CHAPTERS -> AppState.MAIN_SETUP
             AppState.LEARNING_OPTIONS -> AppState.CHAPTERS
             AppState.LABELLING_GAME -> AppState.LEARNING_OPTIONS
-            AppState.MAIN_SETUP -> AppState.MAIN_SETUP // Nigdy tu nie wejdzie
+            AppState.FAVORITES -> AppState.MAIN_SETUP
+            AppState.MAIN_SETUP -> AppState.MAIN_SETUP
         }
     }
 
@@ -113,6 +117,7 @@ fun FennecApp(modifier: Modifier = Modifier) {
         AppState.MAIN_SETUP -> {
             MainSetupScreen(
                 onNextClicked = { currentState = AppState.CHAPTERS },
+                onFavoritesClicked = { currentState = AppState.FAVORITES },
                 modifier = modifier
             )
         }
@@ -140,18 +145,35 @@ fun FennecApp(modifier: Modifier = Modifier) {
                 modifier = modifier
             )
         }
+        AppState.FAVORITES -> {
+            FavoritesScreen(
+                onChapterClick = { tb, ch ->
+                    AppGlobalState.selectedClass = tb.classNum
+                    AppGlobalState.selectedSubject = tb.subject
+                    AppGlobalState.selectedTextbook = tb
+                    AppGlobalState.selectedChapter = ch
+                    currentState = AppState.LABELLING_GAME
+                },
+                onBackClicked = { currentState = AppState.MAIN_SETUP },
+                modifier = modifier
+            )
+        }
     }
 }
 
 data class Chapter(
     val id: Int,
     val title: String,
+    var isFavorite: Int = 0,
     val resFilename: String?,
     val imageResId: Int?,
     val fundamentyDatabase: String = "bio_lekcje.json",
     val fundamentyLessonIds: List<Int> = emptyList(),
     val doskonalenieDatabase: String = "bio_lekcje.json",
-    val doskonalenieLessonIds: List<Int> = emptyList()
+    val doskonalenieLessonIds: List<Int> = emptyList(),
+    val textbookTitle: String = "",
+    val subject: String = "",
+    val classNum: Int = 6
 )
 
 data class Textbook(
@@ -164,9 +186,63 @@ data class Textbook(
     val chapters: List<Chapter>
 )
 
-fun loadTextbooks(context: Context, classNum: Int, subject: String): List<Textbook> {
+fun saveChapterFavorite(
+    context: Context,
+    textbookTitle: String,
+    chapterId: Int,
+    isFavorite: Int
+) {
+    val filename = "podreczniki.json"
+    val file = File(context.filesDir, filename)
+
+    val assetsJsonString = try {
+        context.assets.open(filename).bufferedReader().use { it.readText() }
+    } catch (e: Exception) {
+        return
+    }
+
+    try {
+        val jsonArray = try {
+            if (file.exists()) JSONArray(file.readText()) else JSONArray(assetsJsonString)
+        } catch (e: Exception) {
+            JSONArray(assetsJsonString)
+        }
+
+        for (i in 0 until jsonArray.length()) {
+            val tbObj = jsonArray.optJSONObject(i) ?: continue
+            val tbTitle = tbObj.optString("tytul", "")
+            if (tbTitle.equals(textbookTitle, ignoreCase = true) || textbookTitle.isEmpty()) {
+                val chaptersArray = tbObj.optJSONArray("rozdzial") ?: tbObj.optJSONArray("rozdzialy")
+                if (chaptersArray != null) {
+                    for (j in 0 until chaptersArray.length()) {
+                        val chObj = chaptersArray.optJSONObject(j) ?: continue
+                        val chId = chObj.optInt("id", j + 1)
+                        if (chId == chapterId) {
+                            chObj.put("ulubiony", isFavorite)
+                            break
+                        }
+                    }
+                }
+            }
+        }
+        file.writeText(jsonArray.toString(2))
+    } catch (e: Exception) {
+        e.printStackTrace()
+    }
+}
+
+fun loadAllTextbooks(context: Context): List<Textbook> {
+    val filename = "podreczniki.json"
+    val file = File(context.filesDir, filename)
+
     val jsonString = try {
-        context.assets.open("podreczniki.json").bufferedReader().use { it.readText() }
+        if (file.exists()) {
+            file.readText()
+        } else {
+            val text = context.assets.open(filename).bufferedReader().use { it.readText() }
+            try { file.writeText(text) } catch (_: Exception) {}
+            text
+        }
     } catch (e: Exception) {
         return emptyList()
     }
@@ -178,93 +254,104 @@ fun loadTextbooks(context: Context, classNum: Int, subject: String): List<Textbo
         val obj = jsonArray.optJSONObject(i) ?: continue
         val itemKlasa = obj.optInt("klasa", -1)
         val itemPrzedmiot = obj.optString("przedmiot", "")
+        val tbTitle = obj.optString("tytul", "")
+        val publisher = obj.optString("wydawnictwo", "")
 
-        if (itemKlasa == classNum && itemPrzedmiot.equals(subject, ignoreCase = true)) {
-            val coverFilename = obj.optString("okladka_res_filename", "")
-                .ifEmpty { obj.optString("okladka_res", "") }
+        val coverFilename = obj.optString("okladka_res_filename", "")
+            .ifEmpty { obj.optString("okladka_res", "") }
 
-            val resId = if (coverFilename.isNotEmpty()) {
-                context.resources.getIdentifier(coverFilename, "drawable", context.packageName)
-            } else 0
+        val resId = if (coverFilename.isNotEmpty()) {
+            context.resources.getIdentifier(coverFilename, "drawable", context.packageName)
+        } else 0
 
-            val chaptersList = mutableListOf<Chapter>()
-            val chaptersArray = obj.optJSONArray("rozdzial") ?: obj.optJSONArray("rozdzialy")
-            if (chaptersArray != null) {
-                for (j in 0 until chaptersArray.length()) {
-                    val chObj = chaptersArray.optJSONObject(j) ?: continue
-                    val chId = chObj.optInt("id", j + 1)
-                    val chTitle = chObj.optString("tytul", "")
-                    val chResFilename = chObj.optString("res_filename", "")
-                        .ifEmpty { chObj.optString("grafika_res", "") }
+        val chaptersList = mutableListOf<Chapter>()
+        val chaptersArray = obj.optJSONArray("rozdzial") ?: obj.optJSONArray("rozdzialy")
+        if (chaptersArray != null) {
+            for (j in 0 until chaptersArray.length()) {
+                val chObj = chaptersArray.optJSONObject(j) ?: continue
+                val chId = chObj.optInt("id", j + 1)
+                val chTitle = chObj.optString("tytul", "")
+                val isFav = chObj.optInt("ulubiony", 0)
+                val chResFilename = chObj.optString("res_filename", "")
+                    .ifEmpty { chObj.optString("grafika_res", "") }
 
-                    val chResId = if (chResFilename.isNotEmpty()) {
-                        context.resources.getIdentifier(chResFilename, "drawable", context.packageName)
-                    } else 0
+                val chResId = if (chResFilename.isNotEmpty()) {
+                    context.resources.getIdentifier(chResFilename, "drawable", context.packageName)
+                } else 0
 
-                    val fundamentyObj = chObj.optJSONObject("fundamenty")
-                    val doskonalenieObj = chObj.optJSONObject("doskonalenie")
+                val fundamentyObj = chObj.optJSONObject("fundamenty")
+                val doskonalenieObj = chObj.optJSONObject("doskonalenie")
 
-                    var fundDb = "bio_lekcje.json"
-                    val fundLessonIds = mutableListOf<Int>()
-                    if (fundamentyObj != null) {
-                        val db = fundamentyObj.optString("database", "").ifEmpty { fundamentyObj.optString("databse", "") }
-                        if (db.isNotEmpty()) fundDb = db
-                        val arr = fundamentyObj.optJSONArray("lekcje")
-                        if (arr != null) {
-                            for (k in 0 until arr.length()) {
-                                fundLessonIds.add(arr.optInt(k))
-                            }
+                var fundDb = "bio_lekcje.json"
+                val fundLessonIds = mutableListOf<Int>()
+                if (fundamentyObj != null) {
+                    val db = fundamentyObj.optString("database", "").ifEmpty { fundamentyObj.optString("databse", "") }
+                    if (db.isNotEmpty()) fundDb = db
+                    val arr = fundamentyObj.optJSONArray("lekcje")
+                    if (arr != null) {
+                        for (k in 0 until arr.length()) {
+                            fundLessonIds.add(arr.optInt(k))
                         }
                     }
-
-                    var doskDb = "bio_lekcje.json"
-                    val doskLessonIds = mutableListOf<Int>()
-                    if (doskonalenieObj != null) {
-                        val db = doskonalenieObj.optString("database", "").ifEmpty { doskonalenieObj.optString("databse", "") }
-                        if (db.isNotEmpty()) doskDb = db
-                        val arr = doskonalenieObj.optJSONArray("lekcje")
-                        if (arr != null) {
-                            for (k in 0 until arr.length()) {
-                                doskLessonIds.add(arr.optInt(k))
-                            }
-                        }
-                    }
-
-                    chaptersList.add(
-                        Chapter(
-                            id = chId,
-                            title = chTitle,
-                            resFilename = chResFilename.ifEmpty { null },
-                            imageResId = if (chResId != 0) chResId else null,
-                            fundamentyDatabase = fundDb,
-                            fundamentyLessonIds = fundLessonIds,
-                            doskonalenieDatabase = doskDb,
-                            doskonalenieLessonIds = doskLessonIds
-                        )
-                    )
                 }
-            }
 
-            result.add(
-                Textbook(
-                    publisher = obj.optString("wydawnictwo", ""),
-                    title = obj.optString("tytul", ""),
-                    classNum = itemKlasa,
-                    subject = itemPrzedmiot,
-                    coverResFilename = coverFilename,
-                    coverResId = if (resId != 0) resId else null,
-                    chapters = chaptersList
+                var doskDb = "bio_lekcje.json"
+                val doskLessonIds = mutableListOf<Int>()
+                if (doskonalenieObj != null) {
+                    val db = doskonalenieObj.optString("database", "").ifEmpty { doskonalenieObj.optString("databse", "") }
+                    if (db.isNotEmpty()) doskDb = db
+                    val arr = doskonalenieObj.optJSONArray("lekcje")
+                    if (arr != null) {
+                        for (k in 0 until arr.length()) {
+                            doskLessonIds.add(arr.optInt(k))
+                        }
+                    }
+                }
+
+                chaptersList.add(
+                    Chapter(
+                        id = chId,
+                        title = chTitle,
+                        isFavorite = isFav,
+                        resFilename = chResFilename.ifEmpty { null },
+                        imageResId = if (chResId != 0) chResId else null,
+                        fundamentyDatabase = fundDb,
+                        fundamentyLessonIds = fundLessonIds,
+                        doskonalenieDatabase = doskDb,
+                        doskonalenieLessonIds = doskLessonIds,
+                        textbookTitle = tbTitle,
+                        subject = itemPrzedmiot,
+                        classNum = itemKlasa
+                    )
                 )
-            )
+            }
         }
+
+        result.add(
+            Textbook(
+                publisher = publisher,
+                title = tbTitle,
+                classNum = itemKlasa,
+                subject = itemPrzedmiot,
+                coverResFilename = coverFilename,
+                coverResId = if (resId != 0) resId else null,
+                chapters = chaptersList
+            )
+        )
     }
 
     return result
 }
 
+fun loadTextbooks(context: Context, classNum: Int, subject: String): List<Textbook> {
+    val all = loadAllTextbooks(context)
+    return all.filter { it.classNum == classNum && it.subject.equals(subject, ignoreCase = true) }
+}
+
 @Composable
 fun MainSetupScreen(
     onNextClicked: () -> Unit,
+    onFavoritesClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
@@ -405,7 +492,7 @@ fun MainSetupScreen(
 
         // Przycisk Ulubione
         Button(
-            onClick = { /* TODO: Przejście do Ulubionych */ },
+            onClick = onFavoritesClicked,
             modifier = Modifier
                 .padding(top = 16.dp)
                 .width(200.dp),
@@ -716,6 +803,155 @@ fun SelectionCard(
                     color = if (isSelected) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
+        }
+    }
+}
+
+data class FavoriteItemData(
+    val textbook: Textbook,
+    val chapter: Chapter,
+    val progressPercent: Int
+)
+
+@Composable
+fun FavoritesScreen(
+    onChapterClick: (Textbook, Chapter) -> Unit,
+    onBackClicked: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val context = LocalContext.current
+    var refreshKey by remember { mutableIntStateOf(0) }
+
+    val favoriteItems = remember(refreshKey) {
+        val allTextbooks = loadAllTextbooks(context)
+        val list = mutableListOf<FavoriteItemData>()
+        for (tb in allTextbooks) {
+            for (ch in tb.chapters) {
+                if (ch.isFavorite == 1) {
+                    val db = ch.fundamentyDatabase.ifEmpty { "bio_lekcje.json" }
+                    val lessons = loadLessons(context, db)
+                    val allowed = if (ch.fundamentyLessonIds.isNotEmpty()) {
+                        lessons.filter { ch.fundamentyLessonIds.contains(it.id) }
+                    } else lessons
+                    val prog = calculateChapterProgress(allowed)
+                    list.add(FavoriteItemData(tb, ch, prog))
+                }
+            }
+        }
+        list
+    }
+
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = "Ulubione rozdziały",
+            style = MaterialTheme.typography.displaySmall,
+            modifier = Modifier.padding(top = 32.dp, bottom = 24.dp)
+        )
+
+        if (favoriteItems.isEmpty()) {
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth(),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "Brak ulubionych rozdziałów.\nDodaj je klikając gwiazdkę w nagłówku lekcji!",
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+        } else {
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
+                    .verticalScroll(rememberScrollState()),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                favoriteItems.forEach { item ->
+                    Card(
+                        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerHigh),
+                        shape = RoundedCornerShape(16.dp),
+                        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable {
+                                onChapterClick(item.textbook, item.chapter)
+                            }
+                    ) {
+                        Column(
+                            modifier = Modifier.padding(16.dp),
+                            verticalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            // Wiersz 1: Przedmiot | Klasa
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween
+                            ) {
+                                Text(item.textbook.subject, fontWeight = FontWeight.Bold)
+                                Text("Klasa ${item.textbook.classNum}", fontWeight = FontWeight.Bold)
+                            }
+
+                            // Wiersz 2: Nazwa rozdziału
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.Start
+                            ) {
+                                Text(item.chapter.title, fontWeight = FontWeight.SemiBold)
+                            }
+
+                            // Wiersz 3: Gwiazdka | Progres
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Rounded.Star,
+                                    contentDescription = "Usuń z ulubionych",
+                                    tint = Color(0xFFFFC107),
+                                    modifier = Modifier
+                                        .size(28.dp)
+                                        .clickable {
+                                            item.chapter.isFavorite = 0
+                                            saveChapterFavorite(
+                                                context = context,
+                                                textbookTitle = item.textbook.title,
+                                                chapterId = item.chapter.id,
+                                                isFavorite = 0
+                                            )
+                                            refreshKey++
+                                        }
+                                )
+                                Text("Progres: ${item.progressPercent}%", fontWeight = FontWeight.Medium)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Button(
+            onClick = onBackClicked,
+            modifier = Modifier
+                .padding(bottom = 24.dp)
+                .width(200.dp)
+        ) {
+            Icon(
+                imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                contentDescription = "Wróć"
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(text = "Wróć")
         }
     }
 }
