@@ -688,8 +688,9 @@ fun LabellingGameScreen(
                     val isLastGuessed = lastGuessedItem == question.id
 
                     val currentScale = if (isLastGuessed) scale else 1.0f
-                    val baseAlpha = if (question.status >= 5) 1.0f else question.pictureAlpha
-                    val currentAlpha = if (isLastGuessed) pulseAlpha else if (isGuessed) 1.0f else baseAlpha
+                    val baseImageAlpha = if (question.status >= 5) 1.0f else question.pictureAlpha
+                    val imageAlpha = if (isLastGuessed) pulseAlpha else if (isGuessed) 1.0f else baseImageAlpha
+                    val labelBoxAlpha = if (isLastGuessed) pulseAlpha else 1.0f
 
                     if (question.pictureResId != null) {
                         Image(
@@ -698,7 +699,7 @@ fun LabellingGameScreen(
                             modifier = Modifier
                                 .fillMaxSize()
                                 .scale(currentScale)
-                                .alpha(currentAlpha),
+                                .alpha(imageAlpha),
                             alignment = Alignment.TopStart,
                             contentScale = ContentScale.FillBounds
                         )
@@ -729,7 +730,7 @@ fun LabellingGameScreen(
                         modifier = Modifier
                             .offset(labelOffsetX, labelOffsetY)
                             .scale(currentScale)
-                            .alpha(currentAlpha)
+                            .alpha(labelBoxAlpha)
                             .then(boxWidthMod)
                             .background(boxBgColor, RoundedCornerShape(8.dp))
                             .then(borderMod)

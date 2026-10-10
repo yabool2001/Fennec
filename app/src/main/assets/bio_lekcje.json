@@ -221,7 +221,7 @@
     "task": "Uzupełnij stwierdzenia",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 652.0,
-    "canvas_height": 420.0,
+    "canvas_height": 350.0,
     "answers": [
       {
         "id": 1,
@@ -233,7 +233,10 @@
         "accepted_answers": ["poprzecznie prążkowane", "poprzecznie-prążkowane","poprzecznie prążkowana", "poprzecznie-prążkowana"],
         "status": 0,
         "label_px_x": 20.0,
-        "label_px_y": 100.0
+        "label_px_y": 80.0,
+        "label_widht": 390.0,
+        "picture_src": "bio_6_ne_r1_p_muscle_tissue_cells_12",
+        "picture_alpha": 0.0
       },
       {
         "id": 2,
@@ -244,8 +247,11 @@
         "answer": "gładka",
         "accepted_answers": ["gładka","gładkie"],
         "status": 0,
-        "label_px_x": 400.0,
-        "label_px_y": 100.0
+        "label_px_x": 420.0,
+        "label_px_y": 80.0,
+        "label_widht": 220.0,
+        "picture_src": "bio_6_ne_r1_p_muscle_tissue_cells_3",
+        "picture_alpha": 0.75
       },
       {
         "id": 3,
@@ -257,7 +263,10 @@
         "accepted_answers": ["szkieletowa","szkieletowe"],
         "status": 0,
         "label_px_x": 20.0,
-        "label_px_y": 200.0
+        "label_px_y": 150.0,
+        "label_widht": 175.0,
+        "picture_src": "bio_6_ne_r1_p_muscle_tissue_cells_1",
+        "picture_alpha": 0.75
       },
       {
         "id": 4,
@@ -268,8 +277,11 @@
         "answer": "serca",
         "accepted_answers": ["serca","sercowa","sercowe"],
         "status": 0,
-        "label_px_x": 300.0,
-        "label_px_y": 200.0
+        "label_px_x": 200.0,
+        "label_px_y": 150.0,
+        "label_widht": 210.0,
+        "picture_src": "bio_6_ne_r1_p_muscle_tissue_cells_2",
+        "picture_alpha": 0.75
       }
     ],
     "descriptions": [
@@ -278,11 +290,9 @@
         "text": "Rodzaje tkanki mięśniowej",
         "text_underline": 0,
         "label_background_color": "#CCCCCC",
-        "picture_src": "bio_6_ne_r1_p_muscle_tissue_cells_1",
-        "picture_alpha": 1,
         "label_px_x": 10.0,
         "label_px_y": 10.0,
-        "label_widht": 650.0,
+        "label_widht": 648.0,
         "border_width": 0
       }
     ]
