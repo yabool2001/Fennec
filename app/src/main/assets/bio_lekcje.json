@@ -16,8 +16,8 @@
         "answer": "wielokomórkowymi",
         "accepted_answers": ["wielokomórkowymi"],
         "status": 0,
-        "label_px_x": 10.0,
-        "label_px_y": 10.0
+        "label_x": 10.0,
+        "label_y": 10.0
       },
       {
         "id": 2,
@@ -28,8 +28,8 @@
         "answer": "jądrowych",
         "accepted_answers": ["jądrowych"],
         "status": 0,
-        "label_px_x": 10.0,
-        "label_px_y": 110.0
+        "label_x": 10.0,
+        "label_y": 110.0
       },
       {
         "id": 3,
@@ -40,8 +40,8 @@
         "answer": "ściany komórkowej",
         "accepted_answers": ["ściany komórkowej"],
         "status": 0,
-        "label_px_x": 10.0,
-        "label_px_y": 210.0
+        "label_x": 10.0,
+        "label_y": 210.0
       },
       {
         "id": 4,
@@ -52,8 +52,8 @@
         "answer": "chloroplastów",
         "accepted_answers": ["chloroplastów"],
         "status": 0,
-        "label_px_x": 10.0,
-        "label_px_y": 310.0
+        "label_x": 10.0,
+        "label_y": 310.0
       },
       {
         "id": 5,
@@ -64,8 +64,8 @@
         "answer": "cudzożywnymi",
         "accepted_answers": ["cudzożywnymi"],
         "status": 0,
-        "label_px_x": 10.0,
-        "label_px_y": 410.0
+        "label_x": 10.0,
+        "label_y": 410.0
       }
     ]
   },
@@ -88,8 +88,8 @@
         "status": 0,
         "picture_src": "bio_6_ne_r1_p_neuron_cialo",
         "picture_alpha": 0.3,
-        "label_px_x": 140.0,
-        "label_px_y": 240.0
+        "label_x": 140.0,
+        "label_y": 240.0
       },
       {
         "id": 2,
@@ -102,8 +102,8 @@
         "status": 0,
         "picture_src": "bio_6_ne_r1_p_neuron_dendryty",
         "picture_alpha": 0.3,
-        "label_px_x": 230.0,
-        "label_px_y": 500.0
+        "label_x": 230.0,
+        "label_y": 500.0
       },
       {
         "id": 3,
@@ -116,8 +116,8 @@
         "status": 0,
         "picture_src": "bio_6_ne_r1_p_neuron_akson",
         "picture_alpha": 0.3,
-        "label_px_x": 650.0,
-        "label_px_y": 130.0
+        "label_x": 650.0,
+        "label_y": 130.0
       },
       {
         "id": 4,
@@ -130,8 +130,8 @@
         "status": 0,
         "picture_src": "bio_6_ne_r1_p_neuron_oslonka",
         "picture_alpha": 0.3,
-        "label_px_x": 600.0,
-        "label_px_y": 310.0
+        "label_x": 600.0,
+        "label_y": 310.0
       }
     ]
   },
@@ -152,8 +152,8 @@
         "answer": "wielokomórkowymi",
         "accepted_answers": ["kurczenia się", "kurczenia"],
         "status": 0,
-        "label_px_x": 10.0,
-        "label_px_y": 110.0
+        "label_x": 10.0,
+        "label_y": 110.0
       },
       {
         "id": 2,
@@ -164,8 +164,8 @@
         "answer": "jądrowych",
         "accepted_answers": ["rozkurczania","rozkurczenia","rozkurczania się","rozkurczenia się"],
         "status": 0,
-        "label_px_x": 10.0,
-        "label_px_y": 210.0
+        "label_x": 10.0,
+        "label_y": 210.0
       },
       {
         "id": 3,
@@ -176,8 +176,8 @@
         "answer": "ruchy",
         "accepted_answers": ["ruch","ruchy"],
         "status": 0,
-        "label_px_x": 10.0,
-        "label_px_y": 310.0
+        "label_x": 10.0,
+        "label_y": 310.0
       }
     ]
   },
@@ -198,8 +198,8 @@
         "answer": "kręgowe",
         "accepted_answers": ["kręgowe","kręgowce"],
         "status": 0,
-        "label_px_x": 10.0,
-        "label_px_y": 10.0
+        "label_x": 10.0,
+        "label_y": 10.0
       },
       {
         "id": 2,
@@ -210,8 +210,8 @@
         "answer": "bezkręgowe",
         "accepted_answers": ["bezkręgowe","bezkręgowce"],
         "status": 0,
-        "label_px_x": 10.0,
-        "label_px_y": 110.0
+        "label_x": 10.0,
+        "label_y": 110.0
       }
     ]
   },
@@ -232,8 +232,8 @@
         "answer": "poprzecznie prążkowana",
         "accepted_answers": ["poprzecznie prążkowane", "poprzecznie-prążkowane","poprzecznie prążkowana", "poprzecznie-prążkowana"],
         "status": 0,
-        "label_px_x": 20.0,
-        "label_px_y": 80.0,
+        "label_x": 20.0,
+        "label_y": 80.0,
         "label_widht": 390.0,
         "picture_src": "bio_6_ne_r1_p_muscle_tissue_cells_12",
         "picture_alpha": 0.0
@@ -247,8 +247,8 @@
         "answer": "gładka",
         "accepted_answers": ["gładka","gładkie"],
         "status": 0,
-        "label_px_x": 420.0,
-        "label_px_y": 80.0,
+        "label_x": 420.0,
+        "label_y": 80.0,
         "label_widht": 220.0,
         "picture_src": "bio_6_ne_r1_p_muscle_tissue_cells_3",
         "picture_alpha": 0.75
@@ -262,8 +262,8 @@
         "answer": "szkieletowa",
         "accepted_answers": ["szkieletowa","szkieletowe"],
         "status": 0,
-        "label_px_x": 20.0,
-        "label_px_y": 150.0,
+        "label_x": 20.0,
+        "label_y": 150.0,
         "label_widht": 175.0,
         "picture_src": "bio_6_ne_r1_p_muscle_tissue_cells_1",
         "picture_alpha": 0.75
@@ -277,8 +277,8 @@
         "answer": "serca",
         "accepted_answers": ["serca","sercowa","sercowe"],
         "status": 0,
-        "label_px_x": 200.0,
-        "label_px_y": 150.0,
+        "label_x": 200.0,
+        "label_y": 150.0,
         "label_widht": 210.0,
         "picture_src": "bio_6_ne_r1_p_muscle_tissue_cells_2",
         "picture_alpha": 0.75
@@ -290,8 +290,8 @@
         "text": "Rodzaje tkanki mięśniowej",
         "text_underline": 0,
         "label_background_color": "#CCCCCC",
-        "label_px_x": 10.0,
-        "label_px_y": 10.0,
+        "label_x": 10.0,
+        "label_y": 10.0,
         "label_widht": 648.0,
         "border_width": 0
       }
@@ -310,8 +310,8 @@
         "text": "Dorosłe parzydełkowce występują w postaci:",
         "text_underline": 0,
         "label_background_color": "#CCCCCC",
-        "label_px_x": 10,
-        "label_px_y": 10,
+        "label_x": 10,
+        "label_y": 10,
         "label_widht": 632,
         "border_width": 0
       }
@@ -326,8 +326,8 @@
         "answer": "Meduza",
         "accepted_answers": ["meduza","meduzy"],
         "status": 0,
-        "label_px_x": 100,
-        "label_px_y": 70,
+        "label_x": 100,
+        "label_y": 70,
         "label_widht": 150,
         "border_width": 0,
         "picture_src": "bio_lekcje_id_06_01_2",
@@ -342,8 +342,8 @@
         "answer": "Polip",
         "accepted_answers": ["polip", "polipa"],
         "status": 0,
-        "label_px_x": 400,
-        "label_px_y": 70,
+        "label_x": 400,
+        "label_y": 70,
         "label_widht": 150,
         "border_width": 0,
         "picture_src": "bio_lekcje_id_06_01_1",
@@ -358,8 +358,8 @@
         "answer": "wodnym",
         "accepted_answers": ["wodnym","wodzie","woda"],
         "status": 0,
-        "label_px_x": 10,
-        "label_px_y": 300,
+        "label_x": 10,
+        "label_y": 300,
         "label_widht": 632,
         "text_alignment": "left",
         "border_width": 0
@@ -371,7 +371,7 @@
     "title": "Polip - anatomia",
     "task": "Uzupełnij nazwy części ciała",
     "working_area_background_color": "#FFFFFF",
-    "canvas_width": 1219,
+    "canvas_width": 1270,
     "canvas_height": 987,
     "descriptions": [
       {
@@ -382,63 +382,18 @@
     ],
     "answers": [
       {
-        "id": 3,
-        "text": "jama chłonąco-trawiąca",
-        "empty": "............ ..........",
-        "hint1": "ja.. chło....-traw....",
-        "hint2": "ja.a chło..co-traw..ca",
-        "answer": "jama chłonąco-trawiąca",
-        "accepted_answers": ["jama chłonąco-trawiąca","jama chłonąco trawiąca","jama gastralna"],
+        "id": 1,
+        "text": "otwór\ngębowy",
+        "empty": ".....\n......",
+        "hint1": "ot...\ngę....",
+        "hint2": "ot.ór\ngę..wy",
+        "answer": "otwór gębowy",
+        "accepted_answers": ["otwór gębowy","otwór gębowo-odbytowy","otwór gębowo odbytowy"],
         "status": 0,
-        "label_px_x": 520,
-        "label_px_y": 400,
+        "label_x": 150,
+        "label_y": 120,
         "border_width": 0,
-        "text_size": 11,
-        "label_alpha": 0
-      },
-      {
-        "id": 6,
-        "text": "warstwa zewnętrzna nabłonka",
-        "empty": "....... .......... ........",
-        "hint1": "war.... zew....... nab.....",
-        "hint2": "war..wa zewn....na nab...ka",
-        "answer": "warstwa zewnętrzna nabłonka",
-        "accepted_answers": ["warstwa zewnętrzna nabłonka","zewnętrzny nabłonek","nabłonek zewnętrzny","epiderma"],
-        "status": 0,
-        "label_px_x": 520,
-        "label_px_y": 650,
-        "border_width": 0,
-        "text_size": 11,
-        "label_alpha": 0
-      },
-      {
-        "id": 4,
-        "text": "warstwa wewnętrzna nabłonka",
-        "empty": "....... .......... ........",
-        "hint1": "war.... wew....... nab.....",
-        "hint2": "war..wa wewn....na nab...ka",
-        "answer": "warstwa wewnętrzna nabłonka",
-        "accepted_answers": ["warstwa wewnętrzna nabłonka","wewnętrzny nabłonek","nabłonek wewnętrzny","gastroderma"],
-        "status": 0,
-        "label_px_x": 520,
-        "label_px_y": 270,
-        "border_width": 0,
-        "text_size": 11,
-        "label_alpha": 0
-      },
-      {
-        "id": 5,
-        "text": "galaretowata substancja",
-        "empty": "............ ..........",
-        "hint1": "gala........ sub.......",
-        "hint2": "gala.....ata sub....cja",
-        "answer": "galaretowata substancja",
-        "accepted_answers": ["galaretowata substancja","mezoglea"],
-        "status": 0,
-        "label_px_x": 520,
-        "label_px_y": 400,
-        "border_width": 0,
-        "text_size": 10,
+        "text_size": 13,
         "label_alpha": 0
       },
       {
@@ -450,44 +405,12 @@
         "answer": "czułki",
         "accepted_answers": ["czułki","czułek"],
         "status": 0,
-        "label_px_x": 520,
-        "label_px_y": 870,
+        "label_x": 545,
+        "label_y": 20,
         "border_width": 0,
-        "text_size": 10,
+        "text_size": 13,
         "label_alpha": 0
       },
-      {
-        "id": 1,
-        "text": "otwór\ngębowy",
-        "empty": ".....\n......",
-        "hint1": "ot...\ngę....",
-        "hint2": "ot.ór\ngę..wy",
-        "answer": "otwór gębowy",
-        "accepted_answers": ["otwór gębowy","otwór gębowo-odbytowy","otwór gębowo odbytowy"],
-        "status": 0,
-        "label_px_x": 100,
-        "label_px_y": 170,
-        "border_width": 0,
-        "text_size": 11,
-        "label_alpha": 0
-      }
-    ]
-  },
-  {
-    "id": 8,
-    "title": "Meduza - anatomia",
-    "task": "Uzupełnij mazwy części ciała",
-    "working_area_background_color": "#ade8f4",
-    "canvas_width": 1219,
-    "canvas_height": 987,
-    "descriptions": [
-      {
-        "id": 1,
-        "picture_src": "bio_lekcje_id_06_03",
-        "picture_alpha": 1
-      }
-    ],
-    "answers": [
       {
         "id": 3,
         "text": "jama chłonąco-trawiąca",
@@ -497,14 +420,44 @@
         "answer": "jama chłonąco-trawiąca",
         "accepted_answers": ["jama chłonąco-trawiąca","jama chłonąco trawiąca","jama gastralna"],
         "status": 0,
-        "label_px_x": 3,
-        "label_px_y": 197,
+        "label_x": 550,
+        "label_y": 385,
         "border_width": 0,
-        "text_size": 10,
+        "text_size": 13,
         "label_alpha": 0
       },
       {
-        "id": 1,
+        "id": 4,
+        "text": "warstwa wewnętrzna nabłonka",
+        "empty": "....... .......... ........",
+        "hint1": "war.... wew....... nab.....",
+        "hint2": "war..wa wewn....na nab...ka",
+        "answer": "warstwa wewnętrzna nabłonka",
+        "accepted_answers": ["warstwa wewnętrzna nabłonka","wewnętrzny nabłonek","nabłonek wewnętrzny","gastroderma"],
+        "status": 0,
+        "label_x": 545,
+        "label_y": 505,
+        "border_width": 0,
+        "text_size": 13,
+        "label_alpha": 0
+      },
+      {
+        "id": 5,
+        "text": "galaretowata substancja",
+        "empty": "............ ..........",
+        "hint1": "gala........ sub.......",
+        "hint2": "gala.....ata sub....cja",
+        "answer": "galaretowata substancja",
+        "accepted_answers": ["galaretowata substancja","mezoglea"],
+        "status": 0,
+        "label_x": 545,
+        "label_y": 620,
+        "border_width": 0,
+        "text_size": 13,
+        "label_alpha": 0
+      },
+      {
+        "id": 6,
         "text": "warstwa zewnętrzna nabłonka",
         "empty": "....... .......... ........",
         "hint1": "war.... zew....... nab.....",
@@ -512,25 +465,57 @@
         "answer": "warstwa zewnętrzna nabłonka",
         "accepted_answers": ["warstwa zewnętrzna nabłonka","zewnętrzny nabłonek","nabłonek zewnętrzny","epiderma"],
         "status": 0,
-        "label_px_x": 3,
-        "label_px_y": 15,
+        "label_x": 545,
+        "label_y": 750,
         "border_width": 0,
-        "text_size": 11,
+        "text_size": 13,
         "label_alpha": 0
       },
       {
-        "id": 4,
-        "text": "warstwa wewnętrzna\nnabłonka",
-        "empty": "....... ..........\n........",
-        "hint1": "war.... wew.......\nnab.....",
-        "hint2": "war..wa wewn....na\nnab...ka",
-        "answer": "warstwa wewnętrzna nabłonka",
-        "accepted_answers": ["warstwa wewnętrzna nabłonka","wewnętrzny nabłonek","nabłonek wewnętrzny","gastroderma"],
+        "id": 7,
+        "text": "stopa",
+        "empty": ".....",
+        "hint1": "stopa",
+        "hint2": "stopa",
+        "answer": "stopa",
+        "accepted_answers": ["stopa"],
         "status": 0,
-        "label_px_x": 3,
-        "label_px_y": 270,
+        "label_x": 545,
+        "label_y": 890,
         "border_width": 0,
-        "text_size": 10,
+        "text_size": 13,
+        "label_alpha": 0
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Meduza - anatomia",
+    "task": "Uzupełnij mazwy części ciała",
+    "working_area_background_color": "#FFFFFF",
+    "canvas_width": 1270,
+    "canvas_height": 1000,
+    "descriptions": [
+      {
+        "id": 1,
+        "picture_src": "bio_lekcje_id_06_03",
+        "picture_alpha": 1
+      }
+    ],
+    "answers": [
+      {
+        "id": 1,
+        "text": "warstwa zewnętrzna\nnabłonka",
+        "empty": "....... ..........\n........",
+        "hint1": "war.... zew.......\nnab.....",
+        "hint2": "war..wa zewn....na\nnab...ka",
+        "answer": "warstwa zewnętrzna nabłonka",
+        "accepted_answers": ["warstwa zewnętrzna nabłonka","zewnętrzny nabłonek","nabłonek zewnętrzny","epiderma"],
+        "status": 0,
+        "label_x": 120,
+        "label_y": 0,
+        "border_width": 0,
+        "text_size": 12,
         "label_alpha": 0
       },
       {
@@ -542,8 +527,38 @@
         "answer": "galaretowata substancja",
         "accepted_answers": ["galaretowata substancja","mezoglea"],
         "status": 0,
-        "label_px_x": 3,
-        "label_px_y": 105,
+        "label_x": 0,
+        "label_y": 105,
+        "border_width": 0,
+        "text_size": 12,
+        "label_alpha": 0
+      },
+      {
+        "id": 3,
+        "text": "jama chłonąco-trawiąca",
+        "empty": "............ ..........",
+        "hint1": "ja.. chło....-traw....",
+        "hint2": "ja.a chło..co-traw..ca",
+        "answer": "jama chłonąco-trawiąca",
+        "accepted_answers": ["jama chłonąco-trawiąca","jama chłonąco trawiąca","jama gastralna"],
+        "status": 0,
+        "label_x": 3,
+        "label_y": 197,
+        "border_width": 0,
+        "text_size": 13,
+        "label_alpha": 0
+      },
+      {
+        "id": 4,
+        "text": "warstwa wewnętrzna\nnabłonka",
+        "empty": "....... ..........\n........",
+        "hint1": "war.... wew.......\nnab.....",
+        "hint2": "war..wa wewn....na\nnab...ka",
+        "answer": "warstwa wewnętrzna nabłonka",
+        "accepted_answers": ["warstwa wewnętrzna nabłonka","wewnętrzny nabłonek","nabłonek wewnętrzny","gastroderma"],
+        "status": 0,
+        "label_x": 3,
+        "label_y": 270,
         "border_width": 0,
         "text_size": 10,
         "label_alpha": 0
@@ -557,8 +572,8 @@
         "answer": "ramiona",
         "accepted_answers": ["ramiona","ramię"],
         "status": 0,
-        "label_px_x": 120,
-        "label_px_y": 870,
+        "label_x": 120,
+        "label_y": 870,
         "border_width": 0,
         "text_size": 10,
         "label_alpha": 0
@@ -572,8 +587,8 @@
         "answer": "otwór gębowy",
         "accepted_answers": ["otwór gębowy","otwór gębowo-odbytowy","otwór gębowo odbytowy"],
         "status": 0,
-        "label_px_x": 650,
-        "label_px_y": 495,
+        "label_x": 650,
+        "label_y": 495,
         "border_width": 0,
         "text_size": 10,
         "label_alpha": 0

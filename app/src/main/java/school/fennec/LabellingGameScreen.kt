@@ -16,6 +16,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.NavigateBefore
 import androidx.compose.material.icons.automirrored.rounded.NavigateNext
 import androidx.compose.material.icons.rounded.Close
+import androidx.compose.material.icons.rounded.KeyboardArrowDown
 import androidx.compose.material.icons.rounded.Lightbulb
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.*
@@ -27,6 +28,7 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -241,8 +243,8 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
                 val pictureSrc = qObj.optString("picture_src", "")
                 val pictureAlpha = qObj.optDouble("picture_alpha", 0.3).toFloat()
 
-                val labelPxX = qObj.optDouble("label_px_x", 0.0).toFloat()
-                val labelPxY = qObj.optDouble("label_px_y", 0.0).toFloat()
+                val labelPxX = (if (qObj.has("label_x")) qObj.optDouble("label_x", 0.0) else qObj.optDouble("label_px_x", 0.0)).toFloat()
+                val labelPxY = (if (qObj.has("label_y")) qObj.optDouble("label_y", 0.0) else qObj.optDouble("label_px_y", 0.0)).toFloat()
                 val labelWidthPx = qObj.optDouble("label_width", 0.0)
                     .let { if (it == 0.0) qObj.optDouble("label_widht", 0.0) else it }
                     .toFloat()
@@ -307,8 +309,8 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
                 val dText = dObj.optString("text", "")
                 val pictureSrc = dObj.optString("picture_src", "")
                 val pictureAlpha = dObj.optDouble("picture_alpha", 0.3).toFloat()
-                val labelPxX = dObj.optDouble("label_px_x", 0.0).toFloat()
-                val labelPxY = dObj.optDouble("label_px_y", 0.0).toFloat()
+                val labelPxX = (if (dObj.has("label_x")) dObj.optDouble("label_x", 0.0) else dObj.optDouble("label_px_x", 0.0)).toFloat()
+                val labelPxY = (if (dObj.has("label_y")) dObj.optDouble("label_y", 0.0) else dObj.optDouble("label_px_y", 0.0)).toFloat()
                 val labelWidthPx = dObj.optDouble("label_width", 0.0)
                     .let { if (it == 0.0) dObj.optDouble("label_widht", 0.0) else it }
                     .toFloat()
@@ -442,6 +444,7 @@ fun LabellingGameScreen(
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
+    val keyboardController = LocalSoftwareKeyboardController.current
     val scrollState = rememberScrollState()
     val isImeVisible = WindowInsets.isImeVisible
 
@@ -877,13 +880,62 @@ fun LabellingGameScreen(
             }
         }
 
-        // Hints Row with 2 Lightbulb lamps (visible ONLY when keyboard is open)
+        // Hints & Navigation Row (visible ONLY when keyboard is open)
         if (isImeVisible) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
+                // 1. Hide Keyboard Button
+                IconButton(
+                    onClick = {
+                        keyboardController?.hide()
+                    },
+                    colors = IconButtonDefaults.iconButtonColors(
+                        containerColor = MaterialTheme.colorScheme.surfaceVariant
+                    )
+                ) {
+                    Icon(
+                        imageVector = Icons.Rounded.KeyboardArrowDown,
+                        contentDescription = "Schowaj klawiaturę",
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+
+                // 2. Back to Chapter Button ("<<")
+                Button(
+                    onClick = onBackToChapter,
+                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary),
+                    contentPadding = PaddingValues(horizontal = 12.dp)
+                ) {
+                    Text("<<", fontWeight = FontWeight.ExtraBold)
+                }
+
+                // 3. Next Lesson Button (">")
+                Button(
+                    onClick = {
+                        val nextUnmastered = (currentLessonIndex + 1 until allLessons.size).firstOrNull { idx ->
+                            !allLessons[idx].questions.all { it.status >= 5 }
+                        }
+                        if (nextUnmastered != null) {
+                            currentLessonIndex = nextUnmastered
+                        } else if (currentLessonIndex < allLessons.size - 1) {
+                            currentLessonIndex++
+                        }
+                    },
+                    enabled = currentLessonIndex < allLessons.size - 1,
+                    contentPadding = PaddingValues(horizontal = 12.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Rounded.NavigateNext,
+                        contentDescription = "Następna"
+                    )
+                }
+
+                Spacer(modifier = Modifier.weight(1f))
+
+                // 4. Hint Button with Lightbulbs inside
                 Button(
                     onClick = {
                         if (hintLevel < 2) hintLevel++
@@ -892,32 +944,30 @@ fun LabellingGameScreen(
                     colors = ButtonDefaults.buttonColors(
                         containerColor = if (hintLevel < 2) MaterialTheme.colorScheme.secondaryContainer else MaterialTheme.colorScheme.surfaceVariant,
                         contentColor = if (hintLevel < 2) MaterialTheme.colorScheme.onSecondaryContainer else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
-                    )
+                    ),
+                    contentPadding = PaddingValues(horizontal = 10.dp, vertical = 6.dp)
                 ) {
                     Text(
                         text = when (hintLevel) {
                             0 -> "Podpowiedź"
                             1 -> "Odkryj więcej"
-                            else -> "Brak kolejnych podpowiedzi"
-                        }
+                            else -> "Brak podpowiedzi"
+                        },
+                        fontSize = 12.sp
                     )
-                }
-
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(4.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
+                    Spacer(modifier = Modifier.width(6.dp))
                     Icon(
                         imageVector = Icons.Rounded.Lightbulb,
                         contentDescription = "Podpowiedź 1",
                         tint = if (hintLevel >= 1) Color(0xFFFFC107) else Color.Gray,
-                        modifier = Modifier.size(28.dp)
+                        modifier = Modifier.size(20.dp)
                     )
+                    Spacer(modifier = Modifier.width(2.dp))
                     Icon(
                         imageVector = Icons.Rounded.Lightbulb,
                         contentDescription = "Podpowiedź 2",
                         tint = if (hintLevel >= 2) Color(0xFFFFC107) else Color.Gray,
-                        modifier = Modifier.size(28.dp)
+                        modifier = Modifier.size(20.dp)
                     )
                 }
             }
