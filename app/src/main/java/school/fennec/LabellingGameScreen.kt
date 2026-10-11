@@ -753,8 +753,7 @@ fun LabellingGameScreen(
                     val borderWidthDp = question.borderWidth.dp
 
                     val labelText = if (isGuessed) {
-                        val textToDisplay = if (question.fullName.isNotEmpty()) question.fullName else question.answer
-                        "✓ $textToDisplay"
+                        if (question.fullName.isNotEmpty()) question.fullName else question.answer
                     } else {
                         when (hintLevel) {
                             0 -> question.empty

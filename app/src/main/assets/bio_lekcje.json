@@ -505,15 +505,15 @@
     "answers": [
       {
         "id": 1,
-        "text": "warstwa zewnętrzna\nnabłonka",
-        "empty": "....... ..........\n........",
-        "hint1": "war.... zew.......\nnab.....",
-        "hint2": "war..wa zewn....na\nnab...ka",
+        "text": "warstwa zewnętrzna nabłonka",
+        "empty": "....... .......... ........",
+        "hint1": "war.... zew....... nab.....",
+        "hint2": "war..wa zewn....na nab...ka",
         "answer": "warstwa zewnętrzna nabłonka",
         "accepted_answers": ["warstwa zewnętrzna nabłonka","zewnętrzny nabłonek","nabłonek zewnętrzny","epiderma"],
         "status": 0,
-        "label_x": 120,
-        "label_y": 0,
+        "label_x": 40,
+        "label_y": 10,
         "border_width": 0,
         "text_size": 12,
         "label_alpha": 0
