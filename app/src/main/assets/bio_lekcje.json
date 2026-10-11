@@ -319,22 +319,6 @@
     "answers": [
       {
         "id": 1,
-        "text": "polipa",
-        "empty": "......",
-        "hint1": "po....",
-        "hint2": "po..pa",
-        "answer": "polipa",
-        "accepted_answers": ["polip", "polipa"],
-        "status": 0,
-        "label_px_x": 100,
-        "label_px_y": 75,
-        "label_widht": 150,
-        "border_width": 0,
-        "picture_src": "bio_lekcje_id_06_01_1",
-        "picture_alpha": 0.75
-      },
-      {
-        "id": 2,
         "text": "meduzy",
         "empty": "......",
         "hint1": "me....",
@@ -342,11 +326,27 @@
         "answer": "meduzy",
         "accepted_answers": ["meduzy","meduza"],
         "status": 0,
-        "label_px_x": 400,
-        "label_px_y": 75,
+        "label_px_x": 100,
+        "label_px_y": 70,
         "label_widht": 150,
         "border_width": 0,
         "picture_src": "bio_lekcje_id_06_01_2",
+        "picture_alpha": 0.75
+      },
+      {
+        "id": 2,
+        "text": "polipa",
+        "empty": "......",
+        "hint1": "po....",
+        "hint2": "po..pa",
+        "answer": "polipa",
+        "accepted_answers": ["polip", "polipa"],
+        "status": 0,
+        "label_px_x": 400,
+        "label_px_y": 70,
+        "label_widht": 150,
+        "border_width": 0,
+        "picture_src": "bio_lekcje_id_06_01_1",
         "picture_alpha": 0.75
       },
       {
