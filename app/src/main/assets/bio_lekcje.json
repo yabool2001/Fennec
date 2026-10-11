@@ -302,8 +302,8 @@
     "title": "Parzydełkowce - najprostsze zwierzęta tkankowe",
     "task": "Uzupełnij stwierdzenia",
     "working_area_background_color": "#FFFFFF",
-    "canvas_width": 652.0,
-    "canvas_height": 400.0,
+    "canvas_width": 652,
+    "canvas_height": 400,
     "descriptions": [
       {
         "id": 1,
@@ -319,12 +319,12 @@
     "answers": [
       {
         "id": 1,
-        "text": "meduzy",
+        "text": "Meduza",
         "empty": "......",
-        "hint1": "me....",
-        "hint2": "me..zy",
-        "answer": "meduzy",
-        "accepted_answers": ["meduzy","meduza"],
+        "hint1": "Me....",
+        "hint2": "Me..za",
+        "answer": "Meduza",
+        "accepted_answers": ["meduza","meduzy"],
         "status": 0,
         "label_px_x": 100,
         "label_px_y": 70,
@@ -335,11 +335,11 @@
       },
       {
         "id": 2,
-        "text": "polipa",
-        "empty": "......",
-        "hint1": "po....",
-        "hint2": "po..pa",
-        "answer": "polipa",
+        "text": "Polip",
+        "empty": ".....",
+        "hint1": "Po...",
+        "hint2": "Pol.p",
+        "answer": "Polip",
         "accepted_answers": ["polip", "polipa"],
         "status": 0,
         "label_px_x": 400,
@@ -363,6 +363,220 @@
         "label_widht": 632,
         "text_alignment": "left",
         "border_width": 0
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Polip - anatomia",
+    "task": "Uzupełnij nazwy części ciała",
+    "working_area_background_color": "#FFFFFF",
+    "canvas_width": 1219,
+    "canvas_height": 987,
+    "descriptions": [
+      {
+        "id": 1,
+        "picture_src": "bio_lekcje_id_06_02",
+        "picture_alpha": 1
+      }
+    ],
+    "answers": [
+      {
+        "id": 3,
+        "text": "jama chłonąco-trawiąca",
+        "empty": "............ ..........",
+        "hint1": "ja.. chło....-traw....",
+        "hint2": "ja.a chło..co-traw..ca",
+        "answer": "jama chłonąco-trawiąca",
+        "accepted_answers": ["jama chłonąco-trawiąca","jama chłonąco trawiąca","jama gastralna"],
+        "status": 0,
+        "label_px_x": 520,
+        "label_px_y": 400,
+        "border_width": 0,
+        "text_size": 11,
+        "label_alpha": 0
+      },
+      {
+        "id": 6,
+        "text": "warstwa zewnętrzna nabłonka",
+        "empty": "....... .......... ........",
+        "hint1": "war.... zew....... nab.....",
+        "hint2": "war..wa zewn....na nab...ka",
+        "answer": "warstwa zewnętrzna nabłonka",
+        "accepted_answers": ["warstwa zewnętrzna nabłonka","zewnętrzny nabłonek","nabłonek zewnętrzny","epiderma"],
+        "status": 0,
+        "label_px_x": 520,
+        "label_px_y": 650,
+        "border_width": 0,
+        "text_size": 11,
+        "label_alpha": 0
+      },
+      {
+        "id": 4,
+        "text": "warstwa wewnętrzna nabłonka",
+        "empty": "....... .......... ........",
+        "hint1": "war.... wew....... nab.....",
+        "hint2": "war..wa wewn....na nab...ka",
+        "answer": "warstwa wewnętrzna nabłonka",
+        "accepted_answers": ["warstwa wewnętrzna nabłonka","wewnętrzny nabłonek","nabłonek wewnętrzny","gastroderma"],
+        "status": 0,
+        "label_px_x": 520,
+        "label_px_y": 270,
+        "border_width": 0,
+        "text_size": 11,
+        "label_alpha": 0
+      },
+      {
+        "id": 5,
+        "text": "galaretowata substancja",
+        "empty": "............ ..........",
+        "hint1": "gala........ sub.......",
+        "hint2": "gala.....ata sub....cja",
+        "answer": "galaretowata substancja",
+        "accepted_answers": ["galaretowata substancja","mezoglea"],
+        "status": 0,
+        "label_px_x": 520,
+        "label_px_y": 400,
+        "border_width": 0,
+        "text_size": 10,
+        "label_alpha": 0
+      },
+      {
+        "id": 2,
+        "text": "czułki",
+        "empty": "......",
+        "hint1": "czu...",
+        "hint2": "czu.ki",
+        "answer": "czułki",
+        "accepted_answers": ["czułki","czułek"],
+        "status": 0,
+        "label_px_x": 520,
+        "label_px_y": 870,
+        "border_width": 0,
+        "text_size": 10,
+        "label_alpha": 0
+      },
+      {
+        "id": 1,
+        "text": "otwór\ngębowy",
+        "empty": ".....\n......",
+        "hint1": "ot...\ngę....",
+        "hint2": "ot.ór\ngę..wy",
+        "answer": "otwór gębowy",
+        "accepted_answers": ["otwór gębowy","otwór gębowo-odbytowy","otwór gębowo odbytowy"],
+        "status": 0,
+        "label_px_x": 100,
+        "label_px_y": 170,
+        "border_width": 0,
+        "text_size": 11,
+        "label_alpha": 0
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Meduza - anatomia",
+    "task": "Uzupełnij mazwy części ciała",
+    "working_area_background_color": "#ade8f4",
+    "canvas_width": 1219,
+    "canvas_height": 987,
+    "descriptions": [
+      {
+        "id": 1,
+        "picture_src": "bio_lekcje_id_06_03",
+        "picture_alpha": 1
+      }
+    ],
+    "answers": [
+      {
+        "id": 3,
+        "text": "jama chłonąco-trawiąca",
+        "empty": "............ ..........",
+        "hint1": "ja.. chło....-traw....",
+        "hint2": "ja.a chło..co-traw..ca",
+        "answer": "jama chłonąco-trawiąca",
+        "accepted_answers": ["jama chłonąco-trawiąca","jama chłonąco trawiąca","jama gastralna"],
+        "status": 0,
+        "label_px_x": 3,
+        "label_px_y": 197,
+        "border_width": 0,
+        "text_size": 10,
+        "label_alpha": 0
+      },
+      {
+        "id": 1,
+        "text": "warstwa zewnętrzna nabłonka",
+        "empty": "....... .......... ........",
+        "hint1": "war.... zew....... nab.....",
+        "hint2": "war..wa zewn....na nab...ka",
+        "answer": "warstwa zewnętrzna nabłonka",
+        "accepted_answers": ["warstwa zewnętrzna nabłonka","zewnętrzny nabłonek","nabłonek zewnętrzny","epiderma"],
+        "status": 0,
+        "label_px_x": 3,
+        "label_px_y": 15,
+        "border_width": 0,
+        "text_size": 11,
+        "label_alpha": 0
+      },
+      {
+        "id": 4,
+        "text": "warstwa wewnętrzna\nnabłonka",
+        "empty": "....... ..........\n........",
+        "hint1": "war.... wew.......\nnab.....",
+        "hint2": "war..wa wewn....na\nnab...ka",
+        "answer": "warstwa wewnętrzna nabłonka",
+        "accepted_answers": ["warstwa wewnętrzna nabłonka","wewnętrzny nabłonek","nabłonek wewnętrzny","gastroderma"],
+        "status": 0,
+        "label_px_x": 3,
+        "label_px_y": 270,
+        "border_width": 0,
+        "text_size": 10,
+        "label_alpha": 0
+      },
+      {
+        "id": 2,
+        "text": "galaretowata substancja",
+        "empty": "............ ..........",
+        "hint1": "gala........ sub.......",
+        "hint2": "gala.....ata sub....cja",
+        "answer": "galaretowata substancja",
+        "accepted_answers": ["galaretowata substancja","mezoglea"],
+        "status": 0,
+        "label_px_x": 3,
+        "label_px_y": 105,
+        "border_width": 0,
+        "text_size": 10,
+        "label_alpha": 0
+      },
+      {
+        "id": 5,
+        "text": "ramiona",
+        "empty": ".......",
+        "hint1": "ram....",
+        "hint2": "ram..na",
+        "answer": "ramiona",
+        "accepted_answers": ["ramiona","ramię"],
+        "status": 0,
+        "label_px_x": 120,
+        "label_px_y": 870,
+        "border_width": 0,
+        "text_size": 10,
+        "label_alpha": 0
+      },
+      {
+        "id": 6,
+        "text": "otwór gębowy",
+        "empty": "..... ......",
+        "hint1": "ot... gę....",
+        "hint2": "ot.ór gę..wy",
+        "answer": "otwór gębowy",
+        "accepted_answers": ["otwór gębowy","otwór gębowo-odbytowy","otwór gębowo odbytowy"],
+        "status": 0,
+        "label_px_x": 650,
+        "label_px_y": 495,
+        "border_width": 0,
+        "text_size": 10,
+        "label_alpha": 0
       }
     ]
   }
