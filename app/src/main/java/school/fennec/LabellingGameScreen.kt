@@ -57,6 +57,7 @@ data class QuestionData(
     val borderWidth: Float = 1.5f,
     val textUnderline: Int = 0,
     val labelBackgroundColor: Color? = null,
+    val textAlignment: String = "center",
     val pictureResId: Int?
 )
 
@@ -71,6 +72,7 @@ data class DescriptionData(
     val borderWidth: Float = 1.5f,
     val textUnderline: Int = 0,
     val labelBackgroundColor: Color? = null,
+    val textAlignment: String = "center",
     val pictureResId: Int?
 )
 
@@ -84,6 +86,15 @@ data class LessonData(
     val questions: List<QuestionData>,
     val descriptions: List<DescriptionData> = emptyList()
 )
+
+fun parseTextAlign(alignStr: String): TextAlign {
+    return when (alignStr.lowercase()) {
+        "left" -> TextAlign.Left
+        "right" -> TextAlign.Right
+        "justify" -> TextAlign.Justify
+        else -> TextAlign.Center
+    }
+}
 
 fun loadStatusColors(context: Context): Map<Int, Color> {
     val defaultMap = mapOf(
@@ -237,6 +248,7 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
                 } else 1.5f
 
                 val textUnderlineVal = qObj.optInt("text_underline", 0)
+                val textAlignmentVal = qObj.optString("text_alignment", "center")
 
                 val labelBgHex = qObj.optString("label_background_color", "")
                 val labelBgColor = if (labelBgHex.isNotEmpty()) {
@@ -270,6 +282,7 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
                         borderWidth = borderWidthVal,
                         textUnderline = textUnderlineVal,
                         labelBackgroundColor = labelBgColor,
+                        textAlignment = textAlignmentVal,
                         pictureResId = if (pictureResId != 0) pictureResId else null
                     )
                 )
@@ -296,6 +309,7 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
                 } else 1.5f
 
                 val textUnderlineVal = dObj.optInt("text_underline", 0)
+                val dTextAlignmentVal = dObj.optString("text_alignment", "center")
 
                 val dLabelBgHex = dObj.optString("label_background_color", "")
                 val dLabelBgColor = if (dLabelBgHex.isNotEmpty()) {
@@ -323,6 +337,7 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
                         borderWidth = borderWidthVal,
                         textUnderline = textUnderlineVal,
                         labelBackgroundColor = dLabelBgColor,
+                        textAlignment = dTextAlignmentVal,
                         pictureResId = if (pictureResId != 0) pictureResId else null
                     )
                 )
@@ -676,7 +691,7 @@ fun LabellingGameScreen(
                                 color = Color.Black,
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 13.sp,
-                                textAlign = if (labelWidthDp != null) TextAlign.Center else TextAlign.Unspecified,
+                                textAlign = parseTextAlign(desc.textAlignment),
                                 textDecoration = if (desc.textUnderline == 1) TextDecoration.Underline else TextDecoration.None
                             )
                         }
@@ -742,7 +757,7 @@ fun LabellingGameScreen(
                             color = if (isGuessed) Color(0xFF001F3F) else Color(0xFF000000),
                             fontWeight = FontWeight.ExtraBold,
                             fontSize = 13.sp,
-                            textAlign = if (labelWidthDp != null) TextAlign.Center else TextAlign.Unspecified,
+                            textAlign = parseTextAlign(question.textAlignment),
                             textDecoration = if (question.textUnderline == 1) TextDecoration.Underline else TextDecoration.None
                         )
                     }
