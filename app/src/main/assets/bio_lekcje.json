@@ -296,5 +296,57 @@
         "border_width": 0
       }
     ]
+  },
+  {
+    "id": 6,
+    "title": "Parzydełkowce - najprostsze zwierzęta tkankowe",
+    "task": "Uzupełnij stwierdzenia",
+    "working_area_background_color": "#FFFFFF",
+    "canvas_width": 652.0,
+    "canvas_height": 350.0,
+    "descriptions": [
+      {
+        "id": 1,
+        "text": "Dorosłe parzydełkowce występują w postaci:",
+        "text_underline": 0,
+        "label_background_color": "#CCCCCC",
+        "label_px_x": 10.0,
+        "label_px_y": 10.0,
+        "label_widht": 648.0,
+        "border_width": 0
+      }
+    ],
+    "answers": [
+      {
+        "id": 1,
+        "text": "polipa",
+        "empty": "......",
+        "hint1": "po....",
+        "hint2": "po..pa",
+        "answer": "polipa",
+        "accepted_answers": ["polip", "polipa"],
+        "status": 0,
+        "label_px_x": 20.0,
+        "label_px_y": 80.0,
+        "label_widht": 390.0,
+        "picture_src": "bio_lekcje_id_06_01_2",
+        "picture_alpha": 0.75
+      },
+      {
+        "id": 2,
+        "text": "meduzy",
+        "empty": "......",
+        "hint1": "me....",
+        "hint2": "me..zy",
+        "answer": "meduzy",
+        "accepted_answers": ["meduzy","meduza"],
+        "status": 0,
+        "label_px_x": 420.0,
+        "label_px_y": 80.0,
+        "label_widht": 220.0,
+        "picture_src": "bio_lekcje_id_06_01_2",
+        "picture_alpha": 0.75
+      }
+    ]
   }
 ]

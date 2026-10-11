@@ -30,7 +30,13 @@
         "id": 2,
         "tytul": "II. Od parzydełkowców do pierścienic",
         "ulubiony": 0,
-        "res_filename": "bio_ne_6_884_2_2019_2"
+        "res_filename": "bio_ne_6_884_2_2019_2",
+        "fundamenty":
+        {
+          "database": "bio_lekcje.json",
+          "lekcje": [6],
+          "test": []
+        }
       },
       {
         "id": 3,
