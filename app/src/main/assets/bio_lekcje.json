@@ -303,16 +303,16 @@
     "task": "Uzupełnij stwierdzenia",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 652.0,
-    "canvas_height": 350.0,
+    "canvas_height": 400.0,
     "descriptions": [
       {
         "id": 1,
         "text": "Dorosłe parzydełkowce występują w postaci:",
         "text_underline": 0,
         "label_background_color": "#CCCCCC",
-        "label_px_x": 10.0,
-        "label_px_y": 10.0,
-        "label_widht": 648.0,
+        "label_px_x": 10,
+        "label_px_y": 10,
+        "label_widht": 632,
         "border_width": 0
       }
     ],
@@ -326,10 +326,10 @@
         "answer": "polipa",
         "accepted_answers": ["polip", "polipa"],
         "status": 0,
-        "label_px_x": 20.0,
-        "label_px_y": 80.0,
-        "label_widht": 390.0,
-        "picture_src": "bio_lekcje_id_06_01_2",
+        "label_px_x": 10,
+        "label_px_y": 70,
+        "label_widht": 306,
+        "picture_src": "bio_lekcje_id_06_01_1",
         "picture_alpha": 0.75
       },
       {
@@ -341,11 +341,25 @@
         "answer": "meduzy",
         "accepted_answers": ["meduzy","meduza"],
         "status": 0,
-        "label_px_x": 420.0,
-        "label_px_y": 80.0,
-        "label_widht": 220.0,
+        "label_px_x": 332,
+        "label_px_y": 70,
+        "label_widht": 306,
         "picture_src": "bio_lekcje_id_06_01_2",
         "picture_alpha": 0.75
+      },
+      {
+        "id": 3,
+        "text": "Wszystkie parzydełkowce są zwierzętami, które żyją wyłącznie w środowisku wodnym.",
+        "empty": "Wszystkie parzydełkowce są zwierzętami, które żyją wyłącznie w środowisku ......",
+        "hint1": "Wszystkie parzydełkowce są zwierzętami, które żyją wyłącznie w środowisku ......",
+        "hint2": "Wszystkie parzydełkowce są zwierzętami, które żyją wyłącznie w środowisku ......",
+        "answer": "wodnym",
+        "accepted_answers": ["wodnym","wodzie","woda"],
+        "status": 0,
+        "label_px_x": 10,
+        "label_px_y": 300,
+        "label_widht": 632,
+        "text_alignment": "left"
       }
     ]
   }

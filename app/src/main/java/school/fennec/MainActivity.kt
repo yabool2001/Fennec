@@ -235,19 +235,33 @@ fun loadAllTextbooks(context: Context): List<Textbook> {
     val filename = "podreczniki.json"
     val file = File(context.filesDir, filename)
 
-    val jsonString = try {
-        if (file.exists()) {
-            file.readText()
-        } else {
-            val text = context.assets.open(filename).bufferedReader().use { it.readText() }
-            try { file.writeText(text) } catch (_: Exception) {}
-            text
-        }
+    val assetsJsonString = try {
+        context.assets.open(filename).bufferedReader().use { it.readText() }
     } catch (e: Exception) {
         return emptyList()
     }
 
-    val jsonArray = JSONArray(jsonString)
+    val savedFavorites = mutableMapOf<Pair<String, Int>, Int>()
+    if (file.exists()) {
+        try {
+            val savedJsonArray = JSONArray(file.readText())
+            for (i in 0 until savedJsonArray.length()) {
+                val tbObj = savedJsonArray.optJSONObject(i) ?: continue
+                val tbTitle = tbObj.optString("tytul", "")
+                val chArray = tbObj.optJSONArray("rozdzial") ?: tbObj.optJSONArray("rozdzialy")
+                if (chArray != null) {
+                    for (j in 0 until chArray.length()) {
+                        val chObj = chArray.optJSONObject(j) ?: continue
+                        val chId = chObj.optInt("id", j + 1)
+                        val fav = chObj.optInt("ulubiony", 0)
+                        savedFavorites[Pair(tbTitle, chId)] = fav
+                    }
+                }
+            }
+        } catch (_: Exception) {}
+    }
+
+    val jsonArray = JSONArray(assetsJsonString)
     val result = mutableListOf<Textbook>()
 
     for (i in 0 until jsonArray.length()) {
@@ -271,7 +285,7 @@ fun loadAllTextbooks(context: Context): List<Textbook> {
                 val chObj = chaptersArray.optJSONObject(j) ?: continue
                 val chId = chObj.optInt("id", j + 1)
                 val chTitle = chObj.optString("tytul", "")
-                val isFav = chObj.optInt("ulubiony", 0)
+                val isFav = savedFavorites[Pair(tbTitle, chId)] ?: chObj.optInt("ulubiony", 0)
                 val chResFilename = chObj.optString("res_filename", "")
                     .ifEmpty { chObj.optString("grafika_res", "") }
 
