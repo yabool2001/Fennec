@@ -144,6 +144,21 @@ fun loadStatusColors(context: Context): Map<Int, Color> {
     }
 }
 
+fun loadDistinctionTime(context: Context): Int {
+    val jsonString = try {
+        context.assets.open("ustawienia.json").bufferedReader().use { it.readText() }
+    } catch (e: Exception) {
+        return 6
+    }
+
+    return try {
+        val obj = JSONObject(jsonString)
+        obj.optInt("distinction_time", 6)
+    } catch (e: Exception) {
+        6
+    }
+}
+
 fun calculateChapterProgress(allLessons: List<LessonData>): Int {
     var totalQuestions = 0
     var totalStatusSum = 0
@@ -466,6 +481,7 @@ fun LabellingGameScreen(
     }
 
     val statusColors = remember { loadStatusColors(context) }
+    val distinctionTimeSeconds = remember { loadDistinctionTime(context) }
 
     val rawLessons = remember(databaseFilename) {
         loadLessons(context, databaseFilename)
@@ -498,6 +514,13 @@ fun LabellingGameScreen(
     var lastGuessedItem by remember(currentLesson) { mutableStateOf<Int?>(null) }
     var inputText by remember(currentLesson) { mutableStateOf("") }
     var hintLevel by remember(currentLesson) { mutableIntStateOf(0) } // 0: empty, 1: hint1, 2: hint2
+
+    LaunchedEffect(lastGuessedItem) {
+        if (lastGuessedItem != null && distinctionTimeSeconds > 0) {
+            delay(distinctionTimeSeconds * 1000L)
+            lastGuessedItem = null
+        }
+    }
 
     val chapterProgress = remember(allLessons, guessedItems) {
         calculateChapterProgress(allLessons)
