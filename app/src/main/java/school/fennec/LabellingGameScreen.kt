@@ -274,12 +274,16 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
 
                 val labelBgHex = qObj.optString("label_background_color", "")
                 val labelBgColor = if (labelBgHex.isNotEmpty()) {
-                    val bgHex = if (labelBgHex.startsWith("0x") || labelBgHex.startsWith("0X")) {
-                        "#" + labelBgHex.substring(2)
-                    } else if (!labelBgHex.startsWith("#")) {
-                        "#$labelBgHex"
-                    } else labelBgHex
-                    try { Color(android.graphics.Color.parseColor(bgHex)) } catch (e: Exception) { null }
+                    if (labelBgHex.equals("transparent", ignoreCase = true)) {
+                        Color.Transparent
+                    } else {
+                        val bgHex = if (labelBgHex.startsWith("0x") || labelBgHex.startsWith("0X")) {
+                            "#" + labelBgHex.substring(2)
+                        } else if (!labelBgHex.startsWith("#")) {
+                            "#$labelBgHex"
+                        } else labelBgHex
+                        try { Color(android.graphics.Color.parseColor(bgHex)) } catch (e: Exception) { null }
+                    }
                 } else null
 
                 val labelAlphaVal = if (qObj.has("label_alpha")) qObj.optDouble("label_alpha", 1.0).toFloat() else null
@@ -340,12 +344,16 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
 
                 val dLabelBgHex = dObj.optString("label_background_color", "")
                 val dLabelBgColor = if (dLabelBgHex.isNotEmpty()) {
-                    val bgHex = if (dLabelBgHex.startsWith("0x") || dLabelBgHex.startsWith("0X")) {
-                        "#" + dLabelBgHex.substring(2)
-                    } else if (!dLabelBgHex.startsWith("#")) {
-                        "#$dLabelBgHex"
-                    } else dLabelBgHex
-                    try { Color(android.graphics.Color.parseColor(bgHex)) } catch (e: Exception) { null }
+                    if (dLabelBgHex.equals("transparent", ignoreCase = true)) {
+                        Color.Transparent
+                    } else {
+                        val bgHex = if (dLabelBgHex.startsWith("0x") || dLabelBgHex.startsWith("0X")) {
+                            "#" + dLabelBgHex.substring(2)
+                        } else if (!dLabelBgHex.startsWith("#")) {
+                            "#$dLabelBgHex"
+                        } else dLabelBgHex
+                        try { Color(android.graphics.Color.parseColor(bgHex)) } catch (e: Exception) { null }
+                    }
                 } else null
 
                 val dLabelAlphaVal = if (dObj.has("label_alpha")) dObj.optDouble("label_alpha", 1.0).toFloat() else null
@@ -713,17 +721,19 @@ fun LabellingGameScreen(
                         val labelWidthDp = if (desc.labelWidthPx > 0f) containerWidth * (desc.labelWidthPx / canvasWidthRatio) else null
                         val borderWidthDp = desc.borderWidth.dp
 
-                        val baseBgColor = desc.labelBackgroundColor ?: Color.White
-                        val bgAlpha = desc.labelAlpha ?: 0.85f
-                        val boxBgColor = baseBgColor.copy(alpha = bgAlpha)
+                        val isTransparentBg = desc.labelBackgroundColor == Color.Transparent || desc.labelAlpha == 0f
+                        val boxBgColor = if (isTransparentBg) {
+                            Color.Transparent
+                        } else {
+                            val baseColor = desc.labelBackgroundColor ?: Color.White
+                            val alphaVal = desc.labelAlpha ?: 0.85f
+                            baseColor.copy(alpha = alphaVal)
+                        }
 
-                        val baseBorderColor = Color.Black
                         val borderAlpha = desc.labelAlpha ?: 1.0f
-                        val boxBorderColor = baseBorderColor.copy(alpha = borderAlpha)
-
                         val boxWidthMod = if (labelWidthDp != null) Modifier.width(labelWidthDp) else Modifier
-                        val borderMod = if (borderWidthDp > 0.dp && borderAlpha > 0f) {
-                            Modifier.border(borderWidthDp, boxBorderColor, RoundedCornerShape(8.dp))
+                        val borderMod = if (borderWidthDp > 0.dp && borderAlpha > 0f && !isTransparentBg) {
+                            Modifier.border(borderWidthDp, Color.Black.copy(alpha = borderAlpha), RoundedCornerShape(8.dp))
                         } else Modifier
 
                         Box(
@@ -785,17 +795,21 @@ fun LabellingGameScreen(
                         }
                     }
 
-                    val baseBgColor = question.labelBackgroundColor ?: Color.White
-                    val bgAlpha = question.labelAlpha ?: 0.85f
-                    val boxBgColor = baseBgColor.copy(alpha = bgAlpha)
+                    val isTransparentBg = question.labelBackgroundColor == Color.Transparent || question.labelAlpha == 0f
+                    val boxBgColor = if (isTransparentBg) {
+                        Color.Transparent
+                    } else {
+                        val baseColor = question.labelBackgroundColor ?: Color.White
+                        val alphaVal = question.labelAlpha ?: 0.85f
+                        baseColor.copy(alpha = alphaVal)
+                    }
 
                     val baseBorderColor = if (isGuessed) Color(0xFF001F3F) else Color.Black
                     val borderAlpha = question.labelAlpha ?: 1.0f
-                    val boxBorderColor = baseBorderColor.copy(alpha = borderAlpha)
 
                     val boxWidthMod = if (labelWidthDp != null) Modifier.width(labelWidthDp) else Modifier
-                    val borderMod = if (borderWidthDp > 0.dp && borderAlpha > 0f) {
-                        Modifier.border(borderWidthDp, boxBorderColor, RoundedCornerShape(8.dp))
+                    val borderMod = if (borderWidthDp > 0.dp && borderAlpha > 0f && !isTransparentBg) {
+                        Modifier.border(borderWidthDp, baseBorderColor.copy(alpha = borderAlpha), RoundedCornerShape(8.dp))
                     } else Modifier
 
                     Box(

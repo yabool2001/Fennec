@@ -34,7 +34,7 @@
         "fundamenty":
         {
           "database": "bio_lekcje.json",
-          "lekcje": [9,10,11],
+          "lekcje": [9,10,11,12],
           "test": []
         },
         "doskonalenie":
