@@ -892,5 +892,61 @@
         "label_alpha": 1
       }
     ]
+  },
+  {
+    "id": 13,
+    "title": "Nicienie - ewolucyjny tryumf prostoty",
+    "task": "Uzupełnij 2 nazwy",
+    "working_area_background_color": "#FFFFFF",
+    "canvas_width": 900,
+    "canvas_height": 410,
+    "descriptions": [
+      {
+        "id": 1,
+        "text": "Wymień czego tasiemiec potrzebuje do rozwoju",
+        "label_x": 40,
+        "label_y": 10,
+        "label_width": 860,
+        "border_width": 0,
+        "text_size": 13,
+        "label_alpha": 1,
+        "picture_src": "bio_lekcje_id_12_01",
+        "picture_alpha": 1
+      }
+    ],
+    "answers": [
+      {
+        "id": 1,
+        "text": "Świnia jest\nżywicielem\npośrednim\nw którym żyją\nlarwy pasożyta",
+        "empty": "[Świnia jest\n. . . . . . . . . .\n. . . . . . . . .]\nw którym żyją\nlarwy pasożyta",
+        "hint1": "[Świnia jest\nżywi . . . . . .\npoś . . . . . .]\nw którym żyją\nlarwy pasożyta",
+        "hint2": "[Świnia jest\nżywic . elem\npośr . dnim]\nw którym żyją\nlarwy pasożyta",
+        "answer": "żywicielem pośrednim",
+        "accepted_answers": ["żywicielem pośrednim"],
+        "status": 0,
+        "label_x": 1,
+        "label_y": 130,
+        "label_background_color": "transparent",
+        "border_width": 0,
+        "text_size": 12,
+        "label_alpha": 1
+      },
+      {
+        "id": 2,
+        "text": "Człowiek jest\nżywicielem\nostatecznym\n w którym\nżyją\ndorosłe\npasożyty",
+        "empty": "Człowiek jest\n[. . . . . . . . . .\n. . . . . . . . . . .]\n w którym żyją\ndorosłe\npasożyty",
+        "hint1": "[Człowiek jest\nżywi . . . .\nost . . . . . . .]\n w którym żyją\ndorosłe\npasożyty",
+        "hint2": "[Człowiek jest\nżywic . el\nosta . eczny]\n w którym żyją\ndorosłe\npasożyty",
+        "answer": "żywicielem ostatecznym",
+        "accepted_answers": ["żywicielem ostatecznym"],
+        "status": 0,
+        "label_x": 645,
+        "label_y": 100,
+        "label_background_color": "transparent",
+        "border_width": 0,
+        "text_size": 13,
+        "label_alpha": 1
+      }
+    ]
   }
 ]
