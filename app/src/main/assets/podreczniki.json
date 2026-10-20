@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "wydawnictwo": "nowa era",
     "tytul": "Puls życia 6",
     "opis:": "Nowa edycja 2025–2027",
@@ -11,7 +12,7 @@
       {
         "id": 1,
         "tytul": "I. Świat zwierząt",
-        "ulubiony": 1,
+        "ulubiony": 0,
         "res_filename": "bio_ne_6_884_2_2019_1",
         "fundamenty":
         {
@@ -29,7 +30,7 @@
       {
         "id": 2,
         "tytul": "II. Od parzydełkowców do pierścienic",
-        "ulubiony": 0,
+        "ulubiony": 1,
         "res_filename": "bio_ne_6_884_2_2019_2",
         "fundamenty":
         {
@@ -62,6 +63,7 @@
     ]
   },
   {
+    "id": 2,
     "wydawnictwo": "GWO",
     "tytul": "Biologia 6. Biologia z klasą",
     "klasa": 6,
@@ -96,6 +98,7 @@
     ]
   },
   {
+    "id": 3,
     "wydawnictwo": "WSiP",
     "tytul": "BIOLOGIA bez tajemnic",
     "klasa": 6,
@@ -130,6 +133,7 @@
     ]
   },
   {
+    "id": 4,
     "wydawnictwo": "mac",
     "tytul": "Biologia 6",
     "klasa": 6,
@@ -159,6 +163,7 @@
     ]
   },
   {
+    "id": 5,
     "wydawnictwo": "Nowa Era",
     "tytul": "Planeta Nowa 6",
     "klasa": 6,
@@ -188,6 +193,7 @@
     ]
   },
   {
+    "id": 6,
     "wydawnictwo": "Nowa Era",
     "tytul": "Puls życia 7",
     "klasa": 7,
@@ -222,6 +228,7 @@
     ]
   },
   {
+    "id": 7,
     "wydawnictwo": "GWO",
     "tytul": "Biologia 7. Biologia z klasą",
     "klasa": 7,
@@ -246,6 +253,7 @@
     ]
   },
   {
+    "id": 8,
     "wydawnictwo": "Nowa Era",
     "tytul": "Planeta Nowa 7",
     "klasa": 7,
@@ -270,6 +278,7 @@
     ]
   },
   {
+    "id": 9,
     "wydawnictwo": "Nowa Era",
     "tytul": "Puls życia 8",
     "klasa": 8,
@@ -299,6 +308,7 @@
     ]
   },
   {
+    "id": 10,
     "wydawnictwo": "Nowa Era",
     "tytul": "Planeta Nowa 8",
     "klasa": 8,
@@ -323,6 +333,7 @@
     ]
   },
   {
+    "id": 11,
     "wydawnictwo": "GWO",
     "tytul": "Historia 6 podręcznik",
     "klasa": 6,
@@ -337,7 +348,19 @@
       {
         "id": 2,
         "tytul": "II. Złoty wiek",
-        "ulubiony": 0
+        "ulubiony": 0,
+        "fundamenty":
+        {
+          "database": "his_lekcje.json",
+          "lekcje": [1],
+          "test": []
+        },
+        "doskonalenie":
+        {
+          "database": "his_lekcje.json",
+          "lekcje": [],
+          "test": []
+        }
       },
       {
         "id": 3,

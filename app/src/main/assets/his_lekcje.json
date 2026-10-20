@@ -1,0 +1,97 @@
+[
+  {
+    "id": 1,
+    "title": "Okres złotego wieku Polski i Litwy",
+    "task": "Uzupełnij daty i nazwy okresu",
+    "working_area_background_color": "#FFFFFF",
+    "canvas_width": 600,
+    "canvas_height": 300,
+    "descriptions": [
+      {
+        "id": 1,
+        "text": "Złoty wiek Polski i Litwy przypada na:",
+        "label_x": 10,
+        "label_y": 1,
+        "label_width": 590,
+        "border_width": 0,
+        "text_size": 16,
+        "label_alpha": 1
+      },
+      {
+        "id": 2,
+        "picture_src": "his_lekcje_id_1_01_1",
+        "picture_alpha": 1
+      }
+    ],
+    "answers": [
+      {
+        "id": 1,
+        "text": "czasy zygmuntowskie",
+        "empty": "[. . . . . . . . . . . . . . . . . .]",
+        "hint1": "[cz . . . zyg . . . . . . . . . .]",
+        "hint2": "[cza . y zygm . . . owskie]",
+        "answer": "czasy zygmuntowskie",
+        "accepted_answers": ["czasy zygmuntowskie"],
+        "status": 0,
+        "label_x": 10,
+        "label_y": 50,
+        "label_width": 280,
+        "label_background_color": "transparent",
+        "border_width": 0,
+        "text_size": 16,
+        "label_alpha": 1
+      },
+      {
+        "id": 2,
+        "text": " w latach: 1506-1572",
+        "empty": " w latach: [....-....]",
+        "hint1": " w latach: [15..-15..]",
+        "hint2": " w latach: [150.- 157.]",
+        "answer": " w latach: 1506-1572",
+        "accepted_answers": ["1506-1572"],
+        "status": 0,
+        "label_x": 300,
+        "label_y": 100,
+        "label_width": 280,
+        "label_background_color": "transparent",
+        "border_width": 0,
+        "text_size": 16,
+        "label_alpha": 1
+      },
+      {
+        "id": 3,
+        "text": "okres do śmierci króla Stefana Batorego",
+        "empty": "okres do śmierci [. . . . . . . . . . . . . . . . . . . .]",
+        "hint1": "okres do śmierci [kró . .  Ste . . . .  Bato . . . .]",
+        "hint2": "okres do śmierci [kró . a Setf . na Bato . ego]",
+        "answer": "króla Stefana Batorego",
+        "accepted_answers": ["króla Stefana Batorego"],
+        "status": 0,
+        "label_x": 300,
+        "label_y": 300,
+        "label_width": 280,
+        "label_background_color": "transparent",
+        "border_width": 0,
+        "text_size": 13,
+        "label_alpha": 1
+      },
+      {
+        "id": 4,
+        "text": "w 1586 r.",
+        "empty": "w [....] r.",
+        "hint1": "w [15..] r.",
+        "hint2": "w [150.] r.",
+        "answer": "w [1586] r.",
+        "accepted_answers": ["1586"],
+        "status": 0,
+        "label_x": 300,
+        "label_y": 100,
+        "label_width": 280,
+        "label_background_color": "transparent",
+        "border_width": 0,
+        "text_size": 16,
+        "label_alpha": 1
+      }
+    ]
+  }
+]
