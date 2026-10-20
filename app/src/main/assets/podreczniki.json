@@ -189,35 +189,6 @@
   },
   {
     "wydawnictwo": "Nowa Era",
-    "tytul": "Wczoraj i dziś 6",
-    "klasa": 6,
-    "przedmiot": "Historia",
-    "okladka_res_filename": "",
-    "rozdzial": [
-      {
-        "id": 1,
-        "tytul": "I. Narodziny nowożytnego świata",
-        "ulubiony": 0
-      },
-      {
-        "id": 2,
-        "tytul": "II. Rzeczpospolita w XVI wieku",
-        "ulubiony": 0
-      },
-      {
-        "id": 3,
-        "tytul": "III. Rzeczpospolita w XVII wieku",
-        "ulubiony": 0
-      },
-      {
-        "id": 4,
-        "tytul": "IV. Upadek Rzeczypospolitej",
-        "ulubiony": 0
-      }
-    ]
-  },
-  {
-    "wydawnictwo": "Nowa Era",
     "tytul": "Puls życia 7",
     "klasa": 7,
     "przedmiot": "Biologia",
@@ -300,30 +271,6 @@
   },
   {
     "wydawnictwo": "Nowa Era",
-    "tytul": "Wczoraj i dziś 7",
-    "klasa": 7,
-    "przedmiot": "Historia",
-    "okladka_res_filename": "",
-    "rozdzial": [
-      {
-        "id": 1,
-        "tytul": "I. Europa i świat w XVIII i XIX wieku",
-        "ulubiony": 0
-      },
-      {
-        "id": 2,
-        "tytul": "II. Polacy pod zaborami",
-        "ulubiony": 0
-      },
-      {
-        "id": 3,
-        "tytul": "III. I wojna światowa",
-        "ulubiony": 0
-      }
-    ]
-  },
-  {
-    "wydawnictwo": "Nowa Era",
     "tytul": "Puls życia 8",
     "klasa": 8,
     "przedmiot": "Biologia",
@@ -376,25 +323,40 @@
     ]
   },
   {
-    "wydawnictwo": "Nowa Era",
-    "tytul": "Wczoraj i dziś 8",
-    "klasa": 8,
+    "wydawnictwo": "GWO",
+    "tytul": "Historia 6 podręcznik",
+    "klasa": 6,
     "przedmiot": "Historia",
-    "okladka_res_filename": "",
+    "okladka_res_filename": "his_gwo_6_829_3_2019",
     "rozdzial": [
       {
         "id": 1,
-        "tytul": "I. II wojna światowa",
+        "tytul": "I. Początki epoki nowożytnej",
         "ulubiony": 0
       },
       {
         "id": 2,
-        "tytul": "II. Świat po II wojnie światowej",
+        "tytul": "II. Złoty wiek",
         "ulubiony": 0
       },
       {
         "id": 3,
-        "tytul": "III. Polska w czasach komunizmu",
+        "tytul": "III. Rzeczpospolita w XVII wieku",
+        "ulubiony": 0
+      },
+      {
+        "id": 3,
+        "tytul": "IV. Europa i Ameryka w XVII i XVIII wieku",
+        "ulubiony": 0
+      },
+      {
+        "id": 3,
+        "tytul": "V. Ostatnie stulecie I Rzeczypospolitej",
+        "ulubiony": 0
+      },
+      {
+        "id": 6,
+        "tytul": "VI. Okres nepoleoński",
         "ulubiony": 0
       }
     ]
