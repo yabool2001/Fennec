@@ -102,6 +102,14 @@ fun parseTextAlign(alignStr: String): TextAlign {
     }
 }
 
+fun parseBoxAlignment(alignStr: String): Alignment {
+    return when (alignStr.lowercase()) {
+        "left" -> Alignment.CenterStart
+        "right" -> Alignment.CenterEnd
+        else -> Alignment.Center
+    }
+}
+
 fun loadStatusColors(context: Context): Map<Int, Color> {
     val defaultMap = mapOf(
         0 to Color.Transparent,
@@ -743,7 +751,7 @@ fun LabellingGameScreen(
                                 .background(boxBgColor, RoundedCornerShape(8.dp))
                                 .then(borderMod)
                                 .padding(horizontal = 8.dp, vertical = 4.dp),
-                            contentAlignment = Alignment.Center
+                            contentAlignment = parseBoxAlignment(desc.textAlignment)
                         ) {
                             Text(
                                 text = desc.text,
@@ -785,8 +793,9 @@ fun LabellingGameScreen(
                     val labelWidthDp = if (question.labelWidthPx > 0f) containerWidth * (question.labelWidthPx / canvasWidthRatio) else null
                     val borderWidthDp = question.borderWidth.dp
 
+                    val resolvedFullText = if (question.fullName.isNotEmpty()) question.fullName else question.answer
                     val labelText = if (isGuessed) {
-                        if (question.fullName.isNotEmpty()) question.fullName else question.answer
+                        resolvedFullText
                     } else {
                         when (hintLevel) {
                             0 -> question.empty
@@ -821,8 +830,21 @@ fun LabellingGameScreen(
                             .background(boxBgColor, RoundedCornerShape(8.dp))
                             .then(borderMod)
                             .padding(horizontal = 8.dp, vertical = 4.dp),
-                        contentAlignment = Alignment.Center
+                        contentAlignment = parseBoxAlignment(question.textAlignment)
                     ) {
+                        if (labelWidthDp == null && question.textAlignment.equals("right", ignoreCase = true)) {
+                            listOf(question.empty, question.hint1, question.hint2, resolvedFullText)
+                                .distinct()
+                                .forEach { refText ->
+                                    Text(
+                                        text = refText,
+                                        fontWeight = FontWeight.ExtraBold,
+                                        fontSize = question.textSizeSp.sp,
+                                        lineHeight = (question.textSizeSp * 1.15f).sp,
+                                        modifier = Modifier.height(0.dp).alpha(0f)
+                                    )
+                                }
+                        }
                         Text(
                             text = labelText,
                             color = if (isGuessed) Color(0xFF001F3F) else Color(0xFF000000),
