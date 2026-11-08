@@ -1183,32 +1183,104 @@
   },
   {
     "id": 16,
-    "title": "Szczegóły budowa ciała dżdżownicy",
+    "title": "Szczegóły budowy ciała dżdżownicy",
     "task": "Uzupełnij 2 stwierdzenia",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 620,
     "canvas_height": 350,
+    "descriptions": [
+      {
+        "id": 1,
+        "text": "Uzupełnij szczegóły budowy ciała dżdżownicy",
+        "label_x": 10,
+        "label_y": 1,
+        "label_width": 600,
+        "border_width": 0,
+        "text_size": 15,
+        "text_underline": 1,
+        "label_alpha": 1,
+        "picture_src": "bio_000005_1",
+        "picture_alpha": 1
+      }
+    ],
     "answers": [
       {
         "id": 1,
-        "text": "Wiele gatunków pierścienic na boku ciała ma pęki sztywnych szczecinek.",
-        "empty": "Wiele gatunków pierścienic na boku ciała ma pęki sztywnych [. . . . . . . . . .].",
-        "hint1": "Wiele gatunkow  pierścienic na boku ciała ma pęki sztywnych [szcze . . . . .].",
-        "hint2": "Wiele gatunkow  pierścienic na boku ciała ma pęki sztywnych [szczeci . ek].",
-        "answer": "szczecinek",
-        "accepted_answers": ["szczecinek","szczecinki","szczecinkę"],
+        "text": "Cienki oskórek pokryty",
+        "empty": "Cienki [. . . . . . .] pokryty",
+        "hint1": "Cienki [osk . . . .] pokryty",
+        "hint2": "Cienki [oskó . ek] pokryty",
+        "answer": "oskórek",
+        "accepted_answers": ["oskórek"],
         "status": 0,
-        "label_x": 70,
-        "label_y": 70,
+        "label_x": 290,
+        "label_y": 50,
         "label_background_color": "transparent",
         "border_width": 0,
-        "text_size": 13,
-        "label_alpha": 1,
-        "picture_src": "bio_000005",
-        "picture_alpha": 1
+        "text_size": 14,
+        "label_alpha": 1
       },
       {
         "id": 2,
+        "text": "warstwą śluzu.",
+        "empty": "warstwą [. . . . .].",
+        "hint1": "warstwą [śl . . .].",
+        "hint2": "warstwą [ślu . u].",
+        "answer": "śluz",
+        "accepted_answers": ["śluzu","śluz"],
+        "status": 0,
+        "label_x": 305,
+        "label_y": 80,
+        "label_background_color": "transparent",
+        "border_width": 0,
+        "text_size": 14,
+        "label_alpha": 1
+      },
+      {
+        "id": 3,
+        "text": "Pęki szczecinek, które\nułatwiają poruszanie się.",
+        "empty": "Pęki [. . . . . . . . . .], które\nułatwiają poruszanie się.",
+        "hint1": "Pęki [szcze . . . . .], które\nułatwiają poruszanie się.",
+        "hint2": "Pęki [szczec . nek], które\nułatwiają poruszanie się.",
+        "answer": "szczecinek",
+        "accepted_answers": ["szczecinek","szczecinki","szczecinkę","pęki szczecinek","pęk szczecinki"],
+        "status": 0,
+        "label_x": 305,
+        "label_y": 210,
+        "label_background_color": "transparent",
+        "border_width": 0,
+        "text_size": 14,
+        "label_alpha": 1,
+        "picture_src": "bio_000005_2",
+        "picture_alpha": 1
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "title": "Szczegóły budowy ciała pierścienic",
+    "task": "Uzupełnij 2 stwierdzenia",
+    "working_area_background_color": "#FFFFFF",
+    "canvas_width": 620,
+    "canvas_height": 350,
+    "descriptions": [
+      {
+        "id": 1,
+        "text": "Uzupełnij szczegóły budowy ciała dżdżownicy",
+        "label_x": 10,
+        "label_y": 1,
+        "label_width": 600,
+        "border_width": 0,
+        "text_size": 15,
+        "text_underline": 1,
+        "label_alpha": 1,
+        "picture_src": "bio_000005",
+        "picture_alpha": 1
+      }
+    ],
+    "answers": [
+      {
+        "id": 1,
         "text": "U niektórych pierścienic z pierwszych segmentów ciała powstaje głowa.",
         "empty": "U niektórych pierścienic z pierwszych segmentów ciała powstaje [. . . . .].",
         "hint1": "U niektórych pierścienic z pierwszych segmentów ciała powstaje [gł . . .].",
