@@ -600,78 +600,107 @@
   },
   {
     "id": 9,
-    "title": "Płazińce - zwierzęta z płaskimi ciałami",
-    "task": "Uzupełnij 2 pola",
+    "title": "PŁAZIŃCE - zwierzęta z płaskimi ciałami",
+    "task": "Uzupełnij 3 pola",
     "working_area_background_color": "#FFFFFF",
-    "canvas_width": 652,
-    "canvas_height": 400,
+    "canvas_width": 620,
+    "canvas_height": 350,
     "descriptions": [
       {
         "id": 1,
-        "picture_src": "bio_lekcje_id_09_01",
-        "picture_alpha": 1
+        "text": "PŁAZIŃCE,",
+        "label_x": 10,
+        "label_y": 1,
+        "border_width": 0,
+        "label_width": 600,
+        "text_size": 14,
+        "label_alpha": 1,
+        "text_underline": 1
       },
       {
-        "id": 2,
+        "id": 1,
         "text": "Ich przedstawicielami są m.in.: ",
-        "label_x": 20,
-        "label_y": 300,
+        "label_x": 10,
+        "label_y": 70,
         "border_width": 0,
-        "text_size": 13,
+        "label_width": 600,
+        "text_size": 14,
         "label_alpha": 1
       }
     ],
     "answers": [
       {
         "id": 1,
-        "text": "Płazińce to zwierzęta z płaskimi ciałami.",
-        "empty": "Płazińce to zwierzęta z [ . . . . . . . . ] ciałami.",
-        "hint1": "Płazińce to zwierzęta z [ pła . . . . . ] ciałami.",
-        "hint2": "Płazińce to zwierzęta z [ pła . . imi ] ciałami.",
+        "text": "to zwierzęta z płaskimi ciałami.",
+        "empty": "to zwierzęta z [ . . . . . . . . ] ciałami.",
+        "hint1": "to zwierzęta z [ pła . . . . . ] ciałami.",
+        "hint2": "to zwierzęta z [ pła . . imi ] ciałami.",
         "answer": "płaskimi",
-        "accepted_answers": ["płaskimi","płaskim"],
+        "accepted_answers": ["płaskimi","płaskim","płaskie"],
         "status": 0,
-        "label_x": 20,
-        "label_y": 250,
+        "label_x": 10,
+        "label_y": 35,
+        "label_width": 600,
         "border_width": 0,
-        "text_size": 13,
+        "text_size": 14,
         "label_alpha": 1
       },
       {
         "id": 2,
-        "text": "1. Tasiemce          i",
-        "empty": "1. [ . . . . . . . . ]          i",
-        "hint1": "1. Tas . . . . .          i",
-        "hint2": "1. Tasi . mce          i",
-        "answer": "1. Tasiemce          i",
+        "text": "Tasiemce",
+        "empty": "[ . . . . . . . . ]",
+        "hint1": "[Tas . . . . .]",
+        "hint2": "[Tasi . mce]",
+        "answer": "Tasiemce",
         "accepted_answers": ["tasiemce","tasiemiec"],
         "status": 0,
-        "label_x": 30,
-        "label_y": 340,
+        "label_x": 120,
+        "label_y": 310,
         "border_width": 0,
         "text_size": 13,
-        "label_alpha": 1
+        "label_alpha": 1,
+        "picture_src": "bio_000006_1",
+        "picture_alpha": 1
       },
       {
         "id": 3,
-        "text": "2. Wypławki",
-        "empty": "2. [ . . . . . . . . ]",
-        "hint1": "2. Wyp . . . . . ",
-        "hint2": "2. Wypł . wki ]",
-        "answer": "2. Wypławki",
-        "accepted_answers": ["wypławki","wypławka"],
+        "text": "Wirki",
+        "empty": "[. . . . .]",
+        "hint1": "[Wi . . .]",
+        "hint2": "[Wir . i]",
+        "answer": "Wirki",
+        "accepted_answers": ["wirki","wirek"],
         "status": 0,
-        "label_x": 300,
-        "label_y": 340,
+        "label_x": 430,
+        "label_y": 185,
         "border_width": 0,
         "text_size": 13,
-        "label_alpha": 1
+        "label_alpha": 0,
+        "picture_src": "bio_000006_2",
+        "picture_alpha": 1
+      },
+      {
+        "id": 4,
+        "text": "Wypławki",
+        "empty": "[ . . . . . . . . ]",
+        "hint1": "[Wyp . . . . .]",
+        "hint2": "[Wypł . wki]",
+        "answer": "Wypławki",
+        "accepted_answers": ["wypławki","wypłwek"],
+        "status": 0,
+        "label_x": 400,
+        "label_y": 310,
+        "border_width": 0,
+        "text_size": 13,
+        "label_alpha": 0,
+        "picture_src": "bio_000006_3",
+        "picture_alpha": 1
       }
     ]
   },
   {
     "id": 10,
-    "title": "Budowa ciała tasiemca",
+    "title": "Tasiemiec - budowa ciała",
     "task": "Wymień 3 części ciała",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 700,
@@ -679,12 +708,13 @@
     "descriptions": [
       {
         "id": 1,
-        "text": "Budowa ciała tasiemca",
-        "label_x": 40,
-        "label_y": 10,
-        "label_width": 660,
+        "text": "Wymień 3 części ciała tasiemca",
+        "label_x": 10,
+        "label_y": 1,
+        "label_width": 680,
         "border_width": 0,
-        "text_size": 20,
+        "text_size": 14,
+        "text_underline": 1,
         "label_alpha": 1
       }
     ],
@@ -703,7 +733,7 @@
         "border_width": 0,
         "text_size": 16,
         "label_alpha": 1,
-        "picture_src": "bio_lekcje_id_10_01_1",
+        "picture_src": "bio_000007_1",
         "picture_alpha": 0.60
       },
       {
@@ -720,7 +750,7 @@
         "border_width": 0,
         "text_size": 16,
         "label_alpha": 1,
-        "picture_src": "bio_lekcje_id_10_01_2",
+        "picture_src": "bio_000007_2",
         "picture_alpha": 0.60
       },
       {
@@ -737,7 +767,7 @@
         "border_width": 0,
         "text_size": 16,
         "label_alpha": 1,
-        "picture_src": "bio_lekcje_id_10_01_3",
+        "picture_src": "bio_000007_3",
         "picture_alpha": 0.60
       }
     ]
@@ -758,6 +788,7 @@
         "label_width": 860,
         "border_width": 0,
         "text_size": 13,
+        "text_underline": 1,
         "label_alpha": 1
       }
     ],
@@ -839,7 +870,7 @@
   },
   {
     "id": 12,
-    "title": "Dwa różne organizmy niezbędne do rozwoju tasiemca",
+    "title": "Organizmy niezbędne do rozwoju tasiemca",
     "task": "Uzupełnij 2 nazwy",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 900,
@@ -847,12 +878,13 @@
     "descriptions": [
       {
         "id": 1,
-        "text": "Wymień czego tasiemiec potrzebuje do rozwoju",
+        "text": "Czego tasiemiec potrzebuje do rozwoju",
         "label_x": 40,
         "label_y": 10,
         "label_width": 860,
         "border_width": 0,
-        "text_size": 13,
+        "text_size": 14,
+        "text_underline": 1,
         "label_alpha": 1,
         "picture_src": "bio_lekcje_id_12_01",
         "picture_alpha": 1
@@ -895,179 +927,6 @@
   },
   {
     "id": 13,
-    "title": "Uzupełnij informacje o budowie dźdźownicy",
-    "task": "Uzupełnij 3 informacje",
-    "working_area_background_color": "#FFFFFF",
-    "canvas_width": 900,
-    "canvas_height": 550,
-    "descriptions": [
-      {
-        "id": 1,
-        "text": "Dżdżownica - najbardziej znana pierścienica",
-        "label_x": 40,
-        "label_y": 1,
-        "label_width": 860,
-        "border_width": 0,
-        "text_size": 13,
-        "text_underline": 1,
-        "label_alpha": 1,
-        "picture_src": "bio_000001_1",
-        "picture_alpha": 1
-      }
-    ],
-    "answers": [
-      {
-        "id": 1,
-        "text": "Siodełko - ważne\npodczas rozmnażania\npłciowego",
-        "empty": "[. . . . . . . .] - ważne\npodczas rozmnażania\npłciowego",
-        "hint1": "[Siod . . . .] - ważne podczas\nrozmnażania\npłciowego",
-        "hint2": "[Siode . ko] - ważne podczas\nrozmnażania\npłciowego",
-        "answer": "Siodełko",
-        "accepted_answers": ["siodełko"],
-        "status": 0,
-        "label_x": 470,
-        "label_y": 70,
-        "label_background_color": "transparent",
-        "border_width": 0,
-        "text_size": 13,
-        "label_alpha": 1,
-        "picture_src": "bio_000001_2",
-        "picture_alpha": 1
-      },
-      {
-        "id": 2,
-        "text": "Przód ciała, który może się\nzwężać, ułatwiając drążenie\nkorytarzy w glebie",
-        "empty": "[. . . . .   . . . . .], który może się\nzwężać, ułatwiając drążenie\nkorytarzy w glebie",
-        "hint1": "[Prz . .   cia . .], który może się\nzwężać, ułatwiając drążenie\nkorytarzy w glebie",
-        "hint2": "[Prz . d   cia . a], który może się\nzwężać, ułatwiając drążenie\nkorytarzy w glebie",
-        "answer": "Przód ciała",
-        "accepted_answers": ["Przód ciała"],
-        "status": 0,
-        "label_x": 1,
-        "label_y": 335,
-        "label_background_color": "transparent",
-        "border_width": 0,
-        "text_size": 13,
-        "label_alpha": 1,
-        "picture_src": "bio_000001_3",
-        "picture_alpha": 1
-      },
-      {
-        "id": 3,
-        "text": "Niewielkie pęki szczecinek ułatwiają ",
-        "empty": "Poruszanie się ułatwiają: niewielkie pęki [szcze . . . . .] ułatwiają poruszanie się",
-        "hint1": "Niewielkie pęki [szcze . . . . .] ułatwiają poruszanie się",
-        "hint2": "Niewielkie pęki [szczeci . ek] ułatwiają poruszanie się",
-        "answer": "szczecinek",
-        "accepted_answers": ["szczecinek","szczecinki","szczecinka"],
-        "status": 0,
-        "label_x": 1,
-        "label_y": 385,
-        "label_background_color": "transparent",
-        "border_width": 0,
-        "text_size": 13,
-        "label_alpha": 1,
-        "picture_src": "bio_000001_3",
-        "picture_alpha": 1
-      },
-      {
-        "id": 4,
-        "text": "wartstwa śluzu",
-        "empty": "Niewielkie pęki [szcze . . . . .] ułatwiają poruszanie się",
-        "hint1": "Niewielkie pęki [szcze . . . . .] ułatwiają poruszanie się",
-        "hint2": "Niewielkie pęki [szczeci . ek] ułatwiają poruszanie się",
-        "answer": "szczecinek",
-        "accepted_answers": ["szczecinek","szczecinki","szczecinka"],
-        "status": 0,
-        "label_x": 1,
-        "label_y": 385,
-        "label_background_color": "transparent",
-        "border_width": 0,
-        "text_size": 13,
-        "label_alpha": 1,
-        "picture_src": "bio_000001_3",
-        "picture_alpha": 1
-      }
-    ]
-  },
-  {
-    "id": 14,
-    "title": "Środowiska życia pierścienic",
-    "task": "Uzupełnij 3 stwierdzenia",
-    "working_area_background_color": "#FFFFFF",
-    "canvas_width": 620,
-    "canvas_height": 370,
-    "descriptions": [
-      {
-        "id": 1,
-        "text": "Środowiska w których żyją pierścienice",
-        "label_x": 10,
-        "label_y": 10,
-        "label_width": 600,
-        "border_width": 0,
-        "text_size": 13,
-        "text_underline": 1,
-        "label_alpha": 1,
-        "picture_src": "bio_000002",
-        "picture_alpha": 1
-      }
-    ],
-    "answers": [
-      {
-        "id": 1,
-        "text": "Większość pierścienic żyje w słonych wodach mórz i oceanów.",
-        "empty": "Większość pierścienic żyje w [. . . . . . .  . . . . . .] mórz i oceanów.",
-        "hint1": "Większość pierścienic żyje w [sło . . . . wod . . .] mórz i oceanów.",
-        "hint2": "Większość pierścienic żyje w [sło . ych wod . ch] mórz i oceanów.",
-        "answer": "słonych wodach",
-        "accepted_answers": ["słonych wodach","środowisku słonych wód"],
-        "status": 0,
-        "label_x": 5,
-        "label_y": 200,
-        "label_width": 200,
-        "label_background_color": "transparent",
-        "border_width": 0,
-        "text_size": 12,
-        "label_alpha": 1
-      },
-      {
-        "id": 2,
-        "text": "Występują również w osadach zbiorników wód słodkich, np. w stawach.",
-        "empty": "Występują również w osadach zbiorników [. . .  . . . . . . . .], np. w stawach.",
-        "hint1": "Występują również w osadach zbiorników [w . .  sło . . . . .], np. w stawach.",
-        "hint2": "Występują również w osadach zbiorników [w . d słod . ich], np. w stawach.",
-        "answer": "wód słodkich",
-        "accepted_answers": ["wód słodkich","wody słodkiej"],
-        "status": 0,
-        "label_x": 210,
-        "label_y": 200,
-        "label_width": 200,
-        "label_background_color": "transparent",
-        "border_width": 0,
-        "text_size": 12,
-        "label_alpha": 1
-      },
-      {
-        "id": 3,
-        "text": "Niektóre gatunki pierścienic żyją w wilgotnych środowiskach lądowych np. glebie i ściółce.",
-        "empty": "Niektóre gatunki pierścienic żyją w wilgotnych środowiskach [. . . . . . . .] np. glebie i ściółce.",
-        "hint1": "Niektóre gatunki pierścienic żyją  w wilgotnych środowiskach [ląd . . . . .] np. glebie i ściółce.",
-        "hint2": "Niektóre gatunki pierścienic żyją  w wilgotnych środowiskach [lądo . ych] np. glebie i ściółce.",
-        "answer": "lądowych",
-        "accepted_answers": ["lądowych","lądu","lądowym","lądzie"],
-        "status": 0,
-        "label_x": 415,
-        "label_y": 200,
-        "label_width": 200,
-        "label_background_color": "transparent",
-        "border_width": 0,
-        "text_size": 12,
-        "label_alpha": 1
-      }
-    ]
-  },
-  {
-    "id": 15,
     "title": "Budowa ciała pierścienic",
     "task": "Uzupełnij 2 stwierdzenia",
     "working_area_background_color": "#FFFFFF",
@@ -1182,7 +1041,68 @@
     ]
   },
   {
-    "id": 16,
+    "id": 14,
+    "title": "Uzupełnij informacje o budowie dźdźownicy",
+    "task": "Uzupełnij 3 informacje",
+    "working_area_background_color": "#FFFFFF",
+    "canvas_width": 900,
+    "canvas_height": 550,
+    "descriptions": [
+      {
+        "id": 1,
+        "text": "Dżdżownica - najbardziej znana pierścienica",
+        "label_x": 40,
+        "label_y": 1,
+        "label_width": 860,
+        "border_width": 0,
+        "text_size": 13,
+        "text_underline": 1,
+        "label_alpha": 1,
+        "picture_src": "bio_000001_1",
+        "picture_alpha": 1
+      }
+    ],
+    "answers": [
+      {
+        "id": 1,
+        "text": "Siodełko - ważne\npodczas rozmnażania\npłciowego",
+        "empty": "[. . . . . . . .] - ważne\npodczas rozmnażania\npłciowego",
+        "hint1": "[Siod . . . .] - ważne podczas\nrozmnażania\npłciowego",
+        "hint2": "[Siode . ko] - ważne podczas\nrozmnażania\npłciowego",
+        "answer": "Siodełko",
+        "accepted_answers": ["siodełko"],
+        "status": 0,
+        "label_x": 470,
+        "label_y": 70,
+        "label_background_color": "transparent",
+        "border_width": 0,
+        "text_size": 13,
+        "label_alpha": 1,
+        "picture_src": "bio_000001_2",
+        "picture_alpha": 1
+      },
+      {
+        "id": 2,
+        "text": "Przód ciała, który może się\nzwężać, ułatwiając drążenie\nkorytarzy w glebie",
+        "empty": "[. . . . .   . . . . .], który może się\nzwężać, ułatwiając drążenie\nkorytarzy w glebie",
+        "hint1": "[Prz . .   cia . .], który może się\nzwężać, ułatwiając drążenie\nkorytarzy w glebie",
+        "hint2": "[Prz . d   cia . a], który może się\nzwężać, ułatwiając drążenie\nkorytarzy w glebie",
+        "answer": "Przód ciała",
+        "accepted_answers": ["Przód ciała"],
+        "status": 0,
+        "label_x": 1,
+        "label_y": 335,
+        "label_background_color": "transparent",
+        "border_width": 0,
+        "text_size": 13,
+        "label_alpha": 1,
+        "picture_src": "bio_000001_3",
+        "picture_alpha": 1
+      }
+    ]
+  },
+  {
+    "id": 15,
     "title": "Szczegóły budowy ciała dżdżownicy",
     "task": "Uzupełnij 2 stwierdzenia",
     "working_area_background_color": "#FFFFFF",
@@ -1253,6 +1173,82 @@
         "label_alpha": 1,
         "picture_src": "bio_000005_2",
         "picture_alpha": 1
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "title": "Środowiska życia pierścienic",
+    "task": "Uzupełnij 3 stwierdzenia",
+    "working_area_background_color": "#FFFFFF",
+    "canvas_width": 620,
+    "canvas_height": 370,
+    "descriptions": [
+      {
+        "id": 1,
+        "text": "Środowiska w których żyją pierścienice",
+        "label_x": 10,
+        "label_y": 10,
+        "label_width": 600,
+        "border_width": 0,
+        "text_size": 13,
+        "text_underline": 1,
+        "label_alpha": 1,
+        "picture_src": "bio_000002",
+        "picture_alpha": 1
+      }
+    ],
+    "answers": [
+      {
+        "id": 1,
+        "text": "Większość pierścienic żyje w słonych wodach mórz i oceanów.",
+        "empty": "Większość pierścienic żyje w [. . . . . . .  . . . . . .] mórz i oceanów.",
+        "hint1": "Większość pierścienic żyje w [sło . . . . wod . . .] mórz i oceanów.",
+        "hint2": "Większość pierścienic żyje w [sło . ych wod . ch] mórz i oceanów.",
+        "answer": "słonych wodach",
+        "accepted_answers": ["słonych wodach","środowisku słonych wód"],
+        "status": 0,
+        "label_x": 5,
+        "label_y": 200,
+        "label_width": 200,
+        "label_background_color": "transparent",
+        "border_width": 0,
+        "text_size": 12,
+        "label_alpha": 1
+      },
+      {
+        "id": 2,
+        "text": "Występują również w osadach zbiorników wód słodkich, np. w stawach.",
+        "empty": "Występują również w osadach zbiorników [. . .  . . . . . . . .], np. w stawach.",
+        "hint1": "Występują również w osadach zbiorników [w . .  sło . . . . .], np. w stawach.",
+        "hint2": "Występują również w osadach zbiorników [w . d słod . ich], np. w stawach.",
+        "answer": "wód słodkich",
+        "accepted_answers": ["wód słodkich","wody słodkiej"],
+        "status": 0,
+        "label_x": 210,
+        "label_y": 200,
+        "label_width": 200,
+        "label_background_color": "transparent",
+        "border_width": 0,
+        "text_size": 12,
+        "label_alpha": 1
+      },
+      {
+        "id": 3,
+        "text": "Niektóre gatunki pierścienic żyją w wilgotnych środowiskach lądowych np. glebie i ściółce.",
+        "empty": "Niektóre gatunki pierścienic żyją w wilgotnych środowiskach [. . . . . . . .] np. glebie i ściółce.",
+        "hint1": "Niektóre gatunki pierścienic żyją  w wilgotnych środowiskach [ląd . . . . .] np. glebie i ściółce.",
+        "hint2": "Niektóre gatunki pierścienic żyją  w wilgotnych środowiskach [lądo . ych] np. glebie i ściółce.",
+        "answer": "lądowych",
+        "accepted_answers": ["lądowych","lądu","lądowym","lądzie"],
+        "status": 0,
+        "label_x": 415,
+        "label_y": 200,
+        "label_width": 200,
+        "label_background_color": "transparent",
+        "border_width": 0,
+        "text_size": 12,
+        "label_alpha": 1
       }
     ]
   },
