@@ -1101,10 +1101,10 @@
     "answers": [
       {
         "id": 1,
-        "text": "1. Wydłużone",
+        "text": "1. wydłużone",
         "empty": "1. [. . . . . . . . .]",
-        "hint1": "1. [Wyd . . . . . .]",
-        "hint2": "1. [Wydłu . one]",
+        "hint1": "1. [wyd . . . . . .]",
+        "hint2": "1. [wpodłuydłu . one]",
         "answer": "wydłużone",
         "accepted_answers": ["wydłużone","podłużne"],
         "status": 0,
@@ -1183,11 +1183,11 @@
   },
   {
     "id": 16,
-    "title": "Budowa ciała niektórych pierścienic",
-    "task": "Uzupełnij 2 informacje",
+    "title": "Szczegóły budowa ciała dżdżownicy",
+    "task": "Uzupełnij 2 stwierdzenia",
     "working_area_background_color": "#FFFFFF",
-    "canvas_width": 900,
-    "canvas_height": 550,
+    "canvas_width": 620,
+    "canvas_height": 350,
     "answers": [
       {
         "id": 1,
@@ -1204,7 +1204,7 @@
         "border_width": 0,
         "text_size": 13,
         "label_alpha": 1,
-        "picture_src": "bio_000001_2",
+        "picture_src": "bio_000005",
         "picture_alpha": 1
       },
       {
@@ -1222,7 +1222,7 @@
         "border_width": 0,
         "text_size": 13,
         "label_alpha": 1,
-        "picture_src": "bio_000001_3",
+        "picture_src": "bio_000005",
         "picture_alpha": 1
       }
     ]
