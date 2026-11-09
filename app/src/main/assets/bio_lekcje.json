@@ -1130,6 +1130,121 @@
   },
   {
     "id": 16,
+    "title": "Budowa ciała pierścienic",
+    "task": "Uzupełnij 2 stwierdzenia",
+    "working_area_background_color": "#FFFFFF",
+    "canvas_width": 620,
+    "canvas_height": 330,
+    "descriptions": [
+      {
+        "id": 1,
+        "text": "Ciała niektóryvh pierścienic mogą:",
+        "label_x": 10,
+        "label_y": 1,
+        "label_width": 600,
+        "border_width": 0,
+        "text_size": 15,
+        "text_underline": 1,
+        "label_alpha": 1,
+        "picture_src": "bio_000003",
+        "picture_alpha": 1
+      },
+      {
+        "id": 2,
+        "text": "2. podzielone na krótkie odcinki zwane",
+        "label_x": 10,
+        "label_y": 145,
+        "label_background_color": "transparent",
+        "border_width": 0,
+        "text_size": 14,
+        "label_alpha": 1
+      }
+    ],
+    "answers": [
+      {
+        "id": 1,
+        "text": "1. wydłużone",
+        "empty": "1. [. . . . . . . . .]",
+        "hint1": "1. [wyd . . . . . .]",
+        "hint2": "1. [wpodłuydłu . one]",
+        "answer": "wydłużone",
+        "accepted_answers": ["wydłużone","podłużne"],
+        "status": 0,
+        "label_x": 10,
+        "label_y": 70,
+        "label_background_color": "transparent",
+        "border_width": 0,
+        "text_size": 14,
+        "label_alpha": 1
+      },
+      {
+        "id": 2,
+        "text": "pierścieniami",
+        "empty": "[. . . . . . . . . . . . .]",
+        "hint1": "[pier . . . . . . . . .]",
+        "hint2": "[pierście . iami]",
+        "answer": "pierścieniami",
+        "accepted_answers": ["pierścieniami","pierścieniem","pierścień"],
+        "status": 0,
+        "label_x": 38,
+        "label_y": 175,
+        "label_background_color": "transparent",
+        "border_width": 0,
+        "text_size": 14,
+        "label_alpha": 1
+      },
+      {
+        "id": 3,
+        "text": "lub segmentami.",
+        "empty": "lub [. . . . . . . . . .]",
+        "hint1": "lub [segm . . . . . .]",
+        "hint2": "lub [segm . ntami]",
+        "answer": "segmentami",
+        "accepted_answers": ["segmentami","segmantem","segment"],
+        "status": 0,
+        "label_x": 240,
+        "label_y": 175,
+        "label_background_color": "transparent",
+        "border_width": 0,
+        "text_size": 14,
+        "label_alpha": 1
+      },
+      {
+        "id": 4,
+        "text": "3. pokryte cienkim oskórkiem oraz",
+        "empty": "3. pokryte cienkim [. . . . . . . . .] oraz",
+        "hint1": "3. pokryte cienkim [oskór . . . .] oraz",
+        "hint2": "3. pokryte cienkim [oskórk . em] oraz",
+        "answer": "oskórkiem",
+        "accepted_answers": ["oskórkiem","oskórek"],
+        "status": 0,
+        "label_x": 10,
+        "label_y": 240,
+        "label_background_color": "transparent",
+        "border_width": 0,
+        "text_size": 14,
+        "label_alpha": 1
+      },
+      {
+        "id": 5,
+        "text": "warstwą śluzu.",
+        "empty": "warstwą [. . . . .]",
+        "hint1": "warstwą [śl . . .]",
+        "hint2": "warstwą [ślu . u]",
+        "answer": "śluzu",
+        "accepted_answers": ["śluzu","śluzem"],
+        "status": 0,
+        "label_x": 38,
+        "label_y": 270,
+        "label_background_color": "transparent",
+        "border_width": 0,
+        "text_size": 14,
+        "label_alpha": 1
+      }
+    ]
+  },
+  {
+    "id": 17,
     "title": "Nereida różnokolorowa - drapieżna pierścienica",
     "task": "Uzupełnij nazwy 3 elementów głowy",
     "working_area_background_color": "#FFFFFF",
@@ -1138,7 +1253,7 @@
     "descriptions": [
       {
         "id": 1,
-        "text": "Nereida różnokolorowa - drapieżna pierścienica żyjąca w Morzu Bałtyckim, posiadająca głowę",
+        "text": "Nereida różnokolorowa - drapieżna pierścienica żyjąca w Morzu Bałtyckim",
         "label_x": 1,
         "label_y": 1,
         "label_width": 600,
@@ -1175,7 +1290,7 @@
         "accepted_answers": ["czułki","czułka"],
         "status": 0,
         "label_x": 209,
-        "label_y": 314,
+        "label_y": 315,
         "label_background_color": "transparent",
         "border_width": 0,
         "text_size": 14,
@@ -1194,7 +1309,7 @@
         "accepted_answers": ["oczy","oko"],
         "status": 0,
         "label_x": 235,
-        "label_y": 362,
+        "label_y": 363,
         "label_background_color": "transparent",
         "border_width": 0,
         "text_size": 14,
@@ -1213,7 +1328,7 @@
         "accepted_answers": ["wąsy","wąski"],
         "status": 0,
         "label_x": 232,
-        "label_y": 400,
+        "label_y": 401,
         "label_background_color": "transparent",
         "border_width": 0,
         "text_size": 14,
@@ -1225,16 +1340,16 @@
     ]
   },
   {
-    "id": 17,
-    "title": "Pijawka - pierścienica pasożyt",
+    "id": 18,
+    "title": "Pijawka - najbardziej znana pierścienica wód słodkich",
     "task": "Uzupełnij",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 620,
-    "canvas_height": 450,
+    "canvas_height": 350,
     "descriptions": [
       {
         "id": 1,
-        "text": "Nereida różnokolorowa - drapieżna pierścienica żyjąca w Morzu Bałtyckim, posiadająca głowę",
+        "text": "Pijawka - pierścienica zamieszkująca płytkie zbiorniki wód słodkich",
         "label_x": 1,
         "label_y": 1,
         "label_width": 600,
@@ -1242,31 +1357,17 @@
         "text_size": 15,
         "text_underline": 1,
         "label_alpha": 1,
-        "picture_src": "bio_000008_1",
-        "picture_alpha": 1
-      },
-      {
-        "id": 2,
-        "text": "Ta pierścienica posiada głowę!",
-        "label_x": 5,
-        "label_y": 350,
-        "label_width": 180,
-        "label_background_color": "#ffc8dd",
-        "border_width": 2,
-        "text_size": 15,
-        "text_underline": 0,
-        "label_alpha": 1,
-        "picture_src": "bio_000008_1",
+        "picture_src": "bio_000009",
         "picture_alpha": 1
       }
     ],
     "answers": [
       {
         "id": 1,
-        "text": "czułki",
-        "empty": "[. . . . . .]",
-        "hint1": "[czu . . .]",
-        "hint2": "[czuł . i]",
+        "text": "Pijawki w większości są pasożytami zewnętrznymi",
+        "empty": "Pijawki w większości są [. . . . . . . . . .  . . . . . . . . . . . .]",
+        "hint1": "Pijawki w większości są [paso . . . . . .  zewnęt . . . . . .]",
+        "hint2": "Pijawki w większości są [pasoży . ami  zewnętrz . ymi]",
         "answer": "czułki",
         "accepted_answers": ["czułki","czułka"],
         "status": 0,
@@ -1276,9 +1377,7 @@
         "border_width": 0,
         "text_size": 14,
         "text_alignment": "right",
-        "label_alpha": 1,
-        "picture_src": "bio_000008_2",
-        "picture_alpha": 1
+        "label_alpha": 1
       },
       {
         "id": 2,
@@ -1295,9 +1394,7 @@
         "border_width": 0,
         "text_size": 14,
         "text_alignment": "right",
-        "label_alpha": 1,
-        "picture_src": "bio_000008_3",
-        "picture_alpha": 1
+        "label_alpha": 1
       },
       {
         "id": 3,
@@ -1314,14 +1411,12 @@
         "border_width": 0,
         "text_size": 14,
         "text_alignment": "right",
-        "label_alpha": 1,
-        "picture_src": "bio_000008_4",
-        "picture_alpha": 1
+        "label_alpha": 1
       }
     ]
   },
   {
-    "id": 17,
+    "id": 19,
     "title": "Uzupełnij informacje o budowie dźdźownicy",
     "task": "Uzupełnij 3 informacje",
     "working_area_background_color": "#FFFFFF",
@@ -1382,7 +1477,7 @@
     ]
   },
   {
-    "id": 18,
+    "id": 20,
     "title": "Szczegóły budowy ciała dżdżownicy",
     "task": "Uzupełnij 2 stwierdzenia",
     "working_area_background_color": "#FFFFFF",
@@ -1457,7 +1552,7 @@
     ]
   },
   {
-    "id": 19,
+    "id": 21,
     "title": "Szczegóły budowy ciała pierścienic",
     "task": "Uzupełnij 2 stwierdzenia",
     "working_area_background_color": "#FFFFFF",
