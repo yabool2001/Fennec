@@ -1413,7 +1413,7 @@
         "label_y": 175,
         "label_background_color": "transparent",
         "border_width": 0,
-        "text_size": 14,
+        "text_size": 13,
         "text_alignment": "left",
         "label_alpha": 1
       },
@@ -1430,7 +1430,7 @@
         "label_y": 210,
         "label_background_color": "transparent",
         "border_width": 0,
-        "text_size": 14,
+        "text_size": 13,
         "text_alignment": "left",
         "label_alpha": 1
       },
@@ -1447,7 +1447,7 @@
         "label_y": 245,
         "label_background_color": "transparent",
         "border_width": 0,
-        "text_size": 14,
+        "text_size": 13,
         "text_alignment": "left",
         "label_alpha": 1
       },
@@ -1464,7 +1464,7 @@
         "label_y": 280,
         "label_background_color": "transparent",
         "border_width": 0,
-        "text_size": 14,
+        "text_size": 13,
         "text_alignment": "left",
         "label_alpha": 1
       }
