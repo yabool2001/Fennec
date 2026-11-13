@@ -167,7 +167,7 @@ fun loadDistinctionTime(context: Context): Int {
     }
 }
 
-fun calculateChapterProgress(allLessons: List<LessonData>): Int {
+fun calculateChapterProgress(allLessons: List<LessonData>, maxStatusValue: Int): Int {
     var totalQuestions = 0
     var totalStatusSum = 0
     for (lesson in allLessons) {
@@ -176,7 +176,7 @@ fun calculateChapterProgress(allLessons: List<LessonData>): Int {
             totalStatusSum += q.status
         }
     }
-    val maxPossibleSum = totalQuestions * 5
+    val maxPossibleSum = totalQuestions * maxStatusValue
     if (maxPossibleSum == 0) return 0
     val percent = Math.floor((totalStatusSum.toDouble() / maxPossibleSum) * 100.0).toInt()
     return percent.coerceIn(0, 100)
@@ -497,6 +497,7 @@ fun LabellingGameScreen(
     }
 
     val statusColors = remember { loadStatusColors(context) }
+    val maxStatusValue = remember(statusColors) { statusColors.keys.maxOrNull() ?: 5 }
     val distinctionTimeSeconds = remember { loadDistinctionTime(context) }
 
     val rawLessons = remember(databaseFilename) {
@@ -513,7 +514,7 @@ fun LabellingGameScreen(
 
     var currentLessonIndex by remember(allLessons) {
         val firstUnmastered = allLessons.indexOfFirst { lesson ->
-            lesson.questions.isEmpty() || !lesson.questions.all { it.status >= 5 }
+            lesson.questions.isNotEmpty() && !lesson.questions.all { it.status >= maxStatusValue }
         }
         mutableIntStateOf(if (firstUnmastered != -1) firstUnmastered else 0)
     }
@@ -521,9 +522,9 @@ fun LabellingGameScreen(
 
     val questions = currentLesson?.questions ?: emptyList()
 
-    // Auto-detect mastered questions (status >= 5) so they are pre-revealed without pulsing
-    val knownItemIds = remember(currentLesson) {
-        questions.filter { it.status >= 5 }.map { it.id }.toSet()
+    // Auto-detect mastered questions (status >= maxStatusValue) so they are pre-revealed without pulsing
+    val knownItemIds = remember(currentLesson, maxStatusValue) {
+        questions.filter { it.status >= maxStatusValue }.map { it.id }.toSet()
     }
 
     var guessedItems by remember(currentLesson) { mutableStateOf(knownItemIds) }
@@ -538,8 +539,8 @@ fun LabellingGameScreen(
         }
     }
 
-    val chapterProgress = remember(allLessons, guessedItems) {
-        calculateChapterProgress(allLessons)
+    val chapterProgress = remember(allLessons, guessedItems, maxStatusValue) {
+        calculateChapterProgress(allLessons, maxStatusValue)
     }
 
     val infiniteTransition = rememberInfiniteTransition(label = "pulse")
@@ -647,7 +648,7 @@ fun LabellingGameScreen(
                             val label = "L${(i + 1).toString().padStart(2, '0')}"
                             val isCurrent = i == currentLessonIndex
                             val lessonObj = allLessons[i]
-                            val isMastered = lessonObj.questions.isNotEmpty() && lessonObj.questions.all { it.status >= 5 }
+                            val isMastered = lessonObj.questions.isNotEmpty() && lessonObj.questions.all { it.status >= maxStatusValue }
 
                             val tileBg = if (isCurrent) {
                                 MaterialTheme.colorScheme.primaryContainer
@@ -771,7 +772,7 @@ fun LabellingGameScreen(
                     val isLastGuessed = lastGuessedItem == question.id
 
                     val currentScale = if (isLastGuessed) scale else 1.0f
-                    val baseImageAlpha = if (question.status >= 5) 1.0f else question.pictureAlpha
+                    val baseImageAlpha = if (question.status >= maxStatusValue) 1.0f else question.pictureAlpha
                     val imageAlpha = if (isLastGuessed) pulseAlpha else if (isGuessed) 1.0f else baseImageAlpha
                     val labelBoxAlpha = if (isLastGuessed) pulseAlpha else 1.0f
 
@@ -889,7 +890,7 @@ fun LabellingGameScreen(
                 }
 
                 val topColor = when {
-                    qStatus >= 5 -> color3
+                    qStatus >= maxStatusValue -> color3
                     else -> color0
                 }
 
@@ -974,7 +975,7 @@ fun LabellingGameScreen(
                 Button(
                     onClick = {
                         val nextUnmastered = (currentLessonIndex + 1 until allLessons.size).firstOrNull { idx ->
-                            !allLessons[idx].questions.all { it.status >= 5 }
+                            !allLessons[idx].questions.all { it.status >= maxStatusValue }
                         }
                         if (nextUnmastered != null) {
                             currentLessonIndex = nextUnmastered
@@ -1032,8 +1033,11 @@ fun LabellingGameScreen(
         }
 
         // Answer Input Field
-        OutlinedTextField(
-            value = inputText,
+        val hasUnmasteredQuestions = currentLesson?.questions?.any { it.status < maxStatusValue } == true
+
+        if (hasUnmasteredQuestions) {
+            OutlinedTextField(
+                value = inputText,
             onValueChange = { newValue ->
                 inputText = newValue
                 val match = questions.find { q ->
@@ -1049,32 +1053,31 @@ fun LabellingGameScreen(
                     val proposedStatus = when (hintLevel) {
                         2 -> 1
                         1 -> 2
-                        else -> if (oldStatus < 3) 3 else (oldStatus + 1).coerceAtMost(5)
+                        else -> if (oldStatus < 3) 3 else (oldStatus + 1).coerceAtMost(maxStatusValue)
                     }
-                    val newStatus = maxOf(oldStatus, proposedStatus).coerceAtMost(5)
+                    val newStatus = maxOf(oldStatus, proposedStatus).coerceAtMost(maxStatusValue)
                     match.status = newStatus
 
-                    if (currentLesson != null) {
-                        saveQuestionStatus(
-                            context = context,
-                            databaseFilename = databaseFilename,
-                            lessonId = currentLesson.id,
-                            questionId = match.id,
-                            newStatus = newStatus
-                        )
-                    }
+                    saveQuestionStatus(
+                        context = context,
+                        databaseFilename = databaseFilename,
+                        lessonId = currentLesson.id,
+                        questionId = match.id,
+                        newStatus = newStatus
+                    )
 
                     inputText = ""
                 }
             },
             modifier = Modifier.fillMaxWidth(),
-            placeholder = { Text(currentLesson?.task ?: "Wpisz odpowiedź") },
+            placeholder = { Text(currentLesson.task) },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Password
             ),
-            visualTransformation = VisualTransformation.None,
-            singleLine = true
-        )
+                visualTransformation = VisualTransformation.None,
+                singleLine = true
+            )
+        }
 
         if (!isImeVisible) {
             Column(
@@ -1088,7 +1091,7 @@ fun LabellingGameScreen(
                     Button(
                         onClick = {
                             val prevUnmastered = (currentLessonIndex - 1 downTo 0).firstOrNull { idx ->
-                                !allLessons[idx].questions.all { it.status >= 5 }
+                                !allLessons[idx].questions.all { it.status >= maxStatusValue }
                             }
                             if (prevUnmastered != null) {
                                 currentLessonIndex = prevUnmastered
@@ -1109,7 +1112,7 @@ fun LabellingGameScreen(
                     Button(
                         onClick = {
                             val nextUnmastered = (currentLessonIndex + 1 until allLessons.size).firstOrNull { idx ->
-                                !allLessons[idx].questions.all { it.status >= 5 }
+                                !allLessons[idx].questions.all { it.status >= maxStatusValue }
                             }
                             if (nextUnmastered != null) {
                                 currentLessonIndex = nextUnmastered

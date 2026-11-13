@@ -847,7 +847,7 @@ fun FavoritesScreen(
                     val allowed = if (ch.fundamentyLessonIds.isNotEmpty()) {
                         lessons.filter { ch.fundamentyLessonIds.contains(it.id) }
                     } else lessons
-                    val prog = calculateChapterProgress(allowed)
+                    val prog = calculateChapterProgress(allowed, loadStatusColors(context).keys.maxOrNull() ?: 5)
                     list.add(FavoriteItemData(tb, ch, prog))
                 }
             }
