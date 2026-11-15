@@ -13,3 +13,33 @@
 
 bullets:
 ‣
+
+
+Issue To Do:
+1. Obsługa "multicast".
+Chciałym wyświetlać ten sam label z tekstem w kilku miejscach. W pliku bio_lekcje.json w elemencie id=3 w elemencie "answers" w id=3
+jest przykład konfiguracji, która chciałbym, żeby oznaczała wyświetlenia labelu w dwóch miejscach: x=0,y=370 i x=310,y=370.
+Nie ograniczaj się tylko do 2 współrzędnych, wyświtlaj w tylu miejscach ile podam par. Pozostałe elementy dotyczące label, picture i
+tekstu pozostają pojedyncze i stosuj je do każdego wyświetlanego labela. Jeśli chodzi o status to również on pozostaje bez zmian,
+za udzielenie prawidłowej odpowiedzi liczy się tylko 1 raz. Zależy mi tylko na tym, żeby móc wyświetlać label w kilku miejscach i
+nic więcej z tego nie wyciągaj.
+Przykład w id=14
+{
+        "id": 3,
+        "text": "Żywiciel\npośredni",
+        "empty": "[. . . . . . . .\n. . . . . . . .]",
+        "hint1": "[Żywi . . . .\npośr . . . .]",
+        "hint2": "[Żywic . el\npośre . ni]",
+        "answer": "żywiciel pośredni",
+        "accepted_answers": ["żywiciel pośredni"],
+        "status": 0,
+        "label_x": [0,310],
+        "label_y": [370,370],
+        "label_alignment": "center",
+        "label_background_color": "transparent",
+        "border_width": 0,
+        "text_size": 13,
+        "label_alpha": 1,
+        "picture_src": "bio_000013_2",
+        "picture_alpha": 1
+      },
