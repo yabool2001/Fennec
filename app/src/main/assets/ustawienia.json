@@ -17,5 +17,31 @@
       "color": "#4CAF50"
     }
   ],
+  "answer_text": [
+    {
+      "answer_status": 0,
+      "color": "#f15bb5"
+    },
+    {
+      "answer_status": 1,
+      "color": "#f15bb5"
+    },
+    {
+      "answer_status": 2,
+      "color": "#f15bb5"
+    },
+    {
+      "answer_status": 3,
+      "color": "#f15bb5"
+    },
+    {
+      "answer_status": 4,
+      "color": "#f15bb5"
+    },
+    {
+      "answer_status": 5,
+      "color": "#FFFFFF"
+    }
+  ],
   "distinction_time": 10
 }

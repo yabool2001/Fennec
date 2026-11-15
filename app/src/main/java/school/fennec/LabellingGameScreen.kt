@@ -57,6 +57,7 @@ data class QuestionData(
     val labelWidthPx: Float = 0f,
     val borderWidth: Float = 1.5f,
     val textUnderline: Int = 0,
+    val textColor: Color? = null,
     val labelBackgroundColor: Color? = null,
     val labelAlpha: Float? = null,
     val textAlignment: String = "center",
@@ -73,6 +74,7 @@ data class DescriptionData(
     val labelWidthPx: Float = 0f,
     val borderWidth: Float = 1.5f,
     val textUnderline: Int = 0,
+    val textColor: Color? = null,
     val labelBackgroundColor: Color? = null,
     val labelAlpha: Float? = null,
     val textAlignment: String = "center",
@@ -301,6 +303,16 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
                 val textAlignmentVal = qObj.optString("text_alignment", "center")
                 val textSizeVal = qObj.optDouble("text_size", 13.0).toFloat()
 
+                val textColorHex = qObj.optString("text_color", "")
+                val textColorVal = if (textColorHex.isNotEmpty()) {
+                    val hex = if (textColorHex.startsWith("0x") || textColorHex.startsWith("0X")) {
+                        "#" + textColorHex.substring(2)
+                    } else if (!textColorHex.startsWith("#")) {
+                        "#$textColorHex"
+                    } else textColorHex
+                    try { Color(android.graphics.Color.parseColor(hex)) } catch (_: Exception) { null }
+                } else null
+
                 val labelBgHex = qObj.optString("label_background_color", "")
                 val labelBgColor = if (labelBgHex.isNotEmpty()) {
                     if (labelBgHex.equals("transparent", ignoreCase = true)) {
@@ -337,6 +349,7 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
                         labelWidthPx = labelWidthPx,
                         borderWidth = borderWidthVal,
                         textUnderline = textUnderlineVal,
+                        textColor = textColorVal,
                         labelBackgroundColor = labelBgColor,
                         labelAlpha = labelAlphaVal,
                         textAlignment = textAlignmentVal,
@@ -369,6 +382,16 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
                 val dTextAlignmentVal = dObj.optString("text_alignment", "center")
                 val dTextSizeVal = dObj.optDouble("text_size", 13.0).toFloat()
 
+                val dTextColorHex = dObj.optString("text_color", "")
+                val dTextColorVal = if (dTextColorHex.isNotEmpty()) {
+                    val hex = if (dTextColorHex.startsWith("0x") || dTextColorHex.startsWith("0X")) {
+                        "#" + dTextColorHex.substring(2)
+                    } else if (!dTextColorHex.startsWith("#")) {
+                        "#$dTextColorHex"
+                    } else dTextColorHex
+                    try { Color(android.graphics.Color.parseColor(hex)) } catch (_: Exception) { null }
+                } else null
+
                 val dLabelBgHex = dObj.optString("label_background_color", "")
                 val dLabelBgColor = if (dLabelBgHex.isNotEmpty()) {
                     if (dLabelBgHex.equals("transparent", ignoreCase = true)) {
@@ -399,6 +422,7 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
                         labelWidthPx = labelWidthPx,
                         borderWidth = borderWidthVal,
                         textUnderline = textUnderlineVal,
+                        textColor = dTextColorVal,
                         labelBackgroundColor = dLabelBgColor,
                         labelAlpha = dLabelAlphaVal,
                         textAlignment = dTextAlignmentVal,
@@ -776,7 +800,7 @@ fun LabellingGameScreen(
                             ) {
                                 Text(
                                     text = desc.text,
-                                    color = Color.Black,
+                                    color = desc.textColor ?: Color.Black,
                                     fontWeight = FontWeight.Bold,
                                     fontSize = desc.textSizeSp.sp,
                                     lineHeight = (desc.textSizeSp * 1.15f).sp,
@@ -871,7 +895,7 @@ fun LabellingGameScreen(
                             }
                             Text(
                                 text = labelText,
-                                color = if (isGuessed) Color(0xFF001F3F) else Color(0xFF000000),
+                                color = question.textColor ?: (if (isGuessed) Color(0xFF001F3F) else Color(0xFF000000)),
                                 fontWeight = FontWeight.ExtraBold,
                                 fontSize = question.textSizeSp.sp,
                                 lineHeight = (question.textSizeSp * 1.15f).sp,
