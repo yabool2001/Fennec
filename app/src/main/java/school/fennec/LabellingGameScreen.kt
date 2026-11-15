@@ -189,7 +189,7 @@ fun loadDistinctionTime(context: Context): Int {
     }
 }
 
-fun calculateChapterProgress(allLessons: List<LessonData>, maxStatusValue: Int): Int {
+fun calculateChapterProgress(allLessons: List<LessonData>, maxStatusValue: Int = 5): Int {
     var totalQuestions = 0
     var totalStatusSum = 0
     for (lesson in allLessons) {
@@ -515,7 +515,7 @@ fun LabellingGameScreen(
     }
 
     val statusColors = remember { loadStatusColors(context) }
-    val maxStatusValue = remember(statusColors) { statusColors.keys.maxOrNull() ?: 5 }
+    val maxStatusValue = 5
     val distinctionTimeSeconds = remember { loadDistinctionTime(context) }
 
     val rawLessons = remember(databaseFilename) {
@@ -914,7 +914,7 @@ fun LabellingGameScreen(
                 }
 
                 val topColor = when {
-                    qStatus >= maxStatusValue -> color3
+                    qStatus >= 5 -> color3
                     else -> color0
                 }
 
