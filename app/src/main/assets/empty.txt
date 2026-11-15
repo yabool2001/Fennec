@@ -17,12 +17,11 @@ bullets:
 
 Issue To Do:
 1. Obsługa "multicast".
-Chciałym wyświetlać ten sam label z tekstem w kilku miejscach. W pliku bio_lekcje.json w elemencie id=3 w elemencie "answers" w id=3
-jest przykład konfiguracji, która chciałbym, żeby oznaczała wyświetlenia labelu w dwóch miejscach: x=0,y=370 i x=310,y=370.
-Nie ograniczaj się tylko do 2 współrzędnych, wyświtlaj w tylu miejscach ile podam par. Pozostałe elementy dotyczące label, picture i
-tekstu pozostają pojedyncze i stosuj je do każdego wyświetlanego labela. Jeśli chodzi o status to również on pozostaje bez zmian,
-za udzielenie prawidłowej odpowiedzi liczy się tylko 1 raz. Zależy mi tylko na tym, żeby móc wyświetlać label w kilku miejscach i
-nic więcej z tego nie wyciągaj.
+Chciałym wyświetlać ten sam label z tekstem w kilku miejscach ekranu lekcji. W pliku bio_lekcje.json w elemencie id=3 w "answers" w id=3
+jest przykład konfiguracji, która chciałbym, żeby oznaczała wyświetlenia labelu w dwóch miejscach ekranu lekcji to jest: x=0,y=370 i x=310,y=370.
+Przykład dotyczy 2 miejsc ale chciałbym, aby było dopuszczone tyle miejsce ile ile podam par w tablicach label_x i label_y. Pozostałe elementy dotyczące label, picture i
+tekstu pozostają pojedyncze i mają zastosowanie do każdego wyświetlanego labela w ramach danego id answers. Jeśli chodzi o status to również pozostaje to bez zmian.
+Za udzielenie prawidłowej odpowiedzi liczy się tylko 1 raz. Zależy mi tylko na tym, żeby móc wyświetlać label w kilku miejscach i żadnej więcej logiki do tego nie rób. Jeśli mas zjakąś ciekawą propozycję to lepiej ją uzgodnijmy.
 Przykład w id=14
 {
         "id": 3,

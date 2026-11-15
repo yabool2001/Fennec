@@ -53,8 +53,7 @@ data class QuestionData(
     var status: Int = 0,
     val pictureSrc: String,
     val pictureAlpha: Float,
-    val labelPxX: Float,
-    val labelPxY: Float,
+    val labelPositions: List<Pair<Float, Float>>,
     val labelWidthPx: Float = 0f,
     val borderWidth: Float = 1.5f,
     val textUnderline: Int = 0,
@@ -70,8 +69,7 @@ data class DescriptionData(
     val text: String,
     val pictureSrc: String,
     val pictureAlpha: Float,
-    val labelPxX: Float,
-    val labelPxY: Float,
+    val labelPositions: List<Pair<Float, Float>>,
     val labelWidthPx: Float = 0f,
     val borderWidth: Float = 1.5f,
     val textUnderline: Int = 0,
@@ -107,6 +105,30 @@ fun parseBoxAlignment(alignStr: String): Alignment {
         "left" -> Alignment.CenterStart
         "right" -> Alignment.CenterEnd
         else -> Alignment.Center
+    }
+}
+
+fun parseCoordinateList(obj: JSONObject, primaryKey: String, fallbackKey: String): List<Float> {
+    val key = if (obj.has(primaryKey)) primaryKey else if (obj.has(fallbackKey)) fallbackKey else return listOf(0f)
+    val array = obj.optJSONArray(key)
+    if (array != null) {
+        val list = mutableListOf<Float>()
+        for (i in 0 until array.length()) {
+            list.add(array.optDouble(i, 0.0).toFloat())
+        }
+        return if (list.isNotEmpty()) list else listOf(0f)
+    }
+    return listOf(obj.optDouble(key, 0.0).toFloat())
+}
+
+fun parseLabelPositions(obj: JSONObject): List<Pair<Float, Float>> {
+    val xs = parseCoordinateList(obj, "label_x", "label_px_x")
+    val ys = parseCoordinateList(obj, "label_y", "label_px_y")
+    val count = maxOf(xs.size, ys.size)
+    return List(count) { index ->
+        val x = xs.getOrElse(index) { xs.lastOrNull() ?: 0f }
+        val y = ys.getOrElse(index) { ys.lastOrNull() ?: 0f }
+        Pair(x, y)
     }
 }
 
@@ -266,8 +288,7 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
                 val pictureSrc = qObj.optString("picture_src", "")
                 val pictureAlpha = qObj.optDouble("picture_alpha", 0.3).toFloat()
 
-                val labelPxX = (if (qObj.has("label_x")) qObj.optDouble("label_x", 0.0) else qObj.optDouble("label_px_x", 0.0)).toFloat()
-                val labelPxY = (if (qObj.has("label_y")) qObj.optDouble("label_y", 0.0) else qObj.optDouble("label_px_y", 0.0)).toFloat()
+                val labelPositions = parseLabelPositions(qObj)
                 val labelWidthPx = qObj.optDouble("label_width", 0.0)
                     .let { if (it == 0.0) qObj.optDouble("label_widht", 0.0) else it }
                     .toFloat()
@@ -312,8 +333,7 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
                         status = statusVal,
                         pictureSrc = pictureSrc,
                         pictureAlpha = pictureAlpha,
-                        labelPxX = labelPxX,
-                        labelPxY = labelPxY,
+                        labelPositions = labelPositions,
                         labelWidthPx = labelWidthPx,
                         borderWidth = borderWidthVal,
                         textUnderline = textUnderlineVal,
@@ -336,8 +356,7 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
                 val dText = dObj.optString("text", "")
                 val pictureSrc = dObj.optString("picture_src", "")
                 val pictureAlpha = dObj.optDouble("picture_alpha", 0.3).toFloat()
-                val labelPxX = (if (dObj.has("label_x")) dObj.optDouble("label_x", 0.0) else dObj.optDouble("label_px_x", 0.0)).toFloat()
-                val labelPxY = (if (dObj.has("label_y")) dObj.optDouble("label_y", 0.0) else dObj.optDouble("label_px_y", 0.0)).toFloat()
+                val labelPositions = parseLabelPositions(dObj)
                 val labelWidthPx = dObj.optDouble("label_width", 0.0)
                     .let { if (it == 0.0) dObj.optDouble("label_widht", 0.0) else it }
                     .toFloat()
@@ -376,8 +395,7 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
                         text = dText,
                         pictureSrc = pictureSrc,
                         pictureAlpha = pictureAlpha,
-                        labelPxX = labelPxX,
-                        labelPxY = labelPxY,
+                        labelPositions = labelPositions,
                         labelWidthPx = labelWidthPx,
                         borderWidth = borderWidthVal,
                         textUnderline = textUnderlineVal,
@@ -725,8 +743,6 @@ fun LabellingGameScreen(
                     }
 
                     if (desc.text.isNotEmpty()) {
-                        val labelOffsetX = containerWidth * (desc.labelPxX / canvasWidthRatio)
-                        val labelOffsetY = containerHeight * (desc.labelPxY / canvasHeightRatio)
                         val labelWidthDp = if (desc.labelWidthPx > 0f) containerWidth * (desc.labelWidthPx / canvasWidthRatio) else null
                         val borderWidthDp = desc.borderWidth.dp
 
@@ -745,24 +761,29 @@ fun LabellingGameScreen(
                             Modifier.border(borderWidthDp, Color.Black.copy(alpha = borderAlpha), RoundedCornerShape(8.dp))
                         } else Modifier
 
-                        Box(
-                            modifier = Modifier
-                                .offset(labelOffsetX, labelOffsetY)
-                                .then(boxWidthMod)
-                                .background(boxBgColor, RoundedCornerShape(8.dp))
-                                .then(borderMod)
-                                .padding(horizontal = 8.dp, vertical = 4.dp),
-                            contentAlignment = parseBoxAlignment(desc.textAlignment)
-                        ) {
-                            Text(
-                                text = desc.text,
-                                color = Color.Black,
-                                fontWeight = FontWeight.Bold,
-                                fontSize = desc.textSizeSp.sp,
-                                lineHeight = (desc.textSizeSp * 1.15f).sp,
-                                textAlign = parseTextAlign(desc.textAlignment),
-                                textDecoration = if (desc.textUnderline == 1) TextDecoration.Underline else TextDecoration.None
-                            )
+                        desc.labelPositions.forEach { (pxX, pxY) ->
+                            val labelOffsetX = containerWidth * (pxX / canvasWidthRatio)
+                            val labelOffsetY = containerHeight * (pxY / canvasHeightRatio)
+
+                            Box(
+                                modifier = Modifier
+                                    .offset(labelOffsetX, labelOffsetY)
+                                    .then(boxWidthMod)
+                                    .background(boxBgColor, RoundedCornerShape(8.dp))
+                                    .then(borderMod)
+                                    .padding(horizontal = 8.dp, vertical = 4.dp),
+                                contentAlignment = parseBoxAlignment(desc.textAlignment)
+                            ) {
+                                Text(
+                                    text = desc.text,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = desc.textSizeSp.sp,
+                                    lineHeight = (desc.textSizeSp * 1.15f).sp,
+                                    textAlign = parseTextAlign(desc.textAlignment),
+                                    textDecoration = if (desc.textUnderline == 1) TextDecoration.Underline else TextDecoration.None
+                                )
+                            }
                         }
                     }
                 }
@@ -789,8 +810,6 @@ fun LabellingGameScreen(
                         )
                     }
 
-                    val labelOffsetX = containerWidth * (question.labelPxX / canvasWidthRatio)
-                    val labelOffsetY = containerHeight * (question.labelPxY / canvasHeightRatio)
                     val labelWidthDp = if (question.labelWidthPx > 0f) containerWidth * (question.labelWidthPx / canvasWidthRatio) else null
                     val borderWidthDp = question.borderWidth.dp
 
@@ -822,39 +841,44 @@ fun LabellingGameScreen(
                         Modifier.border(borderWidthDp, baseBorderColor.copy(alpha = borderAlpha), RoundedCornerShape(8.dp))
                     } else Modifier
 
-                    Box(
-                        modifier = Modifier
-                            .offset(labelOffsetX, labelOffsetY)
-                            .scale(currentScale)
-                            .alpha(labelBoxAlpha)
-                            .then(boxWidthMod)
-                            .background(boxBgColor, RoundedCornerShape(8.dp))
-                            .then(borderMod)
-                            .padding(horizontal = 8.dp, vertical = 4.dp),
-                        contentAlignment = parseBoxAlignment(question.textAlignment)
-                    ) {
-                        if (labelWidthDp == null && question.textAlignment.equals("right", ignoreCase = true)) {
-                            listOf(question.empty, question.hint1, question.hint2, resolvedFullText)
-                                .distinct()
-                                .forEach { refText ->
-                                    Text(
-                                        text = refText,
-                                        fontWeight = FontWeight.ExtraBold,
-                                        fontSize = question.textSizeSp.sp,
-                                        lineHeight = (question.textSizeSp * 1.15f).sp,
-                                        modifier = Modifier.height(0.dp).alpha(0f)
-                                    )
-                                }
+                    question.labelPositions.forEach { (pxX, pxY) ->
+                        val labelOffsetX = containerWidth * (pxX / canvasWidthRatio)
+                        val labelOffsetY = containerHeight * (pxY / canvasHeightRatio)
+
+                        Box(
+                            modifier = Modifier
+                                .offset(labelOffsetX, labelOffsetY)
+                                .scale(currentScale)
+                                .alpha(labelBoxAlpha)
+                                .then(boxWidthMod)
+                                .background(boxBgColor, RoundedCornerShape(8.dp))
+                                .then(borderMod)
+                                .padding(horizontal = 8.dp, vertical = 4.dp),
+                            contentAlignment = parseBoxAlignment(question.textAlignment)
+                        ) {
+                            if (labelWidthDp == null && question.textAlignment.equals("right", ignoreCase = true)) {
+                                listOf(question.empty, question.hint1, question.hint2, resolvedFullText)
+                                    .distinct()
+                                    .forEach { refText ->
+                                        Text(
+                                            text = refText,
+                                            fontWeight = FontWeight.ExtraBold,
+                                            fontSize = question.textSizeSp.sp,
+                                            lineHeight = (question.textSizeSp * 1.15f).sp,
+                                            modifier = Modifier.height(0.dp).alpha(0f)
+                                        )
+                                    }
+                            }
+                            Text(
+                                text = labelText,
+                                color = if (isGuessed) Color(0xFF001F3F) else Color(0xFF000000),
+                                fontWeight = FontWeight.ExtraBold,
+                                fontSize = question.textSizeSp.sp,
+                                lineHeight = (question.textSizeSp * 1.15f).sp,
+                                textAlign = parseTextAlign(question.textAlignment),
+                                textDecoration = if (question.textUnderline == 1) TextDecoration.Underline else TextDecoration.None
+                            )
                         }
-                        Text(
-                            text = labelText,
-                            color = if (isGuessed) Color(0xFF001F3F) else Color(0xFF000000),
-                            fontWeight = FontWeight.ExtraBold,
-                            fontSize = question.textSizeSp.sp,
-                            lineHeight = (question.textSizeSp * 1.15f).sp,
-                            textAlign = parseTextAlign(question.textAlignment),
-                            textDecoration = if (question.textUnderline == 1) TextDecoration.Underline else TextDecoration.None
-                        )
                     }
                 }
             }

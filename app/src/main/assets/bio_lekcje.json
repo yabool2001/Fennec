@@ -929,7 +929,9 @@
         "label_background_color": "transparent",
         "border_width": 0,
         "text_size": 14,
-        "label_alpha": 1
+        "label_alpha": 1,
+        "picture_src": "bio_000013_5",
+        "picture_alpha": 1
       },
       {
         "id": 2,
@@ -945,7 +947,9 @@
         "label_background_color": "transparent",
         "border_width": 0,
         "text_size": 14,
-        "label_alpha": 1
+        "label_alpha": 1,
+        "picture_src": "bio_000013_6",
+        "picture_alpha": 1
       },
       {
         "id": 3,
@@ -958,7 +962,7 @@
         "status": 0,
         "label_x": [0,310],
         "label_y": [370,370],
-        "label_alignment": "center",
+        "text_alignment": "center",
         "label_background_color": "transparent",
         "border_width": 0,
         "text_size": 13,
@@ -1986,10 +1990,10 @@
       },
       {
         "id": 4,
-        "text": "   ostrym szczękom do nacinania skóry żywiciela",
-        "empty": "   [. . . . . .  . . . . . . . .] do nacinania skóry żywiciela",
-        "hint1": "   [ost . . .  szcz . . . .] do nacinania skóry żywiciela",
-        "hint2": "   [ostr . m  szczę . om] do nacinania skóry żywiciela",
+        "text": "ostrym szczękom do nacinania skóry żywiciela",
+        "empty": "[. . . . . .  . . . . . . . .] do nacinania skóry żywiciela",
+        "hint1": "[ost . . .  szcz . . . .] do nacinania skóry żywiciela",
+        "hint2": "[ostr . m  szczę . om] do nacinania skóry żywiciela",
         "answer": "ostrym szczękom",
         "accepted_answers": ["ostrym szczękom","ostrej szczęce"],
         "status": 0,
