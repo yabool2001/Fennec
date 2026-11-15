@@ -293,7 +293,7 @@
         "label_x": 10.0,
         "label_y": 10.0,
         "label_widht": 648.0,
-        "border_width": 0
+        "label_border_width": 0
       }
     ]
   },
@@ -311,7 +311,7 @@
         "label_x": 10,
         "label_y": 70,
         "label_width": 600,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 24,
         "text_underline": 1,
         "label_alpha": 1
@@ -322,7 +322,7 @@
         "label_x": 10,
         "label_y": 180,
         "label_width": 600,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 20,
         "label_alpha": 1
       }
@@ -342,7 +342,7 @@
         "label_x": 10,
         "label_y": 50,
         "label_width": 600,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 24,
         "text_underline": 1,
         "label_alpha": 1
@@ -353,7 +353,7 @@
         "label_x": 10,
         "label_y": 150,
         "label_width": 600,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 20,
         "label_alpha": 1
       }
@@ -376,7 +376,7 @@
         "label_x": 10,
         "label_y": 10,
         "label_width": 632,
-        "border_width": 0
+        "label_border_width": 0
       }
     ],
     "answers": [
@@ -392,7 +392,7 @@
         "label_x": 100,
         "label_y": 70,
         "label_width": 150,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 15,
         "picture_src": "bio_lekcje_id_06_01_2",
         "picture_alpha": 0.75
@@ -410,7 +410,7 @@
         "label_y": 70,
         "text_size": 15,
         "label_width": 150,
-        "border_width": 0,
+        "label_border_width": 0,
         "picture_src": "bio_lekcje_id_06_01_1",
         "picture_alpha": 0.75
       },
@@ -428,7 +428,7 @@
         "text_size": 15,
         "label_width": 632,
         "text_alignment": "left",
-        "border_width": 0
+        "label_border_width": 0
       }
     ]
   },
@@ -458,7 +458,7 @@
         "status": 0,
         "label_x": 150,
         "label_y": 120,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 0
       },
@@ -473,7 +473,7 @@
         "status": 0,
         "label_x": 545,
         "label_y": 20,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 0
       },
@@ -488,7 +488,7 @@
         "status": 0,
         "label_x": 550,
         "label_y": 385,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 0
       },
@@ -503,7 +503,7 @@
         "status": 0,
         "label_x": 545,
         "label_y": 505,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 0
       },
@@ -518,7 +518,7 @@
         "status": 0,
         "label_x": 545,
         "label_y": 620,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 0
       },
@@ -533,7 +533,7 @@
         "status": 0,
         "label_x": 545,
         "label_y": 750,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 0
       },
@@ -548,7 +548,7 @@
         "status": 0,
         "label_x": 545,
         "label_y": 890,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 0
       }
@@ -580,7 +580,7 @@
         "status": 0,
         "label_x": 40,
         "label_y": 10,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 12,
         "label_alpha": 0
       },
@@ -595,7 +595,7 @@
         "status": 0,
         "label_x": 0,
         "label_y": 105,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 12,
         "label_alpha": 0
       },
@@ -610,7 +610,7 @@
         "status": 0,
         "label_x": 3,
         "label_y": 197,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 0
       },
@@ -625,7 +625,7 @@
         "status": 0,
         "label_x": 3,
         "label_y": 270,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 0
       },
@@ -640,7 +640,7 @@
         "status": 0,
         "label_x": 120,
         "label_y": 870,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 0
       },
@@ -655,7 +655,7 @@
         "status": 0,
         "label_x": 650,
         "label_y": 495,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 0
       }
@@ -675,7 +675,7 @@
         "label_x": 10,
         "label_y": 50,
         "label_width": 600,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 24,
         "text_underline": 1,
         "label_alpha": 1
@@ -686,7 +686,7 @@
         "label_x": 10,
         "label_y": 150,
         "label_width": 600,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 20,
         "label_alpha": 1
       }
@@ -705,7 +705,7 @@
         "text": "PŁAZIŃCE,",
         "label_x": 10,
         "label_y": 1,
-        "border_width": 0,
+        "label_border_width": 0,
         "label_width": 600,
         "text_size": 14,
         "label_alpha": 1,
@@ -716,7 +716,7 @@
         "text": "Ich przedstawicielami są m.in.: ",
         "label_x": 10,
         "label_y": 70,
-        "border_width": 0,
+        "label_border_width": 0,
         "label_width": 600,
         "text_size": 14,
         "label_alpha": 1
@@ -735,7 +735,7 @@
         "label_x": 10,
         "label_y": 35,
         "label_width": 600,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "label_alpha": 1
       },
@@ -750,7 +750,7 @@
         "status": 0,
         "label_x": 120,
         "label_y": 310,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 1,
         "picture_src": "bio_000006_1",
@@ -767,7 +767,7 @@
         "status": 0,
         "label_x": 430,
         "label_y": 185,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 0,
         "picture_src": "bio_000006_2",
@@ -784,7 +784,7 @@
         "status": 0,
         "label_x": 400,
         "label_y": 310,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 0,
         "picture_src": "bio_000006_3",
@@ -806,7 +806,7 @@
         "label_x": 10,
         "label_y": 1,
         "label_width": 680,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "text_underline": 1,
         "label_alpha": 1
@@ -824,7 +824,7 @@
         "status": 0,
         "label_x": 10,
         "label_y": 80,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 16,
         "label_alpha": 1,
         "picture_src": "bio_000007_1",
@@ -841,7 +841,7 @@
         "status": 0,
         "label_x": 80,
         "label_y": 170,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 16,
         "label_alpha": 1,
         "picture_src": "bio_000007_2",
@@ -858,7 +858,7 @@
         "status": 0,
         "label_x": 300,
         "label_y": 80,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 16,
         "label_alpha": 1,
         "picture_src": "bio_000007_3",
@@ -880,7 +880,7 @@
         "label_x": 0,
         "label_y": 0,
         "label_width": 620,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 15,
         "text_underline": 1,
         "label_alpha": 1,
@@ -894,7 +894,7 @@
         "label_y": 195,
         "label_width": 310,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "label_alpha": 1,
         "picture_src": "bio_000013_3",
@@ -907,7 +907,7 @@
         "label_y": 195,
         "label_width": 310,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "label_alpha": 1,
         "picture_src": "bio_000013_4",
@@ -927,7 +927,7 @@
         "label_x": 186,
         "label_y": 66,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "label_alpha": 1,
         "picture_src": "bio_000013_5",
@@ -945,7 +945,7 @@
         "label_x": 222,
         "label_y": 115,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "label_alpha": 1,
         "picture_src": "bio_000013_6",
@@ -964,7 +964,7 @@
         "label_y": [370,370],
         "text_alignment": "center",
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 1,
         "picture_src": "bio_000013_2",
@@ -982,7 +982,7 @@
         "label_x": 170,
         "label_y": 375,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 1,
         "picture_src": "bio_000013_1",
@@ -1004,7 +1004,7 @@
         "label_x": 40,
         "label_y": 10,
         "label_width": 860,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "text_underline": 1,
         "label_alpha": 1
@@ -1023,7 +1023,7 @@
         "label_x": 50,
         "label_y": 80,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 1,
         "picture_src": "bio_lekcje_id_11_01_1",
@@ -1041,7 +1041,7 @@
         "label_x": 600,
         "label_y": 100,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 1,
         "picture_src": "bio_lekcje_id_11_01_1",
@@ -1059,7 +1059,7 @@
         "label_x": 400,
         "label_y": 350,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 1,
         "picture_src": "bio_lekcje_id_11_01_1",
@@ -1078,7 +1078,7 @@
         "label_y": 280,
         "label_width": 320,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 1,
         "picture_src": "bio_lekcje_id_11_01_1",
@@ -1100,7 +1100,7 @@
         "label_x": 10,
         "label_y": 60,
         "label_width": 600,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 24,
         "text_underline": 1,
         "label_alpha": 1
@@ -1111,7 +1111,7 @@
         "label_x": 10,
         "label_y": 130,
         "label_width": 600,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 20,
         "label_alpha": 1
       }
@@ -1130,7 +1130,7 @@
         "text": "NICIENIE,",
         "label_x": 10,
         "label_y": 1,
-        "border_width": 0,
+        "label_border_width": 0,
         "label_width": 600,
         "text_size": 14,
         "label_alpha": 1,
@@ -1152,7 +1152,7 @@
         "label_x": 10,
         "label_y": 35,
         "label_width": 600,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 1
       },
@@ -1168,7 +1168,7 @@
         "label_x": 1,
         "label_y": 66,
         "label_width": 618,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "text_alignment": "left",
         "label_alpha": 0
@@ -1185,7 +1185,7 @@
         "label_x": 255,
         "label_y": 110,
         "label_width": 369,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "text_alignment": "left",
         "label_alpha": 0
@@ -1202,7 +1202,7 @@
         "label_x": 255,
         "label_y": 165,
         "label_width": 369,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "text_alignment": "left",
         "label_alpha": 0
@@ -1219,7 +1219,7 @@
         "label_x": 260,
         "label_y": 215,
         "label_width": 369,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "text_alignment": "left",
         "label_alpha": 0
@@ -1236,7 +1236,7 @@
         "label_x": 260,
         "label_y": 250,
         "label_width": 369,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "text_alignment": "left",
         "label_alpha": 0
@@ -1257,7 +1257,7 @@
         "label_x": 10,
         "label_y": 1,
         "label_width": 600,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "text_underline": 1,
         "label_alpha": 1,
@@ -1279,7 +1279,7 @@
         "label_y": 190,
         "label_width": 160,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "text_alignment": "center",
         "label_alpha": 1
@@ -1297,7 +1297,7 @@
         "label_y": 190,
         "label_width": 255,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "text_alignment": "center",
         "label_alpha": 1
@@ -1315,7 +1315,7 @@
         "label_y": 190,
         "label_width": 220,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "text_alignment": "center",
         "label_alpha": 1
@@ -1333,7 +1333,7 @@
         "label_y": 263,
         "label_width": 220,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "text_alignment": "center",
         "label_alpha": 1
@@ -1363,7 +1363,7 @@
         "label_y": 0,
         "label_width": 620,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "text_alignment": "center",
         "text_underline": 1,
@@ -1384,7 +1384,7 @@
         "label_y": 70,
         "label_width": 280,
         "label_background_color": "transparent",
-        "border_width": 1,
+        "label_border_width": 1,
         "text_size": 13,
         "text_alignment": "left",
         "label_alpha": 1,
@@ -1404,7 +1404,7 @@
         "label_y": 80,
         "label_width": 220,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "text_alignment": "left",
         "label_alpha": 1,
@@ -1424,7 +1424,7 @@
         "label_y": 255,
         "label_width": 220,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "text_alignment": "left",
         "label_alpha": 1,
@@ -1444,7 +1444,7 @@
         "label_y": 240,
         "label_width": 280,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "text_alignment": "left",
         "label_alpha": 1,
@@ -1467,7 +1467,7 @@
         "label_x": 10,
         "label_y": 60,
         "label_width": 600,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 24,
         "text_underline": 1,
         "label_alpha": 1
@@ -1478,7 +1478,7 @@
         "label_x": 10,
         "label_y": 130,
         "label_width": 600,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 20,
         "text_underline": 1,
         "label_alpha": 1
@@ -1499,7 +1499,7 @@
         "label_x": 10,
         "label_y": 1,
         "label_width": 600,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "text_underline": 1,
         "label_alpha": 1,
@@ -1512,7 +1512,7 @@
         "label_x": 10,
         "label_y": 35,
         "label_width": 600,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "label_alpha": 1,
         "picture_src": "bio_000002",
@@ -1533,7 +1533,7 @@
         "label_y": 200,
         "label_width": 210,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 1
       },
@@ -1550,7 +1550,7 @@
         "label_y": 200,
         "label_width": 210,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 1
       },
@@ -1567,7 +1567,7 @@
         "label_y": 186,
         "label_width": 200,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 1
       }
@@ -1587,7 +1587,7 @@
         "label_x": 10,
         "label_y": 1,
         "label_width": 600,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 15,
         "text_underline": 1,
         "label_alpha": 1,
@@ -1600,7 +1600,7 @@
         "label_x": 10,
         "label_y": 145,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "label_alpha": 1
       }
@@ -1618,7 +1618,7 @@
         "label_x": 10,
         "label_y": 70,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "label_alpha": 1
       },
@@ -1634,7 +1634,7 @@
         "label_x": 32,
         "label_y": 175,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "label_alpha": 1
       },
@@ -1650,7 +1650,7 @@
         "label_x": 240,
         "label_y": 175,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "label_alpha": 1
       },
@@ -1666,7 +1666,7 @@
         "label_x": 10,
         "label_y": 240,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "label_alpha": 1
       },
@@ -1682,7 +1682,7 @@
         "label_x": 32,
         "label_y": 270,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "label_alpha": 1
       }
@@ -1702,7 +1702,7 @@
         "label_x": 10,
         "label_y": 1,
         "label_width": 600,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 15,
         "text_underline": 1,
         "label_alpha": 1,
@@ -1715,7 +1715,7 @@
         "label_x": 10,
         "label_y": 145,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "label_alpha": 1
       }
@@ -1733,7 +1733,7 @@
         "label_x": 10,
         "label_y": 76,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "label_alpha": 1
       },
@@ -1749,7 +1749,7 @@
         "label_x": 34,
         "label_y": 175,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "label_alpha": 1
       },
@@ -1765,7 +1765,7 @@
         "label_x": 240,
         "label_y": 175,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "label_alpha": 1
       },
@@ -1781,7 +1781,7 @@
         "label_x": 10,
         "label_y": 240,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "label_alpha": 1
       },
@@ -1797,7 +1797,7 @@
         "label_x": 34,
         "label_y": 270,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "label_alpha": 1
       }
@@ -1817,7 +1817,7 @@
         "label_x": 1,
         "label_y": 0,
         "label_width": 618,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 15,
         "text_underline": 1,
         "label_alpha": 1,
@@ -1831,7 +1831,7 @@
         "label_y": 350,
         "label_width": 230,
         "label_background_color": "#ffc8dd",
-        "border_width": 2,
+        "label_border_width": 2,
         "text_size": 15,
         "text_underline": 0,
         "label_alpha": 1
@@ -1850,7 +1850,7 @@
         "label_x": 1,
         "label_y": 33,
         "label_width": 618,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "text_underline": 0,
         "label_alpha": 1
@@ -1867,7 +1867,7 @@
         "label_x": 209,
         "label_y": 315,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "text_alignment": "right",
         "label_alpha": 1,
@@ -1886,7 +1886,7 @@
         "label_x": 235,
         "label_y": 363,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "text_alignment": "right",
         "label_alpha": 1,
@@ -1905,7 +1905,7 @@
         "label_x": 232,
         "label_y": 401,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "text_alignment": "right",
         "label_alpha": 1,
@@ -1928,7 +1928,7 @@
         "label_x": 10,
         "label_y": 0,
         "label_width": 600,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 15,
         "text_underline": 1,
         "label_alpha": 1,
@@ -1949,7 +1949,7 @@
         "label_x": 0,
         "label_y": 175,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "text_alignment": "left",
         "label_alpha": 1
@@ -1966,7 +1966,7 @@
         "label_x": 0,
         "label_y": 210,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "text_alignment": "left",
         "label_alpha": 1
@@ -1983,7 +1983,7 @@
         "label_x": 0,
         "label_y": 245,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "text_alignment": "left",
         "label_alpha": 1
@@ -2000,7 +2000,7 @@
         "label_x": 0,
         "label_y": 280,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "text_alignment": "left",
         "label_alpha": 1
@@ -2021,7 +2021,7 @@
         "label_x": 40,
         "label_y": 1,
         "label_width": 860,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "text_underline": 1,
         "label_alpha": 1,
@@ -2042,7 +2042,7 @@
         "label_x": 470,
         "label_y": 70,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 1,
         "picture_src": "bio_000001_2",
@@ -2060,7 +2060,7 @@
         "label_x": 1,
         "label_y": 335,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 1,
         "picture_src": "bio_000001_3",
@@ -2082,7 +2082,7 @@
         "label_x": 10,
         "label_y": 1,
         "label_width": 600,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 15,
         "text_underline": 1,
         "label_alpha": 1,
@@ -2103,7 +2103,7 @@
         "label_x": 290,
         "label_y": 50,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "label_alpha": 1
       },
@@ -2119,7 +2119,7 @@
         "label_x": 305,
         "label_y": 80,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "label_alpha": 1
       },
@@ -2135,7 +2135,7 @@
         "label_x": 305,
         "label_y": 210,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 14,
         "label_alpha": 1,
         "picture_src": "bio_000005_2",
@@ -2157,7 +2157,7 @@
         "label_x": 10,
         "label_y": 1,
         "label_width": 600,
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 15,
         "text_underline": 1,
         "label_alpha": 1,
@@ -2178,7 +2178,7 @@
         "label_x": 70,
         "label_y": 200,
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 1,
         "picture_src": "bio_000005",

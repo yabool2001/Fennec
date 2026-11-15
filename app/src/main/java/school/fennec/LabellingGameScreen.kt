@@ -293,8 +293,8 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
                     .let { if (it == 0.0) qObj.optDouble("label_widht", 0.0) else it }
                     .toFloat()
 
-                val borderWidthVal = if (qObj.has("border_width")) {
-                    qObj.optDouble("border_width", 1.5).toFloat()
+                val borderWidthVal = if (qObj.has("label_border_width")) {
+                    qObj.optDouble("label_border_width", 1.5).toFloat()
                 } else 1.5f
 
                 val textUnderlineVal = qObj.optInt("text_underline", 0)
@@ -361,8 +361,8 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
                     .let { if (it == 0.0) dObj.optDouble("label_widht", 0.0) else it }
                     .toFloat()
 
-                val borderWidthVal = if (dObj.has("border_width")) {
-                    dObj.optDouble("border_width", 1.5).toFloat()
+                val borderWidthVal = if (dObj.has("label_border_width")) {
+                    dObj.optDouble("label_border_width", 1.5).toFloat()
                 } else 1.5f
 
                 val textUnderlineVal = dObj.optInt("text_underline", 0)

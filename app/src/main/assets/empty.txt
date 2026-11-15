@@ -36,7 +36,7 @@ Przykład w id=14
         "label_y": [370,370],
         "label_alignment": "center",
         "label_background_color": "transparent",
-        "border_width": 0,
+        "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 1,
         "picture_src": "bio_000013_2",

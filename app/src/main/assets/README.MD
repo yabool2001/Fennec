@@ -9,7 +9,7 @@
 | label_x (lub label_px_x) | Float | 0.0 | Pozycja pozioma (oś X) lewego górnego rogu etykiety względem canvas_width (np. 0.0 – 819.0). |
 | label_y (lub label_px_y) | Float | 0.0 | Pozycja pionowa (oś Y) lewego górnego rogu etykiety względem canvas_height (np. 0.0 – 596.0). |
 | label_width (lub label_widht) | Float | 0.0 (auto) | Szerokość ramki względem canvas_width. Wartość 0.0 lub brak parametru dopasowuje szerokość do tekstu. |
-| border_width | Float | 1.5 | Grubość obramowania etykiety w dp (0.0 wyłącza ramkę; dowolna liczba >= 0). |
+| label_border_width | Float | 1.5 | Grubość obramowania etykiety w dp (0.0 wyłącza ramkę; dowolna liczba >= 0). |
 | label_background_color | String | #FFFFFF | Kolor tła etykiety: kod HEX ("#RRGGBB", "#AARRGGBB", "0xRRGGBB") lub "transparent" (brak tła i ramki). |
 | label_alpha | Float | 0.85 (tło) / 1.0 (ramka) | Przezroczystość tła oraz ramki etykiety od 0.0 (całkowicie przezroczysta, ukrywa też ramkę) do 1.0 (pełne krycie). |
 | text_size | Float | 13.0 | Rozmiar czcionki tekstu w sp (np. 11.0, 13.0, 16.0). |
