@@ -1007,7 +1007,9 @@
         "label_border_width": 0,
         "text_size": 13,
         "text_underline": 1,
-        "label_alpha": 1
+        "label_alpha": 1,
+        "picture_src": "bio_000014_0",
+        "picture_alpha": 1
       }
     ],
     "answers": [
@@ -1026,8 +1028,8 @@
         "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 1,
-        "picture_src": "bio_lekcje_id_11_01_1",
-        "picture_alpha": 0.60
+        "picture_src": "bio_000014_1",
+        "picture_alpha": 1
       },
       {
         "id": 2,
@@ -1044,8 +1046,8 @@
         "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 1,
-        "picture_src": "bio_lekcje_id_11_01_1",
-        "picture_alpha": 0.60
+        "picture_src": "bio_000014_2",
+        "picture_alpha": 1
       },
       {
         "id": 3,
@@ -1062,27 +1064,27 @@
         "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 1,
-        "picture_src": "bio_lekcje_id_11_01_1",
-        "picture_alpha": 0.60
+        "picture_src": "bio_000014_3",
+        "picture_alpha": 1
       },
       {
         "id": 4,
         "text": "4. Po zjedzeniu zakażonego kału przez świnię, w jej mięśniach rozwijają się wągry",
-        "empty": "4. Po zjedzeniu zakażonego kału przez świnię, w jej mięśniach rozwijają się [. . . . .]",
-        "hint1": "4. Po zjedzeniu zakażonego kału przez świnię, w jej mięśniach rozwijają się [wą . . .]",
-        "hint2": "4. Po zjedzeniu zakażonego kału przez świnię, w jej mięśniach rozwijają się [wąg . y]",
-        "answer": "wągry",
-        "accepted_answers": ["wągry"],
+        "empty": "4. Po zjedzeniu zakażonego kału przez świnię, w jej [. . . . . . . . .] rozwijają się wągry",
+        "hint1": "4. Po zjedzeniu zakażonego kału przez świnię, w jej [mięś . . . . .] rozwijają się wągry",
+        "hint2": "4. Po zjedzeniu zakażonego kału przez świnię, w jej mięśn . ach rozwijają się wągry",
+        "answer": "mięśniach",
+        "accepted_answers": ["mięśniach","mięśniu"],
         "status": 0,
-        "label_x": 10,
+        "label_x": 0,
         "label_y": 280,
-        "label_width": 320,
+        "label_width": 330,
         "label_background_color": "transparent",
         "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 1,
-        "picture_src": "bio_lekcje_id_11_01_1",
-        "picture_alpha": 0.60
+        "picture_src": "bio_000014_4",
+        "picture_alpha": 1
       }
     ]
   },
