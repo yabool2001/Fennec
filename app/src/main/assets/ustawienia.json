@@ -10,37 +10,37 @@
     },
     {
       "value": 2,
-      "color": "#00B4D8"
+      "color": "#00bbf9"
     },
     {
       "value": 3,
       "color": "#4CAF50"
     }
   ],
-  "answer_text": [
+  "answer": [
     {
       "answer_status": 0,
-      "color": "#f15bb5"
+      "text_color": "#f15bb5"
     },
     {
       "answer_status": 1,
-      "color": "#f15bb5"
+      "text_color": "#f15bb5"
     },
     {
       "answer_status": 2,
-      "color": "#f15bb5"
+      "text_color": "#f15bb5"
     },
     {
       "answer_status": 3,
-      "color": "#f15bb5"
+      "text_color": "#c65ccd"
     },
     {
       "answer_status": 4,
-      "color": "#f15bb5"
+      "text_color": "#9b5de5"
     },
     {
       "answer_status": 5,
-      "color": "#FFFFFF"
+      "text_color": "#000000"
     }
   ],
   "distinction_time": 10

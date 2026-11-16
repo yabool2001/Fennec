@@ -176,6 +176,39 @@ fun loadStatusColors(context: Context): Map<Int, Color> {
     }
 }
 
+fun loadAnswerTextColors(context: Context): Map<Int, Color> {
+    val jsonString = try {
+        context.assets.open("ustawienia.json").bufferedReader().use { it.readText() }
+    } catch (_: Exception) {
+        return emptyMap()
+    }
+
+    return try {
+        val obj = JSONObject(jsonString)
+        val array = obj.optJSONArray("answer") ?: return emptyMap()
+        val map = mutableMapOf<Int, Color>()
+
+        for (i in 0 until array.length()) {
+            val item = array.optJSONObject(i) ?: continue
+            val statusVal = item.optInt("answer_status", -1)
+            val colorStr = item.optString("text_color", "")
+            if (statusVal != -1 && colorStr.isNotEmpty()) {
+                val hex = if (colorStr.startsWith("0x") || colorStr.startsWith("0X")) {
+                    "#" + colorStr.substring(2)
+                } else if (!colorStr.startsWith("#")) {
+                    "#$colorStr"
+                } else colorStr
+                try {
+                    map[statusVal] = Color(android.graphics.Color.parseColor(hex))
+                } catch (_: Exception) {}
+            }
+        }
+        map
+    } catch (_: Exception) {
+        emptyMap()
+    }
+}
+
 fun loadDistinctionTime(context: Context): Int {
     val jsonString = try {
         context.assets.open("ustawienia.json").bufferedReader().use { it.readText() }
@@ -539,7 +572,10 @@ fun LabellingGameScreen(
     }
 
     val statusColors = remember { loadStatusColors(context) }
-    val maxStatusValue = 5
+    val answerTextColors = remember { loadAnswerTextColors(context) }
+    val maxStatusValue = remember(answerTextColors) {
+        answerTextColors.keys.maxOrNull() ?: 5
+    }
     val distinctionTimeSeconds = remember { loadDistinctionTime(context) }
 
     val rawLessons = remember(databaseFilename) {
@@ -865,6 +901,12 @@ fun LabellingGameScreen(
                         Modifier.border(borderWidthDp, baseBorderColor.copy(alpha = borderAlpha), RoundedCornerShape(8.dp))
                     } else Modifier
 
+                    val questionTextColor = if (question.status >= maxStatusValue && question.textColor != null) {
+                        question.textColor
+                    } else {
+                        answerTextColors[question.status] ?: Color.Black
+                    }
+
                     question.labelPositions.forEach { (pxX, pxY) ->
                         val labelOffsetX = containerWidth * (pxX / canvasWidthRatio)
                         val labelOffsetY = containerHeight * (pxY / canvasHeightRatio)
@@ -895,7 +937,7 @@ fun LabellingGameScreen(
                             }
                             Text(
                                 text = labelText,
-                                color = question.textColor ?: (if (isGuessed) Color(0xFF001F3F) else Color(0xFF000000)),
+                                color = questionTextColor,
                                 fontWeight = FontWeight.ExtraBold,
                                 fontSize = question.textSizeSp.sp,
                                 lineHeight = (question.textSizeSp * 1.15f).sp,
