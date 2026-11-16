@@ -607,10 +607,11 @@ fun LabellingGameScreen(
 
     var guessedItems by remember(currentLesson) { mutableStateOf(knownItemIds) }
     var lastGuessedItem by remember(currentLesson) { mutableStateOf<Int?>(null) }
+    var pulseTrigger by remember(currentLesson) { mutableIntStateOf(0) }
     var inputText by remember(currentLesson) { mutableStateOf("") }
     var hintLevel by remember(currentLesson) { mutableIntStateOf(0) } // 0: empty, 1: hint1, 2: hint2
 
-    LaunchedEffect(lastGuessedItem) {
+    LaunchedEffect(lastGuessedItem, pulseTrigger) {
         if (lastGuessedItem != null && distinctionTimeSeconds > 0) {
             delay(distinctionTimeSeconds * 1000L)
             lastGuessedItem = null
@@ -919,6 +920,10 @@ fun LabellingGameScreen(
                                 .then(boxWidthMod)
                                 .background(boxBgColor, RoundedCornerShape(8.dp))
                                 .then(borderMod)
+                                .clickable {
+                                    lastGuessedItem = question.id
+                                    pulseTrigger++
+                                }
                                 .padding(horizontal = 8.dp, vertical = 4.dp),
                             contentAlignment = parseBoxAlignment(question.textAlignment)
                         ) {
@@ -1138,6 +1143,7 @@ fun LabellingGameScreen(
                 if (match != null) {
                     guessedItems = guessedItems + match.id
                     lastGuessedItem = match.id
+                    pulseTrigger++
 
                     val oldStatus = match.status
                     val proposedStatus = when (hintLevel) {
