@@ -1038,7 +1038,7 @@
         "hint1": "2. W jelicie cienkim\nczłowieka rozwija\nsię [dor . . . .\ntasi . . . . .]",
         "hint2": "2. W jelicie cienkim\nczłowieka rozwija\nsię [doro . ły\ntasie . iec]",
         "answer": "dorosły tasiemiec",
-        "accepted_answers": ["dorosoły tasiemiec"],
+        "accepted_answers": ["dorosły tasiemiec"],
         "status": 0,
         "label_x": 600,
         "label_y": 100,
@@ -1139,6 +1139,17 @@
         "text_underline": 1,
         "picture_src": "bio_000010",
         "picture_alpha": 1
+      },
+      {
+        "id": 2,
+        "text": "Ich przedstawicielem jest m.in.: owsik ludzki",
+        "label_x": 1,
+        "label_y": 66,
+        "label_width": 618,
+        "label_border_width": 0,
+        "text_size": 14,
+        "text_alignment": "center",
+        "label_alpha": 0
       }
     ],
     "answers": [
@@ -1160,23 +1171,6 @@
       },
       {
         "id": 2,
-        "text": "Ich przedstawicielem jest m.in.: Owsik ludzki",
-        "empty": "Ich przedstawicielem jest m.in.: [. . . . .  . . . . . .]",
-        "hint1": "[Ow . . .  lu . . . .]",
-        "hint2": "[Ows . k  ludz . i]",
-        "answer": "owsik ludzki",
-        "accepted_answers": ["owsik ludzki","owsiki ludzkie"],
-        "status": 0,
-        "label_x": 1,
-        "label_y": 66,
-        "label_width": 618,
-        "label_border_width": 0,
-        "text_size": 14,
-        "text_alignment": "left",
-        "label_alpha": 0
-      },
-      {
-        "id": 3,
         "text": "‣ Zarażenie następuje przez połknięcie jaj pasożyta,",
         "empty": "‣ Zarażenie następuje przez połknięcie [. . .] pasożyta,",
         "hint1": "‣ Zarażenie następuje przez połknięcie [j . .] pasożyta,",
@@ -1193,7 +1187,7 @@
         "label_alpha": 0
       },
       {
-        "id": 4,
+        "id": 3,
         "text": "przeniesionych do ust na brudnych rękach",
         "empty": "przeniesionych do ust na brudnych [. . . . . .]",
         "hint1": "przeniesionych do ust na brudnych [rę . . . .]",
@@ -1210,7 +1204,7 @@
         "label_alpha": 0
       },
       {
-        "id": 5,
+        "id": 4,
         "text": "lub przedmiotach.",
         "empty": "lub [. . . . . . . . . . . .].",
         "hint1": "lub [przedm . . . . . .].",
@@ -1227,7 +1221,7 @@
         "label_alpha": 0
       },
       {
-        "id": 6,
+        "id": 5,
         "text": "‣ Zarażenia unikniesz, myjąc ręce i przyniesione z podwórza zabawki.",
         "empty": "‣ Zarażenia unikniesz, [. . . . .] ręce i przyniesione z podwórza zabawki.",
         "hint1": "‣ Zarażenia unikniesz, [my . . .] ręce i przyniesione z podwórza zabawki.",
@@ -1271,11 +1265,11 @@
       {
         "id": 1,
         "text": "we wszystkich typach środowisk wodnych i lądowych",
-        "empty": "we [. . . . . . . . . .] typach środowisk wodnych i lądowych",
-        "hint1": "we [wszy . . . . . .] typach środowisk wodnych i lądowych",
-        "hint2": "we [wszyst . ich] typach środowisk wodnych i lądowych",
-        "answer": "wszystkich",
-        "accepted_answers": ["wszystkich","wszystkie"],
+        "empty": "we wszystkich typach środowisk [. . . . . . .  .  . . . . . . . .]",
+        "hint1": "we wszystkich typach środowisk [wod . . . .  .  lądo . . . .]",
+        "hint2": "we wszystkich typach środowisk [wodn . ch i lądow . ch]",
+        "answer": "wodnych i lądowych",
+        "accepted_answers": ["wodnych i lądowych"],
         "status": 0,
         "label_x": 0,
         "label_y": 190,
@@ -1293,47 +1287,11 @@
         "hint1": "w organizmach [roś. . . .  i  zwie . . . .], wywołując u nich choroby",
         "hint2": "w organizmach [roś . in i zwierz . t], wywołując u nich choroby",
         "answer": "roślin i zwierząt",
-        "accepted_answers": ["roślin i zwierząt","rośliny i zwierzęta"],
+        "accepted_answers": ["roślin i zwierząt","zwierząt i roślin","rośliny i zwierzęta","zwierzęta i rośliny"],
         "status": 0,
         "label_x": 151,
         "label_y": 190,
         "label_width": 255,
-        "label_background_color": "transparent",
-        "label_border_width": 0,
-        "text_size": 13,
-        "text_alignment": "center",
-        "label_alpha": 1
-      },
-      {
-        "id": 3,
-        "text": "Ciała nicieni są okryte grubym oskórkiem,",
-        "empty": "Ciała nicieni są okryte [. . . . . .  . . . . . . . . .],",
-        "hint1": "Ciała nicieni są okryte [gr . . . .  osk . . . . . .],",
-        "hint2": "Ciała nicieni są okryte [gru . ym oskór . iem],",
-        "answer": "grubym oskórkiem",
-        "accepted_answers": ["grubym oskórkiem","grubymi oskórkami", "gruby oskórek","grube oskórki"],
-        "status": 0,
-        "label_x": 410,
-        "label_y": 190,
-        "label_width": 220,
-        "label_background_color": "transparent",
-        "label_border_width": 0,
-        "text_size": 13,
-        "text_alignment": "center",
-        "label_alpha": 1
-      },
-      {
-        "id": 4,
-        "text": "odpornym na uszkodzenia i działanie szkodlich substancji, np. w jelitach.",
-        "empty": "[. . . . . . . .] na uszkodzenia i działanie szkodlich substancji, np. w jelitach.",
-        "hint1": "[odp . . . . .] na uszkodzenia i działanie szkodlich substancji, np. w jelitach.",
-        "hint2": "[odpor . ym] na uszkodzenia i działanie szkodlich substancji, np. w jelitach.",
-        "answer": "odpornym",
-        "accepted_answers": ["odpornym","odporne"],
-        "status": 0,
-        "label_x": 410,
-        "label_y": 263,
-        "label_width": 220,
         "label_background_color": "transparent",
         "label_border_width": 0,
         "text_size": 13,
@@ -1344,6 +1302,67 @@
   },
   {
     "id": 19,
+    "title": "NICIENIE - Budowa ciała",
+    "task": "Uzupełnij 2 stwierdzenia",
+    "working_area_background_color": "#FFFFFF",
+    "canvas_width": 620,
+    "canvas_height": 450,
+    "descriptions": [
+      {
+        "id": 1,
+        "text": "Nicienie żyją:",
+        "label_x": 10,
+        "label_y": 1,
+        "label_width": 600,
+        "label_border_width": 0,
+        "text_size": 14,
+        "text_underline": 1,
+        "label_alpha": 1,
+        "picture_src": "bio_000011",
+        "picture_alpha": 1
+      }
+    ],
+    "answers": [
+      {
+        "id": 1,
+        "text": "Ciała nicieni są okryte grubym oskórkiem,",
+        "empty": "Ciała nicieni są okryte [. . . . . .  . . . . . . . . .],",
+        "hint1": "Ciała nicieni są okryte [gr . . . .  osk . . . . . .],",
+        "hint2": "Ciała nicieni są okryte [gru . ym oskór . iem],",
+        "answer": "grubym oskórkiem",
+        "accepted_answers": ["grubym oskórkiem","grubymi oskórkami", "gruby oskórek","grube oskórki"],
+        "status": 0,
+        "label_x": 390,
+        "label_y": 190,
+        "label_width": 230,
+        "label_background_color": "transparent",
+        "label_border_width": 0,
+        "text_size": 13,
+        "text_alignment": "center",
+        "label_alpha": 1
+      },
+      {
+        "id": 2,
+        "text": "odpornym na uszkodzenia i działanie szkodlich substancji, np. w jelitach.",
+        "empty": "[. . . . . . . .] na uszkodzenia i działanie szkodlich substancji, np. w jelitach.",
+        "hint1": "[odp . . . . .] na uszkodzenia i działanie szkodlich substancji, np. w jelitach.",
+        "hint2": "[odpor . ym] na uszkodzenia i działanie szkodlich substancji, np. w jelitach.",
+        "answer": "odpornym",
+        "accepted_answers": ["odpornym","odporne"],
+        "status": 0,
+        "label_x": 390,
+        "label_y": 290,
+        "label_width": 230,
+        "label_background_color": "transparent",
+        "label_border_width": 0,
+        "text_size": 13,
+        "text_alignment": "center",
+        "label_alpha": 1
+      }
+    ]
+  },
+  {
+    "id": 20,
     "title": "NICIENIE - Środowisko życia",
     "task": "Uzupełnij 3 stwierdzenia",
     "working_area_background_color": "#FFFFFF",
@@ -1376,9 +1395,9 @@
       {
         "id": 2,
         "text": "1. Zakażenie: Niewidoczne gołym okiem jaja owsika z dłoni zostają przeniesione do jamy ustnej i połknięte.",
-        "empty": "1. Zakażenie: Niewidoczne gołym okiem jaja owsika z dłoni zostają przeniesione do jamy ustnej i [. . . . . . . . .].",
-        "hint1": "1. Zakażenie: Niewidoczne gołym okiem jaja owsika z dłoni zostają przeniesione do jamy ustnej i [poł . . . . . .].",
-        "hint2": "1. Zakażenie: Niewidoczne gołym okiem jaja owsika z dłoni zostają przeniesione do jamy ustnej i [połkni . te].",
+        "empty": "1. Zakażenie: Niewidoczne gołym okiem jaja owsika z [. . . . .] zostają przeniesione do jamy ustnej i .",
+        "hint1": "1. Zakażenie: Niewidoczne gołym okiem jaja owsika z [dł . . .] zostają przeniesione do jamy ustnej i [poł . . . . . .].",
+        "hint2": "1. Zakażenie: Niewidoczne gołym okiem jaja owsika z [dło . i] zostają przeniesione do jamy ustnej i [połkni . te].",
         "answer": "połknięte",
         "accepted_answers": ["połknięte","połknąć","zjedzone","zjeść"],
         "status": 0,
@@ -1395,12 +1414,12 @@
       },
       {
         "id": 3,
-        "text": "2. Z ust jaja wędrują w dół układu pokarmowego.",
-        "empty": "2. Z ust jaja wędrują w dół układu [. . . . . . . . . . .].",
-        "hint1": "2. Z ust jaja wędrują w dół układu [poka . . . . . . .].",
-        "hint2": "2. Z ust jaja wędrują w dół układu [pokarmo . ego].",
-        "answer": "jelit",
-        "accepted_answers": ["jelit","jelita","jelito"],
+        "text": "2. Połknięte jaja wędrują w dół układu pokarmowego.",
+        "empty": "2. [. . . . . . . . .] jaja wędrują w dół układu pokarmowego.",
+        "hint1": "2. [Poł . . . . . .] jaja wędrują w dół układu pokarmowego.",
+        "hint2": "2. [Połkni . te] jaja wędrują w dół układu pokarmowego.",
+        "answer": "Połknięte",
+        "accepted_answers": ["połknięte","połknięcie","połknąć"],
         "status": 0,
         "label_x": 400,
         "label_y": 80,
@@ -1456,7 +1475,7 @@
     ]
   },
   {
-    "id": 20,
+    "id": 21,
     "title": "PIERŚCIENICE",
     "task": "",
     "working_area_background_color": "#FFFFFF",
@@ -1488,7 +1507,7 @@
     ]
   },
   {
-    "id": 21,
+    "id": 22,
     "title": "PIERŚCIENICE - Środowisko życia",
     "task": "Uzupełnij 3 stwierdzenia",
     "working_area_background_color": "#FFFFFF",
@@ -1576,7 +1595,7 @@
     ]
   },
   {
-    "id": 22,
+    "id": 23,
     "title": "PIERŚCIENICE - Budowa ciała (cz. 1)",
     "task": "Uzupełnij stwierdzenia",
     "working_area_background_color": "#FFFFFF",
@@ -1691,7 +1710,7 @@
     ]
   },
   {
-    "id": 23,
+    "id": 24,
     "title": "PIERŚCIENICE - Budowa ciała (cz. 2)",
     "task": "Uzupełnij 2 stwierdzenia",
     "working_area_background_color": "#FFFFFF",
@@ -1806,7 +1825,7 @@
     ]
   },
   {
-    "id": 24,
+    "id": 25,
     "title": "PIERŚCIENICE - Nereida różnokolorowa",
     "task": "Uzupełnij stwierdzenia",
     "working_area_background_color": "#FFFFFF",
@@ -1917,7 +1936,7 @@
     ]
   },
   {
-    "id": 25,
+    "id": 26,
     "title": "PIERŚCIENICE - Pijawki",
     "task": "Uzupełnij",
     "working_area_background_color": "#FFFFFF",
@@ -2010,7 +2029,7 @@
     ]
   },
   {
-    "id": 26,
+    "id": 27,
     "title": "Uzupełnij informacje o budowie dźdźownicy",
     "task": "Uzupełnij 3 informacje",
     "working_area_background_color": "#FFFFFF",
@@ -2071,7 +2090,7 @@
     ]
   },
   {
-    "id": 27,
+    "id": 28,
     "title": "Szczegóły budowy ciała dżdżownicy",
     "task": "Uzupełnij 2 stwierdzenia",
     "working_area_background_color": "#FFFFFF",
@@ -2095,7 +2114,7 @@
     "answers": [
       {
         "id": 1,
-        "text": "Cienki oskórek pokryty",
+        "text": "Cienki oskórek",
         "empty": "Cienki [. . . . . . .] pokryty",
         "hint1": "Cienki [osk . . . .] pokryty",
         "hint2": "Cienki [oskó . ek] pokryty",
@@ -2111,12 +2130,12 @@
       },
       {
         "id": 2,
-        "text": "warstwą śluzu.",
-        "empty": "warstwą [. . . . .].",
-        "hint1": "warstwą [śl . . .].",
-        "hint2": "warstwą [ślu . u].",
-        "answer": "śluz",
-        "accepted_answers": ["śluzu","śluz"],
+        "text": "pokryty warstwą śluzu.",
+        "empty": "pokryty warstwą [. . . . .].",
+        "hint1": "pokryty warstwą [śl . . .].",
+        "hint2": "pokryty warstwą [ślu . u].",
+        "answer": "śluzu",
+        "accepted_answers": ["śluzu"],
         "status": 0,
         "label_x": 305,
         "label_y": 80,
@@ -2146,7 +2165,7 @@
     ]
   },
   {
-    "id": 28,
+    "id": 29,
     "title": "Szczegóły budowy ciała pierścienic",
     "task": "Uzupełnij 2 stwierdzenia",
     "working_area_background_color": "#FFFFFF",
