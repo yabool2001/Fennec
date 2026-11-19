@@ -11,7 +11,8 @@
     "rozdzial": [
       {
         "id": 1,
-        "tytul": "I. Świat zwierząt",
+        "rozdzial": "I",
+        "tytul": "Świat zwierząt",
         "ulubiony": 0,
         "res_filename": "bio_ne_6_884_2_2019_1",
         "fundamenty":
@@ -29,7 +30,8 @@
       },
       {
         "id": 2,
-        "tytul": "II. Od parzydełkowców do pierścienic",
+        "rozdzial": "II",
+        "tytul": "Od parzydełkowców do pierścienic",
         "ulubiony": 1,
         "res_filename": "bio_ne_6_884_2_2019_2",
         "fundamenty":
@@ -47,17 +49,20 @@
       },
       {
         "id": 3,
-        "tytul": "III. Stawonogi i mięczaki",
+        "rozdzial": "III",
+        "tytul": "Stawonogi i mięczaki",
         "res_filename": "bio_ne_6_884_2_2019_3"
       },
       {
         "id": 4,
-        "tytul": "IV. Kręgowce zmiennocieplne",
+        "rozdzial": "IV",
+        "tytul": "Kręgowce zmiennocieplne",
         "res_filename": "bio_ne_6_884_2_2019_4"
       },
       {
         "id": 5,
-        "tytul": "V. Kręgowce stałocieplne",
+        "rozdzial": "V",
+        "tytul": "Kręgowce stałocieplne",
         "res_filename": "bio_ne_6_884_2_2019_5"
       }
     ]
@@ -73,27 +78,32 @@
       {
         "id": 1,
         "ulubiony": 0,
-        "tytul": "I. Królestwo zwierząt"
+        "rozdzial": "I",
+        "tytul": "Królestwo zwierząt"
       },
       {
         "id": 2,
         "ulubiony": 0,
-        "tytul": "II. Zwierzeta bezkręgowe: płazińce, nicienie, pierścienice"
+        "rozdzial": "II",
+        "tytul": "Zwierzeta bezkręgowe: płazińce, nicienie, pierścienice"
       },
       {
         "id": 3,
         "ulubiony": 0,
-        "tytul": "III. Zwierzęta bezkręgowe: stawonogi i mięczaki"
+        "rozdzial": "III",
+        "tytul": "Zwierzęta bezkręgowe: stawonogi i mięczaki"
       },
       {
         "id": 4,
         "ulubiony": 0,
-        "tytul": "IV. Zwierzęta kręgowe: ryby, płazy, gady"
+        "rozdzial": "IV",
+        "tytul": "Zwierzęta kręgowe: ryby, płazy, gady"
       },
       {
         "id": 5,
         "ulubiony": 0,
-        "tytul": "V. Zwierzęta kręgowe: ptaki i ssaki"
+        "rozdzial": "V",
+        "tytul": "Zwierzęta kręgowe: ptaki i ssaki"
       }
     ]
   },
@@ -107,27 +117,32 @@
     "rozdzial": [
       {
         "id": 1,
-        "tytul": "I. Poznajemy świat zwierząt",
+        "rozdzial": "I",
+        "tytul": "Poznajemy świat zwierząt",
         "ulubiony": 0
       },
       {
         "id": 2,
-        "tytul": "II. Bezkręgowce, część 1",
+        "rozdzial": "II",
+        "tytul": "Bezkręgowce, część 1",
         "ulubiony": 0
       },
       {
         "id": 3,
-        "tytul": "III. Bezkręgowce, część 2",
+        "rozdzial": "III",
+        "tytul": "Bezkręgowce, część 2",
         "ulubiony": 0
       },
       {
         "id": 4,
-        "tytul": "IV. Kręgowce, część 1",
+        "rozdzial": "IV",
+        "tytul": "Kręgowce, część 1",
         "ulubiony": 0
       },
       {
         "id": 5,
-        "tytul": "V. Kręgowce, część 2",
+        "rozdzial": "V",
+        "tytul": "Kręgowce, część 2",
         "ulubiony": 0
       }
     ]
@@ -142,22 +157,26 @@
     "rozdzial": [
       {
         "id": 1,
-        "tytul": "1. Bezkręgowce. Od parzydełkowców do pierścienic",
+        "rozdzial": "1",
+        "tytul": "Bezkręgowce. Od parzydełkowców do pierścienic",
         "ulubiony": 0
       },
       {
         "id": 2,
-        "tytul": "2. Bezkręgowce. Stawonogi i mięczaki",
+        "rozdzial": "2",
+        "tytul": "Bezkręgowce. Stawonogi i mięczaki",
         "ulubiony": 0
       },
       {
         "id": 3,
-        "tytul": "3. Kręgowce",
+        "rozdzial": "3",
+        "tytul": "Kręgowce",
         "ulubiony": 0
       },
       {
         "id": 4,
-        "tytul": "4. Zwierzęta wokół nas",
+        "rozdzial": "4",
+        "tytul": "Zwierzęta wokół nas",
         "ulubiony": 0
       }
     ]
@@ -172,22 +191,26 @@
     "rozdzial": [
       {
         "id": 1,
-        "tytul": "I. Współrzędne geograficzne",
+        "rozdzial": "I",
+        "tytul": "Współrzędne geograficzne",
         "ulubiony": 0
       },
       {
         "id": 2,
-        "tytul": "II. Ruchy Ziemi",
+        "rozdzial": "II",
+        "tytul": "Ruchy Ziemi",
         "ulubiony": 0
       },
       {
         "id": 3,
-        "tytul": "III. Środowisko przyrodnicze Europy",
+        "rozdzial": "III",
+        "tytul": "Środowisko przyrodnicze Europy",
         "ulubiony": 0
       },
       {
         "id": 4,
-        "tytul": "IV. Gospodarka Europy",
+        "rozdzial": "IV",
+        "tytul": "Gospodarka Europy",
         "ulubiony": 0
       }
     ]
@@ -202,27 +225,32 @@
     "rozdzial": [
       {
         "id": 1,
-        "tytul": "I. Organizm człowieka. Skóra",
+        "rozdzial": "I",
+        "tytul": "Organizm człowieka. Skóra",
         "ulubiony": 0
       },
       {
         "id": 2,
-        "tytul": "II. Aparat ruchu",
+        "rozdzial": "II",
+        "tytul": "Aparat ruchu",
         "ulubiony": 0
       },
       {
         "id": 3,
-        "tytul": "III. Układ pokarmowy",
+        "rozdzial": "III",
+        "tytul": "Układ pokarmowy",
         "ulubiony": 0
       },
       {
         "id": 4,
-        "tytul": "IV. Układ krążenia",
+        "rozdzial": "IV",
+        "tytul": "Układ krążenia",
         "ulubiony": 0
       },
       {
         "id": 5,
-        "tytul": "V. Układ oddechowy",
+        "rozdzial": "V",
+        "tytul": "Układ oddechowy",
         "ulubiony": 0
       }
     ]
@@ -237,17 +265,20 @@
     "rozdzial": [
       {
         "id": 1,
-        "tytul": "I. Ciało człowieka jako całość",
+        "rozdzial": "I",
+        "tytul": "Ciało człowieka jako całość",
         "ulubiony": 0
       },
       {
         "id": 2,
-        "tytul": "II. Ruch i ochrona ciała",
+        "rozdzial": "II",
+        "tytul": "Ruch i ochrona ciała",
         "ulubiony": 0
       },
       {
         "id": 3,
-        "tytul": "III. Odżywianie i oddychanie",
+        "rozdzial": "III",
+        "tytul": "Odżywianie i oddychanie",
         "ulubiony": 0
       }
     ]
@@ -262,17 +293,20 @@
     "rozdzial": [
       {
         "id": 1,
-        "tytul": "I. Geografia Polski",
+        "rozdzial": "I",
+        "tytul": "Geografia Polski",
         "ulubiony": 0
       },
       {
         "id": 2,
-        "tytul": "II. Rzeźba terenu i skały",
+        "rozdzial": "II",
+        "tytul": "Rzeźba terenu i skały",
         "ulubiony": 0
       },
       {
         "id": 3,
-        "tytul": "III. Klimat i wody Polski",
+        "rozdzial": "III",
+        "tytul": "Klimat i wody Polski",
         "ulubiony": 0
       }
     ]
@@ -287,22 +321,26 @@
     "rozdzial": [
       {
         "id": 1,
-        "tytul": "I. Genetyka",
+        "rozdzial": "I",
+        "tytul": "Genetyka",
         "ulubiony": 0
       },
       {
         "id": 2,
-        "tytul": "II. Ewolucja życia",
+        "rozdzial": "II",
+        "tytul": "Ewolucja życia",
         "ulubiony": 0
       },
       {
         "id": 3,
-        "tytul": "III. Ekologia",
+        "rozdzial": "III",
+        "tytul": "Ekologia",
         "ulubiony": 0
       },
       {
         "id": 4,
-        "tytul": "IV. Ochrona środowiska",
+        "rozdzial": "IV",
+        "tytul": "Ochrona środowiska",
         "ulubiony": 0
       }
     ]
@@ -317,17 +355,20 @@
     "rozdzial": [
       {
         "id": 1,
-        "tytul": "I. Azja",
+        "rozdzial": "I",
+        "tytul": "Azja",
         "ulubiony": 0
       },
       {
         "id": 2,
-        "tytul": "II. Ameryka Północna i Południowa",
+        "rozdzial": "II",
+        "tytul": "Ameryka Północna i Południowa",
         "ulubiony": 0
       },
       {
         "id": 3,
-        "tytul": "III. Afryka i Australia",
+        "rozdzial": "III",
+        "tytul": "Afryka i Australia",
         "ulubiony": 0
       }
     ]
@@ -342,12 +383,14 @@
     "rozdzial": [
       {
         "id": 1,
-        "tytul": "I. Początki epoki nowożytnej",
+        "rozdzial": "I",
+        "tytul": "Początki epoki nowożytnej",
         "ulubiony": 0
       },
       {
         "id": 2,
-        "tytul": "II. Złoty wiek",
+        "rozdzial": "II",
+        "tytul": "Złoty wiek",
         "ulubiony": 0,
         "fundamenty":
         {
@@ -364,22 +407,26 @@
       },
       {
         "id": 3,
-        "tytul": "III. Rzeczpospolita w XVII wieku",
+        "rozdzial": "III",
+        "tytul": "Rzeczpospolita w XVII wieku",
         "ulubiony": 0
       },
       {
         "id": 3,
-        "tytul": "IV. Europa i Ameryka w XVII i XVIII wieku",
+        "rozdzial": "IV",
+        "tytul": "Europa i Ameryka w XVII i XVIII wieku",
         "ulubiony": 0
       },
       {
         "id": 3,
-        "tytul": "V. Ostatnie stulecie I Rzeczypospolitej",
+        "rozdzial": "V",
+        "tytul": "Ostatnie stulecie I Rzeczypospolitej",
         "ulubiony": 0
       },
       {
         "id": 6,
-        "tytul": "VI. Okres nepoleoński",
+        "rozdzial": "VI",
+        "tytul": "Okres nepoleoński",
         "ulubiony": 0
       }
     ]

@@ -163,6 +163,7 @@ fun FennecApp(modifier: Modifier = Modifier) {
 
 data class Chapter(
     val id: Int,
+    val chapterNum: String = "",
     val title: String,
     var isFavorite: Int = 0,
     val resFilename: String?,
@@ -284,6 +285,7 @@ fun loadAllTextbooks(context: Context): List<Textbook> {
             for (j in 0 until chaptersArray.length()) {
                 val chObj = chaptersArray.optJSONObject(j) ?: continue
                 val chId = chObj.optInt("id", j + 1)
+                val chNum = chObj.optString("rozdzial", chId.toString())
                 val chTitle = chObj.optString("tytul", "")
                 val isFav = savedFavorites[Pair(tbTitle, chId)] ?: chObj.optInt("ulubiony", 0)
                 val chResFilename = chObj.optString("res_filename", "")
@@ -325,6 +327,7 @@ fun loadAllTextbooks(context: Context): List<Textbook> {
                 chaptersList.add(
                     Chapter(
                         id = chId,
+                        chapterNum = chNum,
                         title = chTitle,
                         isFavorite = isFav,
                         resFilename = chResFilename.ifEmpty { null },

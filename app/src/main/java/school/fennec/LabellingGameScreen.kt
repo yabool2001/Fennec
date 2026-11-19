@@ -654,28 +654,24 @@ fun LabellingGameScreen(
             .fillMaxSize()
             .imePadding()
             .verticalScroll(scrollState)
-            .padding(16.dp),
+            .padding(
+                start = if (isImeVisible) 8.dp else 16.dp,
+                end = if (isImeVisible) 8.dp else 16.dp,
+                top = if (isImeVisible) 2.dp else 12.dp,
+                bottom = if (isImeVisible) 2.dp else 12.dp
+            ),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+        verticalArrangement = Arrangement.spacedBy(if (isImeVisible) 4.dp else 12.dp)
     ) {
         if (!isImeVisible) {
-            // Block 1 Card (Header info & Favorite Star & Progress)
+            // Header Card (Subject, Class, Chapter, Favorite Star, Progress & Lesson Tiles)
             Card(
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerHigh),
                 shape = RoundedCornerShape(16.dp),
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    // Wiersz 1: Przedmiot | Klasa
-                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                        Text(AppGlobalState.selectedSubject, fontWeight = FontWeight.Bold)
-                        Text("Klasa: ${AppGlobalState.selectedClass}", fontWeight = FontWeight.Bold)
-                    }
-                    // Wiersz 2: Nazwa lekcji
-                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Start) {
-                        Text("Lekcja: ${currentLesson?.title ?: ""}", fontWeight = FontWeight.SemiBold)
-                    }
-                    // Wiersz 3: Gwiazdka ulubionych | Progres
+                Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 10.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    // Wiersz 1: Przedmiot Klasa (lewo) | Rozdział X ★ (środek) | Progres: Y% (prawo)
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween,
@@ -684,38 +680,51 @@ fun LabellingGameScreen(
                         var isStarred by remember(selectedChapter?.id, selectedChapter?.isFavorite) {
                             mutableStateOf(selectedChapter?.isFavorite == 1)
                         }
-                        Icon(
-                            imageVector = Icons.Rounded.Star,
-                            contentDescription = "Ulubione",
-                            tint = if (isStarred) Color(0xFFFFC107) else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.2f),
-                            modifier = Modifier
-                                .size(28.dp)
-                                .clickable {
-                                    isStarred = !isStarred
-                                    val newFav = if (isStarred) 1 else 0
-                                    selectedChapter?.isFavorite = newFav
-                                    if (selectedChapter != null) {
-                                        saveChapterFavorite(
-                                            context = context,
-                                            textbookTitle = AppGlobalState.selectedTextbook?.title ?: "",
-                                            chapterId = selectedChapter.id,
-                                            isFavorite = newFav
-                                        )
-                                    }
-                                }
-                        )
-                        Text("Progres: $chapterProgress%", fontWeight = FontWeight.Medium)
-                    }
-                }
-            }
+                        val chapterNumStr = selectedChapter?.chapterNum?.ifEmpty { selectedChapter.id.toString() } ?: ""
 
-            // Block 2 Card (Tiles Bar)
-            Card(
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerHigh),
-                shape = RoundedCornerShape(16.dp),
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                        Text(
+                            text = "${AppGlobalState.selectedSubject} ${AppGlobalState.selectedClass}",
+                            fontWeight = FontWeight.Bold,
+                            maxLines = 1,
+                            softWrap = false
+                        )
+
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Text(
+                                text = "Rozdział $chapterNumStr ",
+                                fontWeight = FontWeight.Bold,
+                                maxLines = 1,
+                                softWrap = false
+                            )
+                            Icon(
+                                imageVector = Icons.Rounded.Star,
+                                contentDescription = "Ulubione",
+                                tint = if (isStarred) Color(0xFFFFC107) else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.2f),
+                                modifier = Modifier
+                                    .size(24.dp)
+                                    .clickable {
+                                        isStarred = !isStarred
+                                        val newFav = if (isStarred) 1 else 0
+                                        selectedChapter?.isFavorite = newFav
+                                        if (selectedChapter != null) {
+                                            saveChapterFavorite(
+                                                context = context,
+                                                textbookTitle = AppGlobalState.selectedTextbook?.title ?: "",
+                                                chapterId = selectedChapter.id,
+                                                isFavorite = newFav
+                                            )
+                                        }
+                                    }
+                            )
+                        }
+
+                        Text(
+                            text = "Progres: $chapterProgress%",
+                            fontWeight = FontWeight.Bold,
+                            maxLines = 1,
+                            softWrap = false
+                        )
+                    }
 
                     // Dynamic Lesson Tiles L01, L02...
                     FlowRow(
@@ -1133,43 +1142,44 @@ fun LabellingGameScreen(
         if (hasUnmasteredQuestions) {
             OutlinedTextField(
                 value = inputText,
-            onValueChange = { newValue ->
-                inputText = newValue
-                val match = questions.find { q ->
-                    !guessedItems.contains(q.id) && q.acceptedAnswers.any { word ->
-                        word.equals(newValue.trim(), ignoreCase = true)
+                onValueChange = { newValue ->
+                    inputText = newValue
+                    val match = questions.find { q ->
+                        !guessedItems.contains(q.id) && q.acceptedAnswers.any { word ->
+                            word.equals(newValue.trim(), ignoreCase = true)
+                        }
                     }
-                }
-                if (match != null) {
-                    guessedItems = guessedItems + match.id
-                    lastGuessedItem = match.id
-                    pulseTrigger++
+                    if (match != null) {
+                        guessedItems = guessedItems + match.id
+                        lastGuessedItem = match.id
+                        pulseTrigger++
 
-                    val oldStatus = match.status
-                    val proposedStatus = when (hintLevel) {
-                        2 -> 1
-                        1 -> 2
-                        else -> if (oldStatus < 3) 3 else (oldStatus + 1).coerceAtMost(maxStatusValue)
+                        val oldStatus = match.status
+                        val proposedStatus = when (hintLevel) {
+                            2 -> 1
+                            1 -> 2
+                            else -> if (oldStatus < 3) 3 else (oldStatus + 1).coerceAtMost(maxStatusValue)
+                        }
+                        val newStatus = maxOf(oldStatus, proposedStatus).coerceAtMost(maxStatusValue)
+                        match.status = newStatus
+
+                        saveQuestionStatus(
+                            context = context,
+                            databaseFilename = databaseFilename,
+                            lessonId = currentLesson.id,
+                            questionId = match.id,
+                            newStatus = newStatus
+                        )
+
+                        inputText = ""
                     }
-                    val newStatus = maxOf(oldStatus, proposedStatus).coerceAtMost(maxStatusValue)
-                    match.status = newStatus
-
-                    saveQuestionStatus(
-                        context = context,
-                        databaseFilename = databaseFilename,
-                        lessonId = currentLesson.id,
-                        questionId = match.id,
-                        newStatus = newStatus
-                    )
-
-                    inputText = ""
-                }
-            },
-            modifier = Modifier.fillMaxWidth(),
-            placeholder = { Text(currentLesson.task) },
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Password
-            ),
+                },
+                modifier = Modifier.fillMaxWidth(),
+                placeholder = { Text(currentLesson.task) },
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Password,
+                    autoCorrectEnabled = false
+                ),
                 visualTransformation = VisualTransformation.None,
                 singleLine = true
             )
