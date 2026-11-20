@@ -1245,7 +1245,7 @@
     "task": "Uzupełnij 3 stwierdzenia",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 620,
-    "canvas_height": 450,
+    "canvas_height": 400,
     "descriptions": [
       {
         "id": 1,
@@ -1254,11 +1254,9 @@
         "label_y": 1,
         "label_width": 600,
         "label_border_width": 0,
-        "text_size": 14,
+        "text_size": 15,
         "text_underline": 1,
-        "label_alpha": 1,
-        "picture_src": "bio_000011",
-        "picture_alpha": 1
+        "label_alpha": 1
       }
     ],
     "answers": [
@@ -1272,13 +1270,15 @@
         "accepted_answers": ["wodnych i lądowych"],
         "status": 0,
         "label_x": 0,
-        "label_y": 190,
-        "label_width": 160,
+        "label_y": 260,
+        "label_width": 220,
         "label_background_color": "transparent",
         "label_border_width": 0,
-        "text_size": 13,
+        "text_size": 14,
         "text_alignment": "center",
-        "label_alpha": 1
+        "label_alpha": 1,
+        "picture_src": "bio_000011_1",
+        "picture_alpha": 1
       },
       {
         "id": 2,
@@ -1289,14 +1289,16 @@
         "answer": "roślin i zwierząt",
         "accepted_answers": ["roślin i zwierząt","zwierząt i roślin","rośliny i zwierzęta","zwierzęta i rośliny"],
         "status": 0,
-        "label_x": 151,
-        "label_y": 190,
-        "label_width": 255,
+        "label_x": 220,
+        "label_y": 260,
+        "label_width": 400,
         "label_background_color": "transparent",
         "label_border_width": 0,
-        "text_size": 13,
+        "text_size": 14,
         "text_alignment": "center",
-        "label_alpha": 1
+        "label_alpha": 1,
+        "picture_src": "bio_000011_2",
+        "picture_alpha": 1
       }
     ]
   },
@@ -1307,21 +1309,6 @@
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 620,
     "canvas_height": 450,
-    "descriptions": [
-      {
-        "id": 1,
-        "text": "Nicienie żyją:",
-        "label_x": 10,
-        "label_y": 1,
-        "label_width": 600,
-        "label_border_width": 0,
-        "text_size": 14,
-        "text_underline": 1,
-        "label_alpha": 1,
-        "picture_src": "bio_000011",
-        "picture_alpha": 1
-      }
-    ],
     "answers": [
       {
         "id": 1,
@@ -1332,14 +1319,16 @@
         "answer": "grubym oskórkiem",
         "accepted_answers": ["grubym oskórkiem","grubymi oskórkami", "gruby oskórek","grube oskórki"],
         "status": 0,
-        "label_x": 390,
-        "label_y": 190,
-        "label_width": 230,
+        "label_x": 0,
+        "label_y": 330,
+        "label_width": 620,
         "label_background_color": "transparent",
         "label_border_width": 0,
-        "text_size": 13,
+        "text_size": 14,
         "text_alignment": "center",
-        "label_alpha": 1
+        "label_alpha": 1,
+        "picture_src": "bio_000015",
+        "picture_alpha": 1
       },
       {
         "id": 2,
@@ -1350,12 +1339,12 @@
         "answer": "odpornym",
         "accepted_answers": ["odpornym","odporne"],
         "status": 0,
-        "label_x": 390,
-        "label_y": 290,
-        "label_width": 230,
+        "label_x": 0,
+        "label_y": 360,
+        "label_width": 620,
         "label_background_color": "transparent",
         "label_border_width": 0,
-        "text_size": 13,
+        "text_size": 14,
         "text_alignment": "center",
         "label_alpha": 1
       }

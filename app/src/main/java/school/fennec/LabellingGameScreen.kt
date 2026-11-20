@@ -726,55 +726,75 @@ fun LabellingGameScreen(
                         )
                     }
 
-                    // Dynamic Lesson Tiles L01, L02...
-                    FlowRow(
-                        horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        verticalArrangement = Arrangement.spacedBy(8.dp),
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        for (i in allLessons.indices) {
-                            val label = "L${(i + 1).toString().padStart(2, '0')}"
-                            val isCurrent = i == currentLessonIndex
-                            val lessonObj = allLessons[i]
-                            val isMastered = lessonObj.questions.isNotEmpty() && lessonObj.questions.all { it.status >= maxStatusValue }
+                    // Dynamic Lesson Tiles L01, L02... (Justified rows, last partial row aligned left to columns)
+                    BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
+                        val minTileSlotWidth = 48.dp
+                        val columnsPerRow = maxOf(1, (maxWidth / minTileSlotWidth).toInt())
+                        val rows = allLessons.indices.chunked(columnsPerRow)
 
-                            val tileBg = if (isCurrent) {
-                                MaterialTheme.colorScheme.primaryContainer
-                            } else if (isMastered) {
-                                Color(0xFFC8E6C9)
-                            } else {
-                                MaterialTheme.colorScheme.surfaceVariant
-                            }
+                        Column(
+                            modifier = Modifier.fillMaxWidth(),
+                            verticalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            for (rowIndices in rows) {
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                                ) {
+                                    for (col in 0 until columnsPerRow) {
+                                        val i = rowIndices.getOrNull(col)
+                                        if (i != null) {
+                                            val label = "L${(i + 1).toString().padStart(2, '0')}"
+                                            val isCurrent = i == currentLessonIndex
+                                            val lessonObj = allLessons[i]
+                                            val isMastered = lessonObj.questions.isNotEmpty() && lessonObj.questions.all { it.status >= maxStatusValue }
 
-                            val tileBorder = if (isCurrent) {
-                                BorderStroke(2.dp, MaterialTheme.colorScheme.primary)
-                            } else if (isMastered) {
-                                BorderStroke(2.dp, Color(0xFF4CAF50))
-                            } else null
+                                            val tileBg = if (isCurrent) {
+                                                MaterialTheme.colorScheme.primaryContainer
+                                            } else if (isMastered) {
+                                                Color(0xFFC8E6C9)
+                                            } else {
+                                                MaterialTheme.colorScheme.surfaceVariant
+                                            }
 
-                            val tileTextColor = if (isCurrent) {
-                                MaterialTheme.colorScheme.onPrimaryContainer
-                            } else if (isMastered) {
-                                Color(0xFF1B5E20)
-                            } else {
-                                MaterialTheme.colorScheme.onSurfaceVariant
-                            }
+                                            val tileBorder = if (isCurrent) {
+                                                BorderStroke(2.dp, MaterialTheme.colorScheme.primary)
+                                            } else if (isMastered) {
+                                                BorderStroke(2.dp, Color(0xFF4CAF50))
+                                            } else null
 
-                            val borderMod = if (tileBorder != null) Modifier.border(tileBorder, RoundedCornerShape(8.dp)) else Modifier
+                                            val tileTextColor = if (isCurrent) {
+                                                MaterialTheme.colorScheme.onPrimaryContainer
+                                            } else if (isMastered) {
+                                                Color(0xFF1B5E20)
+                                            } else {
+                                                MaterialTheme.colorScheme.onSurfaceVariant
+                                            }
 
-                            Box(
-                                modifier = Modifier
-                                    .background(tileBg, RoundedCornerShape(8.dp))
-                                    .then(borderMod)
-                                    .clickable { currentLessonIndex = i }
-                                    .padding(horizontal = 8.dp, vertical = 4.dp)
-                            ) {
-                                Text(
-                                    text = label,
-                                    style = MaterialTheme.typography.labelMedium,
-                                    color = tileTextColor,
-                                    fontWeight = if (isCurrent || isMastered) FontWeight.Bold else FontWeight.Normal
-                                )
+                                            val borderMod = if (tileBorder != null) Modifier.border(tileBorder, RoundedCornerShape(8.dp)) else Modifier
+
+                                            Box(
+                                                modifier = Modifier
+                                                    .weight(1f)
+                                                    .background(tileBg, RoundedCornerShape(8.dp))
+                                                    .then(borderMod)
+                                                    .clickable { currentLessonIndex = i }
+                                                    .padding(vertical = 4.dp),
+                                                contentAlignment = Alignment.Center
+                                            ) {
+                                                Text(
+                                                    text = label,
+                                                    style = MaterialTheme.typography.labelMedium,
+                                                    color = tileTextColor,
+                                                    fontWeight = if (isCurrent || isMastered) FontWeight.Bold else FontWeight.Normal,
+                                                    maxLines = 1
+                                                )
+                                            }
+                                        } else {
+                                            Spacer(modifier = Modifier.weight(1f))
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
