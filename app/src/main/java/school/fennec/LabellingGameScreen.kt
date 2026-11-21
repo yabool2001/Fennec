@@ -1,19 +1,22 @@
 package school.fennec
 
 import android.content.Context
+import android.graphics.Rect
+import android.view.ViewTreeObserver
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.NavigateBefore
 import androidx.compose.material.icons.automirrored.rounded.NavigateNext
 import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.KeyboardArrowDown
@@ -21,14 +24,20 @@ import androidx.compose.material.icons.rounded.Lightbulb
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -221,6 +230,40 @@ fun loadDistinctionTime(context: Context): Int {
         obj.optInt("distinction_time", 6)
     } catch (e: Exception) {
         6
+    }
+}
+
+fun loadPassedInputTextMessage(context: Context): String {
+    val jsonString = try {
+        context.assets.open("ustawienia.json").bufferedReader().use { it.readText() }
+    } catch (_: Exception) {
+        return "Lekcja zaliczona."
+    }
+
+    return try {
+        val obj = JSONObject(jsonString)
+        obj.optString("Passed_input_text_message", "Lekcja zaliczona.")
+    } catch (_: Exception) {
+        "Lekcja zaliczona."
+    }
+}
+
+fun loadLessonNoButtonActive(context: Context): Int {
+    val jsonString = try {
+        context.assets.open("ustawienia.json").bufferedReader().use { it.readText() }
+    } catch (_: Exception) {
+        return 2
+    }
+
+    return try {
+        val obj = JSONObject(jsonString)
+        if (obj.has("lesson no_button_active")) {
+            obj.optInt("lesson no_button_active", 2)
+        } else {
+            obj.optInt("lesson_no_button_active", 2)
+        }
+    } catch (_: Exception) {
+        2
     }
 }
 
@@ -550,9 +593,62 @@ fun LabellingGameScreen(
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
+    val view = LocalView.current
+    val density = LocalDensity.current
+    val focusManager = LocalFocusManager.current
     val keyboardController = LocalSoftwareKeyboardController.current
     val scrollState = rememberScrollState()
-    val isImeVisible = WindowInsets.isImeVisible
+
+    val imeInsetsVisible = WindowInsets.isImeVisible
+    val imeBottomPx = WindowInsets.ime.getBottom(density)
+    val navBarBottomPx = WindowInsets.navigationBars.getBottom(density)
+
+    var isKeyboardOpenByRect by remember { mutableStateOf(false) }
+    var rectKeypadHeightPx by remember { mutableIntStateOf(0) }
+    var isInputFocused by remember { mutableStateOf(false) }
+
+    DisposableEffect(view) {
+        val listener = ViewTreeObserver.OnGlobalLayoutListener {
+            val rect = Rect()
+            view.getWindowVisibleDisplayFrame(rect)
+            val rootHeight = view.rootView.height
+            val keypadHeight = (rootHeight - rect.bottom).coerceAtLeast(0)
+            val isOpen = rootHeight > 0 && keypadHeight > rootHeight * 0.15
+            isKeyboardOpenByRect = isOpen
+            rectKeypadHeightPx = if (isOpen) keypadHeight else 0
+        }
+        view.viewTreeObserver.addOnGlobalLayoutListener(listener)
+        onDispose {
+            view.viewTreeObserver.removeOnGlobalLayoutListener(listener)
+        }
+    }
+
+    val systemKeyboardVisible = imeInsetsVisible || isKeyboardOpenByRect
+    var wasSystemKeyboardVisible by remember { mutableStateOf(false) }
+
+    LaunchedEffect(systemKeyboardVisible) {
+        if (systemKeyboardVisible) {
+            wasSystemKeyboardVisible = true
+        } else if (wasSystemKeyboardVisible) {
+            wasSystemKeyboardVisible = false
+            isInputFocused = false
+            focusManager.clearFocus()
+        }
+    }
+
+    BackHandler(enabled = isInputFocused && !systemKeyboardVisible) {
+        isInputFocused = false
+        focusManager.clearFocus()
+        keyboardController?.hide()
+    }
+
+    val isImeVisible = systemKeyboardVisible || isInputFocused
+
+    val fallbackImeBottomPadding = if (imeBottomPx == 0 && rectKeypadHeightPx > 0) {
+        with(density) { (rectKeypadHeightPx - navBarBottomPx).coerceAtLeast(0).toDp() }
+    } else {
+        0.dp
+    }
 
     val selectedChapter = AppGlobalState.selectedChapter
     val selectedLevel = AppGlobalState.selectedLevel
@@ -577,6 +673,8 @@ fun LabellingGameScreen(
         answerTextColors.keys.maxOrNull() ?: 5
     }
     val distinctionTimeSeconds = remember { loadDistinctionTime(context) }
+    val passedInputTextMessage = remember { loadPassedInputTextMessage(context) }
+    val lessonNoButtonActive = remember { loadLessonNoButtonActive(context) }
 
     val rawLessons = remember(databaseFilename) {
         loadLessons(context, databaseFilename)
@@ -584,17 +682,15 @@ fun LabellingGameScreen(
 
     val allLessons = remember(rawLessons, allowedLessonIds) {
         if (allowedLessonIds.isNotEmpty()) {
-            rawLessons.filter { lesson -> allowedLessonIds.contains(lesson.id) }
+            val lessonsById = rawLessons.associateBy { it.id }
+            allowedLessonIds.mapNotNull { id -> lessonsById[id] }
         } else {
             rawLessons
         }
     }
 
-    var currentLessonIndex by remember(allLessons) {
-        val firstUnmastered = allLessons.indexOfFirst { lesson ->
-            lesson.questions.isNotEmpty() && !lesson.questions.all { it.status >= maxStatusValue }
-        }
-        mutableIntStateOf(if (firstUnmastered != -1) firstUnmastered else 0)
+    var currentLessonIndex by rememberSaveable(selectedChapter?.id, selectedLevel) {
+        mutableIntStateOf(0)
     }
     val currentLesson = allLessons.getOrNull(currentLessonIndex)
 
@@ -608,8 +704,8 @@ fun LabellingGameScreen(
     var guessedItems by remember(currentLesson) { mutableStateOf(knownItemIds) }
     var lastGuessedItem by remember(currentLesson) { mutableStateOf<Int?>(null) }
     var pulseTrigger by remember(currentLesson) { mutableIntStateOf(0) }
-    var inputText by remember(currentLesson) { mutableStateOf("") }
-    var hintLevel by remember(currentLesson) { mutableIntStateOf(0) } // 0: empty, 1: hint1, 2: hint2
+    var inputText by rememberSaveable(currentLesson?.id) { mutableStateOf("") }
+    var hintLevel by rememberSaveable(currentLesson?.id) { mutableIntStateOf(0) } // 0: empty, 1: hint1, 2: hint2
 
     LaunchedEffect(lastGuessedItem, pulseTrigger) {
         if (lastGuessedItem != null && distinctionTimeSeconds > 0) {
@@ -653,6 +749,7 @@ fun LabellingGameScreen(
         modifier = modifier
             .fillMaxSize()
             .imePadding()
+            .padding(bottom = fallbackImeBottomPadding)
             .verticalScroll(scrollState)
             .padding(
                 start = if (isImeVisible) 8.dp else 16.dp,
@@ -772,13 +869,23 @@ fun LabellingGameScreen(
                                             }
 
                                             val borderMod = if (tileBorder != null) Modifier.border(tileBorder, RoundedCornerShape(8.dp)) else Modifier
+                                            val isTileClickable = when (lessonNoButtonActive) {
+                                                0 -> false
+                                                1 -> i > currentLessonIndex
+                                                else -> true
+                                            }
+                                            val clickMod = if (isTileClickable) {
+                                                Modifier.clickable { currentLessonIndex = i }
+                                            } else {
+                                                Modifier
+                                            }
 
                                             Box(
                                                 modifier = Modifier
                                                     .weight(1f)
                                                     .background(tileBg, RoundedCornerShape(8.dp))
                                                     .then(borderMod)
-                                                    .clickable { currentLessonIndex = i }
+                                                    .then(clickMod)
                                                     .padding(vertical = 4.dp),
                                                 contentAlignment = Alignment.Center
                                             ) {
@@ -810,13 +917,34 @@ fun LabellingGameScreen(
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .aspectRatio(canvasWidthRatio / canvasHeightRatio),
+                .aspectRatio(canvasWidthRatio / canvasHeightRatio)
+                .pointerInput(currentLessonIndex, allLessons.size) {
+                    var totalDragX = 0f
+                    val swipeThresholdPx = 48.dp.toPx()
+                    detectHorizontalDragGestures(
+                        onDragStart = { totalDragX = 0f },
+                        onHorizontalDrag = { change, dragAmount ->
+                            change.consume()
+                            totalDragX += dragAmount
+                        },
+                        onDragEnd = {
+                            // Przesunięcie palcem od prawej do lewej (totalDragX < 0) -> następna lekcja
+                            if (totalDragX < -swipeThresholdPx && currentLessonIndex < allLessons.size - 1) {
+                                currentLessonIndex++
+                            }
+                        }
+                    )
+                },
             colors = CardDefaults.cardColors(containerColor = bgColor),
             shape = RoundedCornerShape(16.dp)
         ) {
             BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
                 val containerWidth = maxWidth
                 val containerHeight = maxHeight
+                val canvasScale = containerWidth / 376.dp
+                val scaledCorner = 8.dp * canvasScale
+                val scaledPadH = 8.dp * canvasScale
+                val scaledPadV = 4.dp * canvasScale
 
                 // Static / Decorative Description Layer
                 currentLesson?.descriptions?.forEach { desc ->
@@ -834,7 +962,9 @@ fun LabellingGameScreen(
 
                     if (desc.text.isNotEmpty()) {
                         val labelWidthDp = if (desc.labelWidthPx > 0f) containerWidth * (desc.labelWidthPx / canvasWidthRatio) else null
-                        val borderWidthDp = desc.borderWidth.dp
+                        val borderWidthDp = desc.borderWidth.dp * canvasScale
+                        val descFontSize = with(density) { (desc.textSizeSp.dp * canvasScale).toSp() }
+                        val descLineHeight = with(density) { ((desc.textSizeSp * 1.15f).dp * canvasScale).toSp() }
 
                         val isTransparentBg = desc.labelBackgroundColor == Color.Transparent || desc.labelAlpha == 0f
                         val boxBgColor = if (isTransparentBg) {
@@ -848,7 +978,7 @@ fun LabellingGameScreen(
                         val borderAlpha = desc.labelAlpha ?: 1.0f
                         val boxWidthMod = if (labelWidthDp != null) Modifier.width(labelWidthDp) else Modifier
                         val borderMod = if (borderWidthDp > 0.dp && borderAlpha > 0f && !isTransparentBg) {
-                            Modifier.border(borderWidthDp, Color.Black.copy(alpha = borderAlpha), RoundedCornerShape(8.dp))
+                            Modifier.border(borderWidthDp, Color.Black.copy(alpha = borderAlpha), RoundedCornerShape(scaledCorner))
                         } else Modifier
 
                         desc.labelPositions.forEach { (pxX, pxY) ->
@@ -859,17 +989,17 @@ fun LabellingGameScreen(
                                 modifier = Modifier
                                     .offset(labelOffsetX, labelOffsetY)
                                     .then(boxWidthMod)
-                                    .background(boxBgColor, RoundedCornerShape(8.dp))
+                                    .background(boxBgColor, RoundedCornerShape(scaledCorner))
                                     .then(borderMod)
-                                    .padding(horizontal = 8.dp, vertical = 4.dp),
+                                    .padding(horizontal = scaledPadH, vertical = scaledPadV),
                                 contentAlignment = parseBoxAlignment(desc.textAlignment)
                             ) {
                                 Text(
                                     text = desc.text,
                                     color = desc.textColor ?: Color.Black,
                                     fontWeight = FontWeight.Bold,
-                                    fontSize = desc.textSizeSp.sp,
-                                    lineHeight = (desc.textSizeSp * 1.15f).sp,
+                                    fontSize = descFontSize,
+                                    lineHeight = descLineHeight,
                                     textAlign = parseTextAlign(desc.textAlignment),
                                     textDecoration = if (desc.textUnderline == 1) TextDecoration.Underline else TextDecoration.None
                                 )
@@ -901,7 +1031,9 @@ fun LabellingGameScreen(
                     }
 
                     val labelWidthDp = if (question.labelWidthPx > 0f) containerWidth * (question.labelWidthPx / canvasWidthRatio) else null
-                    val borderWidthDp = question.borderWidth.dp
+                    val borderWidthDp = question.borderWidth.dp * canvasScale
+                    val qFontSize = with(density) { (question.textSizeSp.dp * canvasScale).toSp() }
+                    val qLineHeight = with(density) { ((question.textSizeSp * 1.15f).dp * canvasScale).toSp() }
 
                     val resolvedFullText = if (question.fullName.isNotEmpty()) question.fullName else question.answer
                     val labelText = if (isGuessed) {
@@ -928,7 +1060,7 @@ fun LabellingGameScreen(
 
                     val boxWidthMod = if (labelWidthDp != null) Modifier.width(labelWidthDp) else Modifier
                     val borderMod = if (borderWidthDp > 0.dp && borderAlpha > 0f && !isTransparentBg) {
-                        Modifier.border(borderWidthDp, baseBorderColor.copy(alpha = borderAlpha), RoundedCornerShape(8.dp))
+                        Modifier.border(borderWidthDp, baseBorderColor.copy(alpha = borderAlpha), RoundedCornerShape(scaledCorner))
                     } else Modifier
 
                     val questionTextColor = if (question.status >= maxStatusValue && question.textColor != null) {
@@ -947,13 +1079,13 @@ fun LabellingGameScreen(
                                 .scale(currentScale)
                                 .alpha(labelBoxAlpha)
                                 .then(boxWidthMod)
-                                .background(boxBgColor, RoundedCornerShape(8.dp))
+                                .background(boxBgColor, RoundedCornerShape(scaledCorner))
                                 .then(borderMod)
                                 .clickable {
                                     lastGuessedItem = question.id
                                     pulseTrigger++
                                 }
-                                .padding(horizontal = 8.dp, vertical = 4.dp),
+                                .padding(horizontal = scaledPadH, vertical = scaledPadV),
                             contentAlignment = parseBoxAlignment(question.textAlignment)
                         ) {
                             if (labelWidthDp == null && question.textAlignment.equals("right", ignoreCase = true)) {
@@ -963,8 +1095,8 @@ fun LabellingGameScreen(
                                         Text(
                                             text = refText,
                                             fontWeight = FontWeight.ExtraBold,
-                                            fontSize = question.textSizeSp.sp,
-                                            lineHeight = (question.textSizeSp * 1.15f).sp,
+                                            fontSize = qFontSize,
+                                            lineHeight = qLineHeight,
                                             modifier = Modifier.height(0.dp).alpha(0f)
                                         )
                                     }
@@ -973,8 +1105,8 @@ fun LabellingGameScreen(
                                 text = labelText,
                                 color = questionTextColor,
                                 fontWeight = FontWeight.ExtraBold,
-                                fontSize = question.textSizeSp.sp,
-                                lineHeight = (question.textSizeSp * 1.15f).sp,
+                                fontSize = qFontSize,
+                                lineHeight = qLineHeight,
                                 textAlign = parseTextAlign(question.textAlignment),
                                 textDecoration = if (question.textUnderline == 1) TextDecoration.Underline else TextDecoration.None
                             )
@@ -1073,6 +1205,8 @@ fun LabellingGameScreen(
                 // 1. Hide Keyboard Button
                 IconButton(
                     onClick = {
+                        isInputFocused = false
+                        focusManager.clearFocus()
                         keyboardController?.hide()
                     },
                     colors = IconButtonDefaults.iconButtonColors(
@@ -1157,45 +1291,64 @@ fun LabellingGameScreen(
         }
 
         // Answer Input Field
-        val hasUnmasteredQuestions = currentLesson?.questions?.any { it.status < maxStatusValue } == true
+        val isLessonPassed = questions.isNotEmpty() && questions.all { it.status >= maxStatusValue }
 
-        if (hasUnmasteredQuestions) {
+        LaunchedEffect(isLessonPassed) {
+            if (isLessonPassed && isInputFocused) {
+                isInputFocused = false
+                focusManager.clearFocus()
+                keyboardController?.hide()
+            }
+        }
+
+        if (currentLesson != null && questions.isNotEmpty()) {
             OutlinedTextField(
-                value = inputText,
+                value = if (isLessonPassed) passedInputTextMessage else inputText,
                 onValueChange = { newValue ->
-                    inputText = newValue
-                    val match = questions.find { q ->
-                        !guessedItems.contains(q.id) && q.acceptedAnswers.any { word ->
-                            word.equals(newValue.trim(), ignoreCase = true)
+                    if (!isLessonPassed) {
+                        inputText = newValue
+                        val match = questions.find { q ->
+                            !guessedItems.contains(q.id) && q.acceptedAnswers.any { word ->
+                                word.equals(newValue.trim(), ignoreCase = true)
+                            }
                         }
-                    }
-                    if (match != null) {
-                        guessedItems = guessedItems + match.id
-                        lastGuessedItem = match.id
-                        pulseTrigger++
+                        if (match != null) {
+                            guessedItems = guessedItems + match.id
+                            lastGuessedItem = match.id
+                            pulseTrigger++
 
-                        val oldStatus = match.status
-                        val proposedStatus = when (hintLevel) {
-                            2 -> 1
-                            1 -> 2
-                            else -> if (oldStatus < 3) 3 else (oldStatus + 1).coerceAtMost(maxStatusValue)
+                            val oldStatus = match.status
+                            val proposedStatus = when (hintLevel) {
+                                2 -> 1
+                                1 -> 2
+                                else -> if (oldStatus < 3) 3 else (oldStatus + 1).coerceAtMost(maxStatusValue)
+                            }
+                            val newStatus = maxOf(oldStatus, proposedStatus).coerceAtMost(maxStatusValue)
+                            match.status = newStatus
+
+                            saveQuestionStatus(
+                                context = context,
+                                databaseFilename = databaseFilename,
+                                lessonId = currentLesson.id,
+                                questionId = match.id,
+                                newStatus = newStatus
+                            )
+
+                            inputText = ""
                         }
-                        val newStatus = maxOf(oldStatus, proposedStatus).coerceAtMost(maxStatusValue)
-                        match.status = newStatus
-
-                        saveQuestionStatus(
-                            context = context,
-                            databaseFilename = databaseFilename,
-                            lessonId = currentLesson.id,
-                            questionId = match.id,
-                            newStatus = newStatus
-                        )
-
-                        inputText = ""
                     }
                 },
-                modifier = Modifier.fillMaxWidth(),
-                placeholder = { Text(currentLesson.task) },
+                enabled = !isLessonPassed,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .onFocusChanged { focusState ->
+                        if (!isLessonPassed) {
+                            isInputFocused = focusState.isFocused
+                        }
+                    },
+                placeholder = {
+                    Text(if (isLessonPassed) passedInputTextMessage else currentLesson.task)
+                },
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Password,
                     autoCorrectEnabled = false
@@ -1206,82 +1359,30 @@ fun LabellingGameScreen(
         }
 
         if (!isImeVisible) {
-            Column(
+            Row(
                 modifier = Modifier.fillMaxWidth(),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                Button(
+                    onClick = onBackToChapter,
+                    modifier = Modifier.weight(1f),
+                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)
                 ) {
-                    Button(
-                        onClick = {
-                            val prevUnmastered = (currentLessonIndex - 1 downTo 0).firstOrNull { idx ->
-                                !allLessons[idx].questions.all { it.status >= maxStatusValue }
-                            }
-                            if (prevUnmastered != null) {
-                                currentLessonIndex = prevUnmastered
-                            } else if (currentLessonIndex > 0) {
-                                currentLessonIndex--
-                            }
-                        },
-                        enabled = currentLessonIndex > 0,
-                        modifier = Modifier.weight(1f)
-                    ) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Rounded.NavigateBefore,
-                            contentDescription = "Poprzednia"
-                        )
-                        Spacer(modifier = Modifier.width(4.dp))
-                        Text("Poprzednia", textAlign = TextAlign.Center)
-                    }
-                    Button(
-                        onClick = {
-                            val nextUnmastered = (currentLessonIndex + 1 until allLessons.size).firstOrNull { idx ->
-                                !allLessons[idx].questions.all { it.status >= maxStatusValue }
-                            }
-                            if (nextUnmastered != null) {
-                                currentLessonIndex = nextUnmastered
-                            } else if (currentLessonIndex < allLessons.size - 1) {
-                                currentLessonIndex++
-                            }
-                        },
-                        enabled = currentLessonIndex < allLessons.size - 1,
-                        modifier = Modifier.weight(1f)
-                    ) {
-                        Text("Następna", textAlign = TextAlign.Center)
-                        Spacer(modifier = Modifier.width(4.dp))
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Rounded.NavigateNext,
-                            contentDescription = "Następna"
-                        )
-                    }
+                    Text("<<", fontWeight = FontWeight.ExtraBold)
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Text("Rozdział", textAlign = TextAlign.Center)
                 }
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                Button(
+                    onClick = onEndLearning,
+                    modifier = Modifier.weight(1f),
+                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error)
                 ) {
-                    Button(
-                        onClick = onBackToChapter, 
-                        modifier = Modifier.weight(1f),
-                        colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)
-                    ) {
-                        Text("<<", fontWeight = FontWeight.ExtraBold)
-                        Spacer(modifier = Modifier.width(4.dp))
-                        Text("Rozdział", textAlign = TextAlign.Center)
-                    }
-                    Button(
-                        onClick = onEndLearning, 
-                        modifier = Modifier.weight(1f),
-                        colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error)
-                    ) {
-                        Icon(
-                            imageVector = Icons.Rounded.Close,
-                            contentDescription = "Koniec nauki"
-                        )
-                        Spacer(modifier = Modifier.width(4.dp))
-                        Text("Koniec nauki", textAlign = TextAlign.Center)
-                    }
+                    Icon(
+                        imageVector = Icons.Rounded.Close,
+                        contentDescription = "Koniec"
+                    )
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Text("Koniec", textAlign = TextAlign.Center)
                 }
             }
         }

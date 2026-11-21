@@ -36,6 +36,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.automirrored.rounded.ArrowForward
+import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.History
 import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material.icons.rounded.Star
@@ -61,6 +62,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -76,9 +78,29 @@ class MainActivity : ComponentActivity() {
         setContent {
             FennecTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    FennecApp(
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    val configuration = LocalConfiguration.current
+                    val screenWidth = configuration.screenWidthDp.dp
+                    val screenHeight = configuration.screenHeightDp.dp
+                    val isLandscape = screenWidth > screenHeight
+
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(innerPadding),
+                        contentAlignment = Alignment.TopCenter
+                    ) {
+                        val appModifier = if (isLandscape) {
+                            val portraitWidth = (screenHeight * 0.62f)
+                                .coerceAtLeast(minOf(412.dp, screenHeight))
+                                .coerceAtMost(screenWidth)
+                            Modifier
+                                .width(portraitWidth)
+                                .fillMaxHeight()
+                        } else {
+                            Modifier.fillMaxSize()
+                        }
+                        FennecApp(modifier = appModifier)
+                    }
                 }
             }
         }
@@ -86,6 +108,7 @@ class MainActivity : ComponentActivity() {
 }
 
 object AppGlobalState {
+    var currentState: AppState by mutableStateOf(AppState.MAIN_SETUP)
     var selectedClass: Int by mutableIntStateOf(6)
     var selectedSubject: String by mutableStateOf("Biologia")
     var selectedTextbook: Textbook? by mutableStateOf(null)
@@ -100,7 +123,7 @@ enum class AppState {
 
 @Composable
 fun FennecApp(modifier: Modifier = Modifier) {
-    var currentState by remember { mutableStateOf(AppState.MAIN_SETUP) }
+    var currentState by AppGlobalState::currentState
     
     // Obsługa sprzętowego/systemowego powrotu
     BackHandler(enabled = currentState != AppState.MAIN_SETUP) {
@@ -391,14 +414,14 @@ fun MainSetupScreen(
         Text(
             text = "Fenek",
             style = MaterialTheme.typography.displayLarge,
-            modifier = Modifier.padding(top = 32.dp, bottom = 16.dp)
+            modifier = Modifier.padding(top = 12.dp, bottom = 6.dp)
         )
 
-        // 1. Wybór klasy
+        // 1 & 2. Wybór klasy i przedmiotu
         Text(
-            text = "Wybierz klasę",
+            text = "Wybierz klasę i przedmiot",
             style = MaterialTheme.typography.titleLarge,
-            modifier = Modifier.padding(top = 16.dp, bottom = 8.dp)
+            modifier = Modifier.padding(top = 4.dp, bottom = 8.dp)
         )
         Row(
             modifier = Modifier
@@ -416,12 +439,8 @@ fun MainSetupScreen(
             }
         }
 
-        // 2. Wybór przedmiotu
-        Text(
-            text = "Wybierz przedmiot",
-            style = MaterialTheme.typography.titleLarge,
-            modifier = Modifier.padding(top = 24.dp, bottom = 8.dp)
-        )
+        Spacer(modifier = Modifier.height(8.dp))
+
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -442,10 +461,10 @@ fun MainSetupScreen(
         Text(
             text = "Wybierz podręcznik",
             style = MaterialTheme.typography.titleLarge,
-            modifier = Modifier.padding(top = 24.dp, bottom = 16.dp)
+            modifier = Modifier.padding(top = 14.dp, bottom = 6.dp)
         )
         LazyRow(
-            contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp),
+            contentPadding = PaddingValues(horizontal = 32.dp, vertical = 10.dp),
             horizontalArrangement = Arrangement.spacedBy(20.dp),
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.fillMaxWidth()
@@ -488,62 +507,58 @@ fun MainSetupScreen(
             }
         }
 
-        // Przycisk Dalej (zamiast powrotu, bo stąd nie ma gdzie wracać)
-        Button(
-            onClick = onNextClicked,
+        // Dolne przyciski w jednym wierszu: Koniec | ★ | Dalej
+        Row(
             modifier = Modifier
-                .padding(top = 48.dp)
-                .width(200.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF4CAF50), 
-                contentColor = Color.White
-            )
+                .fillMaxWidth()
+                .padding(start = 16.dp, end = 16.dp, top = 14.dp, bottom = 16.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(text = "Dalej")
-            Spacer(modifier = Modifier.width(8.dp))
-            Icon(
-                imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
-                contentDescription = "Dalej"
-            )
-        }
+            Button(
+                onClick = { (context as? Activity)?.finish() },
+                modifier = Modifier.weight(1f),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.error
+                )
+            ) {
+                Icon(
+                    imageVector = Icons.Rounded.Close,
+                    contentDescription = "Koniec"
+                )
+                Spacer(modifier = Modifier.width(6.dp))
+                Text(text = "Koniec", textAlign = TextAlign.Center)
+            }
 
-        // Przycisk Ulubione
-        Button(
-            onClick = onFavoritesClicked,
-            modifier = Modifier
-                .padding(top = 16.dp)
-                .width(200.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                contentColor = MaterialTheme.colorScheme.onSecondaryContainer
-            )
-        ) {
-            Icon(
-                imageVector = Icons.Rounded.Star,
-                contentDescription = "Ulubione",
-                tint = Color(0xFFFFC107) // Ikona gwiazdki w kolorze złoto-żółtym (Amber)
-            )
-            Spacer(modifier = Modifier.width(8.dp))
-            Text(text = "Ulubione")
-        }
-        
-        // Przycisk Poprzednia lekcja
-        Button(
-            onClick = { /* TODO: Przejście do poprzedniej lekcji */ },
-            modifier = Modifier
-                .padding(top = 16.dp, bottom = 48.dp)
-                .width(200.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                contentColor = MaterialTheme.colorScheme.onTertiaryContainer
-            )
-        ) {
-            Icon(
-                imageVector = Icons.Rounded.History,
-                contentDescription = "Poprzednia lekcja"
-            )
-            Spacer(modifier = Modifier.width(8.dp))
-            Text(text = "Poprzednia lekcja")
+            Button(
+                onClick = onFavoritesClicked,
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                )
+            ) {
+                Icon(
+                    imageVector = Icons.Rounded.Star,
+                    contentDescription = "Ulubione",
+                    tint = Color(0xFFFFC107)
+                )
+            }
+
+            Button(
+                onClick = onNextClicked,
+                modifier = Modifier.weight(1f),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF4CAF50),
+                    contentColor = Color.White
+                )
+            ) {
+                Text(text = "Dalej", textAlign = TextAlign.Center)
+                Spacer(modifier = Modifier.width(6.dp))
+                Icon(
+                    imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
+                    contentDescription = "Dalej"
+                )
+            }
         }
     }
 }

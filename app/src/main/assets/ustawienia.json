@@ -43,5 +43,8 @@
       "text_color": "#000000"
     }
   ],
-  "distinction_time": 10
+  "distinction_time": 10,
+  "CQPA_input_text_message": "Dotknij pytania na które chcesz odpowiedzieć.",
+  "Passed_input_text_message": "Lekcja zaliczona.",
+  "lesson no_button_active": 2
 }

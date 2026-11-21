@@ -950,9 +950,19 @@
         "label_alpha": 1,
         "picture_src": "bio_000013_6",
         "picture_alpha": 1
-      },
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "title": "TASIEMCE - szczegóły różnic w budowie",
+    "task": "Wpisz odpowiedzi",
+    "working_area_background_color": "#FFFFFF",
+    "canvas_width": 620,
+    "canvas_height": 350,
+    "answers": [
       {
-        "id": 3,
+        "id": 1,
         "text": "Żywiciel\npośredni",
         "empty": "[. . . . . . . .\n. . . . . . . .]",
         "hint1": "[Żywi . . . .\npośr . . . .]",
@@ -960,18 +970,18 @@
         "answer": "żywiciel pośredni",
         "accepted_answers": ["żywiciel pośredni"],
         "status": 0,
-        "label_x": [10,360],
-        "label_y": [375,375],
+        "label_x": [10,340],
+        "label_y": [280,280],
         "text_alignment": "center",
         "label_background_color": "transparent",
         "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 1,
-        "picture_src": "bio_000013_2",
+        "picture_src": "bio_000017_1",
         "picture_alpha": 1
       },
       {
-        "id": 4,
+        "id": 2,
         "text": "Żywiciel\nostateczny",
         "empty": "[. . . . . . . .\n. . . . . . . . . .]",
         "hint1": "[Żywi . . . .\nosta . . . . . .]",
@@ -979,20 +989,35 @@
         "answer": "żywiciel ostateczny",
         "accepted_answers": ["żywiciel ostateczny"],
         "status": 0,
-        "label_x": [170,480],
-        "label_y": [375,375],
+        "label_x": [170,470],
+        "label_y": [280,280],
         "label_background_color": "transparent",
         "label_border_width": 0,
         "text_size": 13,
         "label_alpha": 1,
-        "picture_src": "bio_000013_1",
+        "picture_src": "bio_000017_2",
+        "picture_alpha": 1
+      }
+    ],
+    "descriptions": [
+      {
+        "id": 1,
+        "text": "Różnica w cyklu rozwojowym tasiemca uzbrojonego i nieuzbrojonego.",
+        "label_x": 0,
+        "label_y": 0,
+        "label_width": 620,
+        "label_border_width": 0,
+        "text_size": 15,
+        "text_underline": 1,
+        "label_alpha": 1,
+        "picture_src": "bio_000017_0",
         "picture_alpha": 1
       }
     ]
   },
   {
-    "id": 15,
-    "title": "Przebieg cykl rozwojowego tasiemca uzbrojonego",
+    "id": 16,
+    "title": "Przebieg cyklu rozwojowego tasiemca uzbrojonego",
     "task": "Wymień 3 części ciała",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 950,
@@ -1089,7 +1114,7 @@
     ]
   },
   {
-    "id": 16,
+    "id": 17,
     "title": "NICIENIE",
     "task": "",
     "working_area_background_color": "#FFFFFF",
@@ -1120,7 +1145,7 @@
     ]
   },
   {
-    "id": 17,
+    "id": 18,
     "title": "NICIENIE - zwierzęta z nitkowaty ciałem",
     "task": "Uzupełnij 3 pola",
     "working_area_background_color": "#FFFFFF",
@@ -1240,7 +1265,7 @@
     ]
   },
   {
-    "id": 18,
+    "id": 19,
     "title": "NICIENIE - Środowisko życia",
     "task": "Uzupełnij 3 stwierdzenia",
     "working_area_background_color": "#FFFFFF",
@@ -1303,7 +1328,7 @@
     ]
   },
   {
-    "id": 19,
+    "id": 20,
     "title": "NICIENIE - Budowa ciała",
     "task": "Uzupełnij 2 stwierdzenia",
     "working_area_background_color": "#FFFFFF",
@@ -1332,10 +1357,10 @@
       },
       {
         "id": 2,
-        "text": "odpornym na uszkodzenia i działanie szkodlich substancji, np. w jelitach.",
-        "empty": "[. . . . . . . .] na uszkodzenia i działanie szkodlich substancji, np. w jelitach.",
-        "hint1": "[odp . . . . .] na uszkodzenia i działanie szkodlich substancji, np. w jelitach.",
-        "hint2": "[odpor . ym] na uszkodzenia i działanie szkodlich substancji, np. w jelitach.",
+        "text": "odpornym na uszkodzenia i działanie szkodlich substancji, np. enzymów trawiennych w jelitach.",
+        "empty": "[. . . . . . . .] na uszkodzenia i działanie szkodlich substancji, np. enzymów trawiennych w jelitach.",
+        "hint1": "[odp . . . . .] na uszkodzenia i działanie szkodlich substancji, np. enzymów trawiennych w jelitach.",
+        "hint2": "[odpor . ym] na uszkodzenia i działanie szkodlich substancji, np. enzymów trawiennych w jelitach.",
         "answer": "odpornym",
         "accepted_answers": ["odpornym","odporne"],
         "status": 0,
@@ -1351,7 +1376,7 @@
     ]
   },
   {
-    "id": 20,
+    "id": 21,
     "title": "NICIENIE - Środowisko życia",
     "task": "Uzupełnij 3 stwierdzenia",
     "working_area_background_color": "#FFFFFF",
@@ -1362,10 +1387,10 @@
     "answers": [
       {
         "id": 1,
-        "text": "Cykl rozwojowy nicieni zachodzi w organizmie jednego żywiciela, w odróżnieniu od płazińców.",
-        "empty": "Cykl rozwojowy nicieni zachodzi w organizmie [. . . . . . .  . . . . . . . . .], w odróżnieniu od płazińców.",
-        "hint1": "Cykl rozwojowy nicieni zachodzi w organizmie [jed . . . .  żywi . . . . .], w odróżnieniu od płazińców.",
-        "hint2": "Cykl rozwojowy nicieni zachodzi w organizmie [jedn . go żywici . la], w odróżnieniu od płazińców.",
+        "text": "Cykl rozwojowy nicieni, w odróżnieniu od płazińców, zachodzi w organizmie jednego żywiciela.",
+        "empty": "Cykl rozwojowy nicieni, w odróżnieniu od płazińców, zachodzi w organizmie [. . . . . . .  . . . . . . . . .].",
+        "hint1": "Cykl rozwojowy nicieni, w odróżnieniu od płazińców, zachodzi w organizmie [jed . . . .  żywi . . . . .].",
+        "hint2": "Cykl rozwojowy nicieni, w odróżnieniu od płazińców, zachodzi w organizmie [jedn . go żywici . la].",
         "answer": "jednego żywiciela",
         "accepted_answers": ["jednego żywiciela","jeden żywiciel"],
         "status": 0,
@@ -1383,10 +1408,10 @@
       },
       {
         "id": 2,
-        "text": "1. Zakażenie: Niewidoczne gołym okiem jaja owsika z dłoni zostają przeniesione do jamy ustnej i połknięte.",
-        "empty": "1. Zakażenie: Niewidoczne gołym okiem jaja owsika z [. . . . .] zostają przeniesione do jamy ustnej i .",
-        "hint1": "1. Zakażenie: Niewidoczne gołym okiem jaja owsika z [dł . . .] zostają przeniesione do jamy ustnej i [poł . . . . . .].",
-        "hint2": "1. Zakażenie: Niewidoczne gołym okiem jaja owsika z [dło . i] zostają przeniesione do jamy ustnej i [połkni . te].",
+        "text": "1. Zakażenie: Niewidoczne gołym okiem jaja owsika z dłoni zostają przeniesione do jamy ustnej.",
+        "empty": "1. Zakażenie: Niewidoczne gołym okiem jaja owsika z [. . . . .] zostają przeniesione do jamy ustnej.",
+        "hint1": "1. Zakażenie: Niewidoczne gołym okiem jaja owsika z [dł . . .] zostają przeniesione do jamy ustnej.",
+        "hint2": "1. Zakażenie: Niewidoczne gołym okiem jaja owsika z [dło . i] zostają przeniesione do jamy ustnej.",
         "answer": "połknięte",
         "accepted_answers": ["połknięte","połknąć","zjedzone","zjeść"],
         "status": 0,
@@ -1464,7 +1489,7 @@
     ]
   },
   {
-    "id": 21,
+    "id": 22,
     "title": "PIERŚCIENICE",
     "task": "",
     "working_area_background_color": "#FFFFFF",
@@ -1496,7 +1521,7 @@
     ]
   },
   {
-    "id": 22,
+    "id": 23,
     "title": "PIERŚCIENICE - Środowisko życia",
     "task": "Uzupełnij 3 stwierdzenia",
     "working_area_background_color": "#FFFFFF",
@@ -1584,7 +1609,7 @@
     ]
   },
   {
-    "id": 23,
+    "id": 24,
     "title": "PIERŚCIENICE - Budowa ciała (cz. 1)",
     "task": "Uzupełnij stwierdzenia",
     "working_area_background_color": "#FFFFFF",
@@ -1699,122 +1724,108 @@
     ]
   },
   {
-    "id": 24,
+    "id": 25,
     "title": "PIERŚCIENICE - Budowa ciała (cz. 2)",
     "task": "Uzupełnij 2 stwierdzenia",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 620,
-    "canvas_height": 330,
-    "descriptions": [
+    "canvas_height": 350,
+    "answers": [
       {
         "id": 1,
-        "text": "Ciała niektórych pierścienic mogą być:",
-        "label_x": 10,
-        "label_y": 1,
-        "label_width": 600,
+        "text": "U niektórych pierścienic z pierwszych segmentów ciała powstaje głowa.",
+        "empty": "U niektórych pierścienic z pierwszych segmentów ciała powstaje [. . . . .].",
+        "hint1": "U niektórych pierścienic z pierwszych segmentów ciała powstaje [gł . . .].",
+        "hint2": "U niektórych pierścienic z pierwszych segmentów ciała powstaje [gło . a].",
+        "answer": "głowa",
+        "accepted_answers": ["głowa"],
+        "status": 0,
+        "label_x": 0,
+        "label_y": 0,
+        "label_background_color": "transparent",
         "label_border_width": 0,
-        "text_size": 15,
-        "text_underline": 1,
+        "label_width": 620,
+        "text_size": 14,
         "label_alpha": 1,
-        "picture_src": "bio_000003",
+        "picture_src": "bio_000016_0",
         "picture_alpha": 1
       },
       {
         "id": 2,
-        "text": "‣ podzielone na krótkie odcinki zwane",
-        "label_x": 10,
-        "label_y": 145,
-        "label_background_color": "transparent",
-        "label_border_width": 0,
-        "text_size": 14,
-        "label_alpha": 1
-      }
-    ],
-    "answers": [
-      {
-        "id": 1,
-        "text": "‣ wydłużone",
-        "empty": "‣ [. . . . . . . . .]",
-        "hint1": "‣ [wyd . . . . . .]",
-        "hint2": "‣ [wpodłuydłu . one]",
-        "answer": "wydłużone",
-        "accepted_answers": ["wydłużone","podłużne"],
+        "text": "oczy",
+        "empty": "[. . . .]",
+        "hint1": "[o . . .]",
+        "hint2": "[oc . y]",
+        "answer": "oczy",
+        "accepted_answers": ["oczy"],
         "status": 0,
-        "label_x": 10,
-        "label_y": 76,
+        "label_x": 465,
+        "label_y": 120,
         "label_background_color": "transparent",
         "label_border_width": 0,
         "text_size": 14,
-        "label_alpha": 1
-      },
-      {
-        "id": 2,
-        "text": "pierścieniami",
-        "empty": "[. . . . . . . . . . . . .]",
-        "hint1": "[pier . . . . . . . . .]",
-        "hint2": "[pierście . iami]",
-        "answer": "pierścieniami",
-        "accepted_answers": ["pierścieniami","pierścieniem","pierścień"],
-        "status": 0,
-        "label_x": 34,
-        "label_y": 175,
-        "label_background_color": "transparent",
-        "label_border_width": 0,
-        "text_size": 14,
-        "label_alpha": 1
+        "label_alpha": 1,
+        "picture_src": "bio_000016_1",
+        "picture_alpha": 1
       },
       {
         "id": 3,
-        "text": "lub segmentami.",
-        "empty": "lub [. . . . . . . . . .]",
-        "hint1": "lub [segm . . . . . .]",
-        "hint2": "lub [segm . ntami]",
-        "answer": "segmentami",
-        "accepted_answers": ["segmentami","segmantem","segment"],
+        "text": "czułki",
+        "empty": "[. . . . . .]",
+        "hint1": "[czu . . .]",
+        "hint2": "[czuł . i]",
+        "answer": "czułki",
+        "accepted_answers": ["czułki"],
         "status": 0,
-        "label_x": 240,
-        "label_y": 175,
+        "label_x": 330,
+        "label_y": 307,
         "label_background_color": "transparent",
         "label_border_width": 0,
         "text_size": 14,
-        "label_alpha": 1
+        "label_alpha": 1,
+        "picture_src": "bio_000016_2",
+        "picture_alpha": 1
       },
       {
         "id": 4,
-        "text": "‣ pokryte cienkim oskórkiem oraz",
-        "empty": "‣ pokryte cienkim [. . . . . . . . .] oraz",
-        "hint1": "‣ pokryte cienkim [oskór . . . .] oraz",
-        "hint2": "‣ pokryte cienkim [oskórk . em] oraz",
-        "answer": "oskórkiem",
-        "accepted_answers": ["oskórkiem","oskórek"],
+        "text": "szczęki",
+        "empty": "[. . . . . . .]",
+        "hint1": "[szcz . . .] oraz",
+        "hint2": "[szcę . i]",
+        "answer": "szczęki",
+        "accepted_answers": ["szczęki"],
         "status": 0,
-        "label_x": 10,
-        "label_y": 240,
+        "label_x": 170,
+        "label_y": 307,
         "label_background_color": "transparent",
         "label_border_width": 0,
         "text_size": 14,
-        "label_alpha": 1
+        "label_alpha": 1,
+        "picture_src": "bio_000016_3",
+        "picture_alpha": 1
       },
       {
         "id": 5,
-        "text": "warstwą śluzu.",
-        "empty": "warstwą [. . . . .]",
-        "hint1": "warstwą [śl . . .]",
-        "hint2": "warstwą [ślu . u]",
-        "answer": "śluzu",
-        "accepted_answers": ["śluzu","śluzem"],
+        "text": "wąsy",
+        "empty": "[. . . .]",
+        "hint1": "[w . . .]",
+        "hint2": "[wą . y]",
+        "answer": "wąsy",
+        "accepted_answers": ["wąsy"],
         "status": 0,
-        "label_x": 34,
-        "label_y": 270,
+        "label_x": 70,
+        "label_y": 120,
         "label_background_color": "transparent",
         "label_border_width": 0,
         "text_size": 14,
-        "label_alpha": 1
+        "label_alpha": 1,
+        "picture_src": "bio_000016_4",
+        "picture_alpha": 1
       }
     ]
   },
   {
-    "id": 25,
+    "id": 26,
     "title": "PIERŚCIENICE - Nereida różnokolorowa",
     "task": "Uzupełnij stwierdzenia",
     "working_area_background_color": "#FFFFFF",
@@ -1851,9 +1862,9 @@
       {
         "id": 1,
         "text": "żyjąca w słonym Morzu Bałtyckim",
-        "empty": "żyjąca w słonym [. . . . .]  [. . . . . . . . .]",
-        "hint1": "żyjąca w słonym [Mo . . .]  [Bał . . . . . .]",
-        "hint2": "żyjąca w słonym [Mor . u]  [Bałty . kim]",
+        "empty": "żyjąca w słonym [. . . . .  . . . . . . . . .]",
+        "hint1": "żyjąca w słonym [Mo . . .  Bał . . . . . .]",
+        "hint2": "żyjąca w słonym [Mor . u  Bałty . kim]",
         "answer": "Morzu Bałtyckim",
         "accepted_answers": ["Morzu Bałtyckim","Morze Bałtyckie"],
         "status": 0,
@@ -1925,7 +1936,7 @@
     ]
   },
   {
-    "id": 26,
+    "id": 27,
     "title": "PIERŚCIENICE - Pijawki",
     "task": "Uzupełnij",
     "working_area_background_color": "#FFFFFF",
@@ -2018,7 +2029,7 @@
     ]
   },
   {
-    "id": 27,
+    "id": 28,
     "title": "Uzupełnij informacje o budowie dźdźownicy",
     "task": "Uzupełnij 3 informacje",
     "working_area_background_color": "#FFFFFF",
@@ -2079,7 +2090,7 @@
     ]
   },
   {
-    "id": 28,
+    "id": 29,
     "title": "Szczegóły budowy ciała dżdżownicy",
     "task": "Uzupełnij 2 stwierdzenia",
     "working_area_background_color": "#FFFFFF",
@@ -2154,7 +2165,7 @@
     ]
   },
   {
-    "id": 29,
+    "id": 30,
     "title": "Szczegóły budowy ciała pierścienic",
     "task": "Uzupełnij 2 stwierdzenia",
     "working_area_background_color": "#FFFFFF",
@@ -2193,6 +2204,75 @@
         "label_alpha": 1,
         "picture_src": "bio_000005",
         "picture_alpha": 1
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "title": "Rozdział II - Podsumowanie 1/2",
+    "task": "Uzupełnij 2 stwierdzenia",
+    "working_area_background_color": "#FFFFFF",
+    "canvas_width": 620,
+    "canvas_height": 350,
+    "mode": "PAAQ",
+    "descriptions": [
+      {
+        "id": 1,
+        "text": "Uzupełnij szczegóły budowy ciała dżdżownicy",
+        "label_x": 0,
+        "label_y": 1,
+        "label_width": 620,
+        "label_border_width": 0,
+        "text_size": 15,
+        "text_underline": 1,
+        "label_alpha": 1
+      }
+    ],
+    "answers": [
+      {
+        "id": 1,
+        "input_text_message": "Pierścienica wód słonych",
+        "empty": "[. . . . . . . . . .]",
+        "hint1": "Nere . . .",
+        "hint2": "U niektórych pierścienic z pierwszych segmentów ciała powstaje [gło . a].",
+        "accepted_answers": ["Nereida"],
+        "status": 0,
+        "label_x": 0,
+        "label_y": 50,
+        "label_background_color": "transparent",
+        "label_border_width": 0,
+        "text_size": 13,
+        "label_alpha": 1,
+        "picture_src": "bio_000005",
+        "picture_alpha": 0
+      },
+      {
+        "id": 2,
+        "input_text_message": "Pierścienica wód słodkich",
+        "empty": "[. . . . . . . . . .]",
+        "accepted_answers": ["Pijawka","Rurecznik"],
+        "status": 0,
+        "label_x": 0,
+        "label_y": 100,
+        "label_background_color": "transparent",
+        "label_border_width": 0,
+        "text_size": 13,
+        "label_alpha": 1,
+        "picture_src": "bio_000005",
+        "picture_alpha": 1
+      },
+      {
+        "id": 3,
+        "input_text_message": "Pierścienica lądowa",
+        "empty": "[. . . . . . . . . .]",
+        "accepted_answers": ["Dżdżownica","Kompostowiec","Wazonkowiec"],
+        "status": 0,
+        "label_x": 0,
+        "label_y": 150,
+        "label_background_color": "transparent",
+        "label_border_width": 0,
+        "text_size": 13,
+        "label_alpha": 1
       }
     ]
   }
