@@ -153,18 +153,15 @@ fun FennecApp(modifier: Modifier = Modifier) {
         }
         AppState.LEARNING_OPTIONS -> {
             LearningOptionsScreen(
-                onBackClicked = { currentState = AppState.CHAPTERS },
+                onBackClicked = { currentState = AppState.MAIN_SETUP },
                 onStartGameClicked = { currentState = AppState.LABELLING_GAME },
                 modifier = modifier
             )
         }
         AppState.LABELLING_GAME -> {
-            val context = LocalContext.current
             LabellingGameScreen(
+                onHomeClicked = { currentState = AppState.MAIN_SETUP },
                 onBackToChapter = { currentState = AppState.CHAPTERS },
-                onEndLearning = {
-                    (context as? Activity)?.finish()
-                },
                 modifier = modifier
             )
         }
@@ -507,7 +504,7 @@ fun MainSetupScreen(
             }
         }
 
-        // Dolne przyciski w jednym wierszu: Koniec | ★ | Dalej
+        // Dolne przyciski w jednym wierszu: Power Off | ★ | Dalej
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -517,17 +514,15 @@ fun MainSetupScreen(
         ) {
             Button(
                 onClick = { (context as? Activity)?.finish() },
-                modifier = Modifier.weight(1f),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.error
+                    containerColor = MaterialTheme.colorScheme.error,
+                    contentColor = Color.White
                 )
             ) {
                 Icon(
-                    imageVector = Icons.Rounded.Close,
-                    contentDescription = "Koniec"
+                    painter = painterResource(id = R.drawable.baseline_power_settings_new_24),
+                    contentDescription = "Wyłącz"
                 )
-                Spacer(modifier = Modifier.width(6.dp))
-                Text(text = "Koniec", textAlign = TextAlign.Center)
             }
 
             Button(
@@ -587,7 +582,9 @@ fun ChapterSelectionScreen(
             contentPadding = PaddingValues(16.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
-            modifier = Modifier.fillMaxWidth().weight(1f) // Pozwalamy siatce zająć dostępne miejsce nad przyciskiem
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(1f, fill = false)
         ) {
             items(chapters) { chapter ->
                 Card(
@@ -625,16 +622,12 @@ fun ChapterSelectionScreen(
 
         Button(
             onClick = onBackClicked,
-            modifier = Modifier
-                .padding(top = 16.dp, bottom = 32.dp)
-                .width(200.dp)
+            modifier = Modifier.padding(top = 8.dp, bottom = 24.dp)
         ) {
             Icon(
-                imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                contentDescription = "Wróć"
+                painter = painterResource(id = R.drawable.baseline_home_24),
+                contentDescription = "Ekran główny"
             )
-            Spacer(modifier = Modifier.width(8.dp))
-            Text(text = "Wróć")
         }
     }
 }
@@ -692,15 +685,13 @@ fun LearningOptionsScreen(
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             SelectionCard(
-                title = "Fundamenty",
-                subtitle = "opanuj podstawy",
+                title = "Podstawy",
                 isSelected = AppGlobalState.selectedLevel == "Fundamenty",
                 onClick = { AppGlobalState.selectedLevel = "Fundamenty" },
                 modifier = Modifier.weight(1f)
             )
             SelectionCard(
-                title = "Doskonalenie",
-                subtitle = "rozwiń swoją wiedzę",
+                title = "Rozszerzenie",
                 isSelected = AppGlobalState.selectedLevel == "Doskonalenie",
                 onClick = { AppGlobalState.selectedLevel = "Doskonalenie" },
                 modifier = Modifier.weight(1f)
@@ -733,22 +724,22 @@ fun LearningOptionsScreen(
 
         Spacer(modifier = Modifier.height(32.dp))
 
-        // Row with Wróć on left and Zaczynamy on right
+        // Row with Home on left and Play on right
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(16.dp)
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Button(
-                onClick = onBackClicked,
-                modifier = Modifier.weight(1f)
+                onClick = onBackClicked
             ) {
                 Icon(
-                    imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                    contentDescription = "Wróć"
+                    painter = painterResource(id = R.drawable.baseline_home_24),
+                    contentDescription = "Ekran główny"
                 )
-                Spacer(modifier = Modifier.width(8.dp))
-                Text(text = "Wróć")
             }
+
+            Spacer(modifier = Modifier.weight(1f))
 
             Button(
                 onClick = onStartGameClicked,
@@ -758,10 +749,8 @@ fun LearningOptionsScreen(
                     contentColor = Color.White
                 )
             ) {
-                Text(text = "Zaczynamy")
-                Spacer(modifier = Modifier.width(8.dp))
                 Icon(
-                    imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
+                    painter = painterResource(id = R.drawable.outline_play_arrow_24),
                     contentDescription = "Zaczynamy"
                 )
             }
@@ -790,7 +779,7 @@ fun LearningOptionsScreen(
             )
         ) {
             Icon(
-                imageVector = Icons.Rounded.Refresh,
+                painter = painterResource(id = R.drawable.outline_replay_24),
                 contentDescription = "Resetuj progres"
             )
             Spacer(modifier = Modifier.width(8.dp))

@@ -588,8 +588,8 @@ fun saveQuestionStatus(
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun LabellingGameScreen(
+    onHomeClicked: () -> Unit,
     onBackToChapter: () -> Unit,
-    onEndLearning: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
@@ -760,7 +760,65 @@ fun LabellingGameScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(if (isImeVisible) 4.dp else 12.dp)
     ) {
-        if (!isImeVisible) {
+        val color0 = statusColors[0] ?: Color.Transparent
+        val color1 = statusColors[1] ?: Color(0xFFC2E1FF)
+        val color2 = statusColors[2] ?: Color(0xFF00BBF9)
+        val color3 = statusColors[3] ?: Color(0xFFFFC300)
+        val outlineColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.35f)
+
+        fun getLessonStatusColor(lesson: LessonData): Color {
+            val maxPossibleSum = lesson.questions.size * maxStatusValue
+            val statusSum = lesson.questions.sumOf { it.status }
+            return when {
+                maxPossibleSum == 0 || statusSum <= 0 -> color0
+                statusSum >= maxPossibleSum -> color3
+                statusSum * 2 <= maxPossibleSum -> color1
+                else -> color2
+            }
+        }
+
+        if (isImeVisible) {
+            // Wiersz z płaskimi prostokątami symbolizującymi wszystkie lekcje
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(4.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                for (i in allLessons.indices) {
+                    val isCurrent = i == currentLessonIndex
+                    val lessonObj = allLessons[i]
+                    val rectBg = getLessonStatusColor(lessonObj)
+
+                    val borderMod = if (isCurrent) {
+                        Modifier.border(2.5.dp, Color.Black, RoundedCornerShape(3.dp))
+                    } else if (rectBg == Color.Transparent) {
+                        Modifier.border(1.dp, outlineColor, RoundedCornerShape(3.dp))
+                    } else {
+                        Modifier
+                    }
+
+                    val isTileClickable = when (lessonNoButtonActive) {
+                        0 -> false
+                        1 -> i > currentLessonIndex
+                        else -> true
+                    }
+                    val clickMod = if (isTileClickable) {
+                        Modifier.clickable { currentLessonIndex = i }
+                    } else {
+                        Modifier
+                    }
+
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .height(10.dp)
+                            .background(rectBg, RoundedCornerShape(3.dp))
+                            .then(borderMod)
+                            .then(clickMod)
+                    )
+                }
+            }
+        } else {
             // Header Card (Subject, Class, Chapter, Favorite Star, Progress & Lesson Tiles)
             Card(
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerHigh),
@@ -846,26 +904,18 @@ fun LabellingGameScreen(
                                             val lessonObj = allLessons[i]
                                             val isMastered = lessonObj.questions.isNotEmpty() && lessonObj.questions.all { it.status >= maxStatusValue }
 
-                                            val tileBg = if (isCurrent) {
-                                                MaterialTheme.colorScheme.primaryContainer
-                                            } else if (isMastered) {
-                                                Color(0xFFC8E6C9)
-                                            } else {
-                                                MaterialTheme.colorScheme.surfaceVariant
-                                            }
+                                            val tileBg = getLessonStatusColor(lessonObj)
 
                                             val tileBorder = if (isCurrent) {
-                                                BorderStroke(2.dp, MaterialTheme.colorScheme.primary)
-                                            } else if (isMastered) {
-                                                BorderStroke(2.dp, Color(0xFF4CAF50))
+                                                BorderStroke(2.5.dp, Color.Black)
+                                            } else if (tileBg == Color.Transparent) {
+                                                BorderStroke(1.dp, outlineColor)
                                             } else null
 
-                                            val tileTextColor = if (isCurrent) {
-                                                MaterialTheme.colorScheme.onPrimaryContainer
-                                            } else if (isMastered) {
-                                                Color(0xFF1B5E20)
+                                            val tileTextColor = if (tileBg != Color.Transparent) {
+                                                Color.Black
                                             } else {
-                                                MaterialTheme.colorScheme.onSurfaceVariant
+                                                MaterialTheme.colorScheme.onSurface
                                             }
 
                                             val borderMod = if (tileBorder != null) Modifier.border(tileBorder, RoundedCornerShape(8.dp)) else Modifier
@@ -1214,39 +1264,21 @@ fun LabellingGameScreen(
                     )
                 ) {
                     Icon(
-                        imageVector = Icons.Rounded.KeyboardArrowDown,
+                        painter = painterResource(id = R.drawable.outline_keyboard_off_24),
                         contentDescription = "Schowaj klawiaturę",
                         tint = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
 
-                // 2. Back to Chapter Button ("<<")
+                // 2. Back to Chapter Button
                 Button(
                     onClick = onBackToChapter,
                     colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary),
                     contentPadding = PaddingValues(horizontal = 12.dp)
                 ) {
-                    Text("<<", fontWeight = FontWeight.ExtraBold)
-                }
-
-                // 3. Next Lesson Button (">")
-                Button(
-                    onClick = {
-                        val nextUnmastered = (currentLessonIndex + 1 until allLessons.size).firstOrNull { idx ->
-                            !allLessons[idx].questions.all { it.status >= maxStatusValue }
-                        }
-                        if (nextUnmastered != null) {
-                            currentLessonIndex = nextUnmastered
-                        } else if (currentLessonIndex < allLessons.size - 1) {
-                            currentLessonIndex++
-                        }
-                    },
-                    enabled = currentLessonIndex < allLessons.size - 1,
-                    contentPadding = PaddingValues(horizontal = 12.dp)
-                ) {
                     Icon(
-                        imageVector = Icons.AutoMirrored.Rounded.NavigateNext,
-                        contentDescription = "Następna"
+                        painter = painterResource(id = R.drawable.outline_menu_book_24),
+                        contentDescription = "Rozdział"
                     )
                 }
 
@@ -1361,28 +1393,25 @@ fun LabellingGameScreen(
         if (!isImeVisible) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 Button(
-                    onClick = onBackToChapter,
-                    modifier = Modifier.weight(1f),
-                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)
-                ) {
-                    Text("<<", fontWeight = FontWeight.ExtraBold)
-                    Spacer(modifier = Modifier.width(4.dp))
-                    Text("Rozdział", textAlign = TextAlign.Center)
-                }
-                Button(
-                    onClick = onEndLearning,
-                    modifier = Modifier.weight(1f),
-                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error)
+                    onClick = onHomeClicked
                 ) {
                     Icon(
-                        imageVector = Icons.Rounded.Close,
-                        contentDescription = "Koniec"
+                        painter = painterResource(id = R.drawable.baseline_home_24),
+                        contentDescription = "Ekran główny"
                     )
-                    Spacer(modifier = Modifier.width(4.dp))
-                    Text("Koniec", textAlign = TextAlign.Center)
+                }
+                Button(
+                    onClick = onBackToChapter,
+                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.outline_menu_book_24),
+                        contentDescription = "Rozdział"
+                    )
                 }
             }
         }
