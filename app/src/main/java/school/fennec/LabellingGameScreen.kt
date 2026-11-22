@@ -43,10 +43,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
 import android.speech.tts.TextToSpeech
+import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.zIndex
 import kotlinx.coroutines.delay
 import org.json.JSONArray
 import org.json.JSONObject
@@ -348,7 +355,7 @@ fun loadAudioLocale(context: Context): Locale {
     }
 }
 
-fun loadAnswerStatusMaxAudio(context: Context): String {
+fun loadAudioSettingText(context: Context, key: String): String {
     val jsonString = try {
         context.assets.open("ustawienia.json").bufferedReader().use { it.readText() }
     } catch (_: Exception) {
@@ -359,22 +366,74 @@ fun loadAnswerStatusMaxAudio(context: Context): String {
         val obj = JSONObject(jsonString)
         val audiosObj = obj.optJSONObject("audios")
         if (audiosObj != null) {
-            return audiosObj.optString("answer_status_max", "").trim()
+            return audiosObj.optString(key, "").trim()
         }
         val audiosArr = obj.optJSONArray("audios")
         if (audiosArr != null) {
             for (i in 0 until audiosArr.length()) {
                 val item = audiosArr.optJSONObject(i) ?: continue
-                if (item.has("answer_status_max")) {
-                    return item.optString("answer_status_max", "").trim()
+                if (item.has(key)) {
+                    return item.optString(key, "").trim()
                 }
             }
         }
-        obj.optString("answer_status_max", "").trim()
+        obj.optString(key, "").trim()
     } catch (_: Exception) {
         ""
     }
 }
+
+fun loadAnswerStatusMaxAudio(context: Context): String =
+    loadAudioSettingText(context, "answer_status_max")
+
+fun loadAnsweredStatusAudio(context: Context): String =
+    loadAudioSettingText(context, "answered_status")
+
+fun loadCurrentLessonTileBorderColor(context: Context): Color {
+    val defaultColor = Color.Black
+    val jsonString = try {
+        context.assets.open("ustawienia.json").bufferedReader().use { it.readText() }
+    } catch (_: Exception) {
+        return defaultColor
+    }
+
+    return try {
+        val obj = JSONObject(jsonString)
+        val colorStr = obj.optJSONObject("colors")
+            ?.optString("current_lesson_tile_border", "")
+            ?.trim()
+            .orEmpty()
+            .ifEmpty { obj.optString("current_lesson_tile_border", "").trim() }
+
+        if (colorStr.isEmpty()) return defaultColor
+        val hex = if (colorStr.startsWith("0x") || colorStr.startsWith("0X")) {
+            "#" + colorStr.substring(2)
+        } else if (!colorStr.startsWith("#")) {
+            "#$colorStr"
+        } else colorStr
+
+        Color(android.graphics.Color.parseColor(hex))
+    } catch (_: Exception) {
+        defaultColor
+    }
+}
+
+fun Modifier.currentLessonBorder(color: Color, cornerRadius: Dp): Modifier =
+    this
+        .zIndex(1f)
+        .drawWithContent {
+            drawContent()
+            val strokeWidthPx = 4.dp.toPx()
+            val expandPx = 1.dp.toPx() // środek obrysu 4dp przesunięty o 1dp na zewnątrz => 3dp na zewnątrz, 1dp do wewnątrz
+            val radiusPx = (cornerRadius + 1.dp).toPx()
+            drawRoundRect(
+                color = color,
+                topLeft = Offset(-expandPx, -expandPx),
+                size = Size(size.width + expandPx * 2f, size.height + expandPx * 2f),
+                cornerRadius = CornerRadius(radiusPx, radiusPx),
+                style = Stroke(width = strokeWidthPx)
+            )
+        }
 
 fun calculateChapterProgress(allLessons: List<LessonData>, maxStatusValue: Int = 5): Int {
     var totalQuestions = 0
@@ -793,6 +852,8 @@ fun LabellingGameScreen(
     val lessonNoButtonActive = remember { loadLessonNoButtonActive(context) }
     val audioLocale = remember { loadAudioLocale(context) }
     val answerStatusMaxAudio = remember { loadAnswerStatusMaxAudio(context) }
+    val answeredStatusAudio = remember { loadAnsweredStatusAudio(context) }
+    val currentLessonTileBorderColor = remember { loadCurrentLessonTileBorderColor(context) }
 
     var isAudioMuted by rememberSaveable { mutableStateOf(false) }
     var tts by remember { mutableStateOf<TextToSpeech?>(null) }
@@ -990,7 +1051,7 @@ fun LabellingGameScreen(
                     val rectBg = getLessonStatusColor(lessonObj)
 
                     val borderMod = if (isCurrent) {
-                        Modifier.border(2.5.dp, Color.Black, RoundedCornerShape(3.dp))
+                        Modifier.currentLessonBorder(currentLessonTileBorderColor, 3.dp)
                     } else if (rectBg == Color.Transparent) {
                         Modifier.border(1.dp, outlineColor, RoundedCornerShape(3.dp))
                     } else {
@@ -1106,15 +1167,13 @@ fun LabellingGameScreen(
 
                                             val tileBg = getLessonStatusColor(lessonObj)
 
-                                            val tileBorder = if (isCurrent) {
-                                                BorderStroke(2.5.dp, Color.Black)
-                                            } else if (tileBg == Color.Transparent) {
-                                                BorderStroke(1.dp, outlineColor)
-                                            } else null
-
                                             val tileTextColor = getLessonStatusTextColor(lessonObj)
 
-                                            val borderMod = if (tileBorder != null) Modifier.border(tileBorder, RoundedCornerShape(8.dp)) else Modifier
+                                            val borderMod = if (isCurrent) {
+                                                Modifier.currentLessonBorder(currentLessonTileBorderColor, 8.dp)
+                                            } else if (tileBg == Color.Transparent) {
+                                                Modifier.border(BorderStroke(1.dp, outlineColor), RoundedCornerShape(8.dp))
+                                            } else Modifier
                                             val isTileClickable = when (lessonNoButtonActive) {
                                                 0 -> false
                                                 1 -> i > currentLessonIndex
@@ -1339,10 +1398,13 @@ fun LabellingGameScreen(
                                     lastGuessedItem = question.id
                                     pulseTrigger++
                                     if (!isAudioMuted) {
-                                        val audioToSpeak = if (question.status >= maxStatusValue && answerStatusMaxAudio.isNotEmpty()) {
-                                            answerStatusMaxAudio
-                                        } else {
-                                            question.audio
+                                        val audioToSpeak = when {
+                                            question.status >= maxStatusValue && answerStatusMaxAudio.isNotEmpty() ->
+                                                answerStatusMaxAudio
+                                            isGuessed && answeredStatusAudio.isNotEmpty() ->
+                                                answeredStatusAudio
+                                            else ->
+                                                question.audio
                                         }
                                         if (audioToSpeak.isNotEmpty()) {
                                             speakText(audioToSpeak)
@@ -1668,6 +1730,34 @@ fun LabellingGameScreen(
                             id = if (isAudioMuted) R.drawable.mute_icon else R.drawable.speaker_icon
                         ),
                         contentDescription = if (isAudioMuted) "Włącz dźwięk" else "Wycisz dźwięk"
+                    )
+                }
+
+                Spacer(modifier = Modifier.weight(1f))
+
+                Button(
+                    onClick = {
+                        if (hintLevel < 2) hintLevel++
+                    },
+                    enabled = hintLevel < 2,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = if (hintLevel < 2) MaterialTheme.colorScheme.secondaryContainer else MaterialTheme.colorScheme.surfaceVariant,
+                        contentColor = if (hintLevel < 2) MaterialTheme.colorScheme.onSecondaryContainer else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
+                    ),
+                    contentPadding = PaddingValues(horizontal = 14.dp, vertical = 8.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Rounded.Lightbulb,
+                        contentDescription = "Podpowiedź 1",
+                        tint = if (hintLevel >= 1) Color(0xFFFFC107) else Color.Gray,
+                        modifier = Modifier.size(20.dp)
+                    )
+                    Spacer(modifier = Modifier.width(2.dp))
+                    Icon(
+                        imageVector = Icons.Rounded.Lightbulb,
+                        contentDescription = "Podpowiedź 2",
+                        tint = if (hintLevel >= 2) Color(0xFFFFC107) else Color.Gray,
+                        modifier = Modifier.size(20.dp)
                     )
                 }
             }
