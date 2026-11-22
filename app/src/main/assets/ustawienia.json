@@ -1,20 +1,29 @@
 {
   "status": [
     {
+      "value": -1,
+      "box_background_color": "#6c757d",
+      "text_color": "#ffffff"
+    },
+    {
       "value": 0,
-      "color": "transparent"
+      "box_background_color": "transparent",
+      "text_color": "#000000"
     },
     {
       "value": 1,
-      "color": "#c2e1ff"
+      "box_background_color": "#c2e1ff",
+      "text_color": "#000000"
     },
     {
       "value": 2,
-      "color": "#00bbf9"
+      "box_background_color": "#00bbf9",
+      "text_color": "#000000"
     },
     {
       "value": 3,
-      "color": "#ffc300"
+      "box_background_color": "#ffc300",
+      "text_color": "#000000"
     }
   ],
   "answer": [

@@ -955,7 +955,7 @@
   },
   {
     "id": 15,
-    "title": "TASIEMCE - szczegóły różnic w budowie",
+    "title": "Cykl rozwojowy tasiemców",
     "task": "Wpisz odpowiedzi",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 620,
@@ -1002,7 +1002,7 @@
     "descriptions": [
       {
         "id": 1,
-        "text": "Różnica w cyklu rozwojowym tasiemca uzbrojonego i nieuzbrojonego.",
+        "text": "Cykl rozwojowy tasiemca uzbrojonego i nieuzbrojonego wymaga dwóch organizmów.",
         "label_x": 0,
         "label_y": 0,
         "label_width": 620,
@@ -1010,6 +1010,7 @@
         "text_size": 15,
         "text_underline": 1,
         "label_alpha": 1,
+        "pulsing": 0,
         "picture_src": "bio_000017_0",
         "picture_alpha": 1
       }

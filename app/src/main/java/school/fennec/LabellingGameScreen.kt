@@ -145,10 +145,11 @@ fun parseLabelPositions(obj: JSONObject): List<Pair<Float, Float>> {
 
 fun loadStatusColors(context: Context): Map<Int, Color> {
     val defaultMap = mapOf(
+        -1 to Color(0xFF495057),
         0 to Color.Transparent,
-        1 to Color(0xFFE57373),
-        2 to Color(0xFFFFB74D),
-        3 to Color(0xFF4CAF50)
+        1 to Color(0xFFC2E1FF),
+        2 to Color(0xFF00BBF9),
+        3 to Color(0xFFFFC300)
     )
 
     val jsonString = try {
@@ -164,14 +165,22 @@ fun loadStatusColors(context: Context): Map<Int, Color> {
 
         for (i in 0 until array.length()) {
             val item = array.optJSONObject(i) ?: continue
-            val valNum = item.optInt("value", -1)
-            val colorStr = item.optString("color", "")
-            if (valNum != -1 && colorStr.isNotEmpty()) {
+            if (!item.has("value")) continue
+            val valNum = item.optInt("value")
+            val colorStr = item.optString("box_background_color", "")
+                .ifEmpty { item.optString("background_color", "") }
+                .ifEmpty { item.optString("color", "") }
+            if (colorStr.isNotEmpty()) {
                 val parsedColor = if (colorStr.equals("transparent", ignoreCase = true)) {
                     Color.Transparent
                 } else {
+                    val hex = if (colorStr.startsWith("0x") || colorStr.startsWith("0X")) {
+                        "#" + colorStr.substring(2)
+                    } else if (!colorStr.startsWith("#")) {
+                        "#$colorStr"
+                    } else colorStr
                     try {
-                        Color(android.graphics.Color.parseColor(colorStr))
+                        Color(android.graphics.Color.parseColor(hex))
                     } catch (e: Exception) {
                         Color.Transparent
                     }
@@ -181,6 +190,48 @@ fun loadStatusColors(context: Context): Map<Int, Color> {
         }
         if (map.isEmpty()) defaultMap else map
     } catch (e: Exception) {
+        defaultMap
+    }
+}
+
+fun loadStatusTextColors(context: Context): Map<Int, Color> {
+    val defaultMap = mapOf(
+        -1 to Color.White,
+        0 to Color.Black,
+        1 to Color.Black,
+        2 to Color.Black,
+        3 to Color.Black
+    )
+
+    val jsonString = try {
+        context.assets.open("ustawienia.json").bufferedReader().use { it.readText() }
+    } catch (_: Exception) {
+        return defaultMap
+    }
+
+    return try {
+        val obj = JSONObject(jsonString)
+        val array = obj.optJSONArray("status") ?: return defaultMap
+        val map = mutableMapOf<Int, Color>()
+
+        for (i in 0 until array.length()) {
+            val item = array.optJSONObject(i) ?: continue
+            if (!item.has("value")) continue
+            val valNum = item.optInt("value")
+            val colorStr = item.optString("text_color", "")
+            if (colorStr.isNotEmpty()) {
+                val hex = if (colorStr.startsWith("0x") || colorStr.startsWith("0X")) {
+                    "#" + colorStr.substring(2)
+                } else if (!colorStr.startsWith("#")) {
+                    "#$colorStr"
+                } else colorStr
+                try {
+                    map[valNum] = Color(android.graphics.Color.parseColor(hex))
+                } catch (_: Exception) {}
+            }
+        }
+        if (map.isEmpty()) defaultMap else map
+    } catch (_: Exception) {
         defaultMap
     }
 }
@@ -668,6 +719,7 @@ fun LabellingGameScreen(
     }
 
     val statusColors = remember { loadStatusColors(context) }
+    val statusTextColors = remember { loadStatusTextColors(context) }
     val answerTextColors = remember { loadAnswerTextColors(context) }
     val maxStatusValue = remember(answerTextColors) {
         answerTextColors.keys.maxOrNull() ?: 5
@@ -760,21 +812,38 @@ fun LabellingGameScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(if (isImeVisible) 4.dp else 12.dp)
     ) {
+        val colorMinus1 = statusColors[-1] ?: Color(0xFF495057)
         val color0 = statusColors[0] ?: Color.Transparent
         val color1 = statusColors[1] ?: Color(0xFFC2E1FF)
         val color2 = statusColors[2] ?: Color(0xFF00BBF9)
         val color3 = statusColors[3] ?: Color(0xFFFFC300)
         val outlineColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.35f)
 
-        fun getLessonStatusColor(lesson: LessonData): Color {
+        fun getLessonStatusLevel(lesson: LessonData): Int {
+            if (lesson.questions.isEmpty()) return -1
             val maxPossibleSum = lesson.questions.size * maxStatusValue
             val statusSum = lesson.questions.sumOf { it.status }
             return when {
-                maxPossibleSum == 0 || statusSum <= 0 -> color0
-                statusSum >= maxPossibleSum -> color3
-                statusSum * 2 <= maxPossibleSum -> color1
-                else -> color2
+                maxPossibleSum == 0 || statusSum <= 0 -> 0
+                statusSum >= maxPossibleSum -> 3
+                statusSum * 2 <= maxPossibleSum -> 1
+                else -> 2
             }
+        }
+
+        fun getLessonStatusColor(lesson: LessonData): Color {
+            return when (getLessonStatusLevel(lesson)) {
+                -1 -> colorMinus1
+                0 -> color0
+                1 -> color1
+                2 -> color2
+                else -> color3
+            }
+        }
+
+        fun getLessonStatusTextColor(lesson: LessonData): Color {
+            val level = getLessonStatusLevel(lesson)
+            return statusTextColors[level] ?: if (level == -1) Color.White else Color.Black
         }
 
         if (isImeVisible) {
@@ -912,11 +981,7 @@ fun LabellingGameScreen(
                                                 BorderStroke(1.dp, outlineColor)
                                             } else null
 
-                                            val tileTextColor = if (tileBg != Color.Transparent) {
-                                                Color.Black
-                                            } else {
-                                                MaterialTheme.colorScheme.onSurface
-                                            }
+                                            val tileTextColor = getLessonStatusTextColor(lessonObj)
 
                                             val borderMod = if (tileBorder != null) Modifier.border(tileBorder, RoundedCornerShape(8.dp)) else Modifier
                                             val isTileClickable = when (lessonNoButtonActive) {
