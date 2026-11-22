@@ -852,7 +852,8 @@ fun FavoritesScreen(
                     val db = ch.fundamentyDatabase.ifEmpty { "bio_lekcje.json" }
                     val lessons = loadLessons(context, db)
                     val allowed = if (ch.fundamentyLessonIds.isNotEmpty()) {
-                        lessons.filter { ch.fundamentyLessonIds.contains(it.id) }
+                        val lessonsById = lessons.associateBy { it.id }
+                        ch.fundamentyLessonIds.mapNotNull { id -> lessonsById[id] }
                     } else lessons
                     val prog = calculateChapterProgress(allowed)
                     list.add(FavoriteItemData(tb, ch, prog))

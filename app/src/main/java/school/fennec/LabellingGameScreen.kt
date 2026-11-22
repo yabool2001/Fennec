@@ -858,7 +858,7 @@ fun LabellingGameScreen(
         }
     }
 
-    var currentLessonIndex by rememberSaveable(selectedChapter?.id, selectedLevel) {
+    var currentLessonIndex by rememberSaveable(selectedChapter?.id, selectedLevel, allowedLessonIds) {
         mutableIntStateOf(0)
     }
     val currentLesson = allLessons.getOrNull(currentLessonIndex)
