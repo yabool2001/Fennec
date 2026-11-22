@@ -308,11 +308,7 @@ fun loadLessonNoButtonActive(context: Context): Int {
 
     return try {
         val obj = JSONObject(jsonString)
-        if (obj.has("lesson no_button_active")) {
-            obj.optInt("lesson no_button_active", 2)
-        } else {
-            obj.optInt("lesson_no_button_active", 2)
-        }
+        obj.optInt("lesson_no_button_active", 2)
     } catch (_: Exception) {
         2
     }

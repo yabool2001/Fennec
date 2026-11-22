@@ -957,12 +957,14 @@
     "id": 15,
     "title": "Cykl rozwojowy tasiemców",
     "task": "Wpisz odpowiedzi",
+    "audio": "Podaj nazwy organizmów niezbędnych do rozwoju tasiemca.",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 620,
     "canvas_height": 350,
     "answers": [
       {
         "id": 1,
+        "audio": "Nazwij rolę jaką pełni świnia w cyklu rozwojowym tasiemca uzbrojonego i krowa w cyklu rozwojowym tasiemca nieuzbrojonego.",
         "text": "Żywiciel\npośredni",
         "empty": "[. . . . . . . .\n. . . . . . . .]",
         "hint1": "[Żywi . . . .\npośr . . . .]",
@@ -982,6 +984,7 @@
       },
       {
         "id": 2,
+        "audio": "Nazwij rolę jaką pełni człowiek w cyklu rozwojowym tasiemca uzbrojonego i nieuzbrojonego.",
         "text": "Żywiciel\nostateczny",
         "empty": "[. . . . . . . .\n. . . . . . . . . .]",
         "hint1": "[Żywi . . . .\nosta . . . . . .]",
