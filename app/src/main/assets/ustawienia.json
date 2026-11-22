@@ -52,6 +52,9 @@
       "text_color": "#000000"
     }
   ],
+  "audios": {
+    "answer_status_max": "To zadanie zostało już zaliczone po trzykrotnym udzieleniu prawidłowej odpowiedzi bez żadnej podpowiedzi."
+  },
   "iso3166-1-A-2": "PL",
   "distinction_time": 10,
   "CQPA_input_text_message": "Dotknij pytania na które chcesz odpowiedzieć.",

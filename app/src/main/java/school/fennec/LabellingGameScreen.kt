@@ -42,6 +42,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
+import android.speech.tts.TextToSpeech
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
@@ -50,6 +51,7 @@ import kotlinx.coroutines.delay
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
+import java.util.Locale
 
 data class QuestionData(
     val id: Int,
@@ -71,7 +73,8 @@ data class QuestionData(
     val labelAlpha: Float? = null,
     val textAlignment: String = "center",
     val textSizeSp: Float = 13f,
-    val pictureResId: Int?
+    val pictureResId: Int?,
+    val audio: String = ""
 )
 
 data class DescriptionData(
@@ -88,7 +91,8 @@ data class DescriptionData(
     val labelAlpha: Float? = null,
     val textAlignment: String = "center",
     val textSizeSp: Float = 13f,
-    val pictureResId: Int?
+    val pictureResId: Int?,
+    val audio: String = ""
 )
 
 data class LessonData(
@@ -99,7 +103,8 @@ data class LessonData(
     val canvasWidth: Float,
     val canvasHeight: Float,
     val questions: List<QuestionData>,
-    val descriptions: List<DescriptionData> = emptyList()
+    val descriptions: List<DescriptionData> = emptyList(),
+    val audio: String = ""
 )
 
 fun parseTextAlign(alignStr: String): TextAlign {
@@ -314,6 +319,63 @@ fun loadLessonNoButtonActive(context: Context): Int {
     }
 }
 
+fun loadAudioLocale(context: Context): Locale {
+    val defaultCode = "PL"
+    val countryCode = try {
+        val jsonString = context.assets.open("ustawienia.json").bufferedReader().use { it.readText() }
+        val obj = JSONObject(jsonString)
+        obj.optString("iso3166-1-A-2", defaultCode).trim().uppercase()
+    } catch (_: Exception) {
+        defaultCode
+    }.ifEmpty { defaultCode }
+
+    return when (countryCode) {
+        "PL" -> Locale.forLanguageTag("pl-PL")
+        "GB", "UK" -> Locale.UK
+        "US" -> Locale.US
+        "DE" -> Locale.GERMANY
+        "FR" -> Locale.FRANCE
+        "ES" -> Locale.forLanguageTag("es-ES")
+        "IT" -> Locale.ITALY
+        "UA" -> Locale.forLanguageTag("uk-UA")
+        "CZ" -> Locale.forLanguageTag("cs-CZ")
+        "SK" -> Locale.forLanguageTag("sk-SK")
+        else -> {
+            Locale.getAvailableLocales().firstOrNull {
+                it.country.equals(countryCode, ignoreCase = true) && it.language.isNotEmpty()
+            } ?: Locale.forLanguageTag("${countryCode.lowercase()}-$countryCode")
+        }
+    }
+}
+
+fun loadAnswerStatusMaxAudio(context: Context): String {
+    val jsonString = try {
+        context.assets.open("ustawienia.json").bufferedReader().use { it.readText() }
+    } catch (_: Exception) {
+        return ""
+    }
+
+    return try {
+        val obj = JSONObject(jsonString)
+        val audiosObj = obj.optJSONObject("audios")
+        if (audiosObj != null) {
+            return audiosObj.optString("answer_status_max", "").trim()
+        }
+        val audiosArr = obj.optJSONArray("audios")
+        if (audiosArr != null) {
+            for (i in 0 until audiosArr.length()) {
+                val item = audiosArr.optJSONObject(i) ?: continue
+                if (item.has("answer_status_max")) {
+                    return item.optString("answer_status_max", "").trim()
+                }
+            }
+        }
+        obj.optString("answer_status_max", "").trim()
+    } catch (_: Exception) {
+        ""
+    }
+}
+
 fun calculateChapterProgress(allLessons: List<LessonData>, maxStatusValue: Int = 5): Int {
     var totalQuestions = 0
     var totalStatusSum = 0
@@ -367,6 +429,7 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
         val id = obj.optInt("id", i + 1)
         val title = obj.optString("title", "Lekcja $id")
         val task = obj.optString("task", "Wpisz odpowiedź")
+        val lessonAudio = obj.optString("audio", "").trim()
         
         val hexColorStr = obj.optString("working_area_background_color", "#F7F3EC")
         val bgHex = if (hexColorStr.startsWith("0x") || hexColorStr.startsWith("0X")) {
@@ -455,6 +518,7 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
                 val pictureResId = if (pictureSrc.isNotEmpty()) {
                     context.resources.getIdentifier(pictureSrc, "drawable", context.packageName)
                 } else 0
+                val qAudio = qObj.optString("audio", "").trim()
 
                 questions.add(
                     QuestionData(
@@ -477,7 +541,8 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
                         labelAlpha = labelAlphaVal,
                         textAlignment = textAlignmentVal,
                         textSizeSp = textSizeVal,
-                        pictureResId = if (pictureResId != 0) pictureResId else null
+                        pictureResId = if (pictureResId != 0) pictureResId else null,
+                        audio = qAudio
                     )
                 )
             }
@@ -534,6 +599,7 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
                 val pictureResId = if (pictureSrc.isNotEmpty()) {
                     context.resources.getIdentifier(pictureSrc, "drawable", context.packageName)
                 } else 0
+                val dAudio = dObj.optString("audio", "").trim()
 
                 descriptions.add(
                     DescriptionData(
@@ -550,7 +616,8 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
                         labelAlpha = dLabelAlphaVal,
                         textAlignment = dTextAlignmentVal,
                         textSizeSp = dTextSizeVal,
-                        pictureResId = if (pictureResId != 0) pictureResId else null
+                        pictureResId = if (pictureResId != 0) pictureResId else null,
+                        audio = dAudio
                     )
                 )
             }
@@ -565,7 +632,8 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
                 canvasWidth = canvasWidth,
                 canvasHeight = canvasHeight,
                 questions = questions,
-                descriptions = descriptions
+                descriptions = descriptions,
+                audio = lessonAudio
             )
         )
     }
@@ -723,6 +791,59 @@ fun LabellingGameScreen(
     val distinctionTimeSeconds = remember { loadDistinctionTime(context) }
     val passedInputTextMessage = remember { loadPassedInputTextMessage(context) }
     val lessonNoButtonActive = remember { loadLessonNoButtonActive(context) }
+    val audioLocale = remember { loadAudioLocale(context) }
+    val answerStatusMaxAudio = remember { loadAnswerStatusMaxAudio(context) }
+
+    var isAudioMuted by rememberSaveable { mutableStateOf(false) }
+    var tts by remember { mutableStateOf<TextToSpeech?>(null) }
+    var isTtsReady by remember { mutableStateOf(false) }
+    var pendingSpeech by remember { mutableStateOf<String?>(null) }
+
+    DisposableEffect(context, audioLocale) {
+        var ttsInstance: TextToSpeech? = null
+        ttsInstance = TextToSpeech(context) { status ->
+            if (status == TextToSpeech.SUCCESS) {
+                val engine = ttsInstance
+                if (engine != null) {
+                    val langResult = engine.setLanguage(audioLocale)
+                    if (langResult == TextToSpeech.LANG_MISSING_DATA || langResult == TextToSpeech.LANG_NOT_SUPPORTED) {
+                        engine.setLanguage(Locale.forLanguageTag(audioLocale.language))
+                    }
+                    isTtsReady = true
+                    val toSpeak = pendingSpeech
+                    if (!isAudioMuted && !toSpeak.isNullOrBlank()) {
+                        pendingSpeech = null
+                        engine.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null, "fennec_tts")
+                    }
+                }
+            }
+        }
+        tts = ttsInstance
+        onDispose {
+            pendingSpeech = null
+            isTtsReady = false
+            ttsInstance.stop()
+            ttsInstance.shutdown()
+            tts = null
+        }
+    }
+
+    fun speakText(text: String) {
+        val cleanText = text.trim()
+        if (isAudioMuted || cleanText.isEmpty()) return
+        val engine = tts
+        if (isTtsReady && engine != null) {
+            pendingSpeech = null
+            engine.speak(cleanText, TextToSpeech.QUEUE_FLUSH, null, "fennec_tts")
+        } else {
+            pendingSpeech = cleanText
+        }
+    }
+
+    fun stopSpeech() {
+        pendingSpeech = null
+        tts?.stop()
+    }
 
     val rawLessons = remember(databaseFilename) {
         loadLessons(context, databaseFilename)
@@ -741,6 +862,20 @@ fun LabellingGameScreen(
         mutableIntStateOf(0)
     }
     val currentLesson = allLessons.getOrNull(currentLessonIndex)
+
+    var lastSpokenLessonKey by rememberSaveable { mutableStateOf<String?>(null) }
+    val currentLessonKey = if (currentLesson != null) "${databaseFilename}_${currentLessonIndex}_${currentLesson.id}" else null
+
+    LaunchedEffect(currentLessonKey) {
+        if (currentLessonKey != null && currentLessonKey != lastSpokenLessonKey) {
+            lastSpokenLessonKey = currentLessonKey
+            stopSpeech()
+            val lessonAudio = currentLesson?.audio?.trim().orEmpty()
+            if (!isAudioMuted && lessonAudio.isNotEmpty()) {
+                speakText(lessonAudio)
+            }
+        }
+    }
 
     val questions = currentLesson?.questions ?: emptyList()
 
@@ -1091,6 +1226,13 @@ fun LabellingGameScreen(
                         val borderMod = if (borderWidthDp > 0.dp && borderAlpha > 0f && !isTransparentBg) {
                             Modifier.border(borderWidthDp, Color.Black.copy(alpha = borderAlpha), RoundedCornerShape(scaledCorner))
                         } else Modifier
+                        val descClickMod = if (desc.audio.isNotEmpty()) {
+                            Modifier.clickable {
+                                if (!isAudioMuted) {
+                                    speakText(desc.audio)
+                                }
+                            }
+                        } else Modifier
 
                         desc.labelPositions.forEach { (pxX, pxY) ->
                             val labelOffsetX = containerWidth * (pxX / canvasWidthRatio)
@@ -1102,6 +1244,7 @@ fun LabellingGameScreen(
                                     .then(boxWidthMod)
                                     .background(boxBgColor, RoundedCornerShape(scaledCorner))
                                     .then(borderMod)
+                                    .then(descClickMod)
                                     .padding(horizontal = scaledPadH, vertical = scaledPadV),
                                 contentAlignment = parseBoxAlignment(desc.textAlignment)
                             ) {
@@ -1195,6 +1338,16 @@ fun LabellingGameScreen(
                                 .clickable {
                                     lastGuessedItem = question.id
                                     pulseTrigger++
+                                    if (!isAudioMuted) {
+                                        val audioToSpeak = if (question.status >= maxStatusValue && answerStatusMaxAudio.isNotEmpty()) {
+                                            answerStatusMaxAudio
+                                        } else {
+                                            question.audio
+                                        }
+                                        if (audioToSpeak.isNotEmpty()) {
+                                            speakText(audioToSpeak)
+                                        }
+                                    }
                                 }
                                 .padding(horizontal = scaledPadH, vertical = scaledPadV),
                             contentAlignment = parseBoxAlignment(question.textAlignment)
@@ -1343,6 +1496,28 @@ fun LabellingGameScreen(
                     )
                 }
 
+                // 3. Speaker / Mute Button
+                Button(
+                    onClick = {
+                        isAudioMuted = !isAudioMuted
+                        if (isAudioMuted) {
+                            stopSpeech()
+                        }
+                    },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF546E7A),
+                        contentColor = Color.White
+                    ),
+                    contentPadding = PaddingValues(horizontal = 12.dp)
+                ) {
+                    Icon(
+                        painter = painterResource(
+                            id = if (isAudioMuted) R.drawable.mute_icon else R.drawable.speaker_icon
+                        ),
+                        contentDescription = if (isAudioMuted) "Włącz dźwięk" else "Wycisz dźwięk"
+                    )
+                }
+
                 Spacer(modifier = Modifier.weight(1f))
 
                 // 4. Hint Button with Lightbulbs inside
@@ -1363,7 +1538,9 @@ fun LabellingGameScreen(
                             1 -> "Odkryj więcej"
                             else -> "Brak podpowiedzi"
                         },
-                        fontSize = 12.sp
+                        fontSize = 12.sp,
+                        maxLines = 1,
+                        softWrap = false
                     )
                     Spacer(modifier = Modifier.width(6.dp))
                     Icon(
@@ -1472,6 +1649,25 @@ fun LabellingGameScreen(
                     Icon(
                         painter = painterResource(id = R.drawable.outline_menu_book_24),
                         contentDescription = "Rozdział"
+                    )
+                }
+                Button(
+                    onClick = {
+                        isAudioMuted = !isAudioMuted
+                        if (isAudioMuted) {
+                            stopSpeech()
+                        }
+                    },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF546E7A),
+                        contentColor = Color.White
+                    )
+                ) {
+                    Icon(
+                        painter = painterResource(
+                            id = if (isAudioMuted) R.drawable.mute_icon else R.drawable.speaker_icon
+                        ),
+                        contentDescription = if (isAudioMuted) "Włącz dźwięk" else "Wycisz dźwięk"
                     )
                 }
             }
