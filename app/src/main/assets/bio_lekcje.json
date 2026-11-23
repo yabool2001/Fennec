@@ -301,7 +301,7 @@
     "id": 6,
     "title": "Od parzydełkowców do pierścienic",
     "task": "",
-    "audio": "W tym rodziale zapoznasz się z czterema typami zwierząt bezkręgowych: płazińcami, nicieniami i pierścienicami. W materiale rozszerzonym dodatkowo poznasz parzydełkowce. Przewiń dalej ",
+    "audio": "W tym rodziale zapoznasz się z trzema typami zwierząt bezkręgowych: płazińcami, nicieniami i pierścienicami. W materiale rozszerzonym możesz dodatkowo poznać czwarty typ - parzydełkowce. Przewiń dalej palcem po slajdzie w od prawej do lewej, aby otworzyć kolejną lekcję.",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 620,
     "canvas_height": 300,
@@ -700,8 +700,8 @@
   {
     "id": 12,
     "title": "PŁAZIŃCE",
-    "audio": "Podaj nazwy trzech przedstawicieli płazińców.",
-    "task": "Uzupełnij 3 pola",
+    "audio": "Przypomnij jaki kształ ciała mają płazińce i podaj nazwy ich dwóch przedstawicieli.",
+    "task": "Wpisz odpowiedź",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 620,
     "canvas_height": 350,
@@ -751,7 +751,7 @@
       {
         "id": 2,
         "text": "Tasiemce",
-        "audio": "Ten płaziniec jest pasożytem mogącym żyć w jelicie cienkim człowiek. Wpisz jego nazwę.",
+        "audio": "Ten płaziniec jest pasożytem mogącym żyć w jelicie cienkim człowiek i powodować choroby. Wpisz jego nazwę.",
         "empty": "[ . . . . . . . . ]",
         "hint1": "[Tas . . . . .]",
         "hint2": "[Tasi . mce]",
@@ -806,7 +806,7 @@
     "id": 13,
     "title": "Tasiemiec - budowa ciała",
     "task": "Wymień 3 części ciała",
-    "audio": "Wymień 3 główne części ciała oraz czym jest pokryte ciało tasiemca, chorniąc go przed działaniem szkodliwych czynników.",
+    "audio": "Wymień 3 główne części ciała oraz czym jest pokryte ciało tasiemca, chroniąc go przed działaniem szkodliwych czynników.",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 700,
     "canvas_height": 470,
@@ -828,7 +828,7 @@
       {
         "id": 1,
         "text": "główka",
-        "audio": "Ta przednia część tasiemca umożliwia mu zaczepienie się w jelicie cienkim żywiciela ostatecznego, żeby nie zostać wydalonym z kałem.",
+        "audio": "Ta przednia część tasiemca umożliwia mu zaczepienie się w jelicie cienkim żywiciela ostatecznego, żeby nie został wydalonym z kałem żywiciela.",
         "empty": "[ . . . . . . ]",
         "hint1": "gł . . . .",
         "hint2": "głó . ka",
@@ -847,6 +847,7 @@
       {
         "id": 2,
         "text": "szyjka",
+        "audio": "Co znajduje się zaraz za główką tasiemca?",
         "empty": "[ . . . . . . ]",
         "hint1": "szy . . .",
         "hint2": "szy . ka",
@@ -883,12 +884,12 @@
       },
       {
         "id": 4,
-        "text": "Nabłonek pokrywa ciało\ntasiemca, chroniąc go przed działaniem enzymów trawiennych w jelicie cienkim żywiciela.",
+        "text": "Ciało tasiemca pokrywa\nnabłonek, chroniąc go przed działaniem enzymów trawiennych w jelicie cienkim żywiciela.",
         "audio": "Co chroni ciało tasiemca przed działaniem enzymów trawiennych w jelicie cienkim żywiciela ostatecznego.",
-        "empty": "[. . . . . . . .] pokrywa ciało\ntasiemca, chroniąc go przed działaniem enzymów trawiennych w jelicie cienkim żywiciela.",
-        "hint1": "[. . . . . . . .] pokrywa ciało\ntasiemca, chroniąc go przed działaniem enzymów trawiennych w jelicie cienkim żywiciela.",
-        "hint2": "[Nabło . ek] pokrywa ciało\ntasiemca, chroniąc go przed działaniem enzymów trawiennych w jelicie cienkim żywiciela.",
-        "answer": "Nabłonek",
+        "empty": "Ciało tasiemca pokrywa\n[. . . . . . . .], chroniąc go przed działaniem enzymów trawiennych w jelicie cienkim żywiciela.",
+        "hint1": "Ciało tasiemca pokrywa\n[nab . . . . .], chroniąc go przed działaniem enzymów trawiennych w jelicie cienkim żywiciela.",
+        "hint2": "Ciało tasiemca pokrywa\n[nabło . ek], chroniąc go przed działaniem enzymów trawiennych w jelicie cienkim żywiciela.",
+        "answer": "nabłonek",
         "accepted_answers": ["nabłonek"],
         "status": 0,
         "label_x": 0,
@@ -905,7 +906,7 @@
   {
     "id": 14,
     "title": "TASIEMCE - szczegóły różnic w budowie",
-    "audio": "Tasiemiec uzbrojony posiada dwa narządy za pomocą których przyczepia się do jelita cienkiego człowiek. Tasiemiec nieuzbrojony ma tylko jeden taki narząd. Podaj ich nazwy.",
+    "audio": "Tasiemiec uzbrojony posiada dwa narządy za pomocą których przyczepia się do jelita cienkiego człowieka. Tasiemiec nieuzbrojony ma tylko jeden taki narząd. Podaj ich nazwy.",
     "task": "Uzupełnij 2 nazwy",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 620,
@@ -914,6 +915,7 @@
       {
         "id": 1,
         "text": "Różnica w budowie i rozwoju tasiemca uzbrojonego i nieuzbrojonego.",
+        "audio": "Tasiemiec uzbrojony posiada dwa narządy za pomocą których przyczepia się do jelita cienkiego człowieka. Tasiemiec nieuzbrojony ma tylko jeden taki narząd. Podaj ich nazwy.",
         "label_x": 0,
         "label_y": 0,
         "label_width": 620,
@@ -996,6 +998,22 @@
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 620,
     "canvas_height": 350,
+    "descriptions": [
+      {
+        "id": 1,
+        "text": "Cykl rozwojowy tasiemca uzbrojonego i nieuzbrojonego wymaga dwóch organizmów.",
+        "label_x": 0,
+        "label_y": 0,
+        "label_width": 620,
+        "label_border_width": 0,
+        "text_size": 15,
+        "text_underline": 1,
+        "label_alpha": 1,
+        "pulsing": 0,
+        "picture_src": "bio_000017_0",
+        "picture_alpha": 1
+      }
+    ],
     "answers": [
       {
         "id": 1,
@@ -1034,22 +1052,6 @@
         "text_size": 13,
         "label_alpha": 1,
         "picture_src": "bio_000017_2",
-        "picture_alpha": 1
-      }
-    ],
-    "descriptions": [
-      {
-        "id": 1,
-        "text": "Cykl rozwojowy tasiemca uzbrojonego i nieuzbrojonego wymaga dwóch organizmów.",
-        "label_x": 0,
-        "label_y": 0,
-        "label_width": 620,
-        "label_border_width": 0,
-        "text_size": 15,
-        "text_underline": 1,
-        "label_alpha": 1,
-        "pulsing": 0,
-        "picture_src": "bio_000017_0",
         "picture_alpha": 1
       }
     ]
@@ -1155,6 +1157,7 @@
   {
     "id": 17,
     "title": "NICIENIE",
+    "audio": "Nicienie to w większości pasożyty, wywołujące choroby u swoich żywicieli. Ich nitkowate ciała przypominają nić.",
     "task": "",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 620,
@@ -1201,9 +1204,7 @@
         "label_width": 600,
         "text_size": 14,
         "label_alpha": 1,
-        "text_underline": 1,
-        "picture_src": "bio_000010",
-        "picture_alpha": 1
+        "text_underline": 1
       },
       {
         "id": 2,
@@ -1215,7 +1216,9 @@
         "label_border_width": 0,
         "text_size": 14,
         "text_alignment": "center",
-        "label_alpha": 0
+        "label_alpha": 0,
+        "picture_src": "bio_000010",
+        "picture_alpha": 1
       }
     ],
     "answers": [
@@ -1257,12 +1260,12 @@
       {
         "id": 3,
         "text": "‣ Zarażenia unikniesz myjąc ręce i przyniesione z podwórza zabawki.",
-        "audio": "Co może znajdować się na brudnych rękach lub przyniesionych z podwórza zabawkach?",
+        "audio": "Co należy zrobić z brudnymi rękoma i zabawkami po powrocie z podwórza?",
         "empty": "‣ Zarażenia unikniesz [. . . . .] ręce i przyniesione z podwórza zabawki.",
         "hint1": "‣ Zarażenia unikniesz [my . . .] ręce i przyniesione z podwórza zabawki.",
         "hint2": "‣ Zarażenia unikniesz [myj . c] ręce i przyniesione z podwórza zabawki.",
         "answer": "myjąc",
-        "accepted_answers": ["myjąc","mycie","umyjąc","umyć","myciem","umyciem"],
+        "accepted_answers": ["myjąc","mycie","umyjąc","umyć","myć","myciem","umyciem"],
         "status": 0,
         "label_x": 260,
         "label_y": 250,
@@ -1278,7 +1281,7 @@
     "id": 19,
     "title": "NICIENIE - Środowisko życia",
     "task": "Uzupełnij 3 stwierdzenia",
-    "audio": "Uzupęłnij informacje o środowisku w którym moga żyć nicienie.",
+    "audio": "Uzupełnij informacje o środowisku w którym moga żyć nicienie.",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 620,
     "canvas_height": 400,
@@ -1425,14 +1428,31 @@
   {
     "id": 20,
     "title": "NICIENIE - Budowa ciała",
+    "audio":  "Nicienie pasożytujące wewnątrz organizmu żywiciela są narażone na działanie szkodliwych czynników, np. enzymów trawiennych. Co chroni ciało nicienia przed tymi szkodliwymi czynnikami?",
     "task": "Uzupełnij 2 stwierdzenia",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 620,
     "canvas_height": 450,
+    "description": [
+      {
+        "id": 1,
+        "text": "odpornym na uszkodzenia i działanie szkodlich substancji, np. enzymów trawiennych w jelitach.",
+        "status": 0,
+        "label_x": 0,
+        "label_y": 358,
+        "label_width": 620,
+        "label_background_color": "transparent",
+        "label_border_width": 0,
+        "text_size": 14,
+        "text_alignment": "center",
+        "label_alpha": 1
+      }
+    ],
     "answers": [
       {
         "id": 1,
         "text": "Ciała nicieni są okryte grubym oskórkiem,",
+        "audio": "Przypomnij, jak nazywa się zewnętrzna warstwa ciała nicieni i dzięki czemu jest ona odporna na uszkodzenia i działanie szkodlich substancji, np. enzymów trawiennych w jelitach.",
         "empty": "Ciała nicieni są okryte [. . . . . .  . . . . . . . . .],",
         "hint1": "Ciała nicieni są okryte [gr . . . .  osk . . . . . .],",
         "hint2": "Ciała nicieni są okryte [gru . ym oskór . iem],",
@@ -1449,24 +1469,6 @@
         "label_alpha": 1,
         "picture_src": "bio_000015",
         "picture_alpha": 1
-      },
-      {
-        "id": 2,
-        "text": "odpornym na uszkodzenia i działanie szkodlich substancji, np. enzymów trawiennych w jelitach.",
-        "empty": "[. . . . . . . .] na uszkodzenia i działanie szkodlich substancji, np. enzymów trawiennych w jelitach.",
-        "hint1": "[odp . . . . .] na uszkodzenia i działanie szkodlich substancji, np. enzymów trawiennych w jelitach.",
-        "hint2": "[odpor . ym] na uszkodzenia i działanie szkodlich substancji, np. enzymów trawiennych w jelitach.",
-        "answer": "odpornym",
-        "accepted_answers": ["odpornym","odporne"],
-        "status": 0,
-        "label_x": 0,
-        "label_y": 360,
-        "label_width": 620,
-        "label_background_color": "transparent",
-        "label_border_width": 0,
-        "text_size": 14,
-        "text_alignment": "center",
-        "label_alpha": 1
       }
     ]
   },
@@ -1653,6 +1655,7 @@
       {
         "id": 1,
         "text": "Większość pierścienic żyje w słonych wodach mórz i oceanów.",
+        "audio": "Przypomnij jak można ogólnie nazwać wszystkie morza i oceany?",
         "empty": "Większość pierścienic żyje w [. . . . . . .   . . . . . . . .] mórz i oceanów.",
         "hint1": "Większość pierścienic żyje w [sło . . . .   wo . . . .] mórz i oceanów.",
         "hint2": "Większość pierścienic żyje w [słon . ch wod . ch] mórz i oceanów.",
@@ -1670,6 +1673,7 @@
       {
         "id": 2,
         "text": "Występują również w słodkich wodach, np. w jeziorach i stawach.",
+        "audio": "Przypomnij jak można ogólnie nazwać wszystkie rzeki, jeziora i stawy?",
         "empty": "Występują również w [. . . . . . . .\n. . . . . . . .], np. w jeziorach i stawach.",
         "hint1": "Występują również w [słod . . . .\nwo . . . . . .], np. w jeziorach i stawach.",
         "hint2": "Występują również w [słodk . ch\nwod . ch, np. w jeziorach i stawach.",
@@ -1687,6 +1691,7 @@
       {
         "id": 3,
         "text": "Niektóre gatunki pierścienic żyją w wilgotnych środowiskach lądowych np. glebie i ściółce.",
+        "audio": "Przypomnij jak można ogólnie nazwać środowisko, które obejmuje glebę i ściółkę?",
         "empty": "Niektóre gatunki pierścienic żyją w wilgotnych środowiskach [. . . . . . . .] np. glebie i ściółce.",
         "hint1": "Niektóre gatunki pierścienic żyją  w wilgotnych środowiskach [ląd . . . . .] np. glebie i ściółce.",
         "hint2": "Niektóre gatunki pierścienic żyją  w wilgotnych środowiskach [lądow . ch] np. glebie i ściółce.",
@@ -1721,14 +1726,14 @@
         "text_size": 15,
         "text_underline": 1,
         "label_alpha": 1,
-        "picture_src": "bio_000003",
+        "picture_src": "bio_000020_",
         "picture_alpha": 1
       },
       {
         "id": 2,
-        "text": "‣ podzielone na krótkie odcinki zwane",
-        "label_x": 10,
-        "label_y": 145,
+        "text": "pokryte:",
+        "label_x": 380,
+        "label_y": 150,
         "label_background_color": "transparent",
         "label_border_width": 0,
         "text_size": 14,
@@ -1738,15 +1743,16 @@
     "answers": [
       {
         "id": 1,
-        "text": "‣ wydłużone",
-        "empty": "‣ [. . . . . . . . .]",
-        "hint1": "‣ [wyd . . . . . .]",
-        "hint2": "‣ [wydłuż . ne]",
-        "answer": "wydłużone",
-        "accepted_answers": ["wydłużone"],
+        "text": "mają wydłużony kształt",
+        "empty": "mają [. . . . . . . . .] kształt",
+        "hint1": "mają [wyd . . . . . .] kształt",
+        "hint2": "mają [wydłuż . ny] kształt",
+        "answer": "wydłużony",
+        "accepted_answers": ["wydłużony","wydłużone"],
         "status": 0,
         "label_x": 10,
-        "label_y": 70,
+        "label_y": 150,
+        "label_width": 200,
         "label_background_color": "transparent",
         "label_border_width": 0,
         "text_size": 14,
@@ -1754,31 +1760,16 @@
       },
       {
         "id": 2,
-        "text": "pierścieniami",
-        "empty": "[. . . . . . . . . . . . .]",
-        "hint1": "[pier . . . . . . . . .]",
-        "hint2": "[pierście . iami]",
+        "text": "podzielone na krótkie odcinki zwane pierścieniami lub segmentami.",
+        "empty": "podzielone na krótkie odcinki zwane [. . . . . . . . . . . . .] lub segmentami.",
+        "hint1": "podzielone na krótkie odcinki zwane [pier . . . . . . . . .] lub segmentami.",
+        "hint2": "podzielone na krótkie odcinki zwane [pierście . iami] lub segmentami.",
         "answer": "pierścieniami",
         "accepted_answers": ["pierścieniami","pierścieniem","pierścień"],
         "status": 0,
-        "label_x": 32,
-        "label_y": 175,
-        "label_background_color": "transparent",
-        "label_border_width": 0,
-        "text_size": 14,
-        "label_alpha": 1
-      },
-      {
-        "id": 3,
-        "text": "lub segmentami.",
-        "empty": "lub [. . . . . . . . . .]",
-        "hint1": "lub [segm . . . . . .]",
-        "hint2": "lub [segm . ntami]",
-        "answer": "segmentami",
-        "accepted_answers": ["segmentami","segmantem","segment"],
-        "status": 0,
-        "label_x": 240,
-        "label_y": 175,
+        "label_x": 180,
+        "label_y": 150,
+        "label_width": 210,
         "label_background_color": "transparent",
         "label_border_width": 0,
         "text_size": 14,
@@ -1786,15 +1777,15 @@
       },
       {
         "id": 4,
-        "text": "‣ pokryte cienkim oskórkiem oraz",
-        "empty": "‣ pokryte cienkim [. . . . . . . . .] oraz",
-        "hint1": "‣ pokryte cienkim [oskór . . . .] oraz",
-        "hint2": "‣ pokryte cienkim [oskórk . em] oraz",
-        "answer": "oskórkiem",
-        "accepted_answers": ["oskórkiem","oskórek"],
+        "text": "‣ cienkim\noskórkiem",
+        "empty": "‣ [. . . . . . .\n. . . . . . . . .]",
+        "hint1": "‣ [cie . . . .\noskór . . . .]",
+        "hint2": "‣ [cien . im\noskórk . em]",
+        "answer": "cienkim oskórkiem",
+        "accepted_answers": ["cienkim oskórkiem","cienki oskórek"],
         "status": 0,
-        "label_x": 10,
-        "label_y": 240,
+        "label_x": 380,
+        "label_y": 180,
         "label_background_color": "transparent",
         "label_border_width": 0,
         "text_size": 14,
@@ -1802,15 +1793,15 @@
       },
       {
         "id": 5,
-        "text": "warstwą śluzu.",
-        "empty": "warstwą [. . . . .]",
-        "hint1": "warstwą [śl . . .]",
-        "hint2": "warstwą [ślu . u]",
+        "text": "‣ warstwą śluzu.",
+        "empty": "‣ warstwą [. . . . .]",
+        "hint1": "‣ warstwą [śl . . .]",
+        "hint2": "‣ warstwą [ślu . u]",
         "answer": "śluzu",
         "accepted_answers": ["śluzu","śluzem"],
         "status": 0,
-        "label_x": 32,
-        "label_y": 270,
+        "label_x": 380,
+        "label_y": 240,
         "label_background_color": "transparent",
         "label_border_width": 0,
         "text_size": 14,
@@ -2476,7 +2467,7 @@
       {
         "id": 3,
         "text": "Wypławki",
-        "audio": "Ten płaziniec jest drapieżnikiem polującym w środowiksu wodnym na drobne zwierzęta bezkręgowe. Wpisz jego nazwę.",
+        "audio": "Ten drapieżny i padlinożerny płaziniec często pojawia się w domowych akwariach, przyniesiony nieświadomie z nowymi roślinkami. Może wtedy spowodować duże szkody w hodowli rybek. Wpisz jego nazwę.",
         "empty": "[. . . . . . . .]",
         "hint1": "[Wyp . . . . .]",
         "hint2": "[Wypła . ki]",
