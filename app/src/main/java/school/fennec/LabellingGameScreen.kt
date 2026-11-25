@@ -311,6 +311,26 @@ fun loadPassedInputTextMessage(context: Context): String {
     }
 }
 
+fun loadDefaultTask(context: Context): String {
+    val fallback = "Wpisz odpowiedź"
+    val jsonString = try {
+        context.assets.open("ustawienia.json").bufferedReader().use { it.readText() }
+    } catch (_: Exception) {
+        return fallback
+    }
+
+    return try {
+        val obj = JSONObject(jsonString)
+        if (obj.has("task") && !obj.isNull("task")) {
+            obj.optString("task", fallback).trim().ifEmpty { fallback }
+        } else {
+            fallback
+        }
+    } catch (_: Exception) {
+        fallback
+    }
+}
+
 fun loadLessonNoButtonActive(context: Context): Int {
     val jsonString = try {
         context.assets.open("ustawienia.json").bufferedReader().use { it.readText() }
@@ -480,6 +500,7 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
         } catch (_: Exception) {}
     }
 
+    val defaultTask = loadDefaultTask(context)
     val jsonArray = JSONArray(assetsJsonString)
     val lessons = mutableListOf<LessonData>()
 
@@ -487,7 +508,11 @@ fun loadLessons(context: Context, databaseFilename: String): List<LessonData> {
         val obj = jsonArray.optJSONObject(i) ?: continue
         val id = obj.optInt("id", i + 1)
         val title = obj.optString("title", "Lekcja $id")
-        val task = obj.optString("task", "Wpisz odpowiedź")
+        val task = if (obj.has("task") && !obj.isNull("task")) {
+            obj.optString("task", "").trim().ifEmpty { defaultTask }
+        } else {
+            defaultTask
+        }
         val lessonAudio = obj.optString("audio", "").trim()
         
         val hexColorStr = obj.optString("working_area_background_color", "#F7F3EC")

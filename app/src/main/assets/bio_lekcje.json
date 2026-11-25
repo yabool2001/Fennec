@@ -805,7 +805,6 @@
   {
     "id": 13,
     "title": "Tasiemiec - budowa ciała",
-    "task": "Wymień 3 części ciała",
     "audio": "Wymień 3 główne części ciała oraz czym jest pokryte ciało tasiemca, chroniąc go przed działaniem szkodliwych czynników.",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 700,
@@ -828,7 +827,7 @@
       {
         "id": 1,
         "text": "główka",
-        "audio": "Ta przednia część tasiemca umożliwia mu zaczepienie się w jelicie cienkim żywiciela ostatecznego, żeby nie został wydalonym z kałem żywiciela.",
+        "audio": "Ta przednia część tasiemca umożliwia mu zaczepienie się w jelicie cienkim żywiciela ostatecznego, żeby nie został wydalonym z kałem żywiciela. Wpisz nazwę w polu odpowiedzi na samym dole.",
         "empty": "[ . . . . . . ]",
         "hint1": "gł . . . .",
         "hint2": "głó . ka",
@@ -2428,7 +2427,6 @@
     "id": 33,
     "title": "PŁAZIŃCE",
     "audio": "Przypomnij jaki kształ ciała mają płazińce i podaj nazwy ich dwóch przedstawicieli.",
-    "task": "Uzupełnij 3 pola",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 620,
     "canvas_height": 350,
@@ -2436,7 +2434,7 @@
       {
         "id": 1,
         "text": "PŁAZIŃCE,",
-        "audio": "płazińce,",
+        "audio": "Przypomnij jaki kształ ciała mają płazińce i podaj nazwy ich dwóch przedstawicieli.",
         "label_x": 10,
         "label_y": 1,
         "label_border_width": 0,
@@ -2448,7 +2446,7 @@
       {
         "id": 1,
         "text": "Ich przedstawicielami są m.in.: ",
-        "audio": "Podaj nazwy dwóch przedstawicieli płazińców.",
+        "audio": "Wpisz w pole poniżej nazwy dwóch przedstawicieli płazińców.",
         "label_x": 10,
         "label_y": 70,
         "label_border_width": 0,
@@ -2478,7 +2476,7 @@
       {
         "id": 2,
         "text": "Tasiemce",
-        "audio": "Ten płaziniec jest pasożytem mogącym żyć w jelicie cienkim człowiek. Wpisz jego nazwę.",
+        "audio": "Ten płaziniec jest pasożytem mogącym żyć w jelicie cienkim człowieka. Wpisz jego nazwę.",
         "empty": "[ . . . . . . . . ]",
         "hint1": "[Tas . . . . .]",
         "hint2": "[Tasi . mce]",

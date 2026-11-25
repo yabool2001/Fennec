@@ -16,6 +16,8 @@ bullets:
 ‣
 •
 
+Wpisz nazwę w polu odpowiedzi na samym dole.
+
 Podpowiedź jest w samej nazwie.
 
 Jak byś to poprawił i ewentualnie skrócił?
