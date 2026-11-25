@@ -865,7 +865,7 @@
       {
         "id": 3,
         "text": "człony",
-        "audio": "W tej części znajdują się męskie i żeńskie organy rozrodcze. A w tylnej części jest po kilkadziesiąt tysięcy jaj, co zwiększa szanse potomstwa na przetrwanie. Jaką nazwę ma ta część?",
+        "audio": "W tej części znajdują się męskie i żeńskie organy rozrodcze, dzięki czemu jeden tasiemiec może się rozmnażać. A w tylnej części jest po kilkadziesiąt tysięcy jaj, co zwiększa szanse potomstwa na przetrwanie. Jaką nazwę ma ta część?",
         "empty": "[ . . . . . ]",
         "hint1": "czł . . .",
         "hint2": "czł . ny",
@@ -992,7 +992,6 @@
   {
     "id": 15,
     "title": "Cykl rozwojowy tasiemców",
-    "task": "Wpisz odpowiedzi",
     "audio": "Podaj nazwy organizmów niezbędnych do rozwoju tasiemca.",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 620,
@@ -1001,6 +1000,7 @@
       {
         "id": 1,
         "text": "Cykl rozwojowy tasiemca uzbrojonego i nieuzbrojonego wymaga dwóch organizmów.",
+        "audio": "Cykl rozwojowy tasiemca wymaga dwóch organizmów. Podaj nazwy organizmów niezbędnych do rozwoju tasiemca.",
         "label_x": 0,
         "label_y": 0,
         "label_width": 620,
@@ -1016,13 +1016,13 @@
     "answers": [
       {
         "id": 1,
-        "audio": "Nazwij rolę jaką pełni świnia w cyklu rozwojowym tasiemca uzbrojonego i krowa w cyklu rozwojowym tasiemca nieuzbrojonego.",
+        "audio": "Podaj nazwę roli jaką pełni świnia w cyklu rozwojowym tasiemca uzbrojonego i krowa w cyklu rozwojowym tasiemca nieuzbrojonego.",
         "text": "Żywiciel\npośredni",
         "empty": "[. . . . . . . .\n. . . . . . . .]",
         "hint1": "[Żywi . . . .\npośr . . . .]",
         "hint2": "[Żywic . el\npośre . ni]",
         "answer": "żywiciel pośredni",
-        "accepted_answers": ["żywiciel pośredni"],
+        "accepted_answers": ["żywiciel pośredni","żywiciela pośredniego"],
         "status": 0,
         "label_x": [10,340],
         "label_y": [280,280],
@@ -1036,13 +1036,13 @@
       },
       {
         "id": 2,
-        "audio": "Nazwij rolę jaką pełni człowiek w cyklu rozwojowym tasiemca uzbrojonego i nieuzbrojonego.",
+        "audio": "Podaj nazwę roli jaką pełni człowiek w cyklu rozwojowym tasiemca uzbrojonego i nieuzbrojonego.",
         "text": "Żywiciel\nostateczny",
         "empty": "[. . . . . . . .\n. . . . . . . . . .]",
         "hint1": "[Żywi . . . .\nosta . . . . . .]",
         "hint2": "[Żywic . el\nostat . czny]",
         "answer": "żywiciel ostateczny",
-        "accepted_answers": ["żywiciel ostateczny"],
+        "accepted_answers": ["żywiciel ostateczny","żywiciela ostatecznego"],
         "status": 0,
         "label_x": [170,470],
         "label_y": [280,280],
@@ -1058,7 +1058,6 @@
   {
     "id": 16,
     "title": "Przebieg cyklu rozwojowego tasiemca uzbrojonego",
-    "task": "Wymień 3 części ciała",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 950,
     "canvas_height": 520,
@@ -1157,7 +1156,6 @@
     "id": 17,
     "title": "NICIENIE",
     "audio": "Nicienie to w większości pasożyty, wywołujące choroby u swoich żywicieli. Ich nitkowate ciała przypominają nić.",
-    "task": "",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 620,
     "canvas_height": 300,
@@ -1165,6 +1163,7 @@
       {
         "id": 1,
         "text": "NICIENIE",
+        "audio": "Nicienie to w większości pasożyty, wywołujące choroby u swoich żywicieli. Ich nitkowate ciała przypominają nić.",
         "label_x": 10,
         "label_y": 60,
         "label_width": 600,
@@ -1189,7 +1188,6 @@
     "id": 18,
     "title": "NICIENIE - zwierzęta z nitkowaty ciałem",
     "audio": "Uzupełnij informacje o charakterystycznym kształcie ciała nicieni oraz sposobie zarażenia nicieniami i zapobiegania zarażeniu.",
-    "task": "Uzupełnij 3 pola",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 620,
     "canvas_height": 350,
@@ -1197,6 +1195,7 @@
       {
         "id": 1,
         "text": "NICIENIE,",
+        "audio": "Nicienie to w większości pasożyty, wywołujące choroby u swoich żywicieli.",
         "label_x": 10,
         "label_y": 1,
         "label_border_width": 0,
@@ -1241,12 +1240,12 @@
       {
         "id": 2,
         "text": "‣ Zarażenie następuje przez połknięcie jaj pasożyta, przeniesionych do ust na brudnych rękach lub przedmiotach.",
-        "audio": "Co może znajdować się na brudnych rękach lub przyniesionych z podwórza zabawkach?",
+        "audio": "Co może znajdować się na brudnych rękach lub zabawkach przyniesionych z podwórka i po połknięciu prowadzić do zarażenia pasożytami?",
         "empty": "‣ Zarażenie następuje przez połknięcie [. . .] pasożyta, przeniesionych do ust na brudnych rękach lub przedmiotach.",
         "hint1": "‣ Zarażenie następuje przez połknięcie [j . .] pasożyta, przeniesionych do ust na brudnych rękach lub przedmiotach.",
         "hint2": "‣ Zarażenie następuje przez połknięcie [j . j] pasożyta, przeniesionych do ust na brudnych rękach lub przedmiotach.",
         "answer": "jaj",
-        "accepted_answers": ["jaj","jaja"],
+        "accepted_answers": ["jaj","jaja","jajami"],
         "status": 0,
         "label_x": 255,
         "label_y": 110,
@@ -1279,8 +1278,7 @@
   {
     "id": 19,
     "title": "NICIENIE - Środowisko życia",
-    "task": "Uzupełnij 3 stwierdzenia",
-    "audio": "Uzupełnij informacje o środowisku w którym moga żyć nicienie.",
+    "audio": "W jakim środowisku mogą żyć nicienie.",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 620,
     "canvas_height": 400,
@@ -1288,6 +1286,7 @@
       {
         "id": 1,
         "text": "Nicienie żyją:",
+        "audio": "Wymień środowiska w których mogą żyć nicienie.",
         "label_x": 10,
         "label_y": 1,
         "label_width": 600,
@@ -1428,7 +1427,6 @@
     "id": 20,
     "title": "NICIENIE - Budowa ciała",
     "audio":  "Nicienie pasożytujące wewnątrz organizmu żywiciela są narażone na działanie szkodliwych czynników, np. enzymów trawiennych. Co chroni ciało nicienia przed tymi szkodliwymi czynnikami?",
-    "task": "Uzupełnij 2 stwierdzenia",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 620,
     "canvas_height": 450,
@@ -1587,7 +1585,7 @@
   {
     "id": 22,
     "title": "PIERŚCIENICE",
-    "task": "",
+    "audio": "Pierścienice to organizmy których ciało jest podzielone na krótkie odcinki zwane pierścieniami lub segmentami.",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 620,
     "canvas_height": 300,
@@ -1595,6 +1593,7 @@
       {
         "id": 1,
         "text": "PIERŚCIENICE",
+        "audio": "Pierścienice to organizmy, których ciało jest podzielone na krótkie odcinki zwane pierścieniami lub segmentami.",
         "label_x": 10,
         "label_y": 60,
         "label_width": 600,
@@ -1606,6 +1605,7 @@
       {
         "id": 1,
         "text": "Podgromada bezkręgowców,\nktórych ciało jest podzielone na pierścienie.",
+        "audio": "Pierścienice to podgromada bezkręgowców. Większość z nich występuje w morzach i ocenach oraz w wilgotnej glebie lub ściółce.",
         "label_x": 10,
         "label_y": 130,
         "label_width": 600,
@@ -1619,7 +1619,7 @@
   {
     "id": 23,
     "title": "PIERŚCIENICE - Środowisko życia",
-    "task": "Uzupełnij 3 stwierdzenia",
+    "audio": "Nazwij ogólnie środowiska w których żyją pierścienice.",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 620,
     "canvas_height": 370,
@@ -1627,6 +1627,7 @@
       {
         "id": 1,
         "text": "PIERŚCIENICE",
+        "audio": "Nazwij ogólnie środowiska w których żyją pierścienice.",
         "label_x": 10,
         "label_y": 1,
         "label_width": 600,
@@ -1640,6 +1641,7 @@
       {
         "id": 1,
         "text": "Wymień środowiska w których żyją pierścienice",
+        "audio": "Podaj nazwy środowisk w których żyją pierścienice.",
         "label_x": 10,
         "label_y": 35,
         "label_width": 600,
@@ -1916,7 +1918,6 @@
   {
     "id": 26,
     "title": "PIERŚCIENICE - Nereida różnokolorowa",
-    "task": "Uzupełnij stwierdzenia",
     "audio": "Odpowiedz w jakim środowisku żyje nereida oraz nazwij trzy części jej głowy",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 620,
@@ -1955,6 +1956,7 @@
       {
         "id": 1,
         "text": "żyjąca w słonych wodach mórz i oceanów.",
+        "audio": "Jakm można ogólnie nazwać środowisko mórz i oceanów?",
         "empty": "żyjąca w [. . . . . . .   . . . . . .] mórz i oceanów.",
         "hint1": "żyjąca w [. . . . . . .   . . . . . .] mórz i oceanów.",
         "hint2": "żyjąca w słonych wodach mórz i oceanów.",
@@ -2031,7 +2033,6 @@
   {
     "id": 27,
     "title": "PIERŚCIENICE - Pijawki",
-    "task": "Uzupełnij",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 620,
     "canvas_height": 350,
@@ -2068,11 +2069,12 @@
       {
         "id": 1,
         "text": "‣ są pasożytami zewnętrznymi zwierząt kręgowych,",
+        "audio": "Pijawki odzywiają się krwią zwierząt kręgowych. Nazwij jak można je w takim razie nazwać?",
         "empty": "‣ są [. . . . . . . . . .  . . . . . . . . . . . .] zwierząt kręgowych,",
         "hint1": "‣ są [paso . . . . . .  zewnęt . . . . . .] zwierząt kręgowych,",
         "hint2": "‣ są [pasoży . ami  zewnętrz . ymi] zwierząt kręgowych,",
         "answer": "pasożytami zewnętrznymi",
-        "accepted_answers": ["pasożytami zewnętrznymi","pasożyty zewnętrzne", "pasożyt zewnętrzny"],
+        "accepted_answers": ["pasożytami zewnętrznymi","pasożyty zewnętrzne","pasożyt zewnętrzny","pasożytów zewnętrznych"],
         "status": 0,
         "label_x": 0,
         "label_y": 175,
@@ -2126,7 +2128,7 @@
         "hint1": "• [os . . .   szcz . . .] do nacinania skóry żywiciela.",
         "hint2": "• [ost . e   szczę . i] do nacinania skóry żywiciela.",
         "answer": "ostrym szczękom",
-        "accepted_answers": ["ostrym szczękom","ostrej szczęce","ostra szczęka"],
+        "accepted_answers": ["ostrym szczękom","ostrej szczęce","ostra szczęka","ostre szczęki"],
         "status": 0,
         "label_x": 20,
         "label_y": 305,
@@ -2142,7 +2144,6 @@
     "id": 28,
     "title": "Uzupełnij informacje o budowie dźdźownicy",
     "audio": "Dżdżownice odżywiają się szczątkami organizmów w glebie, dzięki czemu tworzą próchnicę, a drążąc tunele powoduję spulchnienie gleby.",
-    "task": "Uzupełnij 3 informacje",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 900,
     "canvas_height": 550,
@@ -2206,7 +2207,6 @@
   {
     "id": 29,
     "title": "Szczegóły budowy ciała dżdżownicy",
-    "task": "Uzupełnij 2 stwierdzenia",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 620,
     "canvas_height": 350,
@@ -2281,7 +2281,6 @@
   {
     "id": 30,
     "title": "Szczegóły budowy ciała pierścienic",
-    "task": "Uzupełnij 2 stwierdzenia",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 620,
     "canvas_height": 350,
@@ -2324,7 +2323,6 @@
   {
     "id": 31,
     "title": "Rozdział II - Podsumowanie 1/2",
-    "task": "Uzupełnij 2 stwierdzenia",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 620,
     "canvas_height": 350,
@@ -2393,7 +2391,6 @@
   {
     "id": 32,
     "title": "Od parzydełkowców do pierścienic",
-    "task": "",
     "audio": "W tym rodziale zapoznasz się z czterema typami zwierząt bezkręgowych: parzydełkowcami, płazińcami, nicieniami i pierścienicami. Przewiń dalej ",
     "working_area_background_color": "#FFFFFF",
     "canvas_width": 620,
@@ -2507,6 +2504,90 @@
         "text_size": 14,
         "label_alpha": 0,
         "picture_src": "bio_000019_2",
+        "picture_alpha": 1
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "title": "PIERŚCIENICE - przedstawiciele",
+    "audio": "Podaj nazwy trzech przedstawicieli pierścienic. Każdy z nich żyje w innym środowisku.",
+    "working_area_background_color": "#FFFFFF",
+    "canvas_width": 620,
+    "canvas_height": 400,
+    "descriptions": [
+      {
+        "id": 1,
+        "text": "Podaj przedstawicieli pierścienic",
+        "audio": "Podaj nazwy trzech przedstawicieli pierścienic. Każdy z nich żyje w innym środowisku.",
+        "label_x": 0,
+        "label_y": 1,
+        "label_width": 620,
+        "label_border_width": 0,
+        "text_size": 15,
+        "text_underline": 1,
+        "label_alpha": 1
+      }
+    ],
+    "answers": [
+      {
+        "id": 1,
+        "text": "Nereida różnokolorowa żyje w słonych wodach mórz i oceanów.",
+        "audio": "Ta kolorowa pierścienica żyje w słonych wodach mórz i oceanów. Wpis poniżej jej nazwę?",
+        "empty": "[. . . . . . .] różnokolorowa żyje w słonych wodach mórz i oceanów.",
+        "hint1": "[Ner . . . .] różnokolorowa żyje w słonych wodach mórz i oceanów.",
+        "hint2": "[Nere . da różnokolorowa żyje w słonych wodach mórz i oceanów.",
+        "answer": "Nereida",
+        "accepted_answers": ["nereida","nereidy"],
+        "status": 0,
+        "label_x": 0,
+        "label_y": 250,
+        "label_width": 210,
+        "label_background_color": "transparent",
+        "label_border_width": 0,
+        "text_size": 13,
+        "label_alpha": 1,
+        "picture_src": "bio_000021_1",
+        "picture_alpha": 1
+      },
+      {
+        "id": 2,
+        "text": "Pijawka lekarska żyje w słodkich wodach jezior i stawów.",
+        "audio": "Jak nazywa się pierścienica, która jest wykorzystywana w leczeniu niektórych chorób człowieka?",
+        "empty": "[. . . . . . .] lekarska żyje w słodkich wodach jezior i stawów.",
+        "hint1": "[Pij . . . .] lekarska żyje w słodkich wodach jezior i stawów.",
+        "hint2": "[Pija . ka] lekarska żyje w słodkich wodach jezior i stawów.",
+        "answer": "Pijawka",
+        "accepted_answers": ["pijawka","pijawki"],
+        "status": 0,
+        "label_x": 190,
+        "label_y": 250,
+        "label_width": 220,
+        "label_background_color": "transparent",
+        "label_border_width": 0,
+        "text_size": 13,
+        "label_alpha": 1,
+        "picture_src": "bio_000021_2",
+        "picture_alpha": 1
+      },
+      {
+        "id": 3,
+        "text": "Dżdżownica ziemna jest najpopularniejszą pierścienicą lądową.",
+        "audio": "Jak nazywa się najpopularniejsza pierścienica żyjąca w środowisku lądowym?",
+        "empty": "[. . . . . . . . . .] ziemna jest najpopularniejszą pierścienicą lądową.",
+        "hint1": "[Dżdż . . . . . .] ziemna jest najpopularniejszą pierścienicą lądową.",
+        "hint2": "[Dżdżown . ca] ziemna jest najpopularniejszą pierścienicą lądową.",
+        "answer": "Dżdżownica",
+        "accepted_answers": ["dżdżownica","Dżdżownice"],
+        "status": 0,
+        "label_x": 390,
+        "label_y": 250,
+        "label_width": 230,
+        "label_background_color": "transparent",
+        "label_border_width": 0,
+        "text_size": 13,
+        "label_alpha": 1,
+        "picture_src": "bio_000021_3",
         "picture_alpha": 1
       }
     ]

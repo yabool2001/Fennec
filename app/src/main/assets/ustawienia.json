@@ -53,7 +53,7 @@
     }
   ],
   "audios": {
-    "answer_status_max": "To zadanie zostało już zaliczone po trzykrotnym udzieleniu prawidłowej odpowiedzi bez żadnej podpowiedzi.",
+    "answer_status_max": "Nie musisz odpowiadać. To zadanie zostało już zaliczone po trzykrotnym udzieleniu prawidłowej odpowiedzi bez żadnej podpowiedzi.",
     "answered_status": "Już odpowiedziałeś prawidłowo na to pytanie."
   },
   "colors": {
